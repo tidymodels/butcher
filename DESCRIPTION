@@ -1,0 +1,29 @@
+Package: butcher
+Title: Model Butcher
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Joyce",
+           family = "Cahoon",
+           role = c("aut", "cre"),
+           email = "joyce@rstudio.com"),
+    person(given = "Davis",
+           family = "Vaughan",
+           role = "aut",
+           email = "davis@rstudio.com"),
+    person(given = "Max",
+           family = "Kuhn",
+           role = "aut",
+           email = "max@rstudio.com"))
+Description: Chop off the garbage modeling objects often carry and reduce the memory saved to disk.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    purrr,
+    pryr,
+    dplyr,
+    magrittr,
+    rlang
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat (>= 2.1.0)

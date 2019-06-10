@@ -19,7 +19,6 @@ carve.lm <- function(x, ...) {
   # Remove undesired environment
   x_carved <- remove_env(inventory$all_attributes)
 
-
 }
 
 

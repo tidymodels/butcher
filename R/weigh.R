@@ -20,7 +20,7 @@ weigh <- function(x, threshold = 2, units = "MB") {
 
   stopifnot(is.list(x))
 
-  units <- match.arg(units, c("KB", "MB", "GB"))
+  units <- rlang::arg_match(units, c("KB", "MB", "GB"))
   if(units == "MB") {
     denom <- 1e+6
   } else if(units == "KB") {
@@ -31,6 +31,7 @@ weigh <- function(x, threshold = 2, units = "MB") {
 
   object_weights <- unlist(rapply(x, pryr::object_size))
   object_weights <- purrr::map(object_weights, as.numeric)
+  # OR use rlang::squash here?
 
   dplyr::tibble(
     object = names(object_weights),

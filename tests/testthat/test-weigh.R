@@ -8,3 +8,7 @@ test_that("weigh() recursively measures size of each object component", {
   expect_equal(dim(object_sizes)[2], 2)
   expect_gt(round(object_sizes$size[1]), 44) # Prob not going to pass in general
 })
+
+test_that("checking internal data", {
+  expect_equal(dim(butcher::weigh(lm_fit, 0))[1],58)
+})

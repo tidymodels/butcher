@@ -48,9 +48,22 @@ axe.lm <- function(x, ...) {
   return(x_axed)
 }
 
-# axe.elnet <- function(x, ...) {
-#
-# }
+axe.elnet <- function(x, ...) {
+  stopifnot(inherits(x, "elnet"))
+  keep_parts <- c("a0",
+                  "beta",
+                  "lambda",
+                  "offset",
+                  "df",
+                  "dev.ratio",
+                  "call") # may want to include df, dev for display?
+  # Check these parts exist
+  inventory <- take_inventory(x)
+  # Remove undesired inventory
+  undesired_inventory <- inventory$overall[!inventory$overall %in% keep_parts]
+  x[undesired_inventory] <- NULL
+  return(x)
+}
 
 #' @export
 axe.model_fit <- function(x, ...) {

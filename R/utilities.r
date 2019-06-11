@@ -8,3 +8,26 @@ remove_env <- function(x, list_attributes) {
   }
   return(x)
 }
+
+# Ported from stats
+remove_response <- function(x) {
+  a <- attributes(x$terms)
+  y <- a$response
+  if(!is.null(y) && y) {
+    x[[2L]] <- NULL
+    a$response <- 0
+    a$variables <- a$variables[-(1+y)]
+    a$predvars <- a$predvars[-(1+y)]
+    if(length(a$factors))
+      a$factors <- a$factors[-y, , drop = FALSE]
+    if(length(a$offset))
+      a$offset <- ifelse(a$offset > y, a$offset-1, a$offset)
+    if(length(a$specials))
+      for(i in seq_along(a$specials)) {
+        b <- a$specials[[i]]
+        a$specials[[i]] <- ifelse(b > y, b-1, b)
+      }
+    attributes(x$terms) <- a
+  }
+  x
+}

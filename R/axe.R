@@ -9,7 +9,6 @@
 #' @param x model object
 #'
 #' @return axed model object
-#' @export
 #' @examples
 #'
 #' axe(lm_fit)
@@ -17,22 +16,18 @@ axe <- function(x, ...) {
   UseMethod("axe")
 }
 
-#' @export
 axe.default <- function(x, ...) {
 
 }
 
-#' @export
 axe.lm <- function(x, ...) {
 
 }
 
-#' @export
 axe.elnet <- function(x, ...) {
 
 }
 
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")
@@ -41,7 +36,5 @@ axe.model_fit <- function(x, ...) {
   axe(x$fit, dots)
 }
 
-
-# # set attr recursively..
 
 

@@ -7,6 +7,7 @@ carve <- function(x, ...) {
   UseMethod("carve")
 }
 
+
 #' @export
 carve.lm <- function(x, ...) {
   stopifnot(inherits(x, "lm"))
@@ -29,6 +30,5 @@ carve.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")
   }
-  dots <- rlang::enquos(..., .named = TRUE)
-  carve(x$fit, dots)
+  carve(x$fit, ...)
 }

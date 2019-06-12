@@ -10,7 +10,7 @@ axe_env(x, ...)
 \item{x}{model object}
 }
 \value{
-model object without environment attribut
+model object without environment attribute
 }
 \description{
 Remove the environment(s) attached to modeling objects as they are often

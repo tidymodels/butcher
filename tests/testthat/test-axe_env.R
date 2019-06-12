@@ -10,6 +10,11 @@ test_that("axe_env() works", {
   expect_null(attr(stan_axed$terms, ".Environment"))
   expect_null(attr(attributes(stan_axed$model)$terms, ".Environment"))
   expect_true(identical(stan_axed$stanfit@.MISC, rlang::empty_env()))
+  # RPART
+  treereg_axed <- axe_env(treereg_fit)
+  expect_null(attr(treereg_axed$terms, ".Environment"))
+
+  # Objects without env: KERAS
 })
 
 

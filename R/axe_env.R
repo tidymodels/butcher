@@ -7,12 +7,17 @@
 #'
 #' @param x model object
 #'
-#' @return model object without environment attribut
+#' @return model object without environment attribute
 #' @export
 #' @examples
 #' axe_env(lm_fit)
 axe_env <- function(x, ...) {
   UseMethod("axe_env")
+}
+
+#' @export
+axe_env.default <- function(x, ...) {
+  x
 }
 
 #' @export
@@ -34,6 +39,11 @@ axe_env.lm <- function(x, ...) {
   # Environment in model
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
   return(x)
+}
+
+#' @export
+axe_env.glm <- function(x, ...) {
+  axe_env(x, ...)
 }
 
 #' @export
@@ -61,8 +71,28 @@ axe_env.stanreg <- function(x, ...) {
 }
 
 #' @export
-axe_env.glm <- function(x, ...) {
-  axe_env(x, ...)
+axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
+  # No environment stored
+  # TO DO: double check keras model object
+  x
+}
+
+#' @export
+axe_env.keras.engine.training.Model <- function(x, ...) {
+  # No environment stored
+  x
+}
+
+#' @export
+axe_env.rpart <- function(x, ...) {
+  # Environment in terms
+  x$terms <- axe_env(x$terms, ...)
+  x
+}
+
+#' @export
+axe_env.C5.0 <- function(x, ...) {
+  axe_env.default(x, ...)
 }
 
 #' @export

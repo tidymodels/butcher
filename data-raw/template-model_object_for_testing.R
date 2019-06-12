@@ -13,19 +13,26 @@
 # However, we would love to add more models objects.
 library(parsnip)
 library(tidymodels)
-library(pryr)
+library(lobstr)
 library(glmnet)
 library(keras)
+library(rpart)
 
-# Linear Regression -------------------------------------------------------
-# Data
+# Data --------------------------------------------------------------------
+# For classification
+data(kyphosis)
 set.seed(1234)
+split <- initial_split(kyphosis, props = 9/10)
+spine_train <- training(split)
+spine_test  <- testing(split)
+# For regression
 split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
 car_test  <- testing(split)
-# LM ----------------------------------------------------------------------
-# Model
+
+# Linear Regression -------------------------------------------------------
 car_model <- linear_reg()
+# LM ----------------------------------------------------------------------
 lm_car_model <- car_model %>%
   set_engine("lm")
 lm_fit <- lm_car_model %>%
@@ -43,44 +50,90 @@ glmnet_car_model <- car_model_penalized %>%
   set_engine("glmnet")
 glmnet_fit <- glmnet_car_model %>%
   fit(mpg ~ ., data = car_train)
-# OR.. using glmnet directly.. may want to get rid of this !
-car_train_matrix <- car_train %>%
-  select(-mpg) %>%
-  as.matrix()
-# Fit with an L2 penalty
-l2_fit <- glmnet(x = car_train_matrix, y = car_train$mpg,
-                 alpha = 0, lambda = 0.1)
 # KERAS -------------------------------------------------------------------
-lr_model <- keras_model_sequential()
-lr_model %>%
-  layer_dense(units = 1,
-              input_shape = dim(car_train_matrix)[2],
-              activation = 'linear',
-              kernel_regularizer = regularizer_l2(0.1))
-
 early_stopping <- callback_early_stopping(monitor = 'loss', min_delta = 0.000001)
-
-lr_model %>% compile(
-  loss = 'mean_squared_error',
-  optimizer = optimizer_adam(lr = 0.001)
-)
-
-keras_fit <- lr_model %>%
-  fit(
-    x = car_train_matrix,
-    y = car_train$mpg,
-    epochs = 1000,
-    batch_size = 1,
-    callbacks = early_stopping
-  )
+keras_fit <- car_model_penalized %>%
+  set_engine("keras", epochs = 1000, batch_size = 1, callbacks = !!early_stopping) %>%
+  fit(mpg ~ ., data = car_train, control = ctrl)
+# SPARK -------------------------------------------------------------------
+# TODO: Learn how to use spark, create this with spark data obj, make sense of
+# spark_fit <- car_model_penalized %>%
+#   set_engine("spark")
 
 
+# Logistic regression -----------------------------------------------------
+
+# GLM ---------------------------------------------------------------------
+
+# GLMNET ------------------------------------------------------------------
+
+
+# STAN --------------------------------------------------------------------
+
+
+
+# Multinomial regression --------------------------------------------------
+
+
+# GLMNET ------------------------------------------------------------------
+
+
+
+# Nearest neighbor --------------------------------------------------------
+# There is only one engine currently available with nearest neighbor. kknn
+
+
+# Random forest -----------------------------------------------------------
+
+
+# RANDOMFOREST ------------------------------------------------------------
+
+
+# RANGER ------------------------------------------------------------------
+
+
+
+# Survival regression -----------------------------------------------------
+
+
+# FLEXSURV ----------------------------------------------------------------
+
+
+# SURVREG -----------------------------------------------------------------
+
+
+
+
+# Decision tree -----------------------------------------------------------
+# RPART -------------------------------------------------------------------
+# This engine requires the specification of a cost/complexity parameter as
+# well as the depth of the tree.
+treereg_fit <- decision_tree(mode = "regression",
+                            cost_complexity = NULL,
+                            tree_depth = 5,
+                            min_n = 2) %>%
+  set_engine("rpart") %>%
+  fit(mpg ~ ., data = car_train)
+treeclass_fit <- decision_tree(mode = "classification",
+                               cost_complexity = NULL,
+                               tree_depth = 5,
+                               min_n = NULL) %>%
+  set_engine("rpart") %>%
+  fit(Kyphosis ~ ., data = spine_train)
+# C5.0 --------------------------------------------------------------------
+treeC5_fit <- decision_tree(mode = "classification") %>%
+  set_engine("C5.0") %>%
+  fit(Kyphosis ~ ., data = spine_train)
 # Save results ------------------------------------------------------------
-usethis::use_data(lm_fit,
+usethis::use_data(# LINEAR REGRESSION
+                  lm_fit,
                   stan_fit,
                   glmnet_fit,
-                  l2_fit,
                   keras_fit,
+                  # DECISION TREES
+                  treereg_fit,
+                  treeclass_fit,
+                  treeC5_fit,
                   internal = TRUE,
                   overwrite = TRUE)
 

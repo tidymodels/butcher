@@ -17,7 +17,10 @@
 #' lm_out <- lm(simulate_y ~ simulate_x)
 #' weigh(lm_out)
 weigh <- function(x, threshold = 2, units = "MB") {
-
+  # TODO: examine str to replace use of rapply
+  # TODO: edit this to weigh for s4 objects too
+  # TODO: change to lobstr
+  # TODO: recursive function to check for an object location..
   stopifnot(is.list(x))
 
   units <- rlang::arg_match(units, c("KB", "MB", "GB"))
@@ -29,7 +32,7 @@ weigh <- function(x, threshold = 2, units = "MB") {
     denom <- 1e+9
   }
 
-  object_weights <- unlist(rapply(x, pryr::object_size))
+  object_weights <- unlist(rapply(x, lobstr::obj_size))
   object_weights <- purrr::map(object_weights, as.numeric)
   # OR use rlang::squash here?
 

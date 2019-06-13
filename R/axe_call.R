@@ -73,6 +73,29 @@ axe_call.C5.0 <- function(x, ...) {
 }
 
 #' @export
+axe_call.multnet <- function(x, ...) {
+  x$call <- call("dummy_call")
+  x
+}
+
+#' @export
+axe_call.train.kknn <- function(x, ...) {
+  NextMethod("axe_env")
+}
+
+#' @export
+axe_call.kknn <- function(x, ...) {
+  x$call <- call("dummy_call")
+  x
+}
+
+#' @export
+axe_call.randomForest <- function(x, ...) {
+  x$call <- call("dummy_call")
+  x
+}
+
+#' @export
 axe_call.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_call(x$fit, ...)

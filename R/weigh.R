@@ -19,7 +19,7 @@
 weigh <- function(x, threshold = 2, units = "MB") {
   # TODO: examine str to replace use of rapply
   # TODO: edit this to weigh for s4 objects too
-  # TODO: change to lobstr
+  # TODO: weigh for keras object
   # TODO: recursive function to check for an object location..
   stopifnot(is.list(x))
 

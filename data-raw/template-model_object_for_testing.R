@@ -25,30 +25,30 @@ set.seed(1234)
 split <- initial_split(kyphosis, props = 9/10)
 spine_train <- training(split)
 spine_test  <- testing(split)
-# For regression
+# For linear regression
 split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
 car_test  <- testing(split)
+# For multinomial regression
+predictrs <- matrix
+response <- as.factor(sample(1:4, 100, replace = TRUE))
 
 # Linear Regression -------------------------------------------------------
 car_model <- linear_reg()
 # LM ----------------------------------------------------------------------
-lm_car_model <- car_model %>%
-  set_engine("lm")
-lm_fit <- lm_car_model %>%
+lm_fit <- car_model %>%
+  set_engine("lm") %>%
   fit(mpg ~ ., data = car_train)
 # STAN --------------------------------------------------------------------
-stan_car_model <- car_model %>%
-  set_engine("stan")
 # Don't print stan output
 ctrl <- fit_control(verbosity = 0)
-stan_fit <- stan_car_model %>%
+stan_fit <- car_model %>%
+  set_engine("stan") %>%
   fit(mpg ~ ., data = car_train, control = ctrl)
 # GLMNET ------------------------------------------------------------------
 car_model_penalized <- linear_reg(mixture = 0, penalty = 0.1)
-glmnet_car_model <- car_model_penalized %>%
-  set_engine("glmnet")
-glmnet_fit <- glmnet_car_model %>%
+glmnet_fit <- car_model_penalized %>%
+  set_engine("glmnet") %>%
   fit(mpg ~ ., data = car_train)
 # KERAS -------------------------------------------------------------------
 early_stopping <- callback_early_stopping(monitor = 'loss', min_delta = 0.000001)
@@ -60,38 +60,46 @@ keras_fit <- car_model_penalized %>%
 # spark_fit <- car_model_penalized %>%
 #   set_engine("spark")
 
-
 # Logistic regression -----------------------------------------------------
 
 # GLM ---------------------------------------------------------------------
 
 # GLMNET ------------------------------------------------------------------
 
-
 # STAN --------------------------------------------------------------------
 
 
 
 # Multinomial regression --------------------------------------------------
-
-
+multi_model <- multinom_reg()
 # GLMNET ------------------------------------------------------------------
-
-
+glmnet_multi <- multi_model %>%
+  set_engine("glmnet") %>%
+  fit_xy(x = predictrs, y = response)
+# KERAS -------------------------------------------------------------------
+keras_multi <- multi_model %>%
+  set_engine("keras", epochs = 10, batch_size = 1, callbacks = !!early_stopping) %>%
+  fit_xy(x = predictrs, y = response, control = ctrl)
 
 # Nearest neighbor --------------------------------------------------------
-# There is only one engine currently available with nearest neighbor. kknn
-
+# There is only one engine currently available with nearest neighbor.
+kknn_fit <- nearest_neighbor(mode = "classification",
+                             neighbors = 3,
+                             weight_func = "gaussian",
+                             dist_power = 2) %>%
+  set_engine("kknn") %>%
+  fit(Kyphosis ~ ., data = spine_train)
 
 # Random forest -----------------------------------------------------------
-
-
+rf_model <- rand_forest(mode = "classification", mtry = 2, trees = 2, min_n = 3)
 # RANDOMFOREST ------------------------------------------------------------
-
-
+rf_fit <- rf_model %>%
+  set_engine("randomForest") %>%
+  fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 # RANGER ------------------------------------------------------------------
-
-
+ranger_fit <- rf_model %>%
+  set_engine("ranger") %>%
+  fit(Kyphosis ~ ., data = spine_train)
 
 # Survival regression -----------------------------------------------------
 
@@ -130,6 +138,14 @@ usethis::use_data(# LINEAR REGRESSION
                   stan_fit,
                   glmnet_fit,
                   keras_fit,
+                  # MULTINOM REGRESSION
+                  glmnet_multi,
+                  keras_multi,
+                  # NEAREST NEIGHBOR
+                  kknn_fit,
+                  # RANDOM FOREST
+                  rf_fit,
+                  ranger_fit,
                   # DECISION TREES
                   treereg_fit,
                   treeclass_fit,

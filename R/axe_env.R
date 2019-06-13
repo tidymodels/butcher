@@ -17,6 +17,7 @@ axe_env <- function(x, ...) {
 
 #' @export
 axe_env.default <- function(x, ...) {
+  # No environment to remove
   x
 }
 
@@ -43,19 +44,17 @@ axe_env.lm <- function(x, ...) {
 
 #' @export
 axe_env.glm <- function(x, ...) {
-  axe_env(x, ...)
+  axe_env.default(x, ...)
 }
 
 #' @export
 axe_env.glmnet <- function(x, ...) {
-  # No environment stored
-  x
+  axe_env.default(x, ...)
 }
 
 #' @export
 axe_env.elnet <- function(x, ...) {
-  # No environment stored
-  x
+  axe_env.default(x, ...)
 }
 
 #' @export
@@ -72,15 +71,12 @@ axe_env.stanreg <- function(x, ...) {
 
 #' @export
 axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
-  # No environment stored
-  # TO DO: double check keras model object
-  x
+  axe_env.default(x, ...)
 }
 
 #' @export
 axe_env.keras.engine.training.Model <- function(x, ...) {
-  # No environment stored
-  x
+  axe_env.default(x, ...)
 }
 
 #' @export
@@ -92,6 +88,27 @@ axe_env.rpart <- function(x, ...) {
 
 #' @export
 axe_env.C5.0 <- function(x, ...) {
+  axe_env.default(x, ...)
+}
+
+#' @export
+axe_env.multnet <- function(x, ...) {
+  axe_env.default(x, ...)
+}
+
+#' @export
+axe_env.train.kknn <- function(x, ...) {
+  NextMethod("axe_env")
+}
+
+#' @export
+axe_env.kknn <- function(x, ...) {
+  x$terms <- axe_env(x$terms, ...)
+  x
+}
+
+#' @export
+axe_env.randomForest <- function(x, ...) {
   axe_env.default(x, ...)
 }
 

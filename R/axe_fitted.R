@@ -86,6 +86,23 @@ axe_fitted.randomForest <- function(x, ...) {
 }
 
 #' @export
+axe_fitted.ranger <- function(x, ...) {
+  # The `predict.ranger` function requires new data to be supplied
+  x$predictions <- NULL
+  x
+}
+
+#' @export
+axe_fitted.flexsurvreg <- function(x, ...) {
+  axe_fitted.default(x, ...)
+}
+
+#' @export
+axe_fitted.survreg <- function(x, ...) {
+  axe_fitted.default(x, ...)
+}
+
+#' @export
 axe_fitted.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_fitted(x$fit, ...)

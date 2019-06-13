@@ -87,6 +87,7 @@ axe_misc.kknn <- function(x, ...) {
   x
 }
 
+#' @export
 axe_misc.randomForest <- function(x, ...) {
   # Number of times cases are out-of-bag and used to compute OOB error
   x$oob.times <- NULL
@@ -97,6 +98,36 @@ axe_misc.randomForest <- function(x, ...) {
   # Number of samples inbag
   x$inbag <- NULL
   x
+}
+
+#' @export
+axe_misc.ranger <- function(x, ...) {
+  # Out-of-bag prediction error
+  x$prediction.error <- NULL
+  x
+}
+
+#' @export
+axe_misc.flexsurvreg <- function(x, ...) {
+  x$AIC <- NULL
+  x$datameans <- NULL
+  x$N <- NULL
+  x$events <- NULL
+  x$trisk <- NULL
+  x$concat.formula <- NULL
+  x$basepars <- NULL
+  x$fixedpars <- NULL
+  x$optpars <- NULL
+  x$loglik <- NULL
+  x$logliki <- NULL
+  x$opt <- NULL
+  x
+}
+
+#' @export
+axe_misc.survreg <- function(x, ...) {
+  # TODO: dig
+  axe_misc.default(x, ...)
 }
 
 #' @export

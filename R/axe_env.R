@@ -39,7 +39,7 @@ axe_env.lm <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   # Environment in model
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  return(x)
+  x
 }
 
 #' @export
@@ -66,7 +66,7 @@ axe_env.stanreg <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   # Environment in model
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  return(x)
+  x
 }
 
 #' @export
@@ -110,6 +110,28 @@ axe_env.kknn <- function(x, ...) {
 #' @export
 axe_env.randomForest <- function(x, ...) {
   axe_env.default(x, ...)
+}
+
+#' @export
+axe_env.ranger <- function(x, ...) {
+  axe_env.default(x, ...)
+}
+
+#' @export
+axe_env.flexsurvreg <- function(x, ...) {
+  attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
+  attributes(x$concat.formula)$`.Environment` <- NULL
+  attributes(x$all.formulae$rate)$`.Environment` <- NULL
+  x
+}
+
+#' @export
+axe_env.survreg <- function(x, ...) {
+  # Environment in terms
+  x$terms <- axe_env(x$terms, ...)
+  # Environment in model
+  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
+  x
 }
 
 #' @export

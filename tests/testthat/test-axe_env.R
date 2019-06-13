@@ -13,7 +13,9 @@ test_that("axe_env() works", {
   # RPART
   treereg_axed <- axe_env(treereg_fit)
   expect_null(attr(treereg_axed$terms, ".Environment"))
-
+  # FLEXSURVREG
+  flex_axed <- axe_env(flex_fit)
+  expect_null(attr(attributes(flex_axed$data$m)$terms, ".Environment"))
   # Objects without env: KERAS
 })
 

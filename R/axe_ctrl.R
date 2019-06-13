@@ -91,6 +91,36 @@ axe_ctrl.randomFoest <- function(x, ...) {
 }
 
 #' @export
+axe_ctrl.ranger <- function(x, ...) {
+  # Number of variables to split at each node
+  x$mtry <- NULL
+  # Min node size
+  x$min.node.size <- NULL
+  # Splitting rule
+  x$splitrule <- NULL
+  # Sample with replacement
+  x$replace <- NULL
+  # Number of samples
+  x$num.samples <- NULL
+  x
+}
+
+#' @export
+axe_ctrl.flexsurvreg <- function(x, ...) {
+  # Details around initial distribution
+  x$dlist$inits <- NULL
+  x$mx <- NULL
+  x$npars <- NULL
+  x
+}
+
+#' @export
+axe_ctrl.survreg <- function(x, ...) {
+  # TODO: dig
+  axe_ctrl.default(x, ...)
+}
+
+#' @export
 axe_ctrl.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_ctrl(x$fit, ...)

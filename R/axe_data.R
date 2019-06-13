@@ -86,6 +86,21 @@ axe_data.randomForest <- function(x, ...) {
 }
 
 #' @export
+axe_data.ranger <- function(x, ...) {
+  axe_data.default(x, ...)
+}
+
+#' @export
+axe_data.flexsurvreg <- function(x, ...) {
+  x$data$Y <- NULL
+  x
+}
+
+#' @export
+axe_data.survreg <- function(x, ...) {
+  axe_data.default(x, ...)
+}
+#' @export
 axe_data.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_data(x$fit, ...)

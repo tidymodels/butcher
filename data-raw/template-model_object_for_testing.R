@@ -11,12 +11,13 @@
 # Load --------------------------------------------------------------------
 # The models we currently consider are generated from the `parsnip` package.
 # However, we would love to add more models objects.
-library(parsnip)
-library(tidymodels)
+suppressMessages(library(parsnip))
+suppressMessages(library(tidymodels))
 library(lobstr)
-library(glmnet)
-library(keras)
-library(rpart)
+suppressMessages(library(glmnet))
+suppressMessages(library(keras))
+suppressMessages(library(rpart))
+suppressMessages(library(flexsurv))
 
 # Data --------------------------------------------------------------------
 # For classification
@@ -30,8 +31,10 @@ split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
 car_test  <- testing(split)
 # For multinomial regression
-predictrs <- matrix
+predictrs <- matrix(rnorm(100*20), ncol = 20)
 response <- as.factor(sample(1:4, 100, replace = TRUE))
+# For survival
+data(ovarian)
 
 # Linear Regression -------------------------------------------------------
 car_model <- linear_reg()
@@ -60,12 +63,10 @@ keras_fit <- car_model_penalized %>%
 # spark_fit <- car_model_penalized %>%
 #   set_engine("spark")
 
+
 # Logistic regression -----------------------------------------------------
-
 # GLM ---------------------------------------------------------------------
-
 # GLMNET ------------------------------------------------------------------
-
 # STAN --------------------------------------------------------------------
 
 
@@ -102,15 +103,15 @@ ranger_fit <- rf_model %>%
   fit(Kyphosis ~ ., data = spine_train)
 
 # Survival regression -----------------------------------------------------
-
-
+surv_model <- surv_reg(mode = "regression", dist = "weibull")
 # FLEXSURV ----------------------------------------------------------------
-
-
+flex_fit <- surv_model %>%
+  set_engine("flexsurv") %>%
+  fit(Surv(futime, fustat) ~ 1, data = ovarian)
 # SURVREG -----------------------------------------------------------------
-
-
-
+surv_fit <- surv_model %>%
+  set_engine("survreg") %>%
+  fit(Surv(futime, fustat) ~ 1, data = ovarian)
 
 # Decision tree -----------------------------------------------------------
 # RPART -------------------------------------------------------------------
@@ -132,6 +133,7 @@ treeclass_fit <- decision_tree(mode = "classification",
 treeC5_fit <- decision_tree(mode = "classification") %>%
   set_engine("C5.0") %>%
   fit(Kyphosis ~ ., data = spine_train)
+
 # Save results ------------------------------------------------------------
 usethis::use_data(# LINEAR REGRESSION
                   lm_fit,
@@ -146,12 +148,24 @@ usethis::use_data(# LINEAR REGRESSION
                   # RANDOM FOREST
                   rf_fit,
                   ranger_fit,
+                  # SURVIVAL
+                  flex_fit,
+                  surv_fit,
                   # DECISION TREES
                   treereg_fit,
                   treeclass_fit,
                   treeC5_fit,
                   internal = TRUE,
                   overwrite = TRUE)
+
+# Notes to self -----------------------------------------------------------
+# FLEXSURVREG TESTING
+# x <- flexsurvreg(Surv(Tstart, Tstop, status) ~ trans,
+#                     data=bosms3, dist="exp")
+# tmat <- rbind(c(NA,1,2),c(NA,NA,3),c(NA,NA,NA))
+# pmatrix.fs(x, t=c(5,10), trans=tmat)
+# totlos.fs(x, t=10, trans=tmat)
+# should also work with `bootci.fmsm`
 
 # Compare -----------------------------------------------------------------
 # load("./R/sysdata.rda")

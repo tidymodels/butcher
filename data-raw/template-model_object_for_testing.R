@@ -9,15 +9,18 @@
 # to retrain everytime we want to test a new model object.
 
 # Load --------------------------------------------------------------------
-# The models we currently consider are generated from the `parsnip` package.
-# However, we would love to add more models objects.
-suppressMessages(library(parsnip))
-suppressMessages(library(tidymodels))
+# The majority of  models we currently consider are generated from the
+# `parsnip` and `caret` package. We would love to add more models objects,
+# as we have not covered cleaning all the model objects possible! Please
+# reference [XXX] to add an extension for any new model object to this
+# package.
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
 library(lobstr)
-suppressMessages(library(glmnet))
-suppressMessages(library(keras))
-suppressMessages(library(rpart))
-suppressMessages(library(flexsurv))
+suppressWarnings(suppressMessages(library(glmnet)))
+suppressWarnings(suppressMessages(library(keras)))
+suppressWarnings(suppressMessages(library(rpart)))
+suppressWarnings(suppressMessages(library(flexsurv)))
 
 # Data --------------------------------------------------------------------
 # For classification
@@ -32,8 +35,6 @@ car_test  <- testing(split)
 # For multinomial regression
 predictrs <- matrix(rnorm(100*20), ncol = 20)
 response <- as.factor(sample(1:4, 100, replace = TRUE))
-# For survival
-data(ovarian)
 
 # Linear Regression -------------------------------------------------------
 car_model <- linear_reg()

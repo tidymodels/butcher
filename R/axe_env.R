@@ -3,7 +3,7 @@
 #' Remove the environment(s) attached to modeling objects as they are often
 #' not required in the downstream analysis pipeline. Currently, if found,
 #' the environment is completely removed. In future iterations, we might
-#' want to consider replacing the environment object with a NULL.
+#' want to consider replacing the environment object with a rlang::empty_env().
 #'
 #' @param x model object
 #'
@@ -17,19 +17,19 @@ axe_env <- function(x, ...) {
 
 #' @export
 axe_env.default <- function(x, ...) {
-  # No environment to remove
+  # No environment to replace
   x
 }
 
 #' @export
 axe_env.terms <- function(x, ...) {
-  attr(x, ".Environment") <- NULL
+  attr(x, ".Environment") <- rlang::empty_env()
   x
 }
 
 #' @export
 axe_env.data.frame <- function(x, ...) {
-  attr(x, ".Environment") <- NULL
+  attr(x, ".Environment") <- rlang::empty_env()
   x
 }
 
@@ -120,8 +120,8 @@ axe_env.ranger <- function(x, ...) {
 #' @export
 axe_env.flexsurvreg <- function(x, ...) {
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
-  attributes(x$concat.formula)$`.Environment` <- NULL
-  attributes(x$all.formulae$rate)$`.Environment` <- NULL
+  attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()
+  attributes(x$all.formulae$rate)$`.Environment` <- rlang::empty_env()
   x
 }
 

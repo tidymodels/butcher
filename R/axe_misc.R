@@ -41,7 +41,7 @@ axe_misc.elnet <- function(x, ...) {
 
 #' @export
 axe_misc.stanreg <- function(x, ...) {
-  axe_misc.default(x, ...)
+
 }
 
 #' @export

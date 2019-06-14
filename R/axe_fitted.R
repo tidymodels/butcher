@@ -18,7 +18,6 @@ axe_fitted.default <- function(x, ...) {
   x
 }
 
-
 #' @export
 axe_fitted.lm <- function(x, ...) {
   axe_fitted.default(x, ...)
@@ -41,7 +40,10 @@ axe_fitted.elnet <- function(x, ...) {
 
 #' @export
 axe_fitted.stanreg <- function(x, ...) {
-  axe_fitted.default(x, ...)
+  # Cannot eliminate x$fitted.values since required when `type = "response"`
+  # and no new data is provided
+  x$fitted.values <- numeric(0)
+  x
 }
 
 #' @export

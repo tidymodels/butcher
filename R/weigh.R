@@ -16,9 +16,12 @@
 #' simulate_y <- runif(dim(simulate_x)[1])
 #' lm_out <- lm(simulate_y ~ simulate_x)
 #' weigh(lm_out)
-weigh <- function(x, threshold = 2, units = "MB") {
-  # TODO: examine str to replace use of rapply
-  # TODO: edit this to weigh for s4 objects too
+weigh <- function(x, ...) {
+  UseMethod("weigh")
+}
+
+#' @export
+weigh.default <- function(x, threshold = 2, units = "MB") {
   # TODO: weigh for keras object
   # TODO: recursive function to check for an object location..
   stopifnot(is.list(x))
@@ -42,4 +45,29 @@ weigh <- function(x, threshold = 2, units = "MB") {
   ) %>%
     dplyr::arrange(dplyr::desc(.data$size)) %>%
     dplyr::filter(.data$size > threshold)
+}
+
+#' @export
+weigh.stanreg <- function(x, ...) {
+  # Stanreg objects require a separate weigh function to handle S4
+  stopifnot(class(x$stanfit) == "stanfit")
+  # Get the object sizes associated with first hierarchy
+  toplevel_weights <- weigh.default(x, ...)
+  # Now get the object sizes associated with S4 object
+  coerce_to_list <- function(z) {
+    out <- list()
+    for(i in slotNames(z)) out[[i]] <- slot(z, i)
+    return(out)
+  }
+  stanfit_x <- coerce_to_list(x$stanfit)
+  sublevel_weights <- weigh.default(stanfit_x, ...)
+  # Combine these results for one tibble
+  sublevel_weights %>%
+    dplyr::mutate(object = paste0("stanfit.", object)) %>%
+    dplyr::bind_rows(toplevel_weights)
+}
+
+#' @export
+weigh.model_fit <- function(x, ...) {
+  weigh(x$fit, ...)
 }

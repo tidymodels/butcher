@@ -21,7 +21,6 @@ suppressMessages(library(flexsurv))
 
 # Data --------------------------------------------------------------------
 # For classification
-data(kyphosis)
 set.seed(1234)
 split <- initial_split(kyphosis, props = 9/10)
 spine_train <- training(split)

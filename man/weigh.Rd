@@ -4,7 +4,7 @@
 \alias{weigh}
 \title{Weigh the object.}
 \usage{
-weigh(x, threshold = 2, units = "MB")
+weigh(x, ...)
 }
 \arguments{
 \item{x}{model object}

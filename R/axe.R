@@ -1,77 +1,129 @@
-#' #' Axe an object.
-#' #'
-#' #' Reduce the size of a model object so that it takes up less memory on disk.
-#' #' Currently the model object is stripped down to the point that only the
-#' #' minimal components necessary for the `predict` function to work remain.
-#' #' Future adjustments to this function will be needed to avoid removal of
-#' #' model fit components to ensure it works with other downstream functions.
-#' #'
-#' #' @param x model object
-#' #'
-#' #' @return axed model object
-#' #' @export
-#' #' @examples
-#' #'
-#' #' axe(lm_fit)
-#' axe <- function(x, ...) {
-#'   UseMethod("axe")
-#' }
+#' Axe an object.
 #'
-#' # axe.default <- function(x, ...) {
-#' #
-#' # }
+#' Reduce the size of a model object so that it takes up less memory on disk.
+#' Currently the model object is stripped down to the point that only the
+#' minimal components necessary for the `predict` function to work remain.
+#' Future adjustments to this function will be needed to avoid removal of
+#' model fit components to ensure it works with other downstream functions.
 #'
-#' #' @export
-#' axe.lm <- function(x, ...) {
-#'   stopifnot(inherits(x, "lm"))
-#'   keep_parts <- c("xlevels",
-#'                   "weights",
-#'                   "na.action",
-#'                   "offset",
-#'                   "residuals",
-#'                   "df.residual",
-#'                   "contrasts",
-#'                   "coefficients",
-#'                   "rank",
-#'                   "qr",
-#'                   "terms",
-#'                   "model")
-#'   # Check these parts exist
-#'   inventory <- take_inventory(x)
-#'   # Remove undesired inventory
-#'   undesired_inventory <- inventory$overall[!inventory$overall %in% keep_parts]
-#'   x[undesired_inventory] <- NULL
-#'   # Remove undesired environment
-#'   x_axed <- remove_env(x, inventory$all_attributes)
-#'   # Remove response, not compatible is user provides no new data in `predict`
-#'   # x_axed <- remove_response(x_axed)
-#'   return(x_axed)
-#' }
+#' @param x model object
 #'
-#' axe.elnet <- function(x, ...) {
-#'   stopifnot(inherits(x, "elnet"))
-#'   keep_parts <- c("a0",
-#'                   "beta",
-#'                   "lambda",
-#'                   "offset",
-#'                   "df",
-#'                   "dev.ratio",
-#'                   "call") # may want to include df, dev for display?
-#'   # Check these parts exist
-#'   inventory <- take_inventory(x)
-#'   # Remove undesired inventory
-#'   undesired_inventory <- inventory$overall[!inventory$overall %in% keep_parts]
-#'   x[undesired_inventory] <- NULL
-#'   return(x)
-#' }
+#' @return axed model object with new butcher subclass assignment
+#' @export
+#' @examples
 #'
-#' #' @export
-#' axe.model_fit <- function(x, ...) {
-#'   if(!inherits(x, "model_fit")){
-#'     stop("Not a parsnip model object.")
-#'   }
-#'   axe(x$fit, ...)
-#' }
-#'
-#'
-#'
+#' axe(lm_fit)
+axe <- function(x, ...) {
+  UseMethod("axe")
+}
+
+#' @export
+axe.default <- function(x, ...) {
+  class(x) <- "butcher" # TODO: fix this?
+  x
+}
+
+#' @export
+axe.lm <- function(x, ...) {
+
+}
+
+
+#' @export
+axe.glm <- function(x, ...) {
+  class(x) <- "butcher_glm"
+  x
+}
+
+#' @export
+axe.glmnet <- function(x, ...) {
+  class(x) <- "butcher_glmnet"
+  x
+}
+
+#' @export
+axe.elnet <- function(x, ...) {
+  class(x) <- "butcher_elnet"
+  x
+}
+
+#' @export
+axe.stanreg <- function(x, ...) {
+  class(x) <- "butcher_stanreg"
+  x
+}
+
+#' @export
+axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
+  class(x) <- "butcher_keras"
+  x
+}
+
+#' @export
+axe_env.keras.engine.training.Model <- function(x, ...) {
+  class(x) <- "butcher_keras"
+  x
+}
+
+
+#' @export
+axe.rpart <- function(x, ...) {
+  class(x) <- "butcher_rpart"
+  x
+}
+
+#' @export
+axe.C5.0 <- function(x, ...) {
+  class(x) <- "butcher_c5"
+  x
+}
+
+#' @export
+axe.multnet <- function(x, ...) {
+  class(x) <- "butcher_multnet"
+  x
+}
+
+#' @export
+axe.train.kknn <- function(x, ...) {
+  class(x) <- "butcher_knn"
+  x
+}
+
+#' @export
+axe.kknn <- function(x, ...) {
+  class(x) <- "butcher_knn"
+  x
+}
+
+#' @export
+axe.randomForest <- function(x, ...) {
+  class(x) <- "butcher_rf"
+  x
+}
+
+#' @export
+axe.ranger <- function(x, ...) {
+  class(x) <- "butcher_ranger"
+  x
+}
+
+#' @export
+axe.flexsurvreg <- function(x, ...) {
+  class(x) <- "butcher_flexsurvreg"
+  x
+}
+
+#' @export
+axe.survreg <- function(x, ...) {
+  class(x) <- "butcher_survreg"
+  x
+}
+
+#' @export
+axe.model_fit <- function(x, ...) {
+  if(!inherits(x, "model_fit")){
+    stop("Not a parsnip model object.")
+  }
+  axe(x$fit, ...)
+}

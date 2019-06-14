@@ -16,7 +16,7 @@ model object without environment attribute
 Remove the environment(s) attached to modeling objects as they are often
 not required in the downstream analysis pipeline. Currently, if found,
 the environment is completely removed. In future iterations, we might
-want to consider replacing the environment object with a NULL.
+want to consider replacing the environment object with a rlang::empty_env().
 }
 \examples{
 axe_env(lm_fit)

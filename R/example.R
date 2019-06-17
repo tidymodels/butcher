@@ -10,8 +10,10 @@
 #' butcher_example("lm.rda")
 butcher_example <- function(path = NULL) {
   if (is.null(path)) {
-    dir(system.file("extdata", package = "butcher"))
+    output_path <- dir(system.file("extdata", package = "butcher"))
   } else {
-    system.file("extdata", path, package = "butcher", mustWork = TRUE)
+    output_path <- system.file("extdata", path, package = "butcher", mustWork = TRUE)
+    r_path <- paste0(unlist(strsplit(path, ".rda")), ".R")
+    cat(readChar(system.file("inst/extdata-scripts", r_path, package = "butcher", mustWork = TRUE), 1e5))
   }
 }

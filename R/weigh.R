@@ -6,8 +6,6 @@
 #' @param threshold cutoff memory level
 #' @param units defaults to MB
 #'
-#' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @return tibble
 #' @export
@@ -25,7 +23,6 @@ weigh.default <- function(x, threshold = 2, units = "MB") {
   # TODO: weigh for keras object
   # TODO: recursive function to check for an object location..
   stopifnot(is.list(x))
-
   units <- rlang::arg_match(units, c("KB", "MB", "GB"))
   if(units == "MB") {
     denom <- 1e+6
@@ -34,17 +31,17 @@ weigh.default <- function(x, threshold = 2, units = "MB") {
   } else {
     denom <- 1e+9
   }
-
   object_weights <- unlist(rapply(x, lobstr::obj_size))
   object_weights <- purrr::map(object_weights, as.numeric)
-  # OR use rlang::squash here?
-
-  dplyr::tibble(
+  output_table <- tibble::tibble(
     object = names(object_weights),
     size = unname(as.numeric(object_weights))/denom
-  ) %>%
-    dplyr::arrange(dplyr::desc(.data$size)) %>%
-    dplyr::filter(.data$size > threshold)
+  )
+  # Sort
+  output_table <- output_table[order(output_table$size, decreasing = TRUE), ]
+  # Filter
+  output_table <- output_table[output_table$size >= threshold, ]
+  return(output_table)
 }
 
 #' @export
@@ -62,9 +59,12 @@ weigh.stanreg <- function(x, ...) {
   stanfit_x <- coerce_to_list(x$stanfit)
   sublevel_weights <- weigh.default(stanfit_x, ...)
   # Combine these results for one tibble
-  sublevel_weights %>%
-    dplyr::mutate(object = paste0("stanfit.", object)) %>%
-    dplyr::bind_rows(toplevel_weights)
+  sublevel_weights$object <- paste0("stanfit.", sublevel_weights$object)
+  # Bind together
+  output_table <- rbind(toplevel_weights, sublevel_weights)
+  # Sort
+  output_table <- output_table[order(output_table$size, decreasing = TRUE), ]
+  return(output_table)
 }
 
 #' @export

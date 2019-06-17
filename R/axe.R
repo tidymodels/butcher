@@ -49,12 +49,6 @@ axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
 }
 
 #' @export
-axe.rpart <- function(x, ...) {
-  class(x) <- "butcher_rpart"
-  x
-}
-
-#' @export
 axe.C5.0 <- function(x, ...) {
   class(x) <- "butcher_c5"
   x

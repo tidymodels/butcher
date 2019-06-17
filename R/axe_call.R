@@ -36,14 +36,6 @@ axe_call.elnet <- function(x, ...) {
 }
 
 #' @export
-axe_call.rpart <- function(x, ...) {
-  x$call <- call("dummy_call")
-  # Calls also located in `function`
-  x$functions <- call("dummy_call")
-  x
-}
-
-#' @export
 axe_call.C5.0 <- function(x, ...) {
   x$call <- call("dummy_call")
   x

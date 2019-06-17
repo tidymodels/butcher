@@ -34,13 +34,6 @@ axe_env.data.frame <- function(x, ...) {
 }
 
 #' @export
-axe_env.rpart <- function(x, ...) {
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  x
-}
-
-#' @export
 axe_env.kknn <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   x

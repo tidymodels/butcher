@@ -18,11 +18,6 @@ axe_ctrl.default <- function(x, ...) {
   x
 }
 
-#' @export
-axe_ctrl.rpart <- function(x, ...) {
-  x$control <- NULL
-  x
-}
 
 #' @export
 axe_ctrl.C5.0 <- function(x, ...) {

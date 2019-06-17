@@ -13,5 +13,5 @@ test_that("checking internal data", {
   expect_equal(dim(butcher::weigh(lm_fit, 0))[1], 25)
   # For stan object
   stan_weights <- weigh(stan_fit, 0)
-  expect_equal(stan_weights$object[1], "stanfit..MISC")
+  expect_equal(stan_weights$object[1], "stanfit")
 })

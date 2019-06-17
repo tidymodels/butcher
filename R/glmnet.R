@@ -34,7 +34,7 @@ axe_env.lm <- function(x, ...) {
 
 #' @rdname axe-lm
 #' @export
-axe_fitted.lm <- function(x, ...) {
+axe_env.fitted <- function(x, ...) {
   x$fitted.values <- numeric(0)
   x
 }

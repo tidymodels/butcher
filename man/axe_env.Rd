@@ -8,16 +8,16 @@ axe_env(x, ...)
 }
 \arguments{
 \item{x}{model object}
-}
-\value{
-model object without environment attribute
+
+\item{...}{other arguments passed to axe methods}
 }
 \description{
 Remove the environment(s) attached to modeling objects as they are often
 not required in the downstream analysis pipeline. Currently, if found,
-the environment is completely removed. In future iterations, we might
-want to consider replacing the environment object with a rlang::empty_env().
+the environment is replaced with rlang::empty_env.
 }
-\examples{
-axe_env(lm_fit)
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{generics:::methods_rd("axe_env")}
 }
+

@@ -2,15 +2,15 @@
 #'
 #' Remove the environment(s) attached to modeling objects as they are often
 #' not required in the downstream analysis pipeline. Currently, if found,
-#' the environment is completely removed. In future iterations, we might
-#' want to consider replacing the environment object with a rlang::empty_env().
+#' the environment is replaced with rlang::empty_env.
 #'
 #' @param x model object
+#' @param ... other arguments passed to axe methods
 #'
-#' @return model object without environment attribute
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{generics:::methods_rd("axe_env")}
+#'
 #' @export
-#' @examples
-#' axe_env(lm_fit)
 axe_env <- function(x, ...) {
   UseMethod("axe_env")
 }
@@ -30,15 +30,6 @@ axe_env.terms <- function(x, ...) {
 #' @export
 axe_env.data.frame <- function(x, ...) {
   attr(x, ".Environment") <- rlang::empty_env()
-  x
-}
-
-#' @export
-axe_env.lm <- function(x, ...) {
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  # Environment in model
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
   x
 }
 

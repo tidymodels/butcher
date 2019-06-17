@@ -10,7 +10,7 @@ axe(x, ...)
 \item{x}{model object}
 }
 \value{
-axed model object
+axed model object with new butcher subclass assignment
 }
 \description{
 Reduce the size of a model object so that it takes up less memory on disk.

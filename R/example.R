@@ -16,4 +16,5 @@ butcher_example <- function(path = NULL) {
     r_path <- paste0(unlist(strsplit(path, ".rda")), ".R")
     cat(readChar(system.file("inst/extdata-scripts", r_path, package = "butcher", mustWork = TRUE), 1e5))
   }
+  return(output_path)
 }

@@ -33,5 +33,5 @@ test_that("lm + axe() works", {
 
 test_that("lm + predict() works", {
   x <- axe(lm_fit)
-  expect_gr(predict(x)[1], 20)
+  expect_gt(predict(x)[1], 20)
 })

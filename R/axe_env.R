@@ -34,19 +34,6 @@ axe_env.data.frame <- function(x, ...) {
 }
 
 #' @export
-axe_env.stanreg <- function(x, ...) {
-  # TODO: check differences between glm and stanreg objects
-  # Replace the `.MISC` slot with an empty env
-  x$stanfit@.MISC <- rlang::empty_env()
-  x$stanfit@stanmodel@dso@.CXXDSOMISC <- rlang::empty_env()
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  # Environment in model
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
-}
-
-#' @export
 axe_env.rpart <- function(x, ...) {
   # Environment in terms
   x$terms <- axe_env(x$terms, ...)

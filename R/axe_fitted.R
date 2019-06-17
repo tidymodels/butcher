@@ -18,15 +18,6 @@ axe_fitted.default <- function(x, ...) {
   x
 }
 
-
-#' @export
-axe_fitted.stanreg <- function(x, ...) {
-  # Cannot eliminate x$fitted.values since required when `type = "response"`
-  # and no new data is provided
-  x$fitted.values <- numeric(0)
-  x
-}
-
 #' @export
 axe_fitted.kknn <- function(x, ...) {
   x$fitted.values <- NULL

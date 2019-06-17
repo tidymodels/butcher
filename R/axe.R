@@ -43,23 +43,10 @@ axe.elnet <- function(x, ...) {
 }
 
 #' @export
-axe.stanreg <- function(x, ...) {
-  class(x) <- "butcher_stanreg"
-  x
-}
-
-#' @export
 axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
   class(x) <- "butcher_keras"
   x
 }
-
-#' @export
-axe_env.keras.engine.training.Model <- function(x, ...) {
-  class(x) <- "butcher_keras"
-  x
-}
-
 
 #' @export
 axe.rpart <- function(x, ...) {

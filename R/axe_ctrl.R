@@ -18,42 +18,6 @@ axe_ctrl.default <- function(x, ...) {
   x
 }
 
-
-#' @export
-axe_ctrl.lm <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.glm <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.glmnet <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.elnet <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.stanreg <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.keras.engine.sequential.Sequential <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.keras.engine.training.Model <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
 #' @export
 axe_ctrl.rpart <- function(x, ...) {
   x$control <- NULL
@@ -64,21 +28,6 @@ axe_ctrl.rpart <- function(x, ...) {
 axe_ctrl.C5.0 <- function(x, ...) {
   x$control <- NULL
   x
-}
-
-#' @export
-axe_ctrl.multnet <- function(x, ...) {
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
-axe_ctrl.train.kknn <- function(x, ...) {
-  NextMethod("axe_ctrl")
-}
-
-#' @export
-axe_ctrl.kknn <- function(x, ...) {
-  axe_ctrl.default(x, ...)
 }
 
 #' @export

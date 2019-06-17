@@ -2,10 +2,22 @@
 % Please edit documentation in R/lm.R
 \name{axe-lm}
 \alias{axe-lm}
+\alias{axe.lm}
 \alias{axe_call.lm}
+\alias{axe_env.lm}
+\alias{axe_env.fitted}
+\alias{predict.butcher_lm}
 \title{Axing an lm.}
 \usage{
+\method{axe}{lm}(x, ...)
+
 \method{axe_call}{lm}(x, ...)
+
+\method{axe_env}{lm}(x, ...)
+
+\method{axe_env}{fitted}(x, ...)
+
+\method{predict}{butcher_lm}(x, ...)
 }
 \description{
 This is where all the lm specific documentation lies.

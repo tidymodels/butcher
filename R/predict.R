@@ -12,10 +12,4 @@ predict <- function(x, ...) {
   UseMethod("predict")
 }
 
-#' @export
-predict.butcher_lm <- function(x, ...) {
-  class(x) <- "lm"
-  predict(x, ...)
-}
-
 

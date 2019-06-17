@@ -19,13 +19,8 @@ axe <- function(x, ...) {
 
 #' @export
 axe.default <- function(x, ...) {
-  class(x) <- "butcher" # TODO: fix this?
+  class(x) <- "butcher"
   x
-}
-
-#' @export
-axe.lm <- function(x, ...) {
-
 }
 
 

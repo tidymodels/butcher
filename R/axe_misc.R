@@ -14,54 +14,8 @@ axe_misc <- function(x, ...) {
 
 #' @export
 axe_misc.default <- function(x, ...) {
-  # Assuming no controls
+  # Assuming no misc
   x
-}
-
-
-#' @export
-axe_misc.lm <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.glm <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.glmnet <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.elnet <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.stanreg <- function(x, ...) {
-
-}
-
-#' @export
-axe_misc.keras.engine.sequential.Sequential <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.keras.engine.training.Model <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.rpart <- function(x, ...) {
-  axe_misc.default(x, ...)
-}
-
-#' @export
-axe_misc.C5.0 <- function(x, ...) {
-  axe_misc.default(x, ...)
 }
 
 #' @export
@@ -71,10 +25,6 @@ axe_misc.multnet <- function(x, ...) {
   x
 }
 
-#' @export
-axe_misc.train.kknn <- function(x, ...) {
-  NextMethod("axe_misc")
-}
 
 #' @export
 axe_misc.kknn <- function(x, ...) {

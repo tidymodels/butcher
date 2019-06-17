@@ -18,13 +18,6 @@ axe_call.default <- function(x, ...) {
 }
 
 #' @export
-axe_call.lm <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-
-#' @export
 axe_call.glm <- function(x, ...) {
   x$call <- call("dummy_call")
   x
@@ -41,22 +34,6 @@ axe_call.elnet <- function(x, ...) {
   x$call <- call("dummy_call")
   x
 }
-
-#' @export
-axe_call.stanreg <- function(x, ...) {
-  axe_call.default(x, ...)
-}
-
-#' @export
-axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
-  axe_call.default(x, ...)
-}
-
-#' @export
-axe_env.keras.engine.training.Model <- function(x, ...) {
-  axe_call.default(x, ...)
-}
-
 
 #' @export
 axe_call.rpart <- function(x, ...) {
@@ -76,11 +53,6 @@ axe_call.C5.0 <- function(x, ...) {
 axe_call.multnet <- function(x, ...) {
   x$call <- call("dummy_call")
   x
-}
-
-#' @export
-axe_call.train.kknn <- function(x, ...) {
-  NextMethod("axe_env")
 }
 
 #' @export

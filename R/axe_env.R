@@ -34,21 +34,6 @@ axe_env.data.frame <- function(x, ...) {
 }
 
 #' @export
-axe_env.glm <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.glmnet <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.elnet <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
 axe_env.stanreg <- function(x, ...) {
   # TODO: check differences between glm and stanreg objects
   # Replace the `.MISC` slot with an empty env
@@ -62,16 +47,6 @@ axe_env.stanreg <- function(x, ...) {
 }
 
 #' @export
-axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.keras.engine.training.Model <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
 axe_env.rpart <- function(x, ...) {
   # Environment in terms
   x$terms <- axe_env(x$terms, ...)
@@ -79,34 +54,9 @@ axe_env.rpart <- function(x, ...) {
 }
 
 #' @export
-axe_env.C5.0 <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.multnet <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.train.kknn <- function(x, ...) {
-  NextMethod("axe_env")
-}
-
-#' @export
 axe_env.kknn <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   x
-}
-
-#' @export
-axe_env.randomForest <- function(x, ...) {
-  axe_env.default(x, ...)
-}
-
-#' @export
-axe_env.ranger <- function(x, ...) {
-  axe_env.default(x, ...)
 }
 
 #' @export

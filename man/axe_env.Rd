@@ -18,6 +18,6 @@ the environment is replaced with rlang::empty_env.
 }
 \section{Methods}{
 
-\Sexpr[stage=render,results=rd]{generics:::methods_rd("axe_env")}
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_env")}
 }
 

@@ -8,7 +8,7 @@
 #' @param ... other arguments passed to axe methods
 #'
 #' @section Methods:
-#' \Sexpr[stage=render,results=rd]{generics:::methods_rd("axe_env")}
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_env")}
 #'
 #' @export
 axe_env <- function(x, ...) {

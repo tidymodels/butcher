@@ -17,9 +17,4 @@ axe <- function(x, ...) {
   UseMethod("axe")
 }
 
-#' @export
-axe.default <- function(x, ...) {
-  class(x) <- "butcher"
-  x
-}
 

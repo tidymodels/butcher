@@ -12,7 +12,3 @@ axe_call <- function(x, ...) {
   UseMethod("axe_call")
 }
 
-#' @export
-axe_call.default <- function(x, ...) {
-  x
-}

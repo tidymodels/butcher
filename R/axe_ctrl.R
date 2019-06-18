@@ -12,9 +12,4 @@ axe_ctrl <- function(x, ...) {
   UseMethod("axe_ctrl")
 }
 
-#' @export
-axe_ctrl.default <- function(x, ...) {
-  # Assuming no controls
-  x
-}
 

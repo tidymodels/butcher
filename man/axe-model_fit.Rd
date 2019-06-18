@@ -5,6 +5,7 @@
 \alias{axe.model_fit}
 \alias{axe_call.model_fit}
 \alias{axe_ctrl.model_fit}
+\alias{axe_data.model_fit}
 \alias{axe_env.model_fit}
 \alias{axe_fitted.model_fit}
 \alias{axe_misc.model_fit}
@@ -16,6 +17,8 @@
 \method{axe_call}{model_fit}(x, ...)
 
 \method{axe_ctrl}{model_fit}(x, ...)
+
+\method{axe_data}{model_fit}(x, ...)
 
 \method{axe_env}{model_fit}(x, ...)
 

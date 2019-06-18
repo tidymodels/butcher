@@ -12,8 +12,3 @@ axe_misc <- function(x, ...) {
   UseMethod("axe_misc")
 }
 
-#' @export
-axe_misc.default <- function(x, ...) {
-  # Assuming no misc
-  x
-}

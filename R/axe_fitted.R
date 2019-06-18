@@ -12,8 +12,3 @@ axe_fitted <- function(x, ...) {
   UseMethod("axe_fitted")
 }
 
-#' @export
-axe_fitted.default <- function(x, ...) {
-  # Assuming no fitted values
-  x
-}

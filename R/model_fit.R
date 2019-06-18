@@ -28,6 +28,12 @@ axe_ctrl.model_fit <- function(x, ...) {
 
 #' @rdname axe-model_fit
 #' @export
+axe_data.model_fit <- function(x, ...) {
+  axe_data(x$fit, ...)
+}
+
+#' @rdname axe-model_fit
+#' @export
 axe_env.model_fit <- function(x, ...) {
   axe_env(x$fit, ...)
 }

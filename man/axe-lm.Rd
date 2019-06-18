@@ -20,8 +20,6 @@ axe.lm(x, ...)
 
 \method{predict}{butcher_lm}(x, ...)
 
-axe.lm(x, ...)
-
 \method{axe_call}{lm}(x, ...)
 
 \method{axe_env}{lm}(x, ...)
@@ -34,4 +32,13 @@ axe.lm(x, ...)
 This is where all the lm specific documentation lies.
 
 This is where all the lm specific documentation lies.
+}
+\examples{
+# Make a lm that has a lot of extra stuff in its environment
+make_an_lm <- function() {
+  x <- rep(1L, times = 10e6)
+  lm(1 ~ 1)
+}
+lm_object <- make_an_lm()
+lm_axed <- axe(lm)
 }

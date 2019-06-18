@@ -2,19 +2,22 @@
 #'
 #' This is where all the lm specific documentation lies.
 #'
+#'
+#' @examples
+#' # Make a lm that has a lot of extra stuff in its environment
+#' make_an_lm <- function() {
+#'   x <- rep(1L, times = 10e6)
+#'   lm(1 ~ 1)
+#' }
+#' lm_object <- make_an_lm()
+#' lm_axed <- axe(lm)
 #' @name axe-lm
 NULL
 
-#' @rdname axe-lm
-#' @export
-axe.lm <- function(x, ...) {
-  x <- axe_call(x)
-  x <- axe_env(x)
-  x <- axe_fitted(x)
-  class(x) <- "butcher_lm"
-  x
-}
-
+#' Call can be removed without breaking \code{predict}. Currently, the
+#' \code{predict} only relies on the \code{offset} feature stored in the
+#' call which is rarely used.
+#'
 #' @rdname axe-lm
 #' @export
 axe_call.lm <- function(x, ...) {
@@ -22,6 +25,10 @@ axe_call.lm <- function(x, ...) {
   x
 }
 
+#' The same environment is referenced in terms as well as model attribute.
+#' Both need to be addressed in order for the environment to be completely
+#' replaced with an empty environment.
+#'
 #' @rdname axe-lm
 #' @export
 axe_env.lm <- function(x, ...) {
@@ -32,6 +39,9 @@ axe_env.lm <- function(x, ...) {
   x
 }
 
+#' Fitted values are removed from lm object since it is not called in
+#' its \code{predict} function at all.
+#'
 #' @rdname axe-lm
 #' @export
 axe_fitted.lm <- function(x, ...) {

@@ -15,3 +15,8 @@ model object without the training data
 \description{
 Remove the training data attached to modeling objects.
 }
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_data")}
+}
+

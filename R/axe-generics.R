@@ -24,6 +24,7 @@ axe <- function(x, ...) {
   x
 }
 
+
 #' Axe a call.
 #'
 #' Replace the call object attached to modeling objects with a placeholder.
@@ -31,6 +32,10 @@ axe <- function(x, ...) {
 #' @param x model object
 #'
 #' @return model object without call attribute
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
+#'
 #' @export
 #' @examples
 #' axe_call(lm_fit)
@@ -50,6 +55,10 @@ axe_call.default <- function(x, ...) {
 #' @param x model object
 #'
 #' @return model object without control tuning parameters from training
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_ctrl")}
+#'
 #' @export
 axe_ctrl <- function(x, ...) {
   UseMethod("axe_ctrl")
@@ -67,6 +76,10 @@ axe_ctrl.default <- function(x, ...) {
 #' @param x model object
 #'
 #' @return model object without the training data
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_data")}
+#'
 #' @export
 axe_data <- function(x, ...) {
   UseMethod("axe_data")

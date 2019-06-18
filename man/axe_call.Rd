@@ -15,6 +15,11 @@ model object without call attribute
 \description{
 Replace the call object attached to modeling objects with a placeholder.
 }
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
+}
+
 \examples{
 axe_call(lm_fit)
 }

@@ -15,3 +15,8 @@ model object without control tuning parameters from training
 \description{
 Remove the controls from training attached to modeling objects.
 }
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_ctrl")}
+}
+

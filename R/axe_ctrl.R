@@ -50,15 +50,6 @@ axe_ctrl.ranger <- function(x, ...) {
 }
 
 #' @export
-axe_ctrl.flexsurvreg <- function(x, ...) {
-  # Details around initial distribution
-  x$dlist$inits <- NULL
-  x$mx <- NULL
-  x$npars <- NULL
-  x
-}
-
-#' @export
 axe_ctrl.survreg <- function(x, ...) {
   # TODO: dig
   axe_ctrl.default(x, ...)

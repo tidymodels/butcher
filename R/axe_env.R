@@ -40,14 +40,6 @@ axe_env.kknn <- function(x, ...) {
 }
 
 #' @export
-axe_env.flexsurvreg <- function(x, ...) {
-  attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
-  attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()
-  attributes(x$all.formulae$rate)$`.Environment` <- rlang::empty_env()
-  x
-}
-
-#' @export
 axe_env.survreg <- function(x, ...) {
   # Environment in terms
   x$terms <- axe_env(x$terms, ...)

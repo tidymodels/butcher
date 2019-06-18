@@ -65,11 +65,6 @@ axe_call.ranger <- function(x, ...) {
   x
 }
 
-#' @export
-axe_call.flexsurvreg <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
 
 #' @export
 axe_call.survreg <- function(x, ...) {

@@ -19,11 +19,6 @@ axe_data.default <- function(x, ...) {
 }
 
 
-#' @export
-axe_data.flexsurvreg <- function(x, ...) {
-  x$data$Y <- NULL
-  x
-}
 
 
 #' @export

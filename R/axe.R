@@ -85,12 +85,6 @@ axe.ranger <- function(x, ...) {
 }
 
 #' @export
-axe.flexsurvreg <- function(x, ...) {
-  class(x) <- "butcher_flexsurvreg"
-  x
-}
-
-#' @export
 axe.survreg <- function(x, ...) {
   class(x) <- "butcher_survreg"
   x

@@ -12,7 +12,7 @@
 \alias{predict.butcher_flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
-\method{axe}{flexsurvreg}(x, ...)
+axe.flexsurvreg(x, ...)
 
 \method{axe_call}{flexsurvreg}(x, ...)
 

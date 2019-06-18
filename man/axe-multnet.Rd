@@ -10,7 +10,7 @@
 \alias{predict.butcher_multnet}
 \title{Axing an multnet.}
 \usage{
-\method{axe}{multnet}(x, ...)
+axe.multnet(x, ...)
 
 \method{axe_call}{multnet}(x, ...)
 

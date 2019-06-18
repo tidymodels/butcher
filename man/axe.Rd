@@ -2,7 +2,7 @@
 % Please edit documentation in R/axe-generics.R
 \name{axe}
 \alias{axe}
-\title{Axe the call.}
+\title{Axe an object.}
 \usage{
 axe(x, ...)
 }
@@ -13,16 +13,9 @@ axe(x, ...)
 axed model object with new butcher subclass assignment
 }
 \description{
-Axe an object.
-}
-\details{
 Reduce the size of a model object so that it takes up less memory on disk.
 Currently the model object is stripped down to the point that only the
 minimal components necessary for the `predict` function to work remain.
 Future adjustments to this function will be needed to avoid removal of
 model fit components to ensure it works with other downstream functions.
-}
-\examples{
-
-axe(lm_fit)
 }

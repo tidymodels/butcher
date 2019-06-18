@@ -12,7 +12,7 @@
 \alias{predict.butcher_model_fit}
 \title{Axing an model_fit.}
 \usage{
-\method{axe}{model_fit}(x, ...)
+axe.model_fit(x, ...)
 
 \method{axe_call}{model_fit}(x, ...)
 

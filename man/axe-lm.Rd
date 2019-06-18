@@ -10,7 +10,7 @@
 \alias{axe_fitted.lm}
 \title{Axing an lm.}
 \usage{
-\method{axe}{lm}(x, ...)
+axe.lm(x, ...)
 
 \method{axe_call}{lm}(x, ...)
 
@@ -20,7 +20,7 @@
 
 \method{predict}{butcher_lm}(x, ...)
 
-\method{axe}{lm}(x, ...)
+axe.lm(x, ...)
 
 \method{axe_call}{lm}(x, ...)
 

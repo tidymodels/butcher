@@ -8,7 +8,7 @@
 \alias{predict.butcher_stanreg}
 \title{Axing a stanreg.}
 \usage{
-\method{axe}{stanreg}(x, ...)
+axe.stanreg(x, ...)
 
 \method{axe_call}{stanreg}(x, ...)
 

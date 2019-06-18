@@ -8,7 +8,7 @@
 \alias{predict.butcher_rpart}
 \title{Axing a rpart.}
 \usage{
-\method{axe}{rpart}(x, ...)
+axe.rpart(x, ...)
 
 \method{axe_call}{rpart}(x, ...)
 

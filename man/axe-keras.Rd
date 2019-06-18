@@ -9,7 +9,7 @@
 \alias{predict.butcher_keras}
 \title{Axing an keras.}
 \usage{
-\method{axe}{keras}(x, ...)
+axe.keras(x, ...)
 
 \method{axe_call}{keras}(x, ...)
 

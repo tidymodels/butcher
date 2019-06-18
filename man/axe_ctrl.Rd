@@ -10,11 +10,8 @@ axe_ctrl(x, ...)
 \item{x}{model object}
 }
 \value{
-model object without control tuning parameters for training.
+model object without control tuning parameters from training
 }
 \description{
-Remove the controls attached to modeling objects.
-}
-\examples{
-axe_ctrl(treereg_fit)
+Remove the controls from training attached to modeling objects.
 }

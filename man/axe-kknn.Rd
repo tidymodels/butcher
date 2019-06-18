@@ -10,7 +10,7 @@
 \alias{predict.butcher_kknn}
 \title{Axing an kknn.}
 \usage{
-\method{axe}{kknn}(x, ...)
+axe.kknn(x, ...)
 
 \method{axe_call}{kknn}(x, ...)
 

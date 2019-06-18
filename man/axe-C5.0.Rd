@@ -10,7 +10,7 @@
 \alias{predict.butcher_C5.0}
 \title{Axing an C5.0.}
 \usage{
-\method{axe}{C5.0}(x, ...)
+axe.C5.0(x, ...)
 
 \method{axe_call}{C5.0}(x, ...)
 

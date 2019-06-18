@@ -9,7 +9,7 @@
 \alias{predict.butcher_elnet}
 \title{Axing an elnet.}
 \usage{
-\method{axe}{elnet}(x, ...)
+axe.elnet(x, ...)
 
 \method{axe_call}{elnet}(x, ...)
 

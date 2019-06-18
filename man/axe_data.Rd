@@ -15,6 +15,3 @@ model object without the training data
 \description{
 Remove the training data attached to modeling objects.
 }
-\examples{
-axe_data(kknn_fit)
-}

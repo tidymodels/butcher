@@ -2,7 +2,7 @@
 % Please edit documentation in R/axe-generics.R
 \name{axe_fitted}
 \alias{axe_fitted}
-\title{Axe fitted.}
+\title{Axe fitted values.}
 \usage{
 axe_fitted(x, ...)
 }
@@ -14,7 +14,4 @@ model object without the fitted values
 }
 \description{
 Remove the fitted values attached to modeling objects.
-}
-\examples{
-axe_fitted(kknn_fit)
 }

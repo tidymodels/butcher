@@ -2,7 +2,7 @@
 % Please edit documentation in R/axe-generics.R
 \name{axe_call}
 \alias{axe_call}
-\title{Replace the call object attached to modeling objects with a placeholder.}
+\title{Axe a call.}
 \usage{
 axe_call(x, ...)
 }

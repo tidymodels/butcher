@@ -13,8 +13,5 @@ axe_misc(x, ...)
 model object without the extra intermediatary units previously stored for training.
 }
 \description{
-Remove the intermediary units attached to modeling objects.
-}
-\examples{
-axe_misc(glmnet_multi)
+Remove the intermediary steps attached from training to modeling objects.
 }

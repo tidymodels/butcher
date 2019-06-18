@@ -13,10 +13,5 @@ rpart_fit <- decision_tree(mode = "regression") %>%
   set_engine("rpart") %>%
   fit(mpg ~ ., data = car_train)
 
-library(rpart)
- predict(rpart_fit, new_data = mtcars)
-predict(rpart_fit$fit)
- sloop::s3_dispatch(predict(rpart_fit$fit))
-
 # Save
 save(rpart_fit, file = "inst/extdata/rpart.rda")

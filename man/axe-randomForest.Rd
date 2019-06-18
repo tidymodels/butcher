@@ -11,7 +11,7 @@
 \alias{predict.butcher_randomForest}
 \title{Axing an randomForest.}
 \usage{
-\method{axe}{randomForest}(x, ...)
+axe.randomForest(x, ...)
 
 \method{axe_call}{randomForest}(x, ...)
 

@@ -11,7 +11,7 @@
 \alias{predict.butcher_ranger}
 \title{Axing an ranger.}
 \usage{
-\method{axe}{ranger}(x, ...)
+axe.ranger(x, ...)
 
 \method{axe_call}{ranger}(x, ...)
 

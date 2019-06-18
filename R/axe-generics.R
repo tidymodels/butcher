@@ -1,5 +1,3 @@
-#' Axe the call.
-#'
 #' Axe an object.
 #'
 #' Reduce the size of a model object so that it takes up less memory on disk.
@@ -12,13 +10,22 @@
 #'
 #' @return axed model object with new butcher subclass assignment
 #' @export
-#' @examples
-#'
-#' axe(lm_fit)
 axe <- function(x, ...) {
-  UseMethod("axe")
+  x <- axe_call(x, ...)
+  x <- axe_ctrl(x, ...)
+  x <- axe_data(x, ...)
+  x <- axe_env(x, ...)
+  x <- axe_fitted(x, ...)
+  x <- axe_misc(x, ...)
+  # Get original class
+  og_class <- class(x)[1]
+  # TODO: insert check here
+  class(x) <- paste0("butcher_", og_class)
+  x
 }
 
+#' Axe a call.
+#'
 #' Replace the call object attached to modeling objects with a placeholder.
 #'
 #' @param x model object
@@ -31,21 +38,27 @@ axe_call <- function(x, ...) {
   UseMethod("axe_call")
 }
 
+#' @export
+axe_call.default <- function(x, ...) {
+  x
+}
+
 #' Axe controls.
 #'
-#' Remove the controls attached to modeling objects.
+#' Remove the controls from training attached to modeling objects.
 #'
 #' @param x model object
 #'
-#' @return model object without control tuning parameters for training.
+#' @return model object without control tuning parameters from training
 #' @export
-#' @examples
-#' axe_ctrl(treereg_fit)
 axe_ctrl <- function(x, ...) {
   UseMethod("axe_ctrl")
 }
 
-
+#' @export
+axe_ctrl.default <- function(x, ...) {
+  x
+}
 
 #' Axe data.
 #'
@@ -55,13 +68,14 @@ axe_ctrl <- function(x, ...) {
 #'
 #' @return model object without the training data
 #' @export
-#' @examples
-#' axe_data(kknn_fit)
 axe_data <- function(x, ...) {
   UseMethod("axe_data")
 }
 
-
+#' @export
+axe_data.default <- function(x, ...) {
+  x
+}
 
 #' Axe an environment.
 #'
@@ -81,12 +95,11 @@ axe_env <- function(x, ...) {
 }
 
 #' @export
-axe_env.terms <- function(x, ...) {
-  attr(x, ".Environment") <- rlang::empty_env()
+axe_env.default <- function(x, ...) {
   x
 }
 
-#' Axe fitted.
+#' Axe fitted values.
 #'
 #' Remove the fitted values attached to modeling objects.
 #'
@@ -94,25 +107,29 @@ axe_env.terms <- function(x, ...) {
 #'
 #' @return model object without the fitted values
 #' @export
-#' @examples
-#' axe_fitted(kknn_fit)
 axe_fitted <- function(x, ...) {
   UseMethod("axe_fitted")
 }
 
-
+#' @export
+axe_fitted.default <- function(x, ...) {
+  x
+}
 
 #' Axe miscellaneous.
 #'
-#' Remove the intermediary units attached to modeling objects.
+#' Remove the intermediary steps attached from training to modeling objects.
 #'
 #' @param x model object
 #'
 #' @return model object without the extra intermediatary units previously stored for training.
 #' @export
-#' @examples
-#' axe_misc(glmnet_multi)
 axe_misc <- function(x, ...) {
   UseMethod("axe_misc")
+}
+
+#' @export
+axe_misc.default <- function(x, ...) {
+  x
 }
 

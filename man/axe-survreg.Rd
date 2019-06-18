@@ -12,7 +12,7 @@
 \alias{predict.butcher_survreg}
 \title{Axing an survreg.}
 \usage{
-\method{axe}{survreg}(x, ...)
+axe.survreg(x, ...)
 
 \method{axe_call}{survreg}(x, ...)
 

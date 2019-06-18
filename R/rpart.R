@@ -42,6 +42,6 @@ axe_env.rpart <- function(x, ...) {
 #' @export
 predict.butcher_rpart <- function(x, ...) {
   class(x) <- c("rpart")
-  predict.rpart(x, ...)
+  predict(x, ...)
 }
 

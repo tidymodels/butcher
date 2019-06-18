@@ -14,7 +14,3 @@ butcher comes bundled with some example files in its `inst/extdata`
 directory. This function was copied from readxl and placed here to
 make the instantiated model objects easy to access.
 }
-\examples{
-butcher_example()
-butcher_example("lm.rda")
-}

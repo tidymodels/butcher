@@ -6,8 +6,6 @@
 #'
 #' @return itemized parts of model object
 #' @export
-#' @examples
-#' take_inventory(lm_fit)
 take_inventory <- function(x, ...) {
   UseMethod("take_inventory")
 }

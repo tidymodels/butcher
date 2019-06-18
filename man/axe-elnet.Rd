@@ -2,23 +2,36 @@
 % Please edit documentation in R/elnet.R
 \name{axe-elnet}
 \alias{axe-elnet}
-\alias{axe.elnet}
 \alias{axe_call.elnet}
-\alias{axe_env.elnet}
-\alias{axe_fitted.elnet}
 \alias{predict.butcher_elnet}
 \title{Axing an elnet.}
 \usage{
-axe.elnet(x, ...)
-
 \method{axe_call}{elnet}(x, ...)
-
-\method{axe_env}{elnet}(x, ...)
-
-\method{axe_fitted}{elnet}(x, ...)
 
 \method{predict}{butcher_elnet}(x, ...)
 }
 \description{
 This is where all the elnet specific documentation lies.
+}
+\details{
+Note: the elnet object is one of the few model objects in which
+there is no environment to axe.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+
+# Load data
+split <- initial_split(mtcars, props = 9/10)
+car_train <- training(split)
+car_test  <- testing(split)
+
+# Create model and fit
+elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
+  set_engine("glmnet") \%>\%
+  fit_xy(x = select(car_train, -mpg), y = select(car_train, mpg))
+
+# Axe
+axe(elnet_fit)
 }

@@ -41,14 +41,7 @@ axe_call.C5.0 <- function(x, ...) {
   x
 }
 
-#' @export
 axe_call.multnet <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-#' @export
-axe_call.kknn <- function(x, ...) {
   x$call <- call("dummy_call")
   x
 }

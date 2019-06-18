@@ -61,18 +61,6 @@ axe.multnet <- function(x, ...) {
 }
 
 #' @export
-axe.train.kknn <- function(x, ...) {
-  class(x) <- "butcher_knn"
-  x
-}
-
-#' @export
-axe.kknn <- function(x, ...) {
-  class(x) <- "butcher_knn"
-  x
-}
-
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")

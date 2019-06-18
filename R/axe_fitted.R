@@ -18,13 +18,6 @@ axe_fitted.default <- function(x, ...) {
   x
 }
 
-#' @export
-axe_fitted.kknn <- function(x, ...) {
-  x$fitted.values <- NULL
-}
-
-
-
 
 #' @export
 axe_fitted.model_fit <- function(x, ...) {

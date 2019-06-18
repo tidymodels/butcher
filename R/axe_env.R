@@ -34,12 +34,6 @@ axe_env.data.frame <- function(x, ...) {
 }
 
 #' @export
-axe_env.kknn <- function(x, ...) {
-  x$terms <- axe_env(x$terms, ...)
-  x
-}
-
-#' @export
 axe_env.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_env(x$fit, ...)

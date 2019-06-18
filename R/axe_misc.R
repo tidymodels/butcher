@@ -26,17 +26,6 @@ axe_misc.multnet <- function(x, ...) {
 }
 
 #' @export
-axe_misc.kknn <- function(x, ...) {
-  # Matrix of misclassification errors
-  x$MISCLASS <- NULL
-  # Matrix of mean absolute errors
-  x$MEAN.ABS <- NULL
-  # Matrix of mean squared errors
-  x$MEAN.SQU <- NULL
-  x
-}
-
-#' @export
 axe_misc.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_misc(x$fit, ...)

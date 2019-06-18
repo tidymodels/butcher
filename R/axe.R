@@ -79,12 +79,6 @@ axe.randomForest <- function(x, ...) {
 }
 
 #' @export
-axe.ranger <- function(x, ...) {
-  class(x) <- "butcher_ranger"
-  x
-}
-
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")

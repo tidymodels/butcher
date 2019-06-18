@@ -59,12 +59,6 @@ axe_call.randomForest <- function(x, ...) {
   x
 }
 
-#' @export
-axe_call.ranger <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
 
 #' @export
 axe_call.model_fit <- function(x, ...) {

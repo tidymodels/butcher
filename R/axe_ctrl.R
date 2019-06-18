@@ -34,20 +34,6 @@ axe_ctrl.randomFoest <- function(x, ...) {
   x
 }
 
-#' @export
-axe_ctrl.ranger <- function(x, ...) {
-  # Number of variables to split at each node
-  x$mtry <- NULL
-  # Min node size
-  x$min.node.size <- NULL
-  # Splitting rule
-  x$splitrule <- NULL
-  # Sample with replacement
-  x$replace <- NULL
-  # Number of samples
-  x$num.samples <- NULL
-  x
-}
 
 #' @export
 axe_ctrl.model_fit <- function(x, ...) {

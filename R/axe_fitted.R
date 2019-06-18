@@ -24,12 +24,6 @@ axe_fitted.kknn <- function(x, ...) {
 }
 
 
-#' @export
-axe_fitted.ranger <- function(x, ...) {
-  # The `predict.ranger` function requires new data to be supplied
-  x$predictions <- NULL
-  x
-}
 
 
 #' @export

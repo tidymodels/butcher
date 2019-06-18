@@ -5,6 +5,9 @@
 #' @name axe-multnet
 NULL
 
+#' @templateVar class multnet
+#' @template title_desc_axe
+#'
 #' @rdname axe-multnet
 #' @export
 axe.multnet <- function(x, ...) {

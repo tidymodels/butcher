@@ -9,7 +9,7 @@ remove_env <- function(x, list_attributes) {
   return(x)
 }
 
-# Ported from stats
+# Ported and adpated from stats
 remove_response <- function(x) {
   a <- attributes(x$terms)
   y <- a$response

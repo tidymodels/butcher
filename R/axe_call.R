@@ -67,12 +67,6 @@ axe_call.ranger <- function(x, ...) {
 
 
 #' @export
-axe_call.survreg <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-#' @export
 axe_call.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_call(x$fit, ...)

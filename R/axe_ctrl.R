@@ -50,12 +50,6 @@ axe_ctrl.ranger <- function(x, ...) {
 }
 
 #' @export
-axe_ctrl.survreg <- function(x, ...) {
-  # TODO: dig
-  axe_ctrl.default(x, ...)
-}
-
-#' @export
 axe_ctrl.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_ctrl(x$fit, ...)

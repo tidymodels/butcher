@@ -57,6 +57,24 @@ axe_fitted.flexsurvreg <- function(x, ...) {
 
 #' @rdname axe-flexsurvreg
 #' @export
+axe_misc.flexsurvreg <- function(x, ...) {
+  x$AIC <- NULL
+  x$datameans <- NULL
+  x$N <- NULL
+  x$events <- NULL
+  x$trisk <- NULL
+  x$concat.formula <- NULL
+  x$basepars <- NULL
+  x$fixedpars <- NULL
+  x$optpars <- NULL
+  x$loglik <- NULL
+  x$logliki <- NULL
+  x$opt <- NULL
+  x
+}
+
+#' @rdname axe-flexsurvreg
+#' @export
 predict.butcher_flexsurvreg <- function(x, ...) {
   class(x) <- "flexsurvreg"
   predict(x, ...)

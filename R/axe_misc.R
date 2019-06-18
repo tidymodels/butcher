@@ -74,11 +74,6 @@ axe_misc.flexsurvreg <- function(x, ...) {
   x
 }
 
-#' @export
-axe_misc.survreg <- function(x, ...) {
-  # TODO: dig
-  axe_misc.default(x, ...)
-}
 
 #' @export
 axe_misc.model_fit <- function(x, ...) {

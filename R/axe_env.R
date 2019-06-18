@@ -41,11 +41,7 @@ axe_env.kknn <- function(x, ...) {
 
 #' @export
 axe_env.survreg <- function(x, ...) {
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  # Environment in model
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
+
 }
 
 #' @export

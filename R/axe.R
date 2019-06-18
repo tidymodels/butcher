@@ -85,12 +85,6 @@ axe.ranger <- function(x, ...) {
 }
 
 #' @export
-axe.survreg <- function(x, ...) {
-  class(x) <- "butcher_survreg"
-  x
-}
-
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")

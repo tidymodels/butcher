@@ -16,12 +16,6 @@ axe_env <- function(x, ...) {
 }
 
 #' @export
-axe_env.default <- function(x, ...) {
-  # No environment to replace
-  x
-}
-
-#' @export
 axe_env.terms <- function(x, ...) {
   attr(x, ".Environment") <- rlang::empty_env()
   x

@@ -15,6 +15,3 @@ itemized parts of model object
 \description{
 List all the components of a model object to prepare for processing.
 }
-\examples{
-take_inventory(lm_fit)
-}

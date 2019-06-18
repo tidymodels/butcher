@@ -1,5 +1,7 @@
 context("elnet")
 
+library(glmnet)
+
 test_that("elnet + butcher_example() works", {
   example_files <- butcher_example()
   expect_true("elnet.rda" %in% example_files)

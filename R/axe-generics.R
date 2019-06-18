@@ -37,8 +37,6 @@ axe <- function(x, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
 #'
 #' @export
-#' @examples
-#' axe_call(lm_fit)
 axe_call <- function(x, ...) {
   UseMethod("axe_call")
 }

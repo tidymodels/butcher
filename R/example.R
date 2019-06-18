@@ -5,9 +5,6 @@
 #' make the instantiated model objects easy to access.
 #'
 #' @param path Name of file. If `NULL`, the example files will be listed.
-#' @examples
-#' butcher_example()
-#' butcher_example("lm.rda")
 butcher_example <- function(path = NULL) {
   if (is.null(path)) {
     dir(system.file("extdata", package = "butcher"))

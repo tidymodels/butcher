@@ -26,5 +26,5 @@ make_an_lm <- function() {
   lm(1 ~ 1)
 }
 lm_object <- make_an_lm()
-lm_axed <- axe(lm)
+lm_axed <- axe(lm_object)
 }

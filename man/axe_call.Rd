@@ -20,6 +20,3 @@ Replace the call object attached to modeling objects with a placeholder.
 \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
 }
 
-\examples{
-axe_call(lm_fit)
-}

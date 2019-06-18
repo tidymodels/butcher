@@ -41,11 +41,6 @@ axe_call.C5.0 <- function(x, ...) {
   x
 }
 
-axe_call.multnet <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
 #' @export
 axe_call.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing

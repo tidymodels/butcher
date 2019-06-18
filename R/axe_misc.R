@@ -18,12 +18,6 @@ axe_misc.default <- function(x, ...) {
   x
 }
 
-#' @export
-axe_misc.multnet <- function(x, ...) {
-  # Remove matrix that tracks the number of nonzero coefficients per class
-  x$dfmat <- NULL
-  x
-}
 
 #' @export
 axe_misc.model_fit <- function(x, ...) {

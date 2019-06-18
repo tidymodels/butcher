@@ -23,19 +23,6 @@ axe.default <- function(x, ...) {
   x
 }
 
-
-#' @export
-axe.glm <- function(x, ...) {
-  class(x) <- "butcher_glm"
-  x
-}
-
-#' @export
-axe.glmnet <- function(x, ...) {
-  class(x) <- "butcher_glmnet"
-  x
-}
-
 #' @export
 axe.elnet <- function(x, ...) {
   class(x) <- "butcher_elnet"
@@ -51,12 +38,6 @@ axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
 #' @export
 axe.C5.0 <- function(x, ...) {
   class(x) <- "butcher_c5"
-  x
-}
-
-#' @export
-axe.multnet <- function(x, ...) {
-  class(x) <- "butcher_multnet"
   x
 }
 

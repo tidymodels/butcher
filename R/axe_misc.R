@@ -25,7 +25,6 @@ axe_misc.multnet <- function(x, ...) {
   x
 }
 
-
 #' @export
 axe_misc.kknn <- function(x, ...) {
   # Matrix of misclassification errors
@@ -36,22 +35,6 @@ axe_misc.kknn <- function(x, ...) {
   x$MEAN.SQU <- NULL
   x
 }
-
-#' @export
-axe_misc.randomForest <- function(x, ...) {
-  # Number of times cases are out-of-bag and used to compute OOB error
-  x$oob.times <- NULL
-  # (Classification) vector error rates
-  x$err.rate <- NULL
-  # (Classification) confusion matrix
-  x$confusion <- NULL
-  # Number of samples inbag
-  x$inbag <- NULL
-  x
-}
-
-
-
 
 #' @export
 axe_misc.model_fit <- function(x, ...) {

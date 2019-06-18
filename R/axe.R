@@ -73,12 +73,6 @@ axe.kknn <- function(x, ...) {
 }
 
 #' @export
-axe.randomForest <- function(x, ...) {
-  class(x) <- "butcher_rf"
-  x
-}
-
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")

@@ -26,16 +26,6 @@ axe_ctrl.C5.0 <- function(x, ...) {
 }
 
 #' @export
-axe_ctrl.randomFoest <- function(x, ...) {
-  # Number of trees grown
-  x$ntree <- NULL
-  # Number of predictors sampled
-  x$mtry <- NULL
-  x
-}
-
-
-#' @export
 axe_ctrl.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_ctrl(x$fit, ...)

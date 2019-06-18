@@ -8,35 +8,40 @@ NULL
 #' @rdname axe-model_fit
 #' @export
 axe.model_fit <- function(x, ...) {
-  x <- axe_call(x)
-  x <- axe_env(x)
-  x <- axe_fitted(x)
-  class(x) <- "butcher_model_fit"
-  x
+  if(!inherits(x, "model_fit")){
+    stop("Not a parsnip model object.")
+  }
+  axe(x$fit, ...)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_call.model_fit <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
+  axe_call(x$fit, ...)
+}
+
+#' @rdname axe-model_fit
+#' @export
+axe_ctrl.model_fit <- function(x, ...) {
+  axe_ctrl(x$fit, ...)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_env.model_fit <- function(x, ...) {
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  # Environment in model
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
+  axe_env(x$fit, ...)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_fitted.model_fit <- function(x, ...) {
-  x$fitted.values <- numeric(0)
-  x
+  axe_fitted(x$fit, ...)
+}
+
+#' @rdname axe-model_fit
+#' @export
+axe_misc.model_fit <- function(x, ...) {
+  axe_misc(x$fit, ...)
 }
 
 #' @rdname axe-model_fit

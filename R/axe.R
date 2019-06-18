@@ -23,10 +23,3 @@ axe.default <- function(x, ...) {
   x
 }
 
-#' @export
-axe.model_fit <- function(x, ...) {
-  if(!inherits(x, "model_fit")){
-    stop("Not a parsnip model object.")
-  }
-  axe(x$fit, ...)
-}

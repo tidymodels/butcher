@@ -17,9 +17,3 @@ axe_fitted.default <- function(x, ...) {
   # Assuming no fitted values
   x
 }
-
-#' @export
-axe_fitted.model_fit <- function(x, ...) {
-  # Extract the x$fit object from parsnip for post-processing
-  axe_fitted(x$fit, ...)
-}

@@ -4,8 +4,10 @@
 \alias{axe-model_fit}
 \alias{axe.model_fit}
 \alias{axe_call.model_fit}
+\alias{axe_ctrl.model_fit}
 \alias{axe_env.model_fit}
 \alias{axe_fitted.model_fit}
+\alias{axe_misc.model_fit}
 \alias{predict.butcher_model_fit}
 \title{Axing an model_fit.}
 \usage{
@@ -13,9 +15,13 @@
 
 \method{axe_call}{model_fit}(x, ...)
 
+\method{axe_ctrl}{model_fit}(x, ...)
+
 \method{axe_env}{model_fit}(x, ...)
 
 \method{axe_fitted}{model_fit}(x, ...)
+
+\method{axe_misc}{model_fit}(x, ...)
 
 \method{predict}{butcher_model_fit}(x, ...)
 }

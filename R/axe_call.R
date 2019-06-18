@@ -16,9 +16,3 @@ axe_call <- function(x, ...) {
 axe_call.default <- function(x, ...) {
   x
 }
-
-#' @export
-axe_call.model_fit <- function(x, ...) {
-  # Extract the x$fit object from parsnip for post-processing
-  axe_call(x$fit, ...)
-}

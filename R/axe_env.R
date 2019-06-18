@@ -26,9 +26,3 @@ axe_env.terms <- function(x, ...) {
   attr(x, ".Environment") <- rlang::empty_env()
   x
 }
-
-#' @export
-axe_env.model_fit <- function(x, ...) {
-  # Extract the x$fit object from parsnip for post-processing
-  axe_env(x$fit, ...)
-}

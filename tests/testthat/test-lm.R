@@ -33,5 +33,5 @@ test_that("lm + axe() works", {
 
 test_that("lm + predict() works", {
   x <- axe(lm_fit)
-  expect_gt(predict(x)[1], 20)
+  expect_equal(predict(x)[1], c(`Mazda RX4` = 21.5647055857078))
 })

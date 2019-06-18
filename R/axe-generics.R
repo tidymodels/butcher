@@ -99,6 +99,8 @@ axe_data.default <- function(x, ...) {
 #' @param x model object
 #' @param ... other arguments passed to axe methods
 #'
+#' @return model object with empty environments
+#'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_env")}
 #'
@@ -119,6 +121,10 @@ axe_env.default <- function(x, ...) {
 #' @param x model object
 #'
 #' @return model object without the fitted values
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_fitted")}
+#'
 #' @export
 axe_fitted <- function(x, ...) {
   UseMethod("axe_fitted")
@@ -136,6 +142,10 @@ axe_fitted.default <- function(x, ...) {
 #' @param x model object
 #'
 #' @return model object without the extra intermediatary units previously stored for training.
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_misc")}
+#'
 #' @export
 axe_misc <- function(x, ...) {
   UseMethod("axe_misc")

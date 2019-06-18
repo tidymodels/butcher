@@ -15,3 +15,8 @@ model object without the fitted values
 \description{
 Remove the fitted values attached to modeling objects.
 }
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_fitted")}
+}
+

@@ -15,3 +15,8 @@ model object without the extra intermediatary units previously stored for traini
 \description{
 Remove the intermediary steps attached from training to modeling objects.
 }
+\section{Methods}{
+
+\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_misc")}
+}
+

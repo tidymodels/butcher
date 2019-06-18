@@ -45,5 +45,6 @@
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
 #' @importFrom stats predict
+#' @importFrom glmnet predict
 ## usethis namespace: end
 NULL

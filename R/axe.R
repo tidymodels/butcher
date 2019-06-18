@@ -24,12 +24,6 @@ axe.default <- function(x, ...) {
 }
 
 #' @export
-axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
-  class(x) <- "butcher_keras"
-  x
-}
-
-#' @export
 axe.model_fit <- function(x, ...) {
   if(!inherits(x, "model_fit")){
     stop("Not a parsnip model object.")

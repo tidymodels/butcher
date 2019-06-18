@@ -18,13 +18,6 @@ axe_ctrl.default <- function(x, ...) {
   x
 }
 
-
-#' @export
-axe_ctrl.C5.0 <- function(x, ...) {
-  x$control <- NULL
-  x
-}
-
 #' @export
 axe_ctrl.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing

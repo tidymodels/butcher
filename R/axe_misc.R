@@ -18,7 +18,6 @@ axe_misc.default <- function(x, ...) {
   x
 }
 
-
 #' @export
 axe_misc.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing

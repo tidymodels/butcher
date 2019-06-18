@@ -18,24 +18,6 @@ axe_call.default <- function(x, ...) {
 }
 
 #' @export
-axe_call.glm <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-#' @export
-axe_call.glmnet <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-#' @export
-axe_call.elnet <- function(x, ...) {
-  x$call <- call("dummy_call")
-  x
-}
-
-#' @export
 axe_call.model_fit <- function(x, ...) {
   # Extract the x$fit object from parsnip for post-processing
   axe_call(x$fit, ...)

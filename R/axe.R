@@ -24,12 +24,6 @@ axe.default <- function(x, ...) {
 }
 
 #' @export
-axe.elnet <- function(x, ...) {
-  class(x) <- "butcher_elnet"
-  x
-}
-
-#' @export
 axe_env.keras.engine.sequential.Sequential <- function(x, ...) {
   class(x) <- "butcher_keras"
   x

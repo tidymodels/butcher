@@ -11,6 +11,9 @@ axe_env(x, ...)
 
 \item{...}{other arguments passed to axe methods}
 }
+\value{
+model object with empty environments
+}
 \description{
 Remove the environment(s) attached to modeling objects as they are often
 not required in the downstream analysis pipeline. Currently, if found,

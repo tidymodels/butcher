@@ -2,22 +2,31 @@
 #'
 #' This is where all the multnet specific documentation lies.
 #'
+#' Note: Since multnet object is derived from the \code{glmnet} package it is
+#' one of the few model objects in which there is no environment to axe.
+#'
+#' @examples
+#' # Load libraries
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(tidymodels)))
+#'
+#' # Load data
+#' set.seed(1234)
+#' predictrs <- matrix(rnorm(100*20), ncol = 20)
+#' response <- as.factor(sample(1:4, 100, replace = TRUE))
+#'
+#' # Create model and fi
+#' multnet_fit <- multinom_reg() %>%
+#'   set_engine("glmnet") %>%
+#'   fit_xy(x = predictrs, y = response)
+#'
+#' # Axe
+#' axe(multnet_fit)
 #' @name axe-multnet
 NULL
 
-#' @templateVar class multnet
-#' @template title_desc_axe
+#' Call can be removed without breaking \code{predict}.
 #'
-#' @rdname axe-multnet
-#' @export
-axe.multnet <- function(x, ...) {
-  x <- axe_call(x)
-  x <- axe_env(x)
-  x <- axe_fitted(x)
-  class(x) <- "butcher_multnet"
-  x
-}
-
 #' @rdname axe-multnet
 #' @export
 axe_call.multnet <- function(x, ...) {
@@ -25,28 +34,14 @@ axe_call.multnet <- function(x, ...) {
   x
 }
 
-#' @rdname axe-multnet
-#' @export
-axe_env.multnet <- function(x, ...) {
-  # Environment in terms
-  x$terms <- axe_env(x$terms, ...)
-  # Environment in model
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
-}
-
-#' @rdname axe-multnet
-#' @export
-axe_fitted.multnet <- function(x, ...) {
-  x$fitted.values <- numeric(0)
-  x
-}
-
+#' Dfmat can be removed as it is utilized in \code{predict}. It is only
+#' instantiated for multnet and mrelnet objects, and it tracks the number
+#' of nonzero coefficients per class.
+#'
 #' @rdname axe-multnet
 #' @export
 axe_misc.multnet <- function(x, ...) {
-  # Remove matrix that tracks the number of nonzero coefficients per class
-  x$dfmat <- NULL
+  x$dfmat <- numeric(0)
   x
 }
 

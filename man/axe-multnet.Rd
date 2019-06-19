@@ -2,41 +2,39 @@
 % Please edit documentation in R/multnet.R
 \name{axe-multnet}
 \alias{axe-multnet}
-\alias{axe.multnet}
 \alias{axe_call.multnet}
-\alias{axe_env.multnet}
-\alias{axe_fitted.multnet}
 \alias{axe_misc.multnet}
 \alias{predict.butcher_multnet}
 \title{Axing an multnet.}
 \usage{
-axe.multnet(x, ...)
-
 \method{axe_call}{multnet}(x, ...)
-
-\method{axe_env}{multnet}(x, ...)
-
-\method{axe_fitted}{multnet}(x, ...)
 
 \method{axe_misc}{multnet}(x, ...)
 
 \method{predict}{butcher_multnet}(x, ...)
 }
-\arguments{
-\item{x}{model object}
-}
-\value{
-axed model object with new butcher class assignment
-}
 \description{
 This is where all the multnet specific documentation lies.
+}
+\details{
+Note: Since multnet object is derived from the \code{glmnet} package it is
+one of the few model objects in which there is no environment to axe.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
 
-Axe accepts a model object and removes any extraneous
-information contained in that object. Generally, this includes the
-environments that were carried through from training, the call and
-any control parameters that were previously utilized to construct
-the model object, as well as the original data and other miscellaneous
-parameters that were saved. These parts of the model objects are
-removed as they are often not used in any post-processing of the
-model object (i.e., prediction).
+# Load data
+set.seed(1234)
+predictrs <- matrix(rnorm(100*20), ncol = 20)
+response <- as.factor(sample(1:4, 100, replace = TRUE))
+
+# Create model and fi
+multnet_fit <- multinom_reg() \%>\%
+  set_engine("glmnet") \%>\%
+  fit_xy(x = predictrs, y = response)
+
+# Axe
+axe(multnet_fit)
 }

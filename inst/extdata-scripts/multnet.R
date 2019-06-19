@@ -1,8 +1,9 @@
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMeissages(library(parsnip)))
 suppressWarnings(suppressMessages(library(tidymodels)))
 
 # Load data
+set.seed(1234)
 predictrs <- matrix(rnorm(100*20), ncol = 20)
 response <- as.factor(sample(1:4, 100, replace = TRUE))
 

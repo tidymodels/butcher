@@ -1,21 +1,19 @@
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(tidymodels)))
-suppressWarnings(suppressMessages(library(rpart)))
 
 # Load data
 set.seed(1234)
-split <- initial_split(kyphosis, props = 9/10)
-spine_train <- training(split)
-spine_test  <- testing(split)
+split <- initial_split(iris, props = 9/10)
+iris_train <- training(split)
 
 # Create model and fit
 ranger_fit <- rand_forest(mode = "classification",
-                                mtry = 2,
-                                trees = 2,
-                                min_n = 3) %>%
+                          mtry = 2,
+                          trees = 20,
+                          min_n = 3) %>%
   set_engine("ranger") %>%
-  fit(Kyphosis ~ ., data = spine_train)
+  fit(Species ~ ., data = iris_train)
 
 # Save
 save(ranger_fit, file = "inst/extdata/ranger.rda")

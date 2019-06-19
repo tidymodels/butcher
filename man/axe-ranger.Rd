@@ -2,22 +2,16 @@
 % Please edit documentation in R/ranger.R
 \name{axe-ranger}
 \alias{axe-ranger}
-\alias{axe.ranger}
 \alias{axe_call.ranger}
 \alias{axe_ctrl.ranger}
-\alias{axe_env.ranger}
 \alias{axe_fitted.ranger}
 \alias{axe_misc.ranger}
 \alias{predict.butcher_ranger}
 \title{Axing an ranger.}
 \usage{
-axe.ranger(x, ...)
-
 \method{axe_call}{ranger}(x, ...)
 
 \method{axe_ctrl}{ranger}(x, ...)
-
-\method{axe_env}{ranger}(x, ...)
 
 \method{axe_fitted}{ranger}(x, ...)
 
@@ -26,5 +20,29 @@ axe.ranger(x, ...)
 \method{predict}{butcher_ranger}(x, ...)
 }
 \description{
+ranger objects are created from the \code{ranger} package, which is used as
+a means to quickly train random forests. The package supports ensembles
+of classification, regression, survival and probability prediction trees.
 This is where all the ranger specific documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+
+# Load data
+set.seed(1234)
+split <- initial_split(iris, props = 9/10)
+iris_train <- training(split)
+
+# Create model and fit
+ranger_fit <- rand_forest(mode = "classification",
+                          mtry = 2,
+                          trees = 20,
+                          min_n = 3) \%>\%
+  set_engine("ranger") \%>\%
+  fit(Species ~ ., data = iris_train)
+
+# Axe
+axe(ranger_fit)
 }

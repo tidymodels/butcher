@@ -2,29 +2,47 @@
 % Please edit documentation in R/randomForest.R
 \name{axe-randomForest}
 \alias{axe-randomForest}
-\alias{axe.randomForest}
 \alias{axe_call.randomForest}
 \alias{axe_ctrl.randomFoest}
-\alias{axe_env.randomForest}
-\alias{axe_fitted.randomForest}
 \alias{axe_misc.randomForest}
 \alias{predict.butcher_randomForest}
 \title{Axing an randomForest.}
 \usage{
-axe.randomForest(x, ...)
-
 \method{axe_call}{randomForest}(x, ...)
 
 \method{axe_ctrl}{randomFoest}(x, ...)
-
-\method{axe_env}{randomForest}(x, ...)
-
-\method{axe_fitted}{randomForest}(x, ...)
 
 \method{axe_misc}{randomForest}(x, ...)
 
 \method{predict}{butcher_randomForest}(x, ...)
 }
 \description{
+randomForest objects are created from the \code{randomForest} package,
+which is used to train random forests based on Breiman et al's 2001 work.
+The package supports ensembles of classification and regression trees.
 This is where all the randomForest specific documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(rpart)))
+
+# Load data
+set.seed(1234)
+split <- initial_split(kyphosis, props = 9/10)
+spine_train <- training(split)
+spine_test  <- testing(split)
+
+# Create model and fit
+randomForest_fit <- rand_forest(mode = "classification",
+                                mtry = 2,
+                                trees = 2,
+                                min_n = 3) \%>\%
+  set_engine("randomForest") \%>\%
+  fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
+
+# Axe
+axe(randomForest_fit)
+
 }

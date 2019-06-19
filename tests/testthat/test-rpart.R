@@ -8,18 +8,12 @@ test_that("rpart + butcher_example() works", {
 
 load(butcher_example("rpart.rda"))
 
-test_that("rpart + axe() works", {
+test_that("rpart + predict() works", {
   x <- axe(rpart_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$functions, rlang::expr(dummy_call()))
-  expect_equal(x$control, list(NULL))
-  expect_identical(attr(x$terms, ".Environment"), rlang::empty_env())
-  expect_equal(class(x), "butcher_rpart")
+  expect_true("usesurrogate" %in% names(x$control))
+  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
+  expect_equal(predict(x)[1], c(`Mazda RX4 Wag` = 24.1777777777778))
+  expect_equal(predict(x, newdata = mtcars[4, 2:11]), c(`Hornet 4 Drive` = 15.28))
 })
-
-test_that("rpart + predict() works", {
-  x <- axe(rpart_fit)
-  # TODO: Figure out how to get this predict.rpart to work
-  # expect_gt(predict(x)[1], 20)
-})
-

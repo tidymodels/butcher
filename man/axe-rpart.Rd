@@ -2,20 +2,42 @@
 % Please edit documentation in R/rpart.R
 \name{axe-rpart}
 \alias{axe-rpart}
-\alias{axe.rpart}
 \alias{axe_call.rpart}
 \alias{axe_ctrl.rpart}
+\alias{axe_env.rpart}
+\alias{axe_misc.rpart}
 \alias{predict.butcher_rpart}
 \title{Axing a rpart.}
 \usage{
-axe.rpart(x, ...)
-
 \method{axe_call}{rpart}(x, ...)
 
 \method{axe_ctrl}{rpart}(x, ...)
 
+\method{axe_env}{rpart}(x, ...)
+
+\method{axe_misc}{rpart}(x, ...)
+
 \method{predict}{butcher_rpart}(x, ...)
 }
 \description{
-This is where all the rpart specific documentation lies.
+rpart objects are created from the \code{rpart} package, which
+is used for recursive partitioning for classification, regression and
+survival trees. This is where all the rpart specific documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(rpart)))
+
+# Load data
+set.seed(1234)
+split <- initial_split(mtcars, props = 9/10)
+car_train <- training(split)
+car_test  <- testing(split)
+
+# Create model and fit
+rpart_fit <- decision_tree(mode = "regression") \%>\%
+  set_engine("rpart") \%>\%
+  fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
 }

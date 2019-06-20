@@ -2,16 +2,13 @@
 % Please edit documentation in R/kknn.R
 \name{axe-kknn}
 \alias{axe-kknn}
-\alias{axe.kknn}
 \alias{axe_call.kknn}
 \alias{axe_env.kknn}
 \alias{axe_fitted.kknn}
 \alias{axe_misc.kknn}
-\alias{predict.butcher_kknn}
+\alias{predict.butcher_train.kknn}
 \title{Axing an kknn.}
 \usage{
-axe.kknn(x, ...)
-
 \method{axe_call}{kknn}(x, ...)
 
 \method{axe_env}{kknn}(x, ...)
@@ -20,8 +17,33 @@ axe.kknn(x, ...)
 
 \method{axe_misc}{kknn}(x, ...)
 
-\method{predict}{butcher_kknn}(x, ...)
+\method{predict}{butcher_train.kknn}(x, ...)
 }
 \description{
+kknn objects are created from the \code{kknn} package, which is utilized to
+do weighted k-Nearest Neighbors for classification, regression and clustering.
 This is where all the kknn specific documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(rpart)))
+
+# Load data
+set.seed(1234)
+split <- initial_split(kyphosis, props = 9/10)
+spine_train <- training(split)
+spine_test  <- testing(split)
+
+# Create model and fit
+kknn_fit <- nearest_neighbor(mode = "classification",
+                             neighbors = 3,
+                             weight_func = "gaussian",
+                             dist_power = 2) \%>\%
+  set_engine("kknn") \%>\%
+  fit(Kyphosis ~ ., data = spine_train)
+
+# Axe
+axe(kknn_fit)
 }

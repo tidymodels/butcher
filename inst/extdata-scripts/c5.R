@@ -7,7 +7,6 @@ suppressWarnings(suppressMessages(library(rpart)))
 set.seed(1234)
 split <- initial_split(kyphosis, props = 9/10)
 spine_train <- training(split)
-spine_test  <- testing(split)
 
 # Create model and fit
 c5_fit <- decision_tree(mode = "classification") %>%
@@ -16,3 +15,4 @@ c5_fit <- decision_tree(mode = "classification") %>%
 
 # Save
 save(c5_fit, file = "inst/extdata/c5.rda")
+

@@ -7,7 +7,6 @@ suppressWarnings(suppressMessages(library(rpart)))
 set.seed(1234)
 split <- initial_split(kyphosis, props = 9/10)
 spine_train <- training(split)
-spine_test  <- testing(split)
 
 # Create model and fit
 kknn_fit <- nearest_neighbor(mode = "classification",

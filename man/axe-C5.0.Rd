@@ -2,26 +2,23 @@
 % Please edit documentation in R/c5.R
 \name{axe-C5.0}
 \alias{axe-C5.0}
-\alias{axe.C5.0}
 \alias{axe_call.C5.0}
 \alias{axe_ctrl.C5.0}
-\alias{axe_env.C5.0}
-\alias{axe_fitted.C5.0}
+\alias{axe_misc.C5.0}
 \alias{predict.butcher_C5.0}
-\title{Axing an C5.0.}
+\title{Axing a C5.0.}
 \usage{
-axe.C5.0(x, ...)
-
 \method{axe_call}{C5.0}(x, ...)
 
 \method{axe_ctrl}{C5.0}(x, ...)
 
-\method{axe_env}{C5.0}(x, ...)
-
-\method{axe_fitted}{C5.0}(x, ...)
+\method{axe_misc}{C5.0}(x, ...)
 
 \method{predict}{butcher_C5.0}(x, ...)
 }
 \description{
+C5.0 objects are created from the \code{C50} package, which provides an
+interface to the C5.0 classification model. The models that can be
+generated include basic tree-based models as well as rule-based models.
 This is where all the C5.0 specific documentation lies.
 }

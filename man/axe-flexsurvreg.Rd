@@ -2,18 +2,14 @@
 % Please edit documentation in R/flexsurvreg.R
 \name{axe-flexsurvreg}
 \alias{axe-flexsurvreg}
-\alias{axe.flexsurvreg}
 \alias{axe_call.flexsurvreg}
 \alias{axe_ctrl.flexsurvreg}
 \alias{axe_data.flexsurvreg}
 \alias{axe_env.flexsurvreg}
-\alias{axe_fitted.flexsurvreg}
 \alias{axe_misc.flexsurvreg}
 \alias{predict.butcher_flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
-axe.flexsurvreg(x, ...)
-
 \method{axe_call}{flexsurvreg}(x, ...)
 
 \method{axe_ctrl}{flexsurvreg}(x, ...)
@@ -22,12 +18,29 @@ axe.flexsurvreg(x, ...)
 
 \method{axe_env}{flexsurvreg}(x, ...)
 
-\method{axe_fitted}{flexsurvreg}(x, ...)
-
 \method{axe_misc}{flexsurvreg}(x, ...)
 
 \method{predict}{butcher_flexsurvreg}(x, ...)
 }
 \description{
-This is where all the flexsurvreg specific documentation lies.
+flexsurvreg objects are created from the \code{flexsurv} package. They
+differ from survreg in that the fitted models are not limited to certain
+parametric distributions. Users can define their own distribution, or
+leverage distributions like the generalized gamma, generalized F, and
+the Royston-Parmar spline model. This is where all the flexsurvreg
+specific documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(flexsurv)))
+
+# Create model and fit
+flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
+  set_engine("flexsurv") \%>\%
+  fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
+
+# Axe
+axe(flexsurvreg_fit)
 }

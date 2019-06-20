@@ -2,32 +2,37 @@
 % Please edit documentation in R/survreg.R
 \name{axe-survreg}
 \alias{axe-survreg}
-\alias{axe.survreg}
 \alias{axe_call.survreg}
-\alias{axe_ctrl.survreg}
 \alias{axe_data.survreg}
 \alias{axe_env.survreg}
-\alias{axe_fitted.survreg}
-\alias{axe_misc.survreg}
 \alias{predict.butcher_survreg}
 \title{Axing an survreg.}
 \usage{
-axe.survreg(x, ...)
-
 \method{axe_call}{survreg}(x, ...)
-
-\method{axe_ctrl}{survreg}(x, ...)
 
 \method{axe_data}{survreg}(x, ...)
 
 \method{axe_env}{survreg}(x, ...)
 
-\method{axe_fitted}{survreg}(x, ...)
-
-\method{axe_misc}{survreg}(x, ...)
-
 \method{predict}{butcher_survreg}(x, ...)
 }
 \description{
-This is where all the survreg specific documentation lies.
+survreg objects are created from the \code{survival} package. They
+are returned from the \code{survreg} function, representing fitted
+parametric survival models. This is where all the survreg specific
+documentation lies.
+}
+\examples{
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(flexsurv)))
+
+# Create model and fit
+survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
+  set_engine("survreg") \%>\%
+  fit(Surv(futime, fustat) ~ 1, data = ovarian)
+
+# Axe
+axe(survreg_fit)
 }

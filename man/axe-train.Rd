@@ -25,6 +25,14 @@
 
 \method{predict}{butcher_train.recipe}(x, ...)
 }
+\arguments{
+\item{x}{train object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed train object
+}
 \description{
 This is where all the train specific documentation lies.
 }

@@ -3,21 +3,24 @@
 #' Evaluate the size of each element contained in a model object.
 #'
 #' @param x model object
-#' @param threshold cutoff memory level
-#' @param units defaults to MB
-#'
+#' @param ... any additional arguments related to weighing
 #'
 #' @return tibble
-#' @export
 #' @examples
 #' simulate_x <- matrix(runif(1e+6), ncol = 2)
 #' simulate_y <- runif(dim(simulate_x)[1])
 #' lm_out <- lm(simulate_y ~ simulate_x)
 #' weigh(lm_out)
+#' @export
 weigh <- function(x, ...) {
   UseMethod("weigh")
 }
 
+#' @param x model object
+#' @param threshold cutoff memory level
+#' @param units defaults to MB
+#'
+#' @return tibble
 #' @export
 weigh.default <- function(x, threshold = 2, units = "MB") {
   # TODO: weigh for keras object

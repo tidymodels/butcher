@@ -5,6 +5,11 @@
 #' The package supports ensembles of classification and regression trees.
 #' This is where all the randomForest specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))

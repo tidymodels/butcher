@@ -13,6 +13,14 @@
 
 \method{predict}{butcher_multnet}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 This is where all the multnet specific documentation lies.
 }
@@ -37,4 +45,5 @@ multnet_fit <- multinom_reg() \%>\%
 
 # Axe
 axe(multnet_fit)
+
 }

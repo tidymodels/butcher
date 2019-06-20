@@ -2,6 +2,10 @@
 #'
 #' This is where all the lm specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
 #'
 #' @examples
 #' # Make a lm that has a lot of extra stuff in its environment
@@ -11,6 +15,7 @@
 #' }
 #' lm_object <- make_an_lm()
 #' lm_axed <- axe(lm_object)
+#'
 #' @name axe-lm
 NULL
 

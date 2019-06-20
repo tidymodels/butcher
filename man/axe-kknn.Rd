@@ -19,6 +19,14 @@
 
 \method{predict}{butcher_train.kknn}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 kknn objects are created from the \code{kknn} package, which is utilized to
 do weighted k-Nearest Neighbors for classification, regression and clustering.
@@ -46,4 +54,5 @@ kknn_fit <- nearest_neighbor(mode = "classification",
 
 # Axe
 axe(kknn_fit)
+
 }

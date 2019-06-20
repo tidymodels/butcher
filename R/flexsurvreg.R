@@ -7,6 +7,11 @@
 #' the Royston-Parmar spline model. This is where all the flexsurvreg
 #' specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
@@ -20,6 +25,7 @@
 #'
 #' # Axe
 #' axe(flexsurvreg_fit)
+#'
 #' @name axe-flexsurvreg
 NULL
 

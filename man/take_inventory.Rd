@@ -8,6 +8,8 @@ take_inventory(x, ...)
 }
 \arguments{
 \item{x}{model object}
+
+\item{...}{additional arguments to take inventory of}
 }
 \value{
 itemized parts of model object

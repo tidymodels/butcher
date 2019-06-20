@@ -19,6 +19,14 @@
 
 \method{predict}{butcher_ranger}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 ranger objects are created from the \code{ranger} package, which is used as
 a means to quickly train random forests. The package supports ensembles
@@ -45,4 +53,5 @@ ranger_fit <- rand_forest(mode = "classification",
 
 # Axe
 axe(ranger_fit)
+
 }

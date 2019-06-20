@@ -8,6 +8,8 @@ axe_misc(x, ...)
 }
 \arguments{
 \item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
 }
 \value{
 model object without the extra intermediatary units previously stored for training.

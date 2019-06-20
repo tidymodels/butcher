@@ -7,7 +7,14 @@
 \usage{
 \method{axe_env}{terms}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
-These terms axe functions treat the model object as if
-nothing needs to be done.
+Generics related to axing objects of the term class.
 }

@@ -8,6 +8,8 @@ axe(x, ...)
 }
 \arguments{
 \item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
 }
 \value{
 axed model object with new butcher subclass assignment

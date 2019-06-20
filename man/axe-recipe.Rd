@@ -7,6 +7,14 @@
 \usage{
 \method{axe_env}{recipe}(x, ...)
 }
+\arguments{
+\item{x}{recipe object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed recipe
+}
 \description{
 This is where all the recipe specific documentation lies.
 }

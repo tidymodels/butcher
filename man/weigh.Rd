@@ -9,9 +9,7 @@ weigh(x, ...)
 \arguments{
 \item{x}{model object}
 
-\item{threshold}{cutoff memory level}
-
-\item{units}{defaults to MB}
+\item{...}{any additional arguments related to weighing}
 }
 \value{
 tibble

@@ -2,7 +2,6 @@
 % Please edit documentation in R/model_fit.R
 \name{axe-model_fit}
 \alias{axe-model_fit}
-\alias{axe.model_fit}
 \alias{axe_call.model_fit}
 \alias{axe_ctrl.model_fit}
 \alias{axe_data.model_fit}
@@ -12,8 +11,6 @@
 \alias{predict.butcher_model_fit}
 \title{Axing an model_fit.}
 \usage{
-axe.model_fit(x, ...)
-
 \method{axe_call}{model_fit}(x, ...)
 
 \method{axe_ctrl}{model_fit}(x, ...)
@@ -28,6 +25,15 @@ axe.model_fit(x, ...)
 
 \method{predict}{butcher_model_fit}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
+model_fit objects are created from the \code{parsnip} package.
 This is where all the model_fit specific documentation lies.
 }

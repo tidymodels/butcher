@@ -5,6 +5,11 @@
 #' Note: the elnet object is one of the few model objects in which
 #' there is no environment to axe.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
@@ -22,6 +27,7 @@
 #'
 #' # Axe
 #' axe(elnet_fit)
+#'
 #' @name axe-elnet
 NULL
 

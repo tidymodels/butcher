@@ -2,6 +2,10 @@
 #'
 #' This is where all the recipe specific documentation lies.
 #'
+#' @param x recipe object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed recipe
 #'
 #' @name axe-recipe
 NULL

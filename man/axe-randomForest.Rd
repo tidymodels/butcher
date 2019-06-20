@@ -16,6 +16,14 @@
 
 \method{predict}{butcher_randomForest}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 randomForest objects are created from the \code{randomForest} package,
 which is used to train random forests based on Breiman et al's 2001 work.

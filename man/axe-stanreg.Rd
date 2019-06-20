@@ -16,6 +16,14 @@ axe.stanreg(x, ...)
 
 \method{predict}{butcher_stanreg}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 This is where all the stanreg specific documentation lies.
 }

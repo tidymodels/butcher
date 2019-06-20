@@ -10,6 +10,14 @@
 
 \method{predict}{butcher_elnet}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 This is where all the elnet specific documentation lies.
 }
@@ -34,4 +42,5 @@ elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
 
 # Axe
 axe(elnet_fit)
+
 }

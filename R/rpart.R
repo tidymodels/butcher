@@ -4,6 +4,11 @@
 #' is used for recursive partitioning for classification, regression and
 #' survival trees. This is where all the rpart specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
@@ -20,6 +25,10 @@
 #' rpart_fit <- decision_tree(mode = "regression") %>%
 #'   set_engine("rpart") %>%
 #'   fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
+#'
+#' # Axe
+#' axe(rpart_fit)
+#'
 #' @name axe-rpart
 NULL
 

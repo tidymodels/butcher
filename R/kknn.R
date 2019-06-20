@@ -4,6 +4,11 @@
 #' do weighted k-Nearest Neighbors for classification, regression and clustering.
 #' This is where all the kknn specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
@@ -26,6 +31,7 @@
 #'
 #' # Axe
 #' axe(kknn_fit)
+#'
 #' @name axe-kknn
 NULL
 

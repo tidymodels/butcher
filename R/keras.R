@@ -2,18 +2,13 @@
 #'
 #' This is where all the keras specific documentation lies.
 #'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
+#'
 #' @name axe-keras
 NULL
-
-#' @rdname axe-keras
-#' @export
-axe.keras <- function(x, ...) {
-  x <- axe_call(x)
-  x <- axe_env(x)
-  x <- axe_fitted(x)
-  class(x) <- "butcher_keras"
-  x
-}
 
 #' @rdname axe-keras
 #' @export

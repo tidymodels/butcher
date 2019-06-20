@@ -7,6 +7,7 @@
 #' model fit components to ensure it works with other downstream functions.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return axed model object with new butcher subclass assignment
 #' @export
@@ -30,6 +31,7 @@ axe <- function(x, ...) {
 #' Replace the call object attached to modeling objects with a placeholder.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return model object without call attribute
 #'
@@ -51,6 +53,7 @@ axe_call.default <- function(x, ...) {
 #' Remove the controls from training attached to modeling objects.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return model object without control tuning parameters from training
 #'
@@ -72,6 +75,7 @@ axe_ctrl.default <- function(x, ...) {
 #' Remove the training data attached to modeling objects.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return model object without the training data
 #'
@@ -117,6 +121,7 @@ axe_env.default <- function(x, ...) {
 #' Remove the fitted values attached to modeling objects.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return model object without the fitted values
 #'
@@ -138,6 +143,7 @@ axe_fitted.default <- function(x, ...) {
 #' Remove the intermediary steps attached from training to modeling objects.
 #'
 #' @param x model object
+#' @param ... any additional arguments related to axing
 #'
 #' @return model object without the extra intermediatary units previously stored for training.
 #'

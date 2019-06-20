@@ -2,6 +2,10 @@
 #'
 #' This is where all the train specific documentation lies.
 #'
+#' @param x train object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed train object
 #'
 #' @examples
 #' # Load libraries

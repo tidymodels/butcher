@@ -1,18 +1,15 @@
 #' Axing an model_fit.
 #'
+#' model_fit objects are created from the \code{parsnip} package.
 #' This is where all the model_fit specific documentation lies.
+#'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
 #'
 #' @name axe-model_fit
 NULL
-
-#' @rdname axe-model_fit
-#' @export
-axe.model_fit <- function(x, ...) {
-  if(!inherits(x, "model_fit")){
-    stop("Not a parsnip model object.")
-  }
-  axe(x$fit, ...)
-}
 
 #' @rdname axe-model_fit
 #' @export

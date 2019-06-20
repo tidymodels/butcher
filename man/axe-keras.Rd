@@ -2,15 +2,12 @@
 % Please edit documentation in R/keras.R
 \name{axe-keras}
 \alias{axe-keras}
-\alias{axe.keras}
 \alias{axe_call.keras}
 \alias{axe_env.keras}
 \alias{axe_fitted.keras}
 \alias{predict.butcher_keras}
 \title{Axing an keras.}
 \usage{
-axe.keras(x, ...)
-
 \method{axe_call}{keras}(x, ...)
 
 \method{axe_env}{keras}(x, ...)
@@ -18,6 +15,14 @@ axe.keras(x, ...)
 \method{axe_fitted}{keras}(x, ...)
 
 \method{predict}{butcher_keras}(x, ...)
+}
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
 }
 \description{
 This is where all the keras specific documentation lies.

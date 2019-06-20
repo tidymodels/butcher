@@ -22,6 +22,14 @@
 
 \method{predict}{butcher_flexsurvreg}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 flexsurvreg objects are created from the \code{flexsurv} package. They
 differ from survreg in that the fitted models are not limited to certain
@@ -43,4 +51,5 @@ flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
 
 # Axe
 axe(flexsurvreg_fit)
+
 }

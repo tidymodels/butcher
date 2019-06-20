@@ -16,6 +16,14 @@
 
 \method{predict}{butcher_survreg}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 survreg objects are created from the \code{survival} package. They
 are returned from the \code{survreg} function, representing fitted
@@ -35,4 +43,5 @@ survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
 
 # Axe
 axe(survreg_fit)
+
 }

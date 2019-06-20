@@ -3,6 +3,7 @@
 #' List all the components of a model object to prepare for processing.
 #'
 #' @param x model object
+#' @param ... additional arguments to take inventory of
 #'
 #' @return itemized parts of model object
 #' @export

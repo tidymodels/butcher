@@ -16,6 +16,14 @@
 
 \method{predict}{butcher_lm}(x, ...)
 }
+\arguments{
+\item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
+}
+\value{
+axed model object
+}
 \description{
 This is where all the lm specific documentation lies.
 }
@@ -27,4 +35,5 @@ make_an_lm <- function() {
 }
 lm_object <- make_an_lm()
 lm_axed <- axe(lm_object)
+
 }

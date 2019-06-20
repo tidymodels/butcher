@@ -8,6 +8,8 @@ axe_data(x, ...)
 }
 \arguments{
 \item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
 }
 \value{
 model object without the training data

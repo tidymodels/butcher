@@ -1,7 +1,11 @@
 #' Axing for terms inputs.
 #'
-#' These terms axe functions treat the model object as if
-#' nothing needs to be done.
+#' Generics related to axing objects of the term class.
+#'
+#' @param x model object
+#' @param ... any additional arguments related to axing
+#'
+#' @return axed model object
 #'
 #' @name axe-terms
 NULL

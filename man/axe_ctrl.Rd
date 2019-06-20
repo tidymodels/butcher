@@ -8,6 +8,8 @@ axe_ctrl(x, ...)
 }
 \arguments{
 \item{x}{model object}
+
+\item{...}{any additional arguments related to axing}
 }
 \value{
 model object without control tuning parameters from training

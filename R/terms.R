@@ -9,6 +9,6 @@ NULL
 #' @rdname axe-terms
 #' @export
 axe_env.terms <- function(x, ...) {
-  attr(x, ".Environment") <- rlang::empty_env()
+  attr(x, ".Environment") <- rlang::base_env()
   x
 }

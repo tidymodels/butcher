@@ -15,7 +15,7 @@ test_that("stanreg + axe_call() works", {
 
 test_that("stanreg + axe_env() works", {
   x <- axe_env(stanreg_fit)
-  test_en <- rlang::empty_env()
+  test_en <- rlang::base_env()
   expect_identical(attr(x$terms, ".Environment"), test_en)
   expect_identical(attr(attributes(x$model)$terms, ".Environment"), test_en)
   expect_identical(x$stanfit@.MISC, test_en)
@@ -30,7 +30,7 @@ test_that("stanreg + axe_fitted() works", {
 test_that("stanreg + axe() works", {
   x <- axe(stanreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
-  test_en <- rlang::empty_env()
+  test_en <- rlang::base_env()
   expect_identical(attr(x$terms, ".Environment"), test_en)
   expect_identical(attr(attributes(x$model)$terms, ".Environment"), test_en)
   expect_identical(x$stanfit@.MISC, test_en)

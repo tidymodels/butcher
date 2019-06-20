@@ -15,7 +15,7 @@ test_that("lm + axe_call() works", {
 
 test_that("lm + axe_env() works", {
   x <- axe_env(lm_fit)
-  expect_identical(attr(x$terms, ".Environment"), rlang::empty_env())
+  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
 })
 
 test_that("lm + axe_fitted() works", {
@@ -26,7 +26,7 @@ test_that("lm + axe_fitted() works", {
 test_that("lm + axe() works", {
   x <- axe(lm_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
-  expect_identical(attr(x$terms, ".Environment"), rlang::empty_env())
+  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
   expect_equal(x$fitted.values, numeric(0))
   expect_equal(class(x), "butcher_lm")
 })

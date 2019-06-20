@@ -59,7 +59,8 @@ axe_ctrl.rpart <- function(x, ...) {
 #' @rdname axe-rpart
 #' @export
 axe_env.rpart <- function(x, ...) {
-  attr(x$terms, ".Environment") <- rlang::base_env()
+  x$terms <- axe_env(x$terms, ...)
+  # attr(x$terms, ".Environment") <- rlang::base_env()
   x
 }
 

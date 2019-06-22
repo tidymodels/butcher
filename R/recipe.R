@@ -23,12 +23,12 @@ axe_env.recipe <- function(x, ...) {
   x
 }
 
-#' A means to replace environments within each step of the recipe.
+#' No environment to axe in step. Examples of such steps include \code{step_sample},
+#' \code{step_intercept}, and \code{step_profile}.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
 
@@ -37,7 +37,7 @@ axe_env.step <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_arrange <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$inputs <- purrr::map(x$inputs, function(z) axe_env(z, ...))
   x
 }
 
@@ -174,7 +174,7 @@ axe_env.step_factor2string <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_filter <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$inputs <- purrr::map(x$inputs, function(z) axe_env(z, ...))
   x
 }
 
@@ -183,7 +183,8 @@ axe_env.step_filter <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_geodist <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$lat <- purrr::map(x$lat, function(z) axe_env(z, ...))
+  x$lon <- purrr::map(x$lon, function(z) axe_env(z, ...))
   x
 }
 
@@ -228,15 +229,6 @@ axe_env.step_integer <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_interact <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
-}
-
-#' A means to replace environments wrapped from the \code{step_intercept} function.
-#'
-#' @rdname axe-recipe
-#' @export
-axe_env.step_intercept <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
@@ -468,15 +460,6 @@ axe_env.step_poly <- function(x, ...) {
   x
 }
 
-#' A means to replace environments wrapped from the \code{step_profile} function.
-#'
-#' @rdname axe-recipe
-#' @export
-axe_env.step_profile <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
-}
-
 #' A means to replace environments wrapped from the \code{step_range} function.
 #'
 #' @rdname axe-recipe
@@ -492,6 +475,7 @@ axe_env.step_range <- function(x, ...) {
 #' @export
 axe_env.step_ratio <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$denom <- purrr::map(x$denom, function(z) axe_env(z, ...))
   x
 }
 
@@ -531,15 +515,6 @@ axe_env.step_rollimpute <- function(x, ...) {
   x
 }
 
-#' A means to replace environments wrapped from the \code{step_sample} function.
-#'
-#' @rdname axe-recipe
-#' @export
-axe_env.step_sample <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
-}
-
 #' A means to replace environments wrapped from the \code{step_shuffle} function.
 #'
 #' @rdname axe-recipe
@@ -554,7 +529,7 @@ axe_env.step_shuffle <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_slice <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$inputs <- purrr::map(x$inputs, function(z) axe_env(z, ...))
   x
 }
 

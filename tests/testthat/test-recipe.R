@@ -304,17 +304,51 @@ test_that("recipe + step_range + axe_env() works", {
   expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
 })
 
-test_that("recipe + step_other + axe_env() works", {
-  rec <- recipe(~ diet + location, data = okc) %>%
-    step_other(diet, location, threshold = .1, other = "other values")
+test_that("recipe + step_geodist + axe_env() works", {
+  data(Smithsonian)
+  rec <- recipe( ~ ., data = Smithsonian) %>%
+    update_role(name, new_role = "location") %>%
+    step_geodist(lat = latitude, lon = longitude, log = FALSE,
+                 ref_lat = 38.8986312, ref_lon = -77.0062457)
+  x <- axe_env(rec)
+  expect_identical(attr(x$steps[[1]]$lon[[1]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$lat[[1]], ".Environment"), test_en)
+})
+
+test_that("recipe + step_ratio + axe_env() works", {
+  data(biomass)
+  biomass$total <- apply(biomass[, 3:7], 1, sum)
+  biomass_tr <- biomass[biomass$dataset == "Training",]
+  rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur + total,
+                data = biomass_tr) %>%
+    step_ratio(all_predictors(), denom = denom_vars(total))
   x <- axe_env(rec)
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$denom[[1]], ".Environment"), test_en)
 })
-test_that("recipe + step_other + axe_env() works", {
-  rec <- recipe(~ diet + location, data = okc) %>%
-    step_other(diet, location, threshold = .1, other = "other values")
+
+test_that("recipe + step_arrange + axe_env() works", {
+  sort_vars <- c("Sepal.Length", "Petal.Length")
+  rec <- recipe( ~ ., data = iris) %>%
+    step_arrange(!!!syms(sort_vars))
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$inputs[[2]], ".Environment"), test_en)
 })
+
+test_that("recipe + step_filter + axe_env() works", {
+  rec <- recipe( ~ ., data = iris) %>%
+    step_filter(Sepal.Length > 4.5, Species == "setosa")
+  x <- axe_env(rec)
+  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$inputs[[2]], ".Environment"), test_en)
+})
+
+test_that("recipe + step_slice + axe_env() works", {
+  rec <- recipe( ~ ., data = iris) %>%
+    step_slice(1:3)
+  x <- axe_env(rec)
+  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
+})
+
+

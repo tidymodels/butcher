@@ -3,9 +3,18 @@ context("recipe")
 library(rsample)
 library(recipes)
 library(lubridate)
-# General transformations
+
+# For testing purposes
+test_en <- rlang::base_env()
+
+# Reused data
 data(biomass)
 biomass_tr <- biomass[biomass$dataset == "Training",]
+
+data("credit_data")
+set.seed(55)
+train_test_split <- initial_split(credit_data)
+credit_tr <- training(train_test_split)
 
 test_that("recipe + axe_env() works", {
   rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
@@ -14,23 +23,15 @@ test_that("recipe + axe_env() works", {
     step_scale(all_predictors()) %>%
     step_spatialsign(all_predictors())
   x <- axe_env(rec)
-  test_en <- rlang::base_env()
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
   expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
   expect_identical(attr(x$steps[[3]]$terms[[1]], ".Environment"), test_en)
 })
 
-# Imputation
-data("credit_data")
-set.seed(55)
-train_test_split <- initial_split(credit_data)
-credit_tr <- training(train_test_split)
-
 test_that("recipe + step_knnimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_knnimpute(all_predictors())
   x <- axe_env(rec)
-  test_en <- rlang::base_env()
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
   expect_identical(attr(x$steps[[1]]$impute_with[[1]], ".Environment"), test_en)
 })
@@ -39,7 +40,6 @@ test_that("recipe + step_lowerimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_lowerimpute(Time, Expenses, threshold = c(40,40))
   x <- axe_env(rec)
-  test_en <- rlang::base_env()
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
 })
 
@@ -47,11 +47,9 @@ test_that("recipe + step_rollimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_rollimpute(Time, statistic = median, window = 3)
   x <- axe_env(rec)
-  test_en <- rlang::base_env()
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
 })
 
-# Transformations
 test_that("recipe + step_BoxCox + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_BoxCox(rec, all_numeric())
@@ -265,7 +263,7 @@ test_that("recipe + step_ordinalscore + axe_env() works", {
     step_ordinalscore(fail_severity)
   x <- axe_env(rec)
   expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
 })
 
 test_that("recipe + step_other + axe_env() works", {
@@ -292,7 +290,7 @@ test_that("recipe + step_interact + axe_env() works", {
                 data = biomass_tr) %>%
     step_interact(terms = ~ carbon:hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  expect_identical(attr(x$steps[[1]]$terms, ".Environment"), test_en)
 })
 
 test_that("recipe + step_range + axe_env() works", {

@@ -229,7 +229,7 @@ axe_env.step_integer <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_interact <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  attr(x$terms, ".Environment") <- rlang::base_env()
   x
 }
 

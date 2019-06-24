@@ -23,7 +23,7 @@ axe_env.recipe <- function(x, ...) {
   x
 }
 
-#' No environment to axe in step. Examples of such steps include \code{step_sample},
+#' No environment to axe in step object. Examples of such objects include \code{step_sample},
 #' \code{step_intercept}, and \code{step_profile}.
 #'
 #' @rdname axe-recipe
@@ -59,7 +59,6 @@ axe_env.step_bin2factor <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
-
 
 #' A means to replace environments wrapped from the \code{step_BoxCox} function.
 #'
@@ -387,7 +386,6 @@ axe_env.step_novel <- function(x, ...) {
   x
 }
 
-
 #' A means to replace environments wrapped from the \code{step_num2factor} function.
 #'
 #' @rdname axe-recipe
@@ -551,7 +549,6 @@ axe_env.step_string2factor <- function(x, ...) {
   x
 }
 
-
 #' A means to replace environments wrapped from the \code{step_sqrt} function.
 #'
 #' @rdname axe-recipe
@@ -623,5 +620,3 @@ axe_env.quosure <- function(x, ...) {
   attr(x, ".Environment") <- rlang::base_env()
   x
 }
-
-

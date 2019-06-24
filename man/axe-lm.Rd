@@ -5,7 +5,6 @@
 \alias{axe_call.lm}
 \alias{axe_env.lm}
 \alias{axe_fitted.lm}
-\alias{predict.butcher_lm}
 \title{Axing an lm.}
 \usage{
 \method{axe_call}{lm}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_env}{lm}(x, ...)
 
 \method{axe_fitted}{lm}(x, ...)
-
-\method{predict}{butcher_lm}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -28,12 +25,20 @@ axed model object
 This is where all the lm specific documentation lies.
 }
 \examples{
-# Make a lm that has a lot of extra stuff in its environment
-make_an_lm <- function() {
-  x <- rep(1L, times = 10e6)
-  lm(1 ~ 1)
-}
-lm_object <- make_an_lm()
-lm_axed <- axe(lm_object)
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(tidymodels)))
+
+# Load data
+split <- initial_split(mtcars, props = 9/10)
+car_train <- training(split)
+car_test  <- testing(split)
+
+# Create model and fit
+lm_fit <- linear_reg() \%>\%
+  set_engine("lm") \%>\%
+  fit(mpg ~ ., data = car_train)
+
+butcher(lm_object)
 
 }

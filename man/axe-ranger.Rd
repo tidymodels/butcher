@@ -6,7 +6,6 @@
 \alias{axe_ctrl.ranger}
 \alias{axe_fitted.ranger}
 \alias{axe_misc.ranger}
-\alias{predict.butcher_ranger}
 \title{Axing an ranger.}
 \usage{
 \method{axe_call}{ranger}(x, ...)
@@ -16,8 +15,6 @@
 \method{axe_fitted}{ranger}(x, ...)
 
 \method{axe_misc}{ranger}(x, ...)
-
-\method{predict}{butcher_ranger}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -51,7 +48,6 @@ ranger_fit <- rand_forest(mode = "classification",
   set_engine("ranger") \%>\%
   fit(Species ~ ., data = iris_train)
 
-# Axe
-axe(ranger_fit)
+butcher(ranger_fit)
 
 }

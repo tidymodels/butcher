@@ -6,7 +6,6 @@
 \alias{axe_ctrl.rpart}
 \alias{axe_env.rpart}
 \alias{axe_misc.rpart}
-\alias{predict.butcher_rpart}
 \title{Axing a rpart.}
 \usage{
 \method{axe_call}{rpart}(x, ...)
@@ -16,8 +15,6 @@
 \method{axe_env}{rpart}(x, ...)
 
 \method{axe_misc}{rpart}(x, ...)
-
-\method{predict}{butcher_rpart}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -49,7 +46,6 @@ rpart_fit <- decision_tree(mode = "regression") \%>\%
   set_engine("rpart") \%>\%
   fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
 
-# Axe
-axe(rpart_fit)
+butcher(rpart_fit)
 
 }

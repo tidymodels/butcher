@@ -4,14 +4,11 @@
 \alias{axe-multnet}
 \alias{axe_call.multnet}
 \alias{axe_misc.multnet}
-\alias{predict.butcher_multnet}
 \title{Axing an multnet.}
 \usage{
 \method{axe_call}{multnet}(x, ...)
 
 \method{axe_misc}{multnet}(x, ...)
-
-\method{predict}{butcher_multnet}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -43,7 +40,6 @@ multnet_fit <- multinom_reg() \%>\%
   set_engine("glmnet") \%>\%
   fit_xy(x = predictrs, y = response)
 
-# Axe
-axe(multnet_fit)
+butcher(multnet_fit)
 
 }

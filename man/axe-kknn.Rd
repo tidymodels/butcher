@@ -6,7 +6,6 @@
 \alias{axe_env.kknn}
 \alias{axe_fitted.kknn}
 \alias{axe_misc.kknn}
-\alias{predict.butcher_train.kknn}
 \title{Axing an kknn.}
 \usage{
 \method{axe_call}{kknn}(x, ...)
@@ -16,8 +15,6 @@
 \method{axe_fitted}{kknn}(x, ...)
 
 \method{axe_misc}{kknn}(x, ...)
-
-\method{predict}{butcher_train.kknn}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -52,7 +49,6 @@ kknn_fit <- nearest_neighbor(mode = "classification",
   set_engine("kknn") \%>\%
   fit(Kyphosis ~ ., data = spine_train)
 
-# Axe
-axe(kknn_fit)
+butcher(kknn_fit)
 
 }

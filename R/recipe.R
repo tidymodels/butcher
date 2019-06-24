@@ -228,7 +228,7 @@ axe_env.step_integer <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_interact <- function(x, ...) {
-  attr(x$terms, ".Environment") <- rlang::base_env()
+  attr(x$terms, ".Environment") <- rlang::empty_env()
   x
 }
 
@@ -617,6 +617,6 @@ axe_env.step_zv <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.quosure <- function(x, ...) {
-  attr(x, ".Environment") <- rlang::base_env()
+  attr(x, ".Environment") <- rlang::empty_env()
   x
 }

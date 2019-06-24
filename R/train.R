@@ -20,8 +20,7 @@
 #'                    preProcess = c("center", "scale"),
 #'                    tuneLength = 10,
 #'                    trControl = trainControl(method = "cv"))
-#' # Axe
-#' axe(train_fit)
+#' butcher(train_fit)
 #'
 #' @name axe-train
 NULL

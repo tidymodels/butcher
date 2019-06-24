@@ -25,8 +25,7 @@
 #'   set_engine("glmnet") %>%
 #'   fit_xy(x = predictrs, y = response)
 #'
-#' # Axe
-#' axe(multnet_fit)
+#' butcher(multnet_fit)
 #'
 #' @name axe-multnet
 NULL
@@ -51,10 +50,4 @@ axe_misc.multnet <- function(x, ...) {
   x
 }
 
-#' @rdname axe-multnet
-#' @export
-predict.butcher_multnet <- function(x, ...) {
-  class(x) <- "multnet"
-  predict(x, ...)
-}
 

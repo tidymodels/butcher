@@ -16,11 +16,6 @@ weigh <- function(x, ...) {
   UseMethod("weigh")
 }
 
-#' @param x model object
-#' @param threshold cutoff memory level
-#' @param units defaults to MB
-#'
-#' @return tibble
 #' @export
 weigh.default <- function(x, threshold = 2, units = "MB") {
   # TODO: weigh for keras object

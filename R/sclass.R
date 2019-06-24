@@ -20,8 +20,7 @@
 #'
 #' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
-#' # Axe
-#' axe(classbagg_fit$mtrees[[1]])
+#' butcher(classbagg_fit$mtrees[[1]])
 #' @name axe-sclass
 NULL
 

@@ -23,8 +23,7 @@
 #'   set_engine("flexsurv") %>%
 #'   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
 #'
-#' # Axe
-#' axe(flexsurvreg_fit)
+#' butcher(flexsurvreg_fit)
 #'
 #' @name axe-flexsurvreg
 NULL
@@ -90,10 +89,4 @@ axe_misc.flexsurvreg <- function(x, ...) {
   x
 }
 
-#' @rdname axe-flexsurvreg
-#' @export
-predict.butcher_flexsurvreg <- function(x, ...) {
-  class(x) <- "flexsurvreg" # TODO: this needs to change for flexsurv
-  predict(x, ...)
-}
 

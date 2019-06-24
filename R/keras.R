@@ -34,10 +34,4 @@ axe_fitted.keras <- function(x, ...) {
   x
 }
 
-#' @rdname axe-keras
-#' @export
-predict.butcher_keras <- function(x, ...) {
-  class(x) <- "keras"
-  predict(x, ...)
-}
 

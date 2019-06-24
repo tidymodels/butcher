@@ -29,8 +29,7 @@
 #'   set_engine("kknn") %>%
 #'   fit(Kyphosis ~ ., data = spine_train)
 #'
-#' # Axe
-#' axe(kknn_fit)
+#' butcher(kknn_fit)
 #'
 #' @name axe-kknn
 NULL
@@ -78,9 +77,3 @@ axe_misc.kknn <- function(x, ...) {
   x
 }
 
-#' @rdname axe-kknn
-#' @export
-predict.butcher_train.kknn <- function(x, ...) {
-  class(x) <- c("train.kknn", "kknn")
-  predict(x, ...)
-}

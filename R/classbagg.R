@@ -16,8 +16,7 @@
 #'
 #' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
-#' # Axe
-#' axe(classbagg_fit)
+#' butcher(classbagg_fit)
 #' @name axe-classbagg
 NULL
 

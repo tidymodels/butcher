@@ -43,7 +43,7 @@
 #'   add_role(manufacturability, new_role = "performance var") %>%
 #'   # Remove zero variance predictors
 #'   step_nzv(all_predictors()) %>%
-#'   # Retain the components required to capture 95% of info
+#'   # Retrain the components required to capture 95% of info
 #'   step_pca(contains("VSA"), prefix = "surf_area_", threshold = .95) %>%
 #'   # Avoid having predictor pairs with correlation greater than 90%
 #'   step_corr(all_predictors(), -starts_with("surf_area"), threshold = .90) %>%

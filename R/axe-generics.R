@@ -1,4 +1,4 @@
-#' Axe an object.
+#' Butcher an object.
 #'
 #' Reduce the size of a model object so that it takes up less memory on disk.
 #' Currently the model object is stripped down to the point that only the
@@ -11,7 +11,7 @@
 #'
 #' @return axed model object with new butcher subclass assignment
 #' @export
-axe <- function(x, ...) {
+butcher <- function(x, ...) {
   x <- axe_call(x, ...)
   x <- axe_ctrl(x, ...)
   x <- axe_data(x, ...)
@@ -20,11 +20,9 @@ axe <- function(x, ...) {
   x <- axe_misc(x, ...)
   # Get original class
   og_class <- class(x)[1]
-  # TODO: insert check here
-  class(x) <- paste0("butcher_", og_class)
+  class(x) <- c(paste0("butcher_", og_class), og_class)
   x
 }
-
 
 #' Axe a call.
 #'

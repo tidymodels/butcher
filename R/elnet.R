@@ -25,8 +25,7 @@
 #'   set_engine("glmnet") %>%
 #'   fit_xy(x = select(car_train, -mpg), y = select(car_train, mpg))
 #'
-#' # Axe
-#' axe(elnet_fit)
+#' butcher(elnet_fit)
 #'
 #' @name axe-elnet
 NULL
@@ -40,9 +39,3 @@ axe_call.elnet <- function(x, ...) {
   x
 }
 
-#' @rdname axe-elnet
-#' @export
-predict.butcher_elnet <- function(x, ...) {
-  class(x) <- c("elnet", "glmnet")
-  predict(x, ...)
-}

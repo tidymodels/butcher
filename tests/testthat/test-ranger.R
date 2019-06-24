@@ -11,7 +11,7 @@ test_that("ranger + butcher_example() works", {
 load(butcher_example("ranger.rda"))
 
 test_that("ranger + predict() works", {
-  x <- axe(ranger_fit)
+  x <- butcher(ranger_fit)
   new_data <- iris[1:3, ]
   expect_equal(predict(x, new_data)$predictions[1,1], c(setosa = 1))
   expect_equal(predict(x, data = new_data, predict.all = TRUE)$predictions[1,1,20], 1)

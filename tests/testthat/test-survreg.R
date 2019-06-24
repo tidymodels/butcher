@@ -11,7 +11,7 @@ test_that("survreg + butcher_example() works", {
 load(butcher_example("survreg.rda"))
 
 test_that("survreg + predict() works", {
-  x <- axe(survreg_fit)
+  x <- butcher(survreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$y, numeric(0))
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())

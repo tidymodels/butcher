@@ -26,8 +26,7 @@
 #'   set_engine("C5.0") %>%
 #'   fit(Kyphosis ~ ., data = spine_train)
 #'
-#' # Axe
-#' axe(c5_fit)
+#' butcher(c5_fit)
 #'
 #' @name axe-C5.0
 NULL
@@ -65,9 +64,3 @@ axe_misc.C5.0 <- function(x, ...) {
   x
 }
 
-#' @rdname axe-C5.0
-#' @export
-predict.butcher_C5.0 <- function(x, ...) {
-  class(x) <- "C5.0"
-  predict(x, ...)
-}

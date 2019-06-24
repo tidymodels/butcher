@@ -7,7 +7,6 @@
 \alias{axe_data.flexsurvreg}
 \alias{axe_env.flexsurvreg}
 \alias{axe_misc.flexsurvreg}
-\alias{predict.butcher_flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
 \method{axe_call}{flexsurvreg}(x, ...)
@@ -19,8 +18,6 @@
 \method{axe_env}{flexsurvreg}(x, ...)
 
 \method{axe_misc}{flexsurvreg}(x, ...)
-
-\method{predict}{butcher_flexsurvreg}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -49,7 +46,6 @@ flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
   set_engine("flexsurv") \%>\%
   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
 
-# Axe
-axe(flexsurvreg_fit)
+butcher(flexsurvreg_fit)
 
 }

@@ -47,10 +47,4 @@ axe_misc.model_fit <- function(x, ...) {
   axe_misc(x$fit, ...)
 }
 
-#' @rdname axe-model_fit
-#' @export
-predict.butcher_model_fit <- function(x, ...) {
-  class(x) <- "model_fit"
-  predict(x, ...)
-}
 

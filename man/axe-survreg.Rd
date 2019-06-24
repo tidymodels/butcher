@@ -5,7 +5,6 @@
 \alias{axe_call.survreg}
 \alias{axe_data.survreg}
 \alias{axe_env.survreg}
-\alias{predict.butcher_survreg}
 \title{Axing an survreg.}
 \usage{
 \method{axe_call}{survreg}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_data}{survreg}(x, ...)
 
 \method{axe_env}{survreg}(x, ...)
-
-\method{predict}{butcher_survreg}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -41,7 +38,6 @@ survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
   set_engine("survreg") \%>\%
   fit(Surv(futime, fustat) ~ 1, data = ovarian)
 
-# Axe
-axe(survreg_fit)
+butcher(survreg_fit)
 
 }

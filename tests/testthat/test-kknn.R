@@ -11,7 +11,7 @@ test_that("kknn + butcher_example() works", {
 load(butcher_example("kknn.rda"))
 
 test_that("kknn + predict() works", {
-  x <- axe(kknn_fit)
+  x <- butcher(kknn_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
   expect_equal(x$fitted.values, list(NULL))

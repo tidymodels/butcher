@@ -8,13 +8,21 @@
 #' @return axed model object
 #'
 #' @examples
-#' # Make a lm that has a lot of extra stuff in its environment
-#' make_an_lm <- function() {
-#'   x <- rep(1L, times = 10e6)
-#'   lm(1 ~ 1)
-#' }
-#' lm_object <- make_an_lm()
-#' lm_axed <- axe(lm_object)
+#' # Load libraries
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(tidymodels)))
+#'
+#' # Load data
+#' split <- initial_split(mtcars, props = 9/10)
+#' car_train <- training(split)
+#' car_test  <- testing(split)
+#'
+#' # Create model and fit
+#' lm_fit <- linear_reg() %>%
+#'   set_engine("lm") %>%
+#'   fit(mpg ~ ., data = car_train)
+#'
+#' butcher(lm_object)
 #'
 #' @name axe-lm
 NULL
@@ -52,12 +60,5 @@ axe_env.lm <- function(x, ...) {
 axe_fitted.lm <- function(x, ...) {
   x$fitted.values <- numeric(0)
   x
-}
-
-#' @rdname axe-lm
-#' @export
-predict.butcher_lm <- function(x, ...) {
-  class(x) <- "lm"
-  predict(x, ...)
 }
 

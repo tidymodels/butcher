@@ -30,8 +30,7 @@
 #'   set_engine("randomForest") %>%
 #'   fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 #'
-#' # Axe
-#' axe(randomForest_fit)
+#' butcher(randomForest_fit)
 #'
 #' @name axe-randomForest
 NULL
@@ -75,9 +74,3 @@ axe_misc.randomForest <- function(x, ...) {
   x
 }
 
-#' @rdname axe-randomForest
-#' @export
-predict.butcher_randomForest <- function(x, ...) {
-  class(x) <- "randomForest"
-  predict(x, ...)
-}

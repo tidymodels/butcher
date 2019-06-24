@@ -5,7 +5,6 @@
 \alias{axe_call.keras}
 \alias{axe_env.keras}
 \alias{axe_fitted.keras}
-\alias{predict.butcher_keras}
 \title{Axing an keras.}
 \usage{
 \method{axe_call}{keras}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_env}{keras}(x, ...)
 
 \method{axe_fitted}{keras}(x, ...)
-
-\method{predict}{butcher_keras}(x, ...)
 }
 \arguments{
 \item{x}{model object}

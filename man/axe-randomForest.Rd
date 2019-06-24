@@ -5,7 +5,6 @@
 \alias{axe_call.randomForest}
 \alias{axe_ctrl.randomFoest}
 \alias{axe_misc.randomForest}
-\alias{predict.butcher_randomForest}
 \title{Axing an randomForest.}
 \usage{
 \method{axe_call}{randomForest}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_ctrl}{randomFoest}(x, ...)
 
 \method{axe_misc}{randomForest}(x, ...)
-
-\method{predict}{butcher_randomForest}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -50,7 +47,6 @@ randomForest_fit <- rand_forest(mode = "classification",
   set_engine("randomForest") \%>\%
   fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 
-# Axe
-axe(randomForest_fit)
+butcher(randomForest_fit)
 
 }

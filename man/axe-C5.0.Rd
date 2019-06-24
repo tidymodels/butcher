@@ -5,7 +5,6 @@
 \alias{axe_call.C5.0}
 \alias{axe_ctrl.C5.0}
 \alias{axe_misc.C5.0}
-\alias{predict.butcher_C5.0}
 \title{Axing a C5.0.}
 \usage{
 \method{axe_call}{C5.0}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_ctrl}{C5.0}(x, ...)
 
 \method{axe_misc}{C5.0}(x, ...)
-
-\method{predict}{butcher_C5.0}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -46,7 +43,6 @@ c5_fit <- decision_tree(mode = "classification") \%>\%
   set_engine("C5.0") \%>\%
   fit(Kyphosis ~ ., data = spine_train)
 
-# Axe
-axe(c5_fit)
+butcher(c5_fit)
 
 }

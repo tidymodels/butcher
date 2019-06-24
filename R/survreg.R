@@ -21,8 +21,7 @@
 #'   set_engine("survreg") %>%
 #'   fit(Surv(futime, fustat) ~ 1, data = ovarian)
 #'
-#' # Axe
-#' axe(survreg_fit)
+#' butcher(survreg_fit)
 #'
 #' @name axe-survreg
 NULL
@@ -57,10 +56,4 @@ axe_env.survreg <- function(x, ...) {
   x
 }
 
-#' @rdname axe-survreg
-#' @export
-predict.butcher_survreg <- function(x, ...) {
-  class(x) <- "survreg"
-  predict(x, ...)
-}
 

@@ -47,10 +47,4 @@ axe_fitted.stanreg <- function(x, ...) {
   x
 }
 
-#' @rdname axe-stanreg
-#' @export
-predict.butcher_stanreg <- function(x, ...) {
-  class(x) <- c("stanreg", "glm", "lm")
-  predict(x, ...)
-}
 

@@ -28,8 +28,7 @@
 #'   set_engine("ranger") %>%
 #'   fit(Species ~ ., data = iris_train)
 #'
-#' # Axe
-#' axe(ranger_fit)
+#' butcher(ranger_fit)
 #'
 #' @name axe-ranger
 NULL
@@ -79,10 +78,4 @@ axe_misc.ranger <- function(x, ...) {
   x
 }
 
-#' @rdname axe-ranger
-#' @export
-predict.butcher_ranger <- function(x, ...) {
-  class(x) <- "ranger"
-  predict(x, ...)
-}
 

@@ -3,12 +3,9 @@
 \name{axe-elnet}
 \alias{axe-elnet}
 \alias{axe_call.elnet}
-\alias{predict.butcher_elnet}
 \title{Axing an elnet.}
 \usage{
 \method{axe_call}{elnet}(x, ...)
-
-\method{predict}{butcher_elnet}(x, ...)
 }
 \arguments{
 \item{x}{model object}
@@ -40,7 +37,6 @@ elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
   set_engine("glmnet") \%>\%
   fit_xy(x = select(car_train, -mpg), y = select(car_train, mpg))
 
-# Axe
-axe(elnet_fit)
+butcher(elnet_fit)
 
 }

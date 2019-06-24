@@ -26,8 +26,7 @@
 #'   set_engine("rpart") %>%
 #'   fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
 #'
-#' # Axe
-#' axe(rpart_fit)
+#' butcher(rpart_fit)
 #'
 #' @name axe-rpart
 NULL
@@ -83,15 +82,4 @@ axe_misc.rpart <- function(x, ...) {
   x
 }
 
-#' The \code{predict.rpart} function relies on an underlying C function
-#' to carry out prediction as illustrated in \code{rpart::pred.rpart}.
-#' The parts of the model object that appear to have a role include the
-#' frame, splits, csplit, and control$usesurrogate.
-#'
-#' @rdname axe-rpart
-#' @export
-predict.butcher_rpart <- function(x, ...) {
-  class(x) <- c("rpart")
-  predict(x, ...)
-}
 

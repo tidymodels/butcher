@@ -5,7 +5,7 @@ library(recipes)
 library(lubridate)
 
 # For testing purposes
-test_en <- rlang::base_env()
+test_en <- rlang::empty_env()
 
 # Reused data
 data(biomass)

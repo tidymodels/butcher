@@ -27,8 +27,8 @@ test_that("stanreg + axe_fitted() works", {
   expect_equal(x$fitted.values, numeric(0))
 })
 
-test_that("stanreg + axe() works", {
-  x <- axe(stanreg_fit)
+test_that("stanreg + butcher() works", {
+  x <- butcher(stanreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   test_en <- rlang::base_env()
   expect_identical(attr(x$terms, ".Environment"), test_en)
@@ -36,10 +36,10 @@ test_that("stanreg + axe() works", {
   expect_identical(x$stanfit@.MISC, test_en)
   expect_identical(x$stanfit@stanmodel@dso@.CXXDSOMISC, test_en)
   expect_equal(x$fitted.values, numeric(0))
-  expect_equal(class(x), "butcher_stanreg")
+  expect_equal(class(x)[1], "butcher_stanreg")
 })
 
 test_that("stanreg + predict() works", {
-  x <- axe(stanreg_fit)
+  x <- butcher(stanreg_fit)
   expect_gt(predict(x)[1], 20)
 })

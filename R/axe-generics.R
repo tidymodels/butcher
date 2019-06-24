@@ -19,7 +19,7 @@ butcher <- function(x, ...) {
   x <- axe_fitted(x, ...)
   x <- axe_misc(x, ...)
   # Get original class
-  og_class <- class(x)[1]
+  og_class <- class(x)
   class(x) <- c(paste0("butcher_", og_class), og_class)
   x
 }

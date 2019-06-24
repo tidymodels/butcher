@@ -1,6 +1,6 @@
 #' Axing a sclass object.
 #'
-#' sclass objects are byproducts of sclass objects. Since there are
+#' sclass objects are byproducts of classbagg objects. Since there are
 #' axe functions specific to this class, we keep all documentation
 #' related to sclass objects here.
 #'
@@ -18,10 +18,10 @@
 #' # Load data
 #' data("GlaucomaM", package = "TH.data")
 #'
-#' sclass_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
+#' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
 #' # Axe
-#' axe(sclass_fit$mtrees[[1]])
+#' axe(classbagg_fit$mtrees[[1]])
 #' @name axe-sclass
 NULL
 

@@ -11,7 +11,7 @@ test_that("flexsurvreg + butcher_example() works", {
 load(butcher_example("flexsurvreg.rda"))
 
 test_that("flexsurvreg + predict() works", {
-  x <- axe(flexsurvreg_fit)
+  x <- butcher(flexsurvreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$data$Y, numeric(0))
   expect_identical(attr(attributes(x$data$m)$terms, ".Environment"), rlang::base_env())

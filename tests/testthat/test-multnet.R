@@ -14,7 +14,7 @@ load(butcher_example("multnet.rda"))
 # the glmnet package.
 
 test_that("multnet + predict() works", {
-  x <- axe(multnet_fit)
+  x <- butcher(multnet_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(predict(x, newx = matrix(1, ncol = 20), s= 1)[1,1,1], 0.0881926426624652)
 })

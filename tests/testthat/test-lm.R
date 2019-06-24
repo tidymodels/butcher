@@ -23,15 +23,15 @@ test_that("lm + axe_fitted() works", {
   expect_equal(x$fitted.values, numeric(0))
 })
 
-test_that("lm + axe() works", {
-  x <- axe(lm_fit)
+test_that("lm + butcher() works", {
+  x <- butcher(lm_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
   expect_equal(x$fitted.values, numeric(0))
-  expect_equal(class(x), "butcher_lm")
+  expect_equal(class(x)[1], "butcher_lm")
 })
 
 test_that("lm + predict() works", {
-  x <- axe(lm_fit)
+  x <- butcher(lm_fit)
   expect_equal(predict(x)[1], c(`Mazda RX4` = 21.5647055857078))
 })

@@ -11,7 +11,7 @@ test_that("elnet + butcher_example() works", {
 load(butcher_example("elnet.rda"))
 
 test_that("elnet + predict() works", {
-  x <- axe(elnet_fit)
+  x <- butcher(elnet_fit)
   new_data <- as.matrix(mtcars[1:3, 2:11])
   expect_equal(predict(x, new_data)[1], 22.5177880899825)
 })

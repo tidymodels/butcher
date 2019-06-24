@@ -9,7 +9,7 @@ test_that("rpart + butcher_example() works", {
 load(butcher_example("rpart.rda"))
 
 test_that("rpart + predict() works", {
-  x <- axe(rpart_fit)
+  x <- butcher(rpart_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$functions, rlang::expr(dummy_call()))
   expect_true("usesurrogate" %in% names(x$control))

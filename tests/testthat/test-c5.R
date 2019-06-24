@@ -11,7 +11,7 @@ test_that("c5 + butcher_example() works", {
 load(butcher_example("c5.rda"))
 
 test_that("c5 + predict() works", {
-  x <- axe(c5_fit)
+  x <- butcher(c5_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$control, list(NULL))
   new_data <- data.frame(Age = c(42, 71), Number = c(7, 3), Start = c(6, 5))

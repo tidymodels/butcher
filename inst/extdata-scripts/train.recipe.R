@@ -45,11 +45,11 @@ tox_recipe <- recipe(Activity ~ ., data = tox) %>%
 set.seed(888)
 tox_ctrl <- trainControl(method = "cv", summaryFunction = model_stats)
 train.recipe_fit <- train(tox_recipe, tox,
-                 method = "svmRadial",
-                 metric = "wRMSE",
-                 maximize = FALSE,
-                 tuneLength = 10,
-                 trControl = tox_ctrl)
+                          method = "svmRadial",
+                          metric = "wRMSE",
+                          maximize = FALSE,
+                          tuneLength = 10,
+                          trControl = tox_ctrl)
 
 # Save
 save(train.recipe_fit, file = "inst/extdata/train.recipe.rda")

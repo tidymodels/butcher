@@ -39,6 +39,6 @@ lm_fit <- linear_reg() \%>\%
   set_engine("lm") \%>\%
   fit(mpg ~ ., data = car_train)
 
-butcher(lm_object)
+butcher(lm_fit)
 
 }

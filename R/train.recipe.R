@@ -111,6 +111,7 @@ axe_data.train.recipe <- function(x, ...) {
 #' @export
 axe_env.train.recipe <- function(x, ...) {
   x$recipe <- axe_env(x$recipe, ...)
+  x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
   x
 }
 

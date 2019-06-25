@@ -20,6 +20,7 @@
 #'                    preProcess = c("center", "scale"),
 #'                    tuneLength = 10,
 #'                    trControl = trainControl(method = "cv"))
+#'
 #' butcher(train_fit)
 #'
 #' @name axe-train
@@ -50,6 +51,15 @@ axe_ctrl.train <- function(x, ...) {
 #' @export
 axe_data.train <- function(x, ...) {
   x$trainingData <- data.frame(NA)
+  x
+}
+
+#' Remove environments associated with \code{srcref}.
+#'
+#' @rdname axe-train
+#' @export
+axe_env.train <- function(x, ...) {
+  x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
   x
 }
 

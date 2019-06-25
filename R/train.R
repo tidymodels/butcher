@@ -63,8 +63,7 @@ axe_env.train <- function(x, ...) {
   x
 }
 
-#' Fitted values are removed from train object since it is not called in
-#' its \code{predict} function at all.
+#' Remove fitted values.
 #'
 #' @rdname axe-train
 #' @export

@@ -19,7 +19,6 @@
 #' set.seed(1234)
 #' split <- initial_split(mtcars, props = 9/10)
 #' car_train <- training(split)
-#' car_test  <- testing(split)
 #'
 #' # Create model and fit
 #' rpart_fit <- decision_tree(mode = "regression") %>%
@@ -31,7 +30,7 @@
 #' @name axe-rpart
 NULL
 
-#' Calls can be removed without breaking \code{predict}.
+#' Remove calls.
 #'
 #' @rdname axe-rpart
 #' @export
@@ -41,9 +40,7 @@ axe_call.rpart <- function(x, ...) {
   x
 }
 
-#' Most of control can be removed without breaking \code{predict}.
-#' Currently it is replaced with a NULL list to
-#' maintain the structure of the original rpart object.
+#' Remove controls.
 #'
 #' @rdname axe-rpart
 #' @export
@@ -54,31 +51,22 @@ axe_ctrl.rpart <- function(x, ...) {
   x
 }
 
-#' The environment stored under terms for an rpart object cannot just be
-#' replaced with an empty environment. As indicated under \code{rpart::predict.rpart},
-#' at some point \code{stats::model.frame.default} is called on the
-#' terms object and the new data on which we want to carry out prediction.
-#' Unfortunately, \code{stats::model.frame.default} relies on the \code{list}
-#' function which it calls from a specific environment. We thus replace the
-#' environment stored in the original rpart object with this parsed down
-#' version of the environment to accomodate the means by which
-#' \code{rpart::predict.rpart} works.
+#' Remove the environment.
 #'
 #' @rdname axe-rpart
 #' @export
 axe_env.rpart <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
-  # attr(x$terms, ".Environment") <- rlang::base_env()
   x
 }
 
-#' Cptable can be removed. It stores the optimal prunings based on the
-#' complexity parameter.
+#' Remove misc. For rpart objects, we remove \code{cptable}, which stores
+#' the optimal prunings based on the complexity parameter.
 #'
 #' @rdname axe-rpart
 #' @export
 axe_misc.rpart <- function(x, ...) {
-  x$cptable <- numeric(0)
+  axe_misc(x$cptable)
   x
 }
 

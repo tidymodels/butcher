@@ -28,7 +28,8 @@
 #' @name axe-flexsurvreg
 NULL
 
-#' The call can be axed.
+#' Remove the call. Note that \code{print} will be broken once this
+#' call is removed.
 #'
 #' @rdname axe-flexsurvreg
 #' @export
@@ -37,18 +38,17 @@ axe_call.flexsurvreg <- function(x, ...) {
   x
 }
 
-#' A number of control parameters can be axed.
+#' Remove controls. Note this removes the list defining the survival
+#' distribution.
 #'
 #' @rdname axe-flexsurvreg
 #' @export
 axe_ctrl.flexsurvreg <- function(x, ...) {
-  # x$dlist$inits # TODO: check whether replacement is worth it
-  x$mx <- list(NULL)
-  x$npars <- numeric(0)
+  x$dlist$inits <- NULL
   x
 }
 
-#' One part of the data object can be axed.
+#' Remove the data.
 #'
 #' @rdname axe-flexsurvreg
 #' @export
@@ -57,36 +57,13 @@ axe_data.flexsurvreg <- function(x, ...) {
   x
 }
 
-#' The same environment is referenced in terms as well as other parts of
-#' the flexsurv fitted model. They all need to be addressed in order for
-#' the environment to be completely replaced with a base environment.
+#' Remove environments.
 #'
 #' @rdname axe-flexsurvreg
 #' @export
 axe_env.flexsurvreg <- function(x, ...) {
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
   attributes(x$concat.formula)$`.Environment` <- rlang::base_env()
-  attributes(x$all.formulae$mu)$`.Environment` <- rlang::base_env()
+  x$all.formulae <- purrr::map(x$all.formulae, function(z) axe_env(z, ...))
   x
 }
-
-#' A number of components stored from training can be removed.
-#'
-#' @rdname axe-flexsurvreg
-#' @export
-axe_misc.flexsurvreg <- function(x, ...) {
-  x$AIC <- numeric(0)
-  x$datameans <- numeric(0)
-  x$N <- numeric(0)
-  x$events <- numeric(0)
-  x$trisk <- numeric(0)
-  x$basepars <- numeric(0)
-  x$fixedpars <- numeric(0)
-  x$optpars <- numeric(0)
-  x$loglik <- numeric(0)
-  x$logliki <- numeric(0)
-  x$opt <- list(NULL)
-  x
-}
-
-

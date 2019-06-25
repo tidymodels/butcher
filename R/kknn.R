@@ -34,7 +34,7 @@
 #' @name axe-kknn
 NULL
 
-#' The call can be axed without breaking \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-kknn
 #' @export
@@ -43,8 +43,7 @@ axe_call.kknn <- function(x, ...) {
   x
 }
 
-#' The environment located under terms can be replaced with the
-#' \code{rlang::base_env()}.
+#' Remove the environment.
 #'
 #' @rdname axe-kknn
 #' @export
@@ -53,7 +52,7 @@ axe_env.kknn <- function(x, ...) {
   x
 }
 
-#' Fitted values can be axed.
+#' Remove fitted values.
 #'
 #' @rdname axe-kknn
 #' @export
@@ -61,19 +60,3 @@ axe_fitted.kknn <- function(x, ...) {
   x$fitted.values <- list(NULL)
   x
 }
-
-#' A number of misc values are stored from training that can be
-#' axed without affecting \code{predict}. This includes the matrix
-#' of misclassification errors \code{MISCLASS}, the matrix of mean
-#' absolute errors \code{MEAN.ABS}, and the matrix of mean squared errors
-#' \code{MEAN.SQU}.
-#'
-#' @rdname axe-kknn
-#' @export
-axe_misc.kknn <- function(x, ...) {
-  x$MISCLASS <- numeric(0)
-  x$MEAN.ABS <- numeric(0)
-  x$MEAN.SQU <- numeric(0)
-  x
-}
-

@@ -26,7 +26,7 @@
 #' @name axe-survreg
 NULL
 
-#' The call can be axed without breaking \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-survreg
 #' @export
@@ -35,7 +35,7 @@ axe_call.survreg <- function(x, ...) {
   x
 }
 
-#' The Surv object can be removed without breaking \code{predict}.
+#' Remove the data.
 #'
 #' @rdname axe-survreg
 #' @export
@@ -44,9 +44,7 @@ axe_data.survreg <- function(x, ...) {
   x
 }
 
-#' The same environment is referenced in terms as well as model attribute.
-#' Both need to be addressed in order for the environment to be completely
-#' replaced with an empty environment.
+#' Remove environments.
 #'
 #' @rdname axe-survreg
 #' @export

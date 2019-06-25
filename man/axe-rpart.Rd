@@ -39,7 +39,6 @@ suppressWarnings(suppressMessages(library(rpart)))
 set.seed(1234)
 split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
-car_test  <- testing(split)
 
 # Create model and fit
 rpart_fit <- decision_tree(mode = "regression") \%>\%

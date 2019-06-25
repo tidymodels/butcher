@@ -6,7 +6,6 @@
 \alias{axe_ctrl.flexsurvreg}
 \alias{axe_data.flexsurvreg}
 \alias{axe_env.flexsurvreg}
-\alias{axe_misc.flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
 \method{axe_call}{flexsurvreg}(x, ...)
@@ -16,8 +15,6 @@
 \method{axe_data}{flexsurvreg}(x, ...)
 
 \method{axe_env}{flexsurvreg}(x, ...)
-
-\method{axe_misc}{flexsurvreg}(x, ...)
 }
 \arguments{
 \item{x}{model object}

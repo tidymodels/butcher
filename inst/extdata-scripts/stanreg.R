@@ -15,3 +15,17 @@ stanreg_fit <- linear_reg() %>%
 
 # Save
 save(stanreg_fit, file = "inst/extdata/stanreg.rda")
+
+# Another model
+lr_stan_spec <-
+  logistic_reg() %>%
+  set_engine(
+    "stan",
+    iter = 5000,
+    prior_intercept = rstanarm::student_t(df = varying()),
+    seed = 2347
+  )
+
+# Arguments that should be tuned
+varying_args(lr_stan_spec)
+

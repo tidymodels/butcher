@@ -5,7 +5,6 @@
 \alias{axe_call.kknn}
 \alias{axe_env.kknn}
 \alias{axe_fitted.kknn}
-\alias{axe_misc.kknn}
 \title{Axing an kknn.}
 \usage{
 \method{axe_call}{kknn}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_env}{kknn}(x, ...)
 
 \method{axe_fitted}{kknn}(x, ...)
-
-\method{axe_misc}{kknn}(x, ...)
 }
 \arguments{
 \item{x}{model object}

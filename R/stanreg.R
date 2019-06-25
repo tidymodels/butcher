@@ -12,16 +12,6 @@ NULL
 
 #' @rdname axe-stanreg
 #' @export
-axe.stanreg <- function(x, ...) {
-  x <- axe_call(x)
-  x <- axe_env(x)
-  x <- axe_fitted(x)
-  class(x) <- "butcher_stanreg"
-  x
-}
-
-#' @rdname axe-stanreg
-#' @export
 axe_call.stanreg <- function(x, ...) {
   x$call <- call("dummy_call")
   x

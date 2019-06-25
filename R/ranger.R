@@ -33,7 +33,7 @@
 #' @name axe-ranger
 NULL
 
-#' The call can be removed without breaking \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-ranger
 #' @export
@@ -42,24 +42,7 @@ axe_call.ranger <- function(x, ...) {
   x
 }
 
-#' A number of control parameters used for fitting the ranger object
-#' are stored, but unnecessary for \code{predict}. This includes the
-#' number of variables to split at each node \code{mtry}, the minimum
-#' node size \code{min.node.size}, the splitting rule \code{splitrule},
-#' and whether to sample with replacement \code{replace}.
-#'
-#' @rdname axe-ranger
-#' @export
-axe_ctrl.ranger <- function(x, ...) {
-  x$mtry <- numeric(0)
-  x$min.node.size <- numeric(0)
-  x$splitrule <- character(0)
-  x$replace <- logical(0)
-  x
-}
-
-#' The fitted ranger object stores fitted values, but in its \code{predict}
-#' function, these stored values are not accessed at all.
+#' Remove predictions.
 #'
 #' @rdname axe-ranger
 #' @export
@@ -67,15 +50,3 @@ axe_fitted.ranger <- function(x, ...) {
   x$predictions <- numeric(0)
   x
 }
-
-#' The out-of-bag prediction error is stored during training but not
-#' necessary for \code{predict.ranger}.
-#'
-#' @rdname axe-ranger
-#' @export
-axe_misc.ranger <- function(x, ...) {
-  x$prediction.error <- numeric(0)
-  x
-}
-
-

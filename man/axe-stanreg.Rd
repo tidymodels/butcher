@@ -2,13 +2,10 @@
 % Please edit documentation in R/stanreg.R
 \name{axe-stanreg}
 \alias{axe-stanreg}
-\alias{axe.stanreg}
 \alias{axe_call.stanreg}
 \alias{axe_fitted.stanreg}
 \title{Axing a stanreg.}
 \usage{
-axe.stanreg(x, ...)
-
 \method{axe_call}{stanreg}(x, ...)
 
 \method{axe_fitted}{stanreg}(x, ...)

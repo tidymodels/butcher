@@ -3,18 +3,12 @@
 \name{axe-ranger}
 \alias{axe-ranger}
 \alias{axe_call.ranger}
-\alias{axe_ctrl.ranger}
 \alias{axe_fitted.ranger}
-\alias{axe_misc.ranger}
 \title{Axing an ranger.}
 \usage{
 \method{axe_call}{ranger}(x, ...)
 
-\method{axe_ctrl}{ranger}(x, ...)
-
 \method{axe_fitted}{ranger}(x, ...)
-
-\method{axe_misc}{ranger}(x, ...)
 }
 \arguments{
 \item{x}{model object}

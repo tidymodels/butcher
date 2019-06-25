@@ -30,7 +30,7 @@
 #' @name axe-multnet
 NULL
 
-#' Call can be removed without breaking \code{predict}.
+#' Remove call.
 #'
 #' @rdname axe-multnet
 #' @export
@@ -39,14 +39,13 @@ axe_call.multnet <- function(x, ...) {
   x
 }
 
-#' Dfmat can be removed as it is utilized in \code{predict}. It is only
-#' instantiated for multnet and mrelnet objects, and it tracks the number
-#' of nonzero coefficients per class.
+#' Remove misc. For multnet objects, we remove \code{dfmat}, which
+#' tracks the number of nonzero coefficients per class.
 #'
 #' @rdname axe-multnet
 #' @export
 axe_misc.multnet <- function(x, ...) {
-  x$dfmat <- numeric(0)
+  x$dfmat <- axe_env(x$dfmat, ...)
   x
 }
 

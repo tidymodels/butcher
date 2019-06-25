@@ -65,7 +65,7 @@
 #'                    tuneLength = 10,
 #'                    trControl = tox_ctrl)
 #'
-#' butcher(train.recipe_fit)
+#' out <- butcher(train.recipe_fit)
 #'
 #' @name axe-train.recipe
 NULL

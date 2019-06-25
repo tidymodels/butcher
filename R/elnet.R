@@ -30,7 +30,7 @@
 #' @name axe-elnet
 NULL
 
-#' Call can be removed without breaking \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-elnet
 #' @export

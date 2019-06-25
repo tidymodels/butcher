@@ -35,7 +35,7 @@
 #' @name axe-randomForest
 NULL
 
-#' The call object can be removed without breaking \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-randomForest
 #' @export
@@ -43,34 +43,3 @@ axe_call.randomForest <- function(x, ...) {
   x$call <- call("dummy_call")
   x
 }
-
-#' A number of control parameters used for training can be removed,
-#' includes the number of trees grown \code{ntree} and the number of predictors
-#' sampled at each split \code{mtry}.
-#'
-#' @rdname axe-randomForest
-#' @export
-axe_ctrl.randomFoest <- function(x, ...) {
-  x$ntree <- numeric(0)
-  x$mtry <- numeric(0)
-  x
-}
-
-#' A number of misc parameters used for fitting the randomForest object
-#' are stored, but unnecessary for \code{predict}. This includes the
-#' number of times cases are out-of-bag \code{oob.times}, the classification
-#' error rates \code{err.rate}, the confusion matrix \code{confusion}, and
-#' the number of samples inbag \code{inbag}.
-#'
-#' @rdname axe-randomForest
-#' @export
-axe_misc.randomForest <- function(x, ...) {
-  x$oob.times <- numeric(0)
-  x$inbag <- numeric(0)
-  if(x$type == "classification") {
-    x$err.rate <- numeric(0)
-    x$confusion <- numeric(0)
-  }
-  x
-}
-

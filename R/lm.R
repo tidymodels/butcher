@@ -22,14 +22,13 @@
 #'   set_engine("lm") %>%
 #'   fit(mpg ~ ., data = car_train)
 #'
-#' butcher(lm_object)
+#' butcher(lm_fit)
 #'
 #' @name axe-lm
 NULL
 
-#' Call can be removed without breaking \code{predict}. Currently, the
-#' \code{predict} only relies on the \code{offset} feature stored in the
-#' call which is rarely used.
+#' Remove the call. Note that there may be a rare \code{offset} feature
+#' stored in the call which may be utilized in \code{predict}.
 #'
 #' @rdname axe-lm
 #' @export
@@ -38,22 +37,19 @@ axe_call.lm <- function(x, ...) {
   x
 }
 
-#' The same environment is referenced in terms as well as model attribute.
-#' Both need to be addressed in order for the environment to be completely
-#' replaced with an empty environment.
+#' Remove the environment. The same environment is referenced in terms
+#' as well as model attribute, both need to be addressed in order for
+#' the environment to be completely replaced.
 #'
 #' @rdname axe-lm
 #' @export
 axe_env.lm <- function(x, ...) {
-  # Environment in terms
   x$terms <- axe_env(x$terms, ...)
-  # Environment in model
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
   x
 }
 
-#' Fitted values are removed from lm object since it is not called in
-#' its \code{predict} function at all.
+#' Remove fitted values.
 #'
 #' @rdname axe-lm
 #' @export

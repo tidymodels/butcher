@@ -26,5 +26,6 @@ test_that("train + predict() works", {
   expect_equal(x$trainingData, data.frame(NA))
   expect_identical(attr(x$recipe$steps[[1]]$terms[[1]], ".Environment"), rlang::empty_env())
   expect_equal(x$pred, list(NULL))
+  expect_null(attributes(x$modelInfo$grid))
   expect_equal(predict(x, newdata = tox), c(5.16049914274147, 3.2496552342837, 3.27006004500176))
 })

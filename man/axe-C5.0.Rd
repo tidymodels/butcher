@@ -4,14 +4,14 @@
 \alias{axe-C5.0}
 \alias{axe_call.C5.0}
 \alias{axe_ctrl.C5.0}
-\alias{axe_misc.C5.0}
+\alias{axe_fitted.C5.0}
 \title{Axing a C5.0.}
 \usage{
 \method{axe_call}{C5.0}(x, ...)
 
 \method{axe_ctrl}{C5.0}(x, ...)
 
-\method{axe_misc}{C5.0}(x, ...)
+\method{axe_fitted}{C5.0}(x, ...)
 }
 \arguments{
 \item{x}{model object}

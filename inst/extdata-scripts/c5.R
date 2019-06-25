@@ -16,3 +16,11 @@ c5_fit <- decision_tree(mode = "classification") %>%
 # Save
 save(c5_fit, file = "inst/extdata/c5.rda")
 
+# Another example
+boost_fit <- boost_tree(mode = "classification", trees = 15) %>%
+  set_engine("C5.0") %>%
+  fit(Species ~ ., data = iris)
+
+# Save
+save(boost_fit, file = "inst/extdata/c5_boost.rda")
+

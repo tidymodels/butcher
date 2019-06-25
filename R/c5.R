@@ -31,8 +31,8 @@
 #' @name axe-C5.0
 NULL
 
-#' As the call is the heaviest part of C5.0 objects, it is replaced with a
-#' placeholder. This is done without breaking \code{predict}.
+#' Remove the call. Note that \code{summary} will be broken once this
+#' call is removed.
 #'
 #' @rdname axe-C5.0
 #' @export
@@ -41,7 +41,7 @@ axe_call.C5.0 <- function(x, ...) {
   x
 }
 
-#' The control parameters can be axed without affecting \code{predict}.
+#' Remove controls.
 #'
 #' @rdname axe-C5.0
 #' @export
@@ -50,17 +50,14 @@ axe_ctrl.C5.0 <- function(x, ...) {
   x
 }
 
-#' A number of misc components saved from training can be removed, including
-#' the string version of the command line output, the parsed version of the
-#' boosting table(s) \code{boostResults}, and copies of the model argument
-#' \code{costMatrix}.
+#' Remove fitted values. Note a single text string of the model fit
+#' is removed here, thus distorting the \code{summary} output; however,
+#' \code{predict} still works.
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_misc.C5.0 <- function(x, ...) {
+axe_fitted.C5.0 <- function(x, ...) {
   x$output <- character(0)
-  x$boostResults <- list(NULL)
-  x$costMatrix <- list(NULL)
   x
 }
 

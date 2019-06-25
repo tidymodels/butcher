@@ -3,15 +3,9 @@
 \name{axe-randomForest}
 \alias{axe-randomForest}
 \alias{axe_call.randomForest}
-\alias{axe_ctrl.randomFoest}
-\alias{axe_misc.randomForest}
 \title{Axing an randomForest.}
 \usage{
 \method{axe_call}{randomForest}(x, ...)
-
-\method{axe_ctrl}{randomFoest}(x, ...)
-
-\method{axe_misc}{randomForest}(x, ...)
 }
 \arguments{
 \item{x}{model object}

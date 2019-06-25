@@ -26,7 +26,7 @@
 #'   set_engine("C5.0") %>%
 #'   fit(Kyphosis ~ ., data = spine_train)
 #'
-#' butcher(c5_fit)
+#' out <- butcher(c5_fit)
 #'
 #' @name axe-C5.0
 NULL

@@ -21,7 +21,7 @@
 #'                    tuneLength = 10,
 #'                    trControl = trainControl(method = "cv"))
 #'
-#' butcher(train_fit)
+#' out <- butcher(train_fit)
 #'
 #' @name axe-train
 NULL

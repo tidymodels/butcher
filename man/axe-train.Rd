@@ -44,6 +44,6 @@ train_fit <- train(train_data, train_classes,
                    tuneLength = 10,
                    trControl = trainControl(method = "cv"))
 
-butcher(train_fit)
+out <- butcher(train_fit)
 
 }

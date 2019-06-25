@@ -88,6 +88,6 @@ train.recipe_fit <- train(tox_recipe, tox,
                    tuneLength = 10,
                    trControl = tox_ctrl)
 
-butcher(train.recipe_fit)
+out <- butcher(train.recipe_fit)
 
 }

@@ -17,3 +17,14 @@ ranger_fit <- rand_forest(mode = "classification",
 
 # Save
 save(ranger_fit, file = "inst/extdata/ranger.rda")
+
+# Another example
+ranger_reg_fit <- rand_forest(mode = "regression") %>%
+  update(min_n = max(8, floor(.obs()/10))) %>%
+  update(mtry = 4) %>%
+  set_engine("ranger") %>%
+  fit(Sepal.Width ~ ., data = iris)
+
+# Save
+save(ranger_reg_fit, file = "inst/extdata/ranger_reg.rda")
+

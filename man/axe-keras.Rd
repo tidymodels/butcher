@@ -2,17 +2,7 @@
 % Please edit documentation in R/keras.R
 \name{axe-keras}
 \alias{axe-keras}
-\alias{axe_call.keras}
-\alias{axe_env.keras}
-\alias{axe_fitted.keras}
 \title{Axing an keras.}
-\usage{
-\method{axe_call}{keras}(x, ...)
-
-\method{axe_env}{keras}(x, ...)
-
-\method{axe_fitted}{keras}(x, ...)
-}
 \arguments{
 \item{x}{model object}
 
@@ -22,5 +12,8 @@
 axed model object
 }
 \description{
-This is where all the keras specific documentation lies.
+keras objects are created from the \code{keras} package,
+a deep learning framework that can be leveraged to do binary
+classification, multiclass classification, regresssion, and
+more. This is where all the keras specific documentation lies.
 }

@@ -41,7 +41,9 @@ axe_call.train <- function(x, ...) {
 #' @rdname axe-train
 #' @export
 axe_ctrl.train <- function(x, ...) {
+  temp <- x$control$method
   x$control <- list(NULL)
+  x$control$method <- temp
   x
 }
 

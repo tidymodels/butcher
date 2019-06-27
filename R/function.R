@@ -31,6 +31,9 @@ NULL
 #' @rdname axe-function
 #' @export
 axe_env.function <- function(x, ...) {
-  x <- rlang::set_env(x, rlang::empty_env())
+  if(is.null(attr(x, "srcref"))) {
+    x <- rlang::set_env(x, rlang::base_env())
+  }
   x
 }
+

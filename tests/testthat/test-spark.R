@@ -33,9 +33,9 @@ test_that("spark decision_tree + predict() works", {
     select(predicted_label) %>%
     collect()
   x <- butcher(spark_fit)
-  expect_identical(rlang::get_env(x$stages[[2]]$feature_importances), rlang::empty_env())
-  expect_identical(rlang::get_env(x$stages[[2]]$depth), rlang::empty_env())
-  expect_identical(rlang::get_env(x$stages[[2]]$num_nodes), rlang::empty_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$feature_importances), rlang::base_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$depth), rlang::base_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$num_nodes), rlang::base_env())
   output <- ml_predict(x, validation) %>%
     select(predicted_label) %>%
     collect()
@@ -52,9 +52,9 @@ test_that("spark boost_tree + predict() works", {
     select(predicted_label) %>%
     collect()
   x <- butcher(spark_fit)
-  expect_identical(rlang::get_env(x$stages[[2]]$feature_importances), rlang::empty_env())
-  expect_identical(rlang::get_env(x$stages[[2]]$trees), rlang::empty_env())
-  expect_identical(rlang::get_env(x$stages[[2]]$total_num_nodes), rlang::empty_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$feature_importances), rlang::base_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$trees), rlang::base_env())
+  expect_identical(rlang::get_env(x$stages[[2]]$total_num_nodes), rlang::base_env())
   output <- ml_predict(x, iris_bin_tbls) %>%
     select(predicted_label) %>%
     collect()

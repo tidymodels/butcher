@@ -25,3 +25,28 @@ decision_spark <- decision_tree(mode = "classification") %>%
 # Serializes the Spark object into a format to be read by sparklyr
 ml_save(decision_spark$fit, path = "inst/extdata/decision_spark.rda")
 
+# Binary data
+iris_bin <- iris[iris$Species != "setosa", ]
+iris_bin$Species <- factor(iris_bin$Species)
+iris_bin_tbls <- sdf_copy_to(sc, iris_bin, overwrite = TRUE) %>%
+  sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
+
+train <- iris_bin_tbls$train
+validation <- iris_bin_tbls$validation
+
+# Boosted tree, note: only supports binary classification
+set.seed(1234)
+boost_spark <- boost_tree(mode = "classification", trees = 15) %>%
+  set_engine("spark") %>%
+  fit(Species ~ ., data = train)
+ml_save(boost_spark$fit, path = "inst/extdata/boost_spark.rda")
+
+# Parsed data
+iris_parsed <- iris[, 1:4]
+iris_parsed_tbls <- sdf_copy_to(sc, iris_parsed, overwrite = TRUE)
+
+# Linear reg
+reg_spark <- linear_reg() %>%
+  set_engine("spark") %>%
+  fit(Petal_Width ~ ., data = iris_parsed_tbls)
+ml_save(reg_spark$fit, path = "inst/extdata/reg_spark.rda")

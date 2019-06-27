@@ -32,48 +32,6 @@ axe_env.ml_pipeline_model <- function(x, ...) {
   x
 }
 
-#' Remove the environments for a \code{ml_r_formula_model}.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_r_formula_model <- function(x, ...) {
-  if(!is.null(x$.jobj)) {
-    x$.jobj <- NULL
-  }
-  x
-}
-
-#' Remove the environments for a \code{ml_index_to_string}.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_index_to_string <- function(x, ...) {
-  if(!is.null(x$.jobj)) {
-    x$.jobj <- NULL
-  }
-  x
-}
-
-#' Remove the environments for a \code{ml_decision_tree_classification_model}.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_decision_tree_classification_model <- function(x, ...) {
-  if(!is.null(x$.jobj)) {
-    x$.jobj <- NULL
-  }
-  if(!is.null(x$feature_importances)) {
-    x$feature_importances <- rlang::set_env(x$feature_importances, rlang::empty_env())
-  }
-  if(!is.null(x$num_nodes)) {
-    x$num_nodes <- rlang::set_env(x$num_nodes, rlang::empty_env())
-  }
-  if(!is.null(x$depth)) {
-    x$depth <- rlang::set_env(x$depth, rlang::empty_env())
-  }
-  x
-}
-
 #' Remove the environments associated with pipeline steps.
 #'
 #' @rdname axe-spark
@@ -82,21 +40,16 @@ axe_env.ml_pipeline_stage <- function(x, ...) {
   if(!is.null(x$.jobj)) {
     x$.jobj <- NULL
   }
-  if(!is.null(x$feature_importances)) {
-    x$feature_importances <- rlang::set_env(x$feature_importances, rlang::empty_env())
-  }
-  if(!is.null(x$num_nodes)) {
-    x$num_nodes <- rlang::set_env(x$num_nodes, rlang::empty_env())
-  }
-  if(!is.null(x$depth)) {
-    x$depth <- rlang::set_env(x$depth, rlang::empty_env())
-  }
+  x <- purrr::map(x, function(z) axe_env(z, ...))
   x
 }
 
-#' Remove the pipeline. Often the associated model pipeline is
-#' serialized such that the saved model has both the data processing
-#' information as well as the model fit information saved.
+#' Remove the pipeline. This is available prior to the user saving the
+#' model output using \code{ml_save} or some other \code{save} mechanism.
+#' Under these circumstances, the model pipeline is serialized such that
+#' the model has both the data processing information as well as the model
+#' fit information. For most data post-processing tasks, the content saved
+#' in the \code{pipeline} object is not required.
 #'
 #' @rdname axe-spark
 #' @export

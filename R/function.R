@@ -31,6 +31,6 @@ NULL
 #' @rdname axe-function
 #' @export
 axe_env.function <- function(x, ...) {
-  attributes(x) <- NULL
+  x <- rlang::set_env(x, rlang::empty_env())
   x
 }

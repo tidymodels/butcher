@@ -43,7 +43,12 @@ Suggests:
     rsample,
     TH.data,
     ipred,
-    survival
+    survival,
+    MASS,
+    QSARdata,
+    caret,
+    dplyr,
+    flexsurv
 Depends: 
     R (>= 2.10)
 VignetteBuilder: knitr

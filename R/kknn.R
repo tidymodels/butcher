@@ -52,7 +52,9 @@ axe_env.kknn <- function(x, ...) {
   x
 }
 
-#' Remove fitted values.
+#' Remove fitted values. Note that when fitted values
+#' are removed, \code{predict} will not work if no
+#' new data is provided.
 #'
 #' @rdname axe-kknn
 #' @export

@@ -18,7 +18,7 @@ NULL
 #' @export
 axe_env.ml_model <- function(x, ...) {
   x$pipeline_model$stages <- purrr::map(x$pipeline_model$stages, function(z) axe_env(z, ...))
-  # x$model <- purrr::map(x$model, function(z) axe_env(z, ...))
+  # x$model <- purrr::map(x$model, function(z) axe_env(z)) # TODO: map without stripping class attributes?
   x$dataset$src$con$state <- rlang::set_env(x$dataset$src$con$state, rlang::empty_env())
   x
 }
@@ -40,7 +40,7 @@ axe_env.ml_pipeline_stage <- function(x, ...) {
   if(!is.null(x$.jobj)) {
     x$.jobj <- NULL
   }
-  # x <- purrr::map(x, function(z) axe_env(z, ...))
+  x <- purrr::map(x, function(z) axe_env(z, ...))
   x
 }
 

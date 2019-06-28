@@ -18,3 +18,11 @@ kknn_fit <- nearest_neighbor(mode = "classification",
 
 # Save
 save(kknn_fit, file = "inst/extdata/kknn.rda")
+
+# Another model
+kknn_iris_fit <- nearest_neighbor(mode = "classification",
+                                  weight_func = "rectangular",
+                                  neighbors = 5,
+                                  dist_power = 1) %>%
+  set_engine("kknn") %>%
+  fit(Species ~ ., data = iris)

@@ -32,7 +32,18 @@ Suggests:
     tidymodels,
     parsnip,
     knitr,
-    rmarkdown
+    rmarkdown,
+    C50,
+    kknn,
+    glmnet,
+    keras,
+    rpart,
+    ranger,
+    recipes,
+    rsample,
+    TH.data,
+    ipred,
+    survival
 Depends: 
     R (>= 2.10)
 VignetteBuilder: knitr

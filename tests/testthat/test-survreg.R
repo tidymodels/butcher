@@ -1,16 +1,15 @@
 context("survreg")
 
-library(survival)
-
 test_that("survreg + butcher_example() works", {
   example_files <- butcher_example()
   expect_true("survreg.rda" %in% example_files)
   expect_true(file.exists(butcher_example("survreg.rda")))
 })
 
-load(butcher_example("survreg.rda"))
-
 test_that("survreg + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("survival")
+  load(butcher_example("survreg.rda"))
   x <- butcher(survreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$y, numeric(0))

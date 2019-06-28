@@ -6,10 +6,11 @@ test_that("sclass + butcher_example() works", {
   expect_true(file.exists(butcher_example("classbagg.rda")))
 })
 
-load(butcher_example("classbagg.rda"))
-x <- classbagg_fit$mtrees[[1]]
-
 test_that("sclass + axe_() works", {
+  skip_on_cran()
+  skip_if_not_installed("ipred")
+  load(butcher_example("classbagg.rda"))
+  x <- classbagg_fit$mtrees[[1]]
   x_nocall <- axe_call(x)
   expect_equal(x_nocall$btree$call, rlang::expr(dummy_call()))
   x_noenv <- axe_env(x)

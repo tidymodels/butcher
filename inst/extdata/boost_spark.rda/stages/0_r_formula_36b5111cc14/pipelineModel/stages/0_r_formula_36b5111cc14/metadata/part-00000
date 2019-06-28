@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.VectorAssembler","timestamp":1561636847271,"sparkVersion":"2.4.3","uid":"r_formula_36b5111cc14","paramMap":{"outputCol":"features","inputCols":["Sepal_Length","Sepal_Width","Petal_Length","Petal_Width"],"handleInvalid":"error"},"defaultParamMap":{"outputCol":"r_formula_36b5111cc14__output","handleInvalid":"error"}}

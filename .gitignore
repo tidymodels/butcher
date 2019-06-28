@@ -4,3 +4,6 @@
 inst/doc
 derby.log
 logs/
+
+*.DS_Store
+

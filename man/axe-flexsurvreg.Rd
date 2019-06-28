@@ -8,13 +8,13 @@
 \alias{axe_env.flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
-\method{axe_call}{flexsurvreg}(x, ...)
+axe_call.flexsurvreg(x, ...)
 
-\method{axe_ctrl}{flexsurvreg}(x, ...)
+axe_ctrl.flexsurvreg(x, ...)
 
-\method{axe_data}{flexsurvreg}(x, ...)
+axe_data.flexsurvreg(x, ...)
 
-\method{axe_env}{flexsurvreg}(x, ...)
+axe_env.flexsurvreg(x, ...)
 }
 \arguments{
 \item{x}{model object}

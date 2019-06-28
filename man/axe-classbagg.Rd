@@ -7,11 +7,11 @@
 \alias{axe_env.classbagg}
 \title{Axing a classbagg object.}
 \usage{
-\method{axe_call}{classbagg}(x, ...)
+axe_call.classbagg(x, ...)
 
-\method{axe_data}{classbagg}(x, ...)
+axe_data.classbagg(x, ...)
 
-\method{axe_env}{classbagg}(x, ...)
+axe_env.classbagg(x, ...)
 }
 \arguments{
 \item{x}{classbagg object}

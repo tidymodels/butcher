@@ -8,13 +8,13 @@
 \alias{axe_misc.rpart}
 \title{Axing a rpart.}
 \usage{
-\method{axe_call}{rpart}(x, ...)
+axe_call.rpart(x, ...)
 
-\method{axe_ctrl}{rpart}(x, ...)
+axe_ctrl.rpart(x, ...)
 
-\method{axe_env}{rpart}(x, ...)
+axe_env.rpart(x, ...)
 
-\method{axe_misc}{rpart}(x, ...)
+axe_misc.rpart(x, ...)
 }
 \arguments{
 \item{x}{model object}

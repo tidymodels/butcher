@@ -5,7 +5,7 @@
 \alias{axe_call.elnet}
 \title{Axing an elnet.}
 \usage{
-\method{axe_call}{elnet}(x, ...)
+axe_call.elnet(x, ...)
 }
 \arguments{
 \item{x}{model object}

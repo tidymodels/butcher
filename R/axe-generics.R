@@ -18,9 +18,6 @@ butcher <- function(x, ...) {
   x <- axe_env(x, ...)
   x <- axe_fitted(x, ...)
   x <- axe_misc(x, ...)
-  # Get original class
-  og_class <- class(x)
-  class(x) <- c(paste0("butcher_", og_class), og_class)
   x
 }
 
@@ -38,7 +35,11 @@ butcher <- function(x, ...) {
 #'
 #' @export
 axe_call <- function(x, ...) {
-  UseMethod("axe_call")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_call")
 }
 
 #' @export
@@ -60,7 +61,11 @@ axe_call.default <- function(x, ...) {
 #'
 #' @export
 axe_ctrl <- function(x, ...) {
-  UseMethod("axe_ctrl")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_ctrl")
 }
 
 #' @export
@@ -82,7 +87,11 @@ axe_ctrl.default <- function(x, ...) {
 #'
 #' @export
 axe_data <- function(x, ...) {
-  UseMethod("axe_data")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_data")
 }
 
 #' @export
@@ -106,7 +115,11 @@ axe_data.default <- function(x, ...) {
 #'
 #' @export
 axe_env <- function(x, ...) {
-  UseMethod("axe_env")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_env")
 }
 
 #' @export
@@ -128,7 +141,11 @@ axe_env.default <- function(x, ...) {
 #'
 #' @export
 axe_fitted <- function(x, ...) {
-  UseMethod("axe_fitted")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_fitted")
 }
 
 #' @export
@@ -150,7 +167,11 @@ axe_fitted.default <- function(x, ...) {
 #'
 #' @export
 axe_misc <- function(x, ...) {
-  UseMethod("axe_misc")
+  new_class <- butcher_class(x)
+  if(!new_class %in% class(x)) {
+    class(x) <- append(class(x), new_class)
+  }
+  NextMethod("axe_misc")
 }
 
 #' @export

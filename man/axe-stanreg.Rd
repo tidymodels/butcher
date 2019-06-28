@@ -6,9 +6,9 @@
 \alias{axe_fitted.stanreg}
 \title{Axing a stanreg.}
 \usage{
-\method{axe_call}{stanreg}(x, ...)
+axe_call.stanreg(x, ...)
 
-\method{axe_fitted}{stanreg}(x, ...)
+axe_fitted.stanreg(x, ...)
 }
 \arguments{
 \item{x}{model object}

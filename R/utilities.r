@@ -31,3 +31,9 @@ remove_response <- function(x) {
   }
   x
 }
+
+# class assignment helper
+butcher_class <- function(x) {
+  og_class <- class(x)[1]
+  paste0("butchered_", og_class)
+}

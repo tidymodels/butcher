@@ -9,15 +9,15 @@
 \alias{axe_fitted.train.recipe}
 \title{Axing a train.recipe object.}
 \usage{
-\method{axe_call}{train.recipe}(x, ...)
+axe_call.train.recipe(x, ...)
 
-\method{axe_ctrl}{train.recipe}(x, ...)
+axe_ctrl.train.recipe(x, ...)
 
-\method{axe_data}{train.recipe}(x, ...)
+axe_data.train.recipe(x, ...)
 
-\method{axe_env}{train.recipe}(x, ...)
+axe_env.train.recipe(x, ...)
 
-\method{axe_fitted}{train.recipe}(x, ...)
+axe_fitted.train.recipe(x, ...)
 }
 \arguments{
 \item{x}{train.recipe object}

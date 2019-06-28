@@ -6,9 +6,9 @@
 \alias{axe_fitted.ranger}
 \title{Axing an ranger.}
 \usage{
-\method{axe_call}{ranger}(x, ...)
+axe_call.ranger(x, ...)
 
-\method{axe_fitted}{ranger}(x, ...)
+axe_fitted.ranger(x, ...)
 }
 \arguments{
 \item{x}{model object}

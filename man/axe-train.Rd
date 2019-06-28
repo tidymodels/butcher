@@ -9,15 +9,15 @@
 \alias{axe_fitted.train}
 \title{Axing a train object.}
 \usage{
-\method{axe_call}{train}(x, ...)
+axe_call.train(x, ...)
 
-\method{axe_ctrl}{train}(x, ...)
+axe_ctrl.train(x, ...)
 
-\method{axe_data}{train}(x, ...)
+axe_data.train(x, ...)
 
-\method{axe_env}{train}(x, ...)
+axe_env.train(x, ...)
 
-\method{axe_fitted}{train}(x, ...)
+axe_fitted.train(x, ...)
 }
 \arguments{
 \item{x}{train object}

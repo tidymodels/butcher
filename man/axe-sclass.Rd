@@ -6,9 +6,9 @@
 \alias{axe_env.sclass}
 \title{Axing a sclass object.}
 \usage{
-\method{axe_call}{sclass}(x, ...)
+axe_call.sclass(x, ...)
 
-\method{axe_env}{sclass}(x, ...)
+axe_env.sclass(x, ...)
 }
 \arguments{
 \item{x}{sclass object}

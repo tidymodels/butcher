@@ -10,17 +10,17 @@
 \alias{axe_misc.model_fit}
 \title{Axing an model_fit.}
 \usage{
-\method{axe_call}{model_fit}(x, ...)
+axe_call.model_fit(x, ...)
 
-\method{axe_ctrl}{model_fit}(x, ...)
+axe_ctrl.model_fit(x, ...)
 
-\method{axe_data}{model_fit}(x, ...)
+axe_data.model_fit(x, ...)
 
-\method{axe_env}{model_fit}(x, ...)
+axe_env.model_fit(x, ...)
 
-\method{axe_fitted}{model_fit}(x, ...)
+axe_fitted.model_fit(x, ...)
 
-\method{axe_misc}{model_fit}(x, ...)
+axe_misc.model_fit(x, ...)
 }
 \arguments{
 \item{x}{model object}

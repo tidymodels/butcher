@@ -19,4 +19,7 @@ test_that("kknn + predict() works", {
   expect_equal(predict(x, new_data), structure(2:1, .Label = c("absent", "present"), class = "factor"))
   expected_output <- predict(kknn_fit$fit, new_data, type = "prob")
   expect_equal(predict(x, new_data, type = "prob"), expected_output)
+  # Should break if data removed
+  x$data <- data.frame(NA)
+  expect_error(predict(x, new_data, type = "prob"))
 })

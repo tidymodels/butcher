@@ -1,20 +1,19 @@
 context("recipe")
 
-library(rsample)
+skip_if_not_installed("recipes")
+skip_if_not_installed("rsample")
+
 library(recipes)
-library(lubridate)
-
-# For testing purposes
-test_en <- rlang::empty_env()
-
-# Reused data
+library(rsample)
 data(biomass)
 biomass_tr <- biomass[biomass$dataset == "Training",]
-
-data("credit_data")
+data(credit_data)
 set.seed(55)
 train_test_split <- initial_split(credit_data)
 credit_tr <- training(train_test_split)
+
+# For testing purposes
+test_en <- rlang::empty_env()
 
 test_that("recipe + axe_env() works", {
   rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
@@ -182,6 +181,8 @@ test_that("recipe + step_count + axe_env() works", {
 })
 
 test_that("recipe + step_date + axe_env() works", {
+  skip_if_not_installed("lubridate")
+  library(lubridate)
   examples <- data.frame(Dan = ymd("2002-03-04") + days(1:10),
                          Stefan = ymd("2006-01-13") + days(1:10))
   rec <- recipe(~ Dan + Stefan, examples) %>%
@@ -214,6 +215,8 @@ test_that("recipe + step_factor2string + axe_env() works", {
 })
 
 test_that("recipe + step_holiday + axe_env() works", {
+  skip_if_not_installed("lubridate")
+  library(lubridate)
   examples <- data.frame(someday = ymd("2000-12-20") + days(0:40))
   rec <- recipe(~ someday, examples) %>%
     step_holiday(all_predictors())

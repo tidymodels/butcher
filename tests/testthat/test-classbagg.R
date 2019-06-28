@@ -1,6 +1,5 @@
 context("classbagg")
 
-data("GlaucomaM", package = "TH.data")
 
 test_that("classbagg + butcher_example() works", {
   example_files <- butcher_example()
@@ -8,9 +7,12 @@ test_that("classbagg + butcher_example() works", {
   expect_true(file.exists(butcher_example("classbagg.rda")))
 })
 
-load(butcher_example("classbagg.rda"))
-
 test_that("classbagg + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("ipred")
+  skip_if_not_installed("TH.data")
+  load(butcher_example("classbagg.rda"))
+  data("GlaucomaM", package = "TH.data")
   x <- classbagg_fit
   x_nocall <- axe_call(x)
   expect_equal(x_nocall$call, rlang::expr(dummy_call()))

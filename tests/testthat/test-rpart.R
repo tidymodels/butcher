@@ -6,9 +6,10 @@ test_that("rpart + butcher_example() works", {
   expect_true(file.exists(butcher_example("rpart.rda")))
 })
 
-load(butcher_example("rpart.rda"))
-
 test_that("rpart + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("rpart")
+  load(butcher_example("rpart.rda"))
   x <- butcher(rpart_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$functions, rlang::expr(dummy_call()))

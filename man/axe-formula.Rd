@@ -5,7 +5,7 @@
 \alias{axe_env.formula}
 \title{Axing formulas.}
 \usage{
-axe_env.formula(x, ...)
+\method{axe_env}{formula}(x, ...)
 }
 \arguments{
 \item{x}{formula}

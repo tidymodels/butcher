@@ -9,7 +9,7 @@ weigh(x, ...)
 \arguments{
 \item{x}{model object}
 
-\item{...}{any additional arguments related to weighing}
+\item{...}{additional arguments for weighing}
 }
 \value{
 tibble

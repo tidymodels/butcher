@@ -5,7 +5,7 @@
 \alias{axe_call.randomForest}
 \title{Axing an randomForest.}
 \usage{
-axe_call.randomForest(x, ...)
+\method{axe_call}{randomForest}(x, ...)
 }
 \arguments{
 \item{x}{model object}

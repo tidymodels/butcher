@@ -7,11 +7,11 @@
 \alias{axe_env.survreg}
 \title{Axing an survreg.}
 \usage{
-axe_call.survreg(x, ...)
+\method{axe_call}{survreg}(x, ...)
 
-axe_data.survreg(x, ...)
+\method{axe_data}{survreg}(x, ...)
 
-axe_env.survreg(x, ...)
+\method{axe_env}{survreg}(x, ...)
 }
 \arguments{
 \item{x}{model object}

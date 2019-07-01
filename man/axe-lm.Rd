@@ -7,11 +7,11 @@
 \alias{axe_fitted.lm}
 \title{Axing an lm.}
 \usage{
-axe_call.lm(x, ...)
+\method{axe_call}{lm}(x, ...)
 
-axe_env.lm(x, ...)
+\method{axe_env}{lm}(x, ...)
 
-axe_fitted.lm(x, ...)
+\method{axe_fitted}{lm}(x, ...)
 }
 \arguments{
 \item{x}{model object}

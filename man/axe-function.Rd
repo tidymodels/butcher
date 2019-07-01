@@ -5,7 +5,7 @@
 \alias{axe_env.function}
 \title{Axing functions.}
 \usage{
-axe_env.function(x, ...)
+\method{axe_env}{function}(x, ...)
 }
 \arguments{
 \item{x}{function}

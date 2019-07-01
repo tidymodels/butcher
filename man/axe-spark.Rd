@@ -8,13 +8,13 @@
 \alias{axe_misc.ml_model}
 \title{Axing a spark object.}
 \usage{
-axe_env.ml_model(x, ...)
+\method{axe_env}{ml_model}(x, ...)
 
-axe_env.ml_pipeline_model(x, ...)
+\method{axe_env}{ml_pipeline_model}(x, ...)
 
-axe_env.ml_pipeline_stage(x, ...)
+\method{axe_env}{ml_pipeline_stage}(x, ...)
 
-axe_misc.ml_model(x, ...)
+\method{axe_misc}{ml_model}(x, ...)
 }
 \arguments{
 \item{x}{model object}

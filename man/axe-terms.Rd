@@ -5,7 +5,7 @@
 \alias{axe_env.terms}
 \title{Axing for terms inputs.}
 \usage{
-axe_env.terms(x, ...)
+\method{axe_env}{terms}(x, ...)
 }
 \arguments{
 \item{x}{model object}

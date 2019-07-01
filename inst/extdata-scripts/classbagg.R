@@ -1,7 +1,5 @@
 # Load libraries
 suppressWarnings(suppressMessages(library(ipred)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(MASS)))
 
 # Load data
 data("GlaucomaM", package = "TH.data")

@@ -12,7 +12,7 @@ weigh(x, ...)
 \item{...}{additional arguments for weighing}
 }
 \value{
-tibble
+tibble with weights of object components in decreasing magnitude
 }
 \description{
 Evaluate the size of each element contained in a model object.

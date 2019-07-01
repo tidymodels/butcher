@@ -5,3 +5,4 @@
 ^inst/extdata-scripts$
 ^derby\.log$
 ^logs$
+^man-roxygen$

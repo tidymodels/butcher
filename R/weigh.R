@@ -5,7 +5,7 @@
 #' @param x model object
 #' @param ... additional arguments for weighing
 #'
-#' @return tibble
+#' @return tibble with weights of object components in decreasing magnitude
 #'
 #' @examples
 #' simulate_x <- matrix(runif(1e+6), ncol = 2)

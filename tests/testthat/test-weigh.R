@@ -9,12 +9,17 @@ test_that("weigh() recursively measures size of each object component", {
   expect_gt(round(object_sizes$size[1]), 44) # Prob not going to pass in general
 })
 
-load(butcher_example("lm.rda"))
-load(butcher_example("stanreg.rda"))
 
-test_that("checking internal data", {
-  expect_equal(dim(butcher::weigh(lm_fit, 0))[1], 25)
-  # For stan object
-  stan_weights <- weigh(stanreg_fit, 0)
-  expect_equal(stan_weights$object[1], "stanfit")
+test_that("checking internal lm_fit test object", {
+  skip_on_cran()
+  load(butcher_example("lm.rda"))
+  expect_equal(dim(weigh(lm_fit, 0))[1], 25)
 })
+
+test_that("checking internal stanreg test object", {
+  skip_on_cran()
+  load(butcher_example("stanreg.rda"))
+  stan_weights <- weigh(stanreg_fit, 0)
+  expect_equal(stan_weights$object[1], "stanfit..MISC")
+})
+

@@ -21,6 +21,7 @@ axe_call.stanreg <- function(x, ...) {
 
 #' Remove environments.
 #'
+#' @rdname axe-stanreg
 #' @export
 axe_env.stanreg <- function(x, ...) {
   x$stanfit@.MISC <- rlang::empty_env()

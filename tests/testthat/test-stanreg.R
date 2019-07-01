@@ -26,7 +26,7 @@ test_that("stanreg + butcher() works", {
   expect_identical(x$stanfit@.MISC, rlang::empty_env())
   expect_identical(x$stanfit@stanmodel@dso@.CXXDSOMISC, rlang::empty_env())
   expect_equal(x$fitted.values, numeric(0))
-  # expect_equal(class(x)[1], "butcher_stanreg") # TODO: Fix class assignment
+  expect_equal(class(x)[1], "butchered_stanreg")
   expected_output <- predict(stanreg_fit$fit)
   expect_equal(predict(x), expected_output)
 })

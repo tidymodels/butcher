@@ -3,9 +3,10 @@
 #' Evaluate the size of each element contained in a model object.
 #'
 #' @param x model object
-#' @param ... any additional arguments related to weighing
+#' @param ... additional arguments for weighing
 #'
 #' @return tibble
+#'
 #' @examples
 #' simulate_x <- matrix(runif(1e+6), ncol = 2)
 #' simulate_y <- runif(dim(simulate_x)[1])
@@ -17,9 +18,7 @@ weigh <- function(x, ...) {
 }
 
 #' @export
-weigh.default <- function(x, threshold = 2, units = "MB") {
-  # TODO: weigh for keras object
-  # TODO: recursive function to check for an object location..
+weigh.default <- function(x, threshold = 2, units = "MB", ...) {
   stopifnot(is.list(x))
   units <- rlang::arg_match(units, c("KB", "MB", "GB"))
   if(units == "MB") {
@@ -44,25 +43,13 @@ weigh.default <- function(x, threshold = 2, units = "MB") {
 
 #' @export
 weigh.stanreg <- function(x, ...) {
-  # Stanreg objects require a separate weigh function to handle S4
-  stopifnot(class(x$stanfit) == "stanfit")
-  # Get the object sizes associated with first hierarchy
-  toplevel_weights <- weigh.default(x, ...)
-  # Now get the object sizes associated with S4 object
-  coerce_to_list <- function(z) {
-    out <- list()
-    for(i in slotNames(z)) out[[i]] <- slot(z, i)
-    return(out)
+  out <- list()
+  for(i in methods::slotNames(x$stanfit)) {
+    out[[i]] <- methods::slot(x$stanfit, i)
   }
-  stanfit_x <- coerce_to_list(x$stanfit)
-  sublevel_weights <- weigh.default(stanfit_x, ...)
-  # Combine these results for one tibble
-  sublevel_weights$object <- paste0("stanfit.", sublevel_weights$object)
-  # Bind together
-  output_table <- rbind(toplevel_weights, sublevel_weights)
-  # Sort
-  output_table <- output_table[order(output_table$size, decreasing = TRUE), ]
-  return(output_table)
+  x$stanfit <- out
+  class(x) <- class(x)[2]
+  weigh(x, ...)
 }
 
 #' @export

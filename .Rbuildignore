@@ -3,3 +3,5 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^inst/extdata-scripts$
+^derby\.log$
+^logs$

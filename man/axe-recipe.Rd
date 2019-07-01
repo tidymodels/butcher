@@ -71,139 +71,139 @@
 \alias{axe_env.quosure}
 \title{Axing a recipe object.}
 \usage{
-axe_env.recipe(x, ...)
+\method{axe_env}{recipe}(x, ...)
 
-axe_env.step(x, ...)
+\method{axe_env}{step}(x, ...)
 
-axe_env.step_arrange(x, ...)
+\method{axe_env}{step_arrange}(x, ...)
 
-axe_env.step_bagimpute(x, ...)
+\method{axe_env}{step_bagimpute}(x, ...)
 
-axe_env.step_bin2factor(x, ...)
+\method{axe_env}{step_bin2factor}(x, ...)
 
-axe_env.step_BoxCox(x, ...)
+\method{axe_env}{step_BoxCox}(x, ...)
 
-axe_env.step_bs(x, ...)
+\method{axe_env}{step_bs}(x, ...)
 
-axe_env.step_center(x, ...)
+\method{axe_env}{step_center}(x, ...)
 
-axe_env.step_classdist(x, ...)
+\method{axe_env}{step_classdist}(x, ...)
 
-axe_env.step_corr(x, ...)
+\method{axe_env}{step_corr}(x, ...)
 
-axe_env.step_count(x, ...)
+\method{axe_env}{step_count}(x, ...)
 
-axe_env.step_date(x, ...)
+\method{axe_env}{step_date}(x, ...)
 
-axe_env.step_depth(x, ...)
+\method{axe_env}{step_depth}(x, ...)
 
-axe_env.step_discretize(x, ...)
+\method{axe_env}{step_discretize}(x, ...)
 
-axe_env.step_downsample(x, ...)
+\method{axe_env}{step_downsample}(x, ...)
 
-axe_env.step_dummy(x, ...)
+\method{axe_env}{step_dummy}(x, ...)
 
-axe_env.step_factor2string(x, ...)
+\method{axe_env}{step_factor2string}(x, ...)
 
-axe_env.step_filter(x, ...)
+\method{axe_env}{step_filter}(x, ...)
 
-axe_env.step_geodist(x, ...)
+\method{axe_env}{step_geodist}(x, ...)
 
-axe_env.step_holiday(x, ...)
+\method{axe_env}{step_holiday}(x, ...)
 
-axe_env.step_hyperbolic(x, ...)
+\method{axe_env}{step_hyperbolic}(x, ...)
 
-axe_env.step_ica(x, ...)
+\method{axe_env}{step_ica}(x, ...)
 
-axe_env.step_integer(x, ...)
+\method{axe_env}{step_integer}(x, ...)
 
-axe_env.step_interact(x, ...)
+\method{axe_env}{step_interact}(x, ...)
 
-axe_env.step_inverse(x, ...)
+\method{axe_env}{step_inverse}(x, ...)
 
-axe_env.step_invlogit(x, ...)
+\method{axe_env}{step_invlogit}(x, ...)
 
-axe_env.step_isomap(x, ...)
+\method{axe_env}{step_isomap}(x, ...)
 
-axe_env.step_knnimpute(x, ...)
+\method{axe_env}{step_knnimpute}(x, ...)
 
-axe_env.step_kpca(x, ...)
+\method{axe_env}{step_kpca}(x, ...)
 
-axe_env.step_lag(x, ...)
+\method{axe_env}{step_lag}(x, ...)
 
-axe_env.step_lincomb(x, ...)
+\method{axe_env}{step_lincomb}(x, ...)
 
-axe_env.step_log(x, ...)
+\method{axe_env}{step_log}(x, ...)
 
-axe_env.step_logit(x, ...)
+\method{axe_env}{step_logit}(x, ...)
 
-axe_env.step_lowerimpute(x, ...)
+\method{axe_env}{step_lowerimpute}(x, ...)
 
-axe_env.step_meanimpute(x, ...)
+\method{axe_env}{step_meanimpute}(x, ...)
 
-axe_env.step_medianimpute(x, ...)
+\method{axe_env}{step_medianimpute}(x, ...)
 
-axe_env.step_modeimpute(x, ...)
+\method{axe_env}{step_modeimpute}(x, ...)
 
-axe_env.step_mutate(x, ...)
+\method{axe_env}{step_mutate}(x, ...)
 
-axe_env.step_naomit(x, ...)
+\method{axe_env}{step_naomit}(x, ...)
 
-axe_env.step_nnmf(x, ...)
+\method{axe_env}{step_nnmf}(x, ...)
 
-axe_env.step_novel(x, ...)
+\method{axe_env}{step_novel}(x, ...)
 
-axe_env.step_num2factor(x, ...)
+\method{axe_env}{step_num2factor}(x, ...)
 
-axe_env.step_ns(x, ...)
+\method{axe_env}{step_ns}(x, ...)
 
-axe_env.step_nzv(x, ...)
+\method{axe_env}{step_nzv}(x, ...)
 
-axe_env.step_ordinalscore(x, ...)
+\method{axe_env}{step_ordinalscore}(x, ...)
 
-axe_env.step_other(x, ...)
+\method{axe_env}{step_other}(x, ...)
 
-axe_env.step_pca(x, ...)
+\method{axe_env}{step_pca}(x, ...)
 
-axe_env.step_pls(x, ...)
+\method{axe_env}{step_pls}(x, ...)
 
-axe_env.step_poly(x, ...)
+\method{axe_env}{step_poly}(x, ...)
 
-axe_env.step_range(x, ...)
+\method{axe_env}{step_range}(x, ...)
 
-axe_env.step_ratio(x, ...)
+\method{axe_env}{step_ratio}(x, ...)
 
-axe_env.step_regex(x, ...)
+\method{axe_env}{step_regex}(x, ...)
 
-axe_env.step_relu(x, ...)
+\method{axe_env}{step_relu}(x, ...)
 
-axe_env.step_rm(x, ...)
+\method{axe_env}{step_rm}(x, ...)
 
-axe_env.step_rollimpute(x, ...)
+\method{axe_env}{step_rollimpute}(x, ...)
 
-axe_env.step_shuffle(x, ...)
+\method{axe_env}{step_shuffle}(x, ...)
 
-axe_env.step_slice(x, ...)
+\method{axe_env}{step_slice}(x, ...)
 
-axe_env.step_scale(x, ...)
+\method{axe_env}{step_scale}(x, ...)
 
-axe_env.step_string2factor(x, ...)
+\method{axe_env}{step_string2factor}(x, ...)
 
-axe_env.step_sqrt(x, ...)
+\method{axe_env}{step_sqrt}(x, ...)
 
-axe_env.step_spatialsign(x, ...)
+\method{axe_env}{step_spatialsign}(x, ...)
 
-axe_env.step_unorder(x, ...)
+\method{axe_env}{step_unorder}(x, ...)
 
-axe_env.step_upsample(x, ...)
+\method{axe_env}{step_upsample}(x, ...)
 
-axe_env.step_window(x, ...)
+\method{axe_env}{step_window}(x, ...)
 
-axe_env.step_YeoJohnson(x, ...)
+\method{axe_env}{step_YeoJohnson}(x, ...)
 
-axe_env.step_zv(x, ...)
+\method{axe_env}{step_zv}(x, ...)
 
-axe_env.quosure(x, ...)
+\method{axe_env}{quosure}(x, ...)
 }
 \arguments{
 \item{x}{recipe object}

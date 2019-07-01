@@ -5,7 +5,7 @@
 \alias{axe_misc.matrix}
 \title{Axing matrices.}
 \usage{
-axe_misc.matrix(x, ...)
+\method{axe_misc}{matrix}(x, ...)
 }
 \arguments{
 \item{x}{matrix or matrices}

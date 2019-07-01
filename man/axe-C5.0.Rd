@@ -7,11 +7,11 @@
 \alias{axe_fitted.C5.0}
 \title{Axing a C5.0.}
 \usage{
-axe_call.C5.0(x, ...)
+\method{axe_call}{C5.0}(x, ...)
 
-axe_ctrl.C5.0(x, ...)
+\method{axe_ctrl}{C5.0}(x, ...)
 
-axe_fitted.C5.0(x, ...)
+\method{axe_fitted}{C5.0}(x, ...)
 }
 \arguments{
 \item{x}{model object}

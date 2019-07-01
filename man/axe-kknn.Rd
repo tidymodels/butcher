@@ -7,11 +7,11 @@
 \alias{axe_fitted.kknn}
 \title{Axing an kknn.}
 \usage{
-axe_call.kknn(x, ...)
+\method{axe_call}{kknn}(x, ...)
 
-axe_env.kknn(x, ...)
+\method{axe_env}{kknn}(x, ...)
 
-axe_fitted.kknn(x, ...)
+\method{axe_fitted}{kknn}(x, ...)
 }
 \arguments{
 \item{x}{model object}

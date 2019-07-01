@@ -33,7 +33,9 @@ remove_response <- function(x) {
 }
 
 # class assignment helper
-butcher_class <- function(x) {
-  og_class <- class(x)[1]
-  paste0("butchered_", og_class)
+add_butcher_class <- function(x) {
+  if(!any(grepl("butcher", class(x)))) {
+    class(x) <- append(paste0("butchered_", class(x)[1]), class(x))
+  }
+  x
 }

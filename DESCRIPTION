@@ -48,7 +48,8 @@ Suggests:
     QSARdata,
     caret,
     dplyr,
-    flexsurv
+    flexsurv,
+    methods
 Depends: 
     R (>= 2.10)
 VignetteBuilder: knitr

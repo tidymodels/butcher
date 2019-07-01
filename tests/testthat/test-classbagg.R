@@ -1,13 +1,5 @@
 context("classbagg")
 
-# Test objects from ipred on the fly instead
-
-# test_that("classbagg + butcher_example() works", {
-#   example_files <- butcher_example()
-#   expect_true("classbagg.rda" %in% example_files)
-#   expect_true(file.exists(butcher_example("classbagg.rda")))
-# })
-
 test_that("classbagg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("ipred")

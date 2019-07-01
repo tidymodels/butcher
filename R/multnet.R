@@ -36,7 +36,7 @@ NULL
 #' @export
 axe_call.multnet <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove misc. For multnet objects, we remove \code{dfmat}, which
@@ -46,7 +46,7 @@ axe_call.multnet <- function(x, ...) {
 #' @export
 axe_misc.multnet <- function(x, ...) {
   x$dfmat <- axe_env(x$dfmat, ...)
-  x
+  add_butcher_class(x)
 }
 
 

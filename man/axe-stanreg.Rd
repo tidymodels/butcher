@@ -3,10 +3,13 @@
 \name{axe-stanreg}
 \alias{axe-stanreg}
 \alias{axe_call.stanreg}
+\alias{axe_env.stanreg}
 \alias{axe_fitted.stanreg}
 \title{Axing a stanreg.}
 \usage{
 \method{axe_call}{stanreg}(x, ...)
+
+\method{axe_env}{stanreg}(x, ...)
 
 \method{axe_fitted}{stanreg}(x, ...)
 }

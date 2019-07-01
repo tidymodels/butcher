@@ -39,7 +39,7 @@ NULL
 #' @export
 axe_call.ranger <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove predictions.
@@ -48,5 +48,5 @@ axe_call.ranger <- function(x, ...) {
 #' @export
 axe_fitted.ranger <- function(x, ...) {
   x$predictions <- numeric(0)
-  x
+  add_butcher_class(x)
 }

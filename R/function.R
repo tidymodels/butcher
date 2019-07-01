@@ -34,6 +34,6 @@ axe_env.function <- function(x, ...) {
   if(is.null(attr(x, "srcref"))) {
     x <- rlang::set_env(x, rlang::base_env())
   }
-  x
+  add_butcher_class(x)
 }
 

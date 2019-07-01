@@ -35,7 +35,7 @@ NULL
 #' @export
 axe_call.flexsurvreg <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove controls. Note this removes the list defining the survival
@@ -45,7 +45,7 @@ axe_call.flexsurvreg <- function(x, ...) {
 #' @export
 axe_ctrl.flexsurvreg <- function(x, ...) {
   x$dlist$inits <- NULL
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the data.
@@ -54,7 +54,7 @@ axe_ctrl.flexsurvreg <- function(x, ...) {
 #' @export
 axe_data.flexsurvreg <- function(x, ...) {
   x$data$Y <- numeric(0)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments.
@@ -65,5 +65,5 @@ axe_env.flexsurvreg <- function(x, ...) {
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
   attributes(x$concat.formula)$`.Environment` <- rlang::base_env()
   x$all.formulae <- purrr::map(x$all.formulae, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }

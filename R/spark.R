@@ -20,7 +20,7 @@ axe_env.ml_model <- function(x, ...) {
   x$pipeline_model$stages <- purrr::map(x$pipeline_model$stages, function(z) axe_env(z, ...))
   # x$model <- purrr::map(x$model, function(z) axe_env(z)) # TODO: map without stripping class attributes?
   x$dataset$src$con$state <- rlang::set_env(x$dataset$src$con$state, rlang::empty_env())
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environments after reloading the model.
@@ -29,7 +29,7 @@ axe_env.ml_model <- function(x, ...) {
 #' @export
 axe_env.ml_pipeline_model <- function(x, ...) {
   x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environments associated with pipeline steps.
@@ -41,7 +41,7 @@ axe_env.ml_pipeline_stage <- function(x, ...) {
     x$.jobj <- NULL
   }
   x <- purrr::map(x, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the pipeline. This is available prior to the user saving the
@@ -55,7 +55,7 @@ axe_env.ml_pipeline_stage <- function(x, ...) {
 #' @export
 axe_misc.ml_model <- function(x, ...) {
   x$pipeline <- list(NULL)
-  x
+  add_butcher_class(x)
 }
 
 

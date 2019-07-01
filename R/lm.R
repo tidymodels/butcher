@@ -34,7 +34,7 @@ NULL
 #' @export
 axe_call.lm <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environment. The same environment is referenced in terms
@@ -46,7 +46,7 @@ axe_call.lm <- function(x, ...) {
 axe_env.lm <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values.
@@ -55,6 +55,6 @@ axe_env.lm <- function(x, ...) {
 #' @export
 axe_fitted.lm <- function(x, ...) {
   x$fitted.values <- numeric(0)
-  x
+  add_butcher_class(x)
 }
 

@@ -33,7 +33,7 @@ NULL
 axe_call.train <- function(x, ...) {
   x$call <- call("dummy_call")
   x$dots <- list(NULL)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove controls.
@@ -44,7 +44,7 @@ axe_ctrl.train <- function(x, ...) {
   temp <- x$control$method
   x$control <- list(NULL)
   x$control$method <- temp
-  x
+  add_butcher_class(x)
 }
 
 #' Remove training data.
@@ -53,7 +53,7 @@ axe_ctrl.train <- function(x, ...) {
 #' @export
 axe_data.train <- function(x, ...) {
   x$trainingData <- data.frame(NA)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments associated with \code{srcref}.
@@ -62,7 +62,7 @@ axe_data.train <- function(x, ...) {
 #' @export
 axe_env.train <- function(x, ...) {
   x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values.
@@ -71,5 +71,5 @@ axe_env.train <- function(x, ...) {
 #' @export
 axe_fitted.train <- function(x, ...) {
   x$pred <- list(NULL)
-  x
+  add_butcher_class(x)
 }

@@ -48,7 +48,7 @@ axe_ctrl.rpart <- function(x, ...) {
   surrogate <- x$control$usesurrogate
   x$control <- list(NULL)
   x$control$usesurrogate <- surrogate
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environment.
@@ -57,7 +57,7 @@ axe_ctrl.rpart <- function(x, ...) {
 #' @export
 axe_env.rpart <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove misc. For rpart objects, we remove \code{cptable}, which stores
@@ -67,7 +67,7 @@ axe_env.rpart <- function(x, ...) {
 #' @export
 axe_misc.rpart <- function(x, ...) {
   axe_misc(x$cptable)
-  x
+  add_butcher_class(x)
 }
 
 

@@ -32,7 +32,7 @@ NULL
 #' @export
 axe_call.survreg <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the data.
@@ -41,7 +41,7 @@ axe_call.survreg <- function(x, ...) {
 #' @export
 axe_data.survreg <- function(x, ...) {
   x$y <- numeric(0)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments.
@@ -51,7 +51,7 @@ axe_data.survreg <- function(x, ...) {
 axe_env.survreg <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
+  add_butcher_class(x)
 }
 
 

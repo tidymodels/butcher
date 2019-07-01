@@ -40,7 +40,7 @@ NULL
 #' @export
 axe_call.kknn <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environment.
@@ -49,7 +49,7 @@ axe_call.kknn <- function(x, ...) {
 #' @export
 axe_env.kknn <- function(x, ...) {
   x$terms <- axe_env(x$terms, ...)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values. Note that when fitted values
@@ -60,5 +60,5 @@ axe_env.kknn <- function(x, ...) {
 #' @export
 axe_fitted.kknn <- function(x, ...) {
   x$fitted.values <- list(NULL)
-  x
+  add_butcher_class(x)
 }

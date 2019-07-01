@@ -30,7 +30,7 @@ NULL
 #' @export
 axe_call.sclass <- function(x, ...) {
   x$btree <- axe_call(x$btree, ...)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove the environment. Each subtree is a rpart object.
@@ -39,5 +39,5 @@ axe_call.sclass <- function(x, ...) {
 #' @export
 axe_env.sclass <- function(x, ...) {
   x$btree <- axe_env(x$btree, ...)
-  x
+  add_butcher_class(x)
 }

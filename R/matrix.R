@@ -17,4 +17,5 @@ NULL
 #' @export
 axe_misc.matrix <- function(x, ...) {
   x <- matrix(NA)
+  add_butcher_class(x)
 }

@@ -38,7 +38,7 @@ NULL
 #' @export
 axe_call.C5.0 <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove controls.
@@ -47,7 +47,7 @@ axe_call.C5.0 <- function(x, ...) {
 #' @export
 axe_ctrl.C5.0 <- function(x, ...) {
   x$control <- list(NULL)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values. Note a single text string of the model fit
@@ -58,6 +58,6 @@ axe_ctrl.C5.0 <- function(x, ...) {
 #' @export
 axe_fitted.C5.0 <- function(x, ...) {
   x$output <- character(0)
-  x
+  add_butcher_class(x)
 }
 

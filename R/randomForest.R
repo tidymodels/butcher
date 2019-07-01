@@ -41,5 +41,5 @@ NULL
 #' @export
 axe_call.randomForest <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }

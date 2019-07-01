@@ -16,7 +16,7 @@ NULL
 #' @export
 axe_call.stanreg <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments.
@@ -28,7 +28,7 @@ axe_env.stanreg <- function(x, ...) {
   x$stanfit@stanmodel@dso@.CXXDSOMISC <- rlang::empty_env()
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values.
@@ -37,7 +37,7 @@ axe_env.stanreg <- function(x, ...) {
 #' @export
 axe_fitted.stanreg <- function(x, ...) {
   x$fitted.values <- numeric(0)
-  x
+  add_butcher_class(x)
 }
 
 

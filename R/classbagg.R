@@ -27,7 +27,7 @@ NULL
 axe_call.classbagg <- function(x, ...) {
   x$call <- call("dummy_call")
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_call(z, ...))
-  x
+  add_butcher_class(x)
 }
 
 #' Remove training data. There are also responses stored as either a factor
@@ -38,7 +38,7 @@ axe_call.classbagg <- function(x, ...) {
 #' @export
 axe_data.classbagg <- function(x, ...) {
   x$X <- data.frame(NA)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments. Model objects of this type include references to
@@ -50,5 +50,5 @@ axe_data.classbagg <- function(x, ...) {
 #' @export
 axe_env.classbagg <- function(x, ...) {
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }

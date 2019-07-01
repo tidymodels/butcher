@@ -79,7 +79,7 @@ NULL
 axe_call.train.recipe <- function(x, ...) {
   x$call <- call("dummy_call")
   x$dots <- list(NULL)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove controls. For a train.recipe object, an environment is
@@ -90,7 +90,7 @@ axe_call.train.recipe <- function(x, ...) {
 #' @export
 axe_ctrl.train.recipe <- function(x, ...) {
   x$control <- list(NULL)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove training data.
@@ -99,7 +99,7 @@ axe_ctrl.train.recipe <- function(x, ...) {
 #' @export
 axe_data.train.recipe <- function(x, ...) {
   x$trainingData <- data.frame(NA)
-  x
+  add_butcher_class(x)
 }
 
 #' Remove environments. Model objects of this type include references to
@@ -112,7 +112,7 @@ axe_data.train.recipe <- function(x, ...) {
 axe_env.train.recipe <- function(x, ...) {
   x$recipe <- axe_env(x$recipe, ...)
   x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
-  x
+  add_butcher_class(x)
 }
 
 #' Remove fitted values stored in \code{pred}. Outcome values are numeric
@@ -124,5 +124,5 @@ axe_env.train.recipe <- function(x, ...) {
 #' @export
 axe_fitted.train.recipe <- function(x, ...) {
   x$pred <- list(NULL)
-  x
+  add_butcher_class(x)
 }

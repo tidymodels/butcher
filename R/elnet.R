@@ -36,6 +36,6 @@ NULL
 #' @export
 axe_call.elnet <- function(x, ...) {
   x$call <- call("dummy_call")
-  x
+  add_butcher_class(x)
 }
 

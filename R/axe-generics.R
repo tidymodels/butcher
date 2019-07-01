@@ -35,10 +35,6 @@ butcher <- function(x, ...) {
 #'
 #' @export
 axe_call <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_call")
 }
 
@@ -61,10 +57,6 @@ axe_call.default <- function(x, ...) {
 #'
 #' @export
 axe_ctrl <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_ctrl")
 }
 
@@ -87,10 +79,6 @@ axe_ctrl.default <- function(x, ...) {
 #'
 #' @export
 axe_data <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_data")
 }
 
@@ -116,10 +104,6 @@ axe_data.default <- function(x, ...) {
 #'
 #' @export
 axe_env <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_env", object = x)
 }
 
@@ -142,10 +126,6 @@ axe_env.default <- function(x, ...) {
 #'
 #' @export
 axe_fitted <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_fitted")
 }
 
@@ -168,10 +148,6 @@ axe_fitted.default <- function(x, ...) {
 #'
 #' @export
 axe_misc <- function(x, ...) {
-  # new_class <- butcher_class(x)
-  # if(!new_class %in% class(x)) {
-  #   class(x) <- append(class(x), new_class)
-  # }
   UseMethod("axe_misc")
 }
 

@@ -50,7 +50,8 @@ Suggests:
     caret,
     dplyr,
     flexsurv,
-    methods
+    methods,
+    pkgload
 Depends: 
     R (>= 2.10)
 VignetteBuilder: knitr

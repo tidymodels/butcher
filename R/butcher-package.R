@@ -24,6 +24,7 @@
 #' of a \code{butcher} class assignment.
 #'
 #' @keywords internal
+#' @aliases butcher-package
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage

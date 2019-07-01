@@ -1,15 +1,5 @@
 context("stanreg")
 
-# Stan objects are too large create on the fly
-
-# test_that("stanreg + butcher_example() works", {
-#   example_files <- butcher_example()
-#   expect_true("stanreg.rda" %in% example_files)
-#   expect_true(file.exists(butcher_example("stanreg.rda")))
-# })
-
-# load(butcher_example("stanreg.rda"))
-
 test_that("stanreg + butcher() works", {
   skip_on_cran()
   skip_if_not_installed("rstanarm")

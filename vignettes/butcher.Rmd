@@ -16,24 +16,22 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(butcher)
+library(parsnip)
 ```
 
 One of the beauties of working with `R` is the ease with which you can implement intricate models and make challenging data analysis pipelines seem almost trivial. Take, for example, the `parsnip` package; with the installation of a few associated libraries and a few lines of code, you can fit something as complex as a boosted tree:  
 
-```{r, warning = F, message = F}
-library(parsnip)
+```{r, warning = F, message = F, eval = F}
 library(rpart)
 
 fitted_model <- boost_tree(trees = 15) %>%
   set_engine("C5.0") %>%
   fit(as.factor(am) ~ disp + hp, data = mtcars)
-
-fitted_model
 ```
 
 Or, let’s say you’re working on petabytes of data, in which the data is distributed across clusters of thousands of nodes. Just switch out the engine: 
 
-```{r, warning = F, message = F}
+```{r, warning = F, message = F, eval = F}
 library(sparklyr)
 
 sc <- spark_connect(master = "local")
@@ -43,8 +41,6 @@ mtcars_tbls <- sdf_copy_to(sc, mtcars[, c("am", "disp", "hp")], overwrite = TRUE
 fitted_model <- boost_tree(trees = 15) %>%
   set_engine("spark") %>%
   fit(am ~ disp + hp, data = mtcars_tbls)
-
-fitted_model
 ```
 
 Yet, while our code might appear compact, the underlying fitted result is not. Currently, `parsnip` works as a wrapper for many modeling packages built off of base `R`, and as a result, its inherits the same properties as that of objects that arise from these modeling packages. Take, for example, the popular `lm` function we often rely on from the base `stats`. Whether you leverage `parsnip` or not, you will get the same result:

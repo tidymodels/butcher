@@ -17,15 +17,17 @@ stanreg_fit <- linear_reg() %>%
 save(stanreg_fit, file = "inst/extdata/stanreg.rda")
 
 # Another model
-lr_stan_spec <-
-  logistic_reg() %>%
+suppressWarnings(suppressMessages(library(caret)))
+data(GermanCredit)
+
+stanlog_fit <- logistic_reg() %>%
   set_engine(
     "stan",
     iter = 5000,
-    prior_intercept = rstanarm::student_t(df = varying()),
     seed = 2347
-  )
+  ) %>%
+  fit(Class ~ Age + ForeignWorker + Property.RealEstate + CreditHistory.Critical,
+      data = GermanCredit)
 
-# Arguments that should be tuned
-varying_args(lr_stan_spec)
-
+# Save
+# save(stanlog_fit, file = "inst/extdata/stanlog.rda")

@@ -1,5 +1,6 @@
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(kernlab)))
 
 # Load data
 data(spam)

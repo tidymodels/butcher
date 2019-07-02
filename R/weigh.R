@@ -53,6 +53,15 @@ weigh.stanreg <- function(x, ...) {
 }
 
 #' @export
+weigh.ksvm <- function(x, ...) {
+  out <- list()
+  for(i in methods::slotNames(x)) {
+    out[[i]] <- methods::slot(x, i)
+  }
+  weigh(out, ...)
+}
+
+#' @export
 weigh.model_fit <- function(x, ...) {
   weigh(x$fit, ...)
 }

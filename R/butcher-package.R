@@ -4,7 +4,7 @@
 #' respective \code{predict} functions. Future iterations of this package
 #' should support additional analysis functions outside of just \code{predict}.
 #'
-#' This package provides six S3 generics:
+#' This package provides five S3 generics:
 #' \itemize{
 #'   \item \code{\link{axe_call}} To remove the call object.
 #'   \item \code{\link{axe_ctrl}} To remove controls associated with training.

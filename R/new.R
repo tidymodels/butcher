@@ -16,7 +16,6 @@
 #' @param open Check if user is in interactive mode, and if so,
 #'   opens the new files for editing.
 #'
-#' @importFrom utils installed.packages
 #' @export
 new_model_butcher <- function(model_class, package_name, open = interactive()) {
   if(!rlang::is_string(model_class) | !rlang::is_string(package_name)) {
@@ -25,7 +24,7 @@ new_model_butcher <- function(model_class, package_name, open = interactive()) {
   if(grepl("\\s", model_class) | grepl("\\s", package_name)) {
     rlang::abort("`model_class` cannot have any spaces")
   }
-  if(!package_name %in% installed.packages()) {
+  if(!package_name %in% utils::installed.packages()) {
     rlang::abort("`package_name` referenced is not installed.")
   }
 

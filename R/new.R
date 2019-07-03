@@ -15,6 +15,8 @@
 #'   from which the new model is made.
 #' @param open Check if user is in interactive mode, and if so,
 #'   opens the new files for editing.
+#'
+#' @importFrom utils installed.packages
 #' @export
 new_model_butcher <- function(model_class, package_name, open = interactive()) {
   if(!rlang::is_string(model_class) | !rlang::is_string(package_name)) {

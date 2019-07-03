@@ -28,7 +28,6 @@ one of the few model objects in which there is no environment to axe.
 \examples{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(tidymodels)))
 
 # Load data
 set.seed(1234)

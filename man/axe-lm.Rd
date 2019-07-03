@@ -27,7 +27,7 @@ This is where all the lm specific documentation lies.
 \examples{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(rsample)))
 
 # Load data
 split <- initial_split(mtcars, props = 9/10)

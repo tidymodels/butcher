@@ -35,7 +35,6 @@ specific documentation lies.
 \examples{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(tidymodels)))
 suppressWarnings(suppressMessages(library(flexsurv)))
 
 # Create model and fit

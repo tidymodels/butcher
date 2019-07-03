@@ -13,14 +13,13 @@
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(tidymodels)))
+#' suppressWarnings(suppressMessages(library(rsample)))
 #' suppressWarnings(suppressMessages(library(rpart)))
 #'
 #' # Load data
 #' set.seed(1234)
 #' split <- initial_split(kyphosis, props = 9/10)
 #' spine_train <- training(split)
-#' spine_test  <- testing(split)
 #'
 #' # Create model and fit
 #' randomForest_fit <- rand_forest(mode = "classification",

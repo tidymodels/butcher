@@ -1,6 +1,6 @@
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(rsample)))
 suppressWarnings(suppressMessages(library(rpart)))
 
 # Load data

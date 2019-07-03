@@ -13,7 +13,7 @@
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(tidymodels)))
+#' suppressWarnings(suppressMessages(library(rsample)))
 #'
 #' # Load data
 #' set.seed(1234)

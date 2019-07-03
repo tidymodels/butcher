@@ -1,6 +1,5 @@
 # Load libraries
-suppressWarnings(suppressMeissages(library(parsnip)))
-suppressWarnings(suppressMessages(library(tidymodels)))
+suppressWarnings(suppressMessages(library(parsnip)))
 
 # Load data
 set.seed(1234)

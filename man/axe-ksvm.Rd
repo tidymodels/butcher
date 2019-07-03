@@ -17,6 +17,7 @@ This is where all the ksvm specific documentation lies.
 \examples{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(kernlab)))
 
 # Load data
 data(spam)

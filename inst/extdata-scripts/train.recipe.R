@@ -53,3 +53,16 @@ train.recipe_fit <- train(tox_recipe, tox,
 
 # Save
 save(train.recipe_fit, file = "inst/extdata/train.recipe.rda")
+
+# Simpler example
+suppressWarnings(suppressMessages(library(recipes)))
+suppressWarnings(suppressMessages(library(caret)))
+
+data(biomass)
+recipe <- biomass %>%
+  recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors()) %>%
+  step_spatialsign(all_predictors())
+
+train.recipe_fit <- train(recipe, biomass, method = "svmRadial", metric = "RMSE")

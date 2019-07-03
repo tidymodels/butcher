@@ -9,9 +9,8 @@
 #'   \item \code{\link{axe_call}} To remove the call object.
 #'   \item \code{\link{axe_ctrl}} To remove controls associated with training.
 #'   \item \code{\link{axe_data}} To remove the original data.
-#'   \item \code{\link{axe_env}} To remove junk in inherited environments.
+#'   \item \code{\link{axe_env}} To remove inherited environments.
 #'   \item \code{\link{axe_fitted}} To remove fitted values.
-#'   \item \code{\link{axe_misc}} To remove intermediate values saved during training.
 #' }
 #'
 #' These specific attributes of the model objects are chosen as they are

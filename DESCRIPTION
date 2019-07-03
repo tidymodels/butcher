@@ -61,7 +61,8 @@ Suggests:
     earth,
     covr,
     rstan,
-    rstanarm
+    rstanarm,
+    e1071
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

@@ -6,3 +6,4 @@
 ^derby\.log$
 ^logs$
 ^man-roxygen$
+^\.travis\.yml$

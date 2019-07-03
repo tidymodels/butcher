@@ -7,3 +7,6 @@
 ^logs$
 ^man-roxygen$
 ^\.travis\.yml$
+^codecov\.yml$
+^cran-comments\.md$
+^\.covrignore$

@@ -18,7 +18,7 @@ test_that("spark ml_model + predict() works", {
   library(sparklyr)
   library(dplyr)
   # Create connection
-  sc <- testthat_spark_connection() # TODO: figure out whether worth
+  sc <- testthat_spark_connection()
   # Data
   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
@@ -47,21 +47,22 @@ test_that("spark decision_tree + predict() works", {
   library(dplyr)
   library(parsnip)
   # Create connection
-  sc <- testthat_spark_connection() # TODO: figure out whether worth
+  sc <- testthat_spark_connection()
   # Data
   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
   train <- iris_tbls$train
   validation <- iris_tbls$validation
-  # Model
-  decision_spark <- decision_tree(mode = "classification") %>%
-    set_engine("spark") %>%
-    fit(Species ~ ., data = train)
-  expected_output <- ml_predict(decision_spark$fit, validation) %>%
+  # Model TODO: file issue with parsnip
+  # decision_spark <- decision_tree(mode = "classification") %>%
+  #   set_engine("spark") %>%
+  #   fit(Species ~ ., data = train)
+  spark_fit <- ml_decision_tree_classifier(train, Species ~ .)
+  expected_output <- ml_predict(spark_fit, validation) %>%
     select(predicted_label) %>%
     collect()
   # Butcher
-  x <- butcher(decision_spark) # TODO: create test scaffold for ml_save ml_load since different?
+  x <- butcher(spark_fit) # TODO: create test scaffold for ml_save ml_load since different?
   expect_identical(rlang::get_env(x$pipeline_model$stages[[2]]$feature_importances), rlang::base_env())
   expect_identical(rlang::get_env(x$pipeline_model$stages[[2]]$depth), rlang::base_env())
   expect_identical(rlang::get_env(x$pipeline_model$stages[[2]]$num_nodes), rlang::base_env())
@@ -80,7 +81,7 @@ test_that("spark boost_tree + predict() works", {
   library(dplyr)
   library(parsnip)
   # Create connection
-  sc <- testthat_spark_connection() # TODO: figure out whether worth
+  sc <- testthat_spark_connection()
   # Binary classification data
   iris_bin <- iris[iris$Species != "setosa", ]
   iris_bin$Species <- factor(iris_bin$Species)

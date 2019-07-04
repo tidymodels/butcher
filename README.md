@@ -13,8 +13,7 @@ coverage](https://codecov.io/gh/jyuu/butcher/branch/master/graph/badge.svg)](htt
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of butcher is to reduce the size of modeling objects saved to
-disk.
+This package helps reduce the size of modeling objects saved to disk.
 
 ## Installation
 

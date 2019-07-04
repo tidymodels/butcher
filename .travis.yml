@@ -13,35 +13,18 @@ matrix:
     r: release
     r_binary_packages:
     - devtools
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-cache:
-  directories:
-    - $HOME/.keras
-    - $HOME/.cache/pip
-
-env:
-  global:
-  - KERAS_BACKEND="tensorflow"
-  - MAKEFLAGS="-j 2"
-
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-7
-
-before_script:
-  - python -m pip install --upgrade --ignore-installed --user travis pip setuptools wheel virtualenv
-  - python -m pip install --upgrade --ignore-installed --user travis keras h5py pyyaml requests Pillow scipy theano
-  - R -e 'tensorflow::install_tensorflow()'
+    after_success:
+    - Rscript -e 'covr::codecov()'
 
 before_install:
-  - sudo apt-get -y install libnlopt-dev
-  - sudo apt-get update
-  - sudo apt-get -y install python3
   - mkdir -p ~/.R/
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "CXX14 = g++-7 -fPIC" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars; fi
@@ -49,6 +32,3 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CXX14FLAGS = -O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function  -Wno-unknown-pragmas" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CC = clang" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
-
-after_success:
-  - Rscript -e 'covr::codecov()'

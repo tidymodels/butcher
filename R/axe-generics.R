@@ -17,7 +17,6 @@ butcher <- function(x, ...) {
   x <- axe_data(x, ...)
   x <- axe_env(x, ...)
   x <- axe_fitted(x, ...)
-  x <- axe_misc(x, ...)
   x
 }
 
@@ -131,28 +130,6 @@ axe_fitted <- function(x, ...) {
 
 #' @export
 axe_fitted.default <- function(x, ...) {
-  x
-}
-
-#' Axe miscellaneous.
-#'
-#' Remove the intermediary steps attached from training to modeling objects.
-#'
-#' @param x model object
-#' @param ... any additional arguments related to axing
-#'
-#' @return model object without the extra intermediatary units previously stored for training.
-#'
-#' @section Methods:
-#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_misc")}
-#'
-#' @export
-axe_misc <- function(x, ...) {
-  UseMethod("axe_misc")
-}
-
-#' @export
-axe_misc.default <- function(x, ...) {
   x
 }
 

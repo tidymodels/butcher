@@ -7,7 +7,6 @@
 \alias{axe_data.model_fit}
 \alias{axe_env.model_fit}
 \alias{axe_fitted.model_fit}
-\alias{axe_misc.model_fit}
 \title{Axing an model_fit.}
 \usage{
 \method{axe_call}{model_fit}(x, ...)
@@ -19,8 +18,6 @@
 \method{axe_env}{model_fit}(x, ...)
 
 \method{axe_fitted}{model_fit}(x, ...)
-
-\method{axe_misc}{model_fit}(x, ...)
 }
 \arguments{
 \item{x}{model object}

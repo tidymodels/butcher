@@ -3,12 +3,9 @@
 \name{axe-multnet}
 \alias{axe-multnet}
 \alias{axe_call.multnet}
-\alias{axe_misc.multnet}
 \title{Axing an multnet.}
 \usage{
 \method{axe_call}{multnet}(x, ...)
-
-\method{axe_misc}{multnet}(x, ...)
 }
 \arguments{
 \item{x}{model object}

@@ -37,15 +37,3 @@ axe_call.multnet <- function(x, ...) {
   x$call <- call("dummy_call")
   add_butcher_class(x)
 }
-
-#' Remove misc. For multnet objects, we remove \code{dfmat}, which
-#' tracks the number of nonzero coefficients per class.
-#'
-#' @rdname axe-multnet
-#' @export
-axe_misc.multnet <- function(x, ...) {
-  x$dfmat <- axe_env(x$dfmat, ...)
-  add_butcher_class(x)
-}
-
-

@@ -114,14 +114,13 @@ butcher::weigh(cleaned_lm, threshold = 0, units = "MB")
 butcher::weigh(old_lm, threshold = 0, units = "MB")
 ```
 
-Axing the environment, however, is not the only functionality of `butcher`. This package provides six S3 generics that include: 
+Axing the environment, however, is not the only functionality of `butcher`. This package provides five S3 generics that include: 
 
 - `axe_call`: Remove the call object. 
 - `axe_ctrl`: Remove the controls fixed for training.
 - `axe_data`: Remove the original data.
-- `axe_env`: Replace untidy environments. 
-- `axe_fitted`: Replace fitted values.
-- `axe_misc`: Replace intermediate pipelines saved from training.
+- `axe_env`: Replace inherited environments with empty environments. 
+- `axe_fitted`: Remove fitted values.
 
 In our case here with `lm`, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we axe all the fat that the `lm` object carries, i.e., the call, its fitted values, the data---all things saved for characterizing the model. If we are comfortable with axing everything we can, we can simply run `butcher` with the peace of mind that `predict` still works.
 

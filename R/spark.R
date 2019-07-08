@@ -44,18 +44,4 @@ axe_env.ml_pipeline_stage <- function(x, ...) {
   add_butcher_class(x)
 }
 
-#' Remove the pipeline. This is available prior to the user saving the
-#' model output using \code{ml_save} or some other \code{save} mechanism.
-#' Under these circumstances, the model pipeline is serialized such that
-#' the model has both the data processing information as well as the model
-#' fit information. For most data post-processing tasks, the content saved
-#' in the \code{pipeline} object is not required.
-#'
-#' @rdname axe-spark
-#' @export
-axe_misc.ml_model <- function(x, ...) {
-  x$pipeline <- list(NULL)
-  add_butcher_class(x)
-}
-
 

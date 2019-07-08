@@ -5,7 +5,6 @@
 \alias{axe_call.rpart}
 \alias{axe_ctrl.rpart}
 \alias{axe_env.rpart}
-\alias{axe_misc.rpart}
 \title{Axing a rpart.}
 \usage{
 \method{axe_call}{rpart}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_ctrl}{rpart}(x, ...)
 
 \method{axe_env}{rpart}(x, ...)
-
-\method{axe_misc}{rpart}(x, ...)
 }
 \arguments{
 \item{x}{model object}

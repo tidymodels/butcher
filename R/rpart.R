@@ -60,14 +60,4 @@ axe_env.rpart <- function(x, ...) {
   add_butcher_class(x)
 }
 
-#' Remove misc. For rpart objects, we remove \code{cptable}, which stores
-#' the optimal prunings based on the complexity parameter.
-#'
-#' @rdname axe-rpart
-#' @export
-axe_misc.rpart <- function(x, ...) {
-  axe_misc(x$cptable)
-  add_butcher_class(x)
-}
-
 

@@ -41,10 +41,4 @@ axe_fitted.model_fit <- function(x, ...) {
   axe_fitted(x$fit, ...)
 }
 
-#' @rdname axe-model_fit
-#' @export
-axe_misc.model_fit <- function(x, ...) {
-  axe_misc(x$fit, ...)
-}
-
 

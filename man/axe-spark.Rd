@@ -5,7 +5,6 @@
 \alias{axe_env.ml_model}
 \alias{axe_env.ml_pipeline_model}
 \alias{axe_env.ml_pipeline_stage}
-\alias{axe_misc.ml_model}
 \title{Axing a spark object.}
 \usage{
 \method{axe_env}{ml_model}(x, ...)
@@ -13,8 +12,6 @@
 \method{axe_env}{ml_pipeline_model}(x, ...)
 
 \method{axe_env}{ml_pipeline_stage}(x, ...)
-
-\method{axe_misc}{ml_model}(x, ...)
 }
 \arguments{
 \item{x}{model object}

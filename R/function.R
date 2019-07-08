@@ -32,7 +32,10 @@ NULL
 #' @export
 axe_env.function <- function(x, ...) {
   if(is.null(attr(x, "srcref"))) {
-    x <- rlang::set_env(x, rlang::base_env())
+    print("yes")
+    x <- rlang::set_env(x, rlang::empty_env())
+  } else {
+    x <- as.function(c(formals(x), body(x)), env = environment(x))
   }
   add_butcher_class(x)
 }

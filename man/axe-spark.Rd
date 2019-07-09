@@ -8,6 +8,7 @@
 \alias{axe_env.ml_model}
 \alias{axe_fitted.ml_model}
 \alias{axe_env.ml_pipeline_model}
+\alias{axe_env.ml_pipeline}
 \alias{axe_env.ml_pipeline_stage}
 \alias{axe_env.ml_summary}
 \title{Axing a spark object.}
@@ -23,6 +24,8 @@
 \method{axe_fitted}{ml_model}(x, ...)
 
 \method{axe_env}{ml_pipeline_model}(x, ...)
+
+\method{axe_env}{ml_pipeline}(x, ...)
 
 \method{axe_env}{ml_pipeline_stage}(x, ...)
 

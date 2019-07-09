@@ -26,17 +26,11 @@
 #' @name axe-function
 NULL
 
-#' Remove the environment.
+#' Remove the bytecode attached to function.
 #'
 #' @rdname axe-function
 #' @export
 axe_env.function <- function(x, ...) {
-  if(is.null(attr(x, "srcref"))) {
-    print("yes")
-    x <- rlang::set_env(x, rlang::empty_env())
-  } else {
-    x <- as.function(c(formals(x), body(x)), env = environment(x))
-  }
-  add_butcher_class(x)
+  as.function(c(formals(x), body(x)), env = environment(x))
 }
 

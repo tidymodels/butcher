@@ -14,7 +14,7 @@ validation <- iris_tbls$validation
 # Traditional approach via sparklyr ---------------------------------------
 spark_fit <- ml_logistic_regression(train, Species ~ .)
 # Serializes the Spark object into a format to be read by sparklyr
-ml_save(spark_fit, path = "inst/extdata/spark.rda")
+ml_save(spark_fit, path = "/inst/extdata/spark")
 
 # New approach via parsnip ------------------------------------------------
 # Decision tree

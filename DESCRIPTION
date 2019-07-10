@@ -29,7 +29,11 @@ Imports:
     tibble (>= 2.1.1),
     usethis,
     fs,
-    utils
+    utils,
+    glue,
+    cli,
+    clisymbols,
+    crayon
 RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 2.1.0),

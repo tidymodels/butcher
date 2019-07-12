@@ -13,3 +13,15 @@ multnet_fit <- multinom_reg() %>%
 
 # Save
 save(multnet_fit, file = "inst/extdata/multnet.rda")
+
+# Another example
+data("lending_club")
+
+multi_reg <- multinom_reg(penalty = 0.01) %>%
+  set_engine("glmnet") %>%
+  fit(verification_status ~ annual_inc + sub_grade, data = lending_club)
+
+prediction <- multi_reg %>%
+  predict(new_data = lending_club, type = "prob")
+
+glimpse(prediction)

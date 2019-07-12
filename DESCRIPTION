@@ -65,7 +65,8 @@ Suggests:
     covr,
     rstan,
     rstanarm,
-    e1071
+    e1071,
+    nnet
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

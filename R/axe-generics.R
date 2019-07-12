@@ -12,11 +12,16 @@
 #' @return axed model object with new butcher subclass assignment
 #' @export
 butcher <- function(x, ...) {
+  old <- x
+  pre <- options(usethis.quiet = TRUE)
   x <- axe_call(x, ...)
   x <- axe_ctrl(x, ...)
   x <- axe_data(x, ...)
   x <- axe_env(x, ...)
   x <- axe_fitted(x, ...)
+  pre <- options(usethis.quiet = FALSE)
+  # TODO: figure out inheritance dynamically..
+  assess_object(old, x, working = c("predict"))
   x
 }
 

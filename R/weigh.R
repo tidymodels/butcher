@@ -18,7 +18,7 @@ weigh <- function(x, ...) {
 }
 
 #' @export
-weigh.default <- function(x, threshold = 2, units = "MB", ...) {
+weigh.default <- function(x, threshold = 0, units = "MB", ...) {
   stopifnot(is.list(x))
   units <- rlang::arg_match(units, c("KB", "MB", "GB"))
   if(units == "MB") {

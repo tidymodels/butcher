@@ -33,7 +33,9 @@ NULL
 #' @rdname axe-lm
 #' @export
 axe_call.lm <- function(x, ...) {
+  old <- x
   x$call <- call("dummy_call")
+  assess_object(old, x, working = c("predict"), broken = ("print"))
   add_butcher_class(x)
 }
 
@@ -44,8 +46,10 @@ axe_call.lm <- function(x, ...) {
 #' @rdname axe-lm
 #' @export
 axe_env.lm <- function(x, ...) {
+  old <- x
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
+  assess_object(old, x, working = c("predict"))
   add_butcher_class(x)
 }
 
@@ -54,7 +58,9 @@ axe_env.lm <- function(x, ...) {
 #' @rdname axe-lm
 #' @export
 axe_fitted.lm <- function(x, ...) {
+  old <- x
   x$fitted.values <- numeric(0)
+  assess_object(old, x, working = c("predict"))
   add_butcher_class(x)
 }
 

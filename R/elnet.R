@@ -35,7 +35,9 @@ NULL
 #' @rdname axe-elnet
 #' @export
 axe_call.elnet <- function(x, ...) {
+  old <- x
   x$call <- call("dummy_call")
+  assess_object(old, x, working = c("predict"), broken = c("print"))
   add_butcher_class(x)
 }
 

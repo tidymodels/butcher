@@ -151,6 +151,18 @@ The current axe methods have been tested on all `parsnip` model objects
 as listed
 [here](https://tidymodels.github.io/parsnip/articles/articles/Models.html).
 If you are working with a new model object that could benefit from any
-kind of axing, we would love for you to make a pull request. Templates
-for adding your modeling package and model object to `butcher` are
-available in this package’s `new_model_butcher` function.
+kind of axing, we would love for you to make a pull request\! You can
+visit the `vignette("adding-models-to-butcher")` for more guidelines,
+but in short, to contribute a set of axe methods:
+
+1)  Run `new_model_butcher(model_class = "your_object", package_name =
+    "your_package")`
+2)  Use butcher helper functions `butcher::weigh` and `butcher::find` to
+    decide what to axe
+3)  Finalize edits to `R/your_object.R` and
+    `tests/testthat/test-your_object.R`
+4)  Make a pull request\!
+
+Please note that the `butcher` package is released with a [Contributor
+Code of Conduct](https://usethis.r-lib.org/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.

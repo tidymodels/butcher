@@ -5,10 +5,13 @@
 #' The package supports ensembles of classification and regression trees.
 #' This is where all the randomForest specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -38,7 +41,38 @@ NULL
 #'
 #' @rdname axe-randomForest
 #' @export
-axe_call.randomForest <- function(x, ...) {
+axe_call.randomForest <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("print", "summary"))
+  }
+  add_butcher_class(x)
+}
+
+#' Remove controls.
+#'
+#' @rdname axe-randomForest
+#' @export
+axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
+  old <- x
+  x$inbag <- matrix(NA)
+  if (verbose) {
+    assess_object(old, x)
+  }
+  add_butcher_class(x)
+}
+
+#' Remove the environment.
+#'
+#' @rdname axe-randomForest
+#' @export
+axe_env.randomForest <- function(x, verbose = TRUE, ...) {
+  old <- x
+  x$terms <- axe_env(x$terms, ...)
+  if (verbose) {
+    assess_object(old, x)
+  }
   add_butcher_class(x)
 }

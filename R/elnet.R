@@ -2,13 +2,13 @@
 #'
 #' This is where all the elnet specific documentation lies.
 #'
-#' Note: the elnet object is one of the few model objects in which
-#' there is no environment to axe.
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
-#'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -34,10 +34,13 @@ NULL
 #'
 #' @rdname axe-elnet
 #' @export
-axe_call.elnet <- function(x, ...) {
+axe_call.elnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  assess_object(old, x, working = c("predict"), broken = c("print"))
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("print.glmnet", "summary"))
+  }
   add_butcher_class(x)
 }
 

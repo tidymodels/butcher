@@ -7,12 +7,12 @@
 axe_call(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-model object without call attribute
+Model object without call attribute.
 }
 \description{
 Replace the call object attached to modeling objects with a placeholder.

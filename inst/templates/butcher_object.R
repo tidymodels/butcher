@@ -2,10 +2,13 @@
 #'
 #' This is where all the {{model_class}} specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @name axe-{{model_class}}
 NULL
@@ -14,7 +17,15 @@ NULL
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_call.{{model_class}} <- function(x, ...) {
+axe_call.{{model_class}} <- function(x, verbose = TRUE, ...) {
+  old <- x
+  ##
+  ## Insert replacements here...
+  ##
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("???"))
+  }
   add_butcher_class(x)
 }
 
@@ -23,6 +34,14 @@ axe_call.{{model_class}} <- function(x, ...) {
 #' @rdname axe-{{model_class}}
 #' @export
 axe_ctrl.{{model_class}} <- function(x, ...) {
+  old <- x
+  ##
+  ## Insert replacements here...
+  ##
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("???"))
+  }
   add_butcher_class(x)
 }
 
@@ -31,6 +50,14 @@ axe_ctrl.{{model_class}} <- function(x, ...) {
 #' @rdname axe-{{model_class}}
 #' @export
 axe_data.{{model_class}} <- function(x, ...) {
+  old <- x
+  ##
+  ## Insert replacements here...
+  ##
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("???"))
+  }
   add_butcher_class(x)
 }
 
@@ -39,6 +66,14 @@ axe_data.{{model_class}} <- function(x, ...) {
 #' @rdname axe-{{model_class}}
 #' @export
 axe_env.{{model_class}} <- function(x, ...) {
+  old <- x
+  ##
+  ## Insert replacements here...
+  ##
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("???"))
+  }
   add_butcher_class(x)
 }
 
@@ -47,5 +82,13 @@ axe_env.{{model_class}} <- function(x, ...) {
 #' @rdname axe-{{model_class}}
 #' @export
 axe_fitted.{{model_class}} <- function(x, ...) {
+  old <- x
+  ##
+  ## Insert replacements here...
+  ##
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("???"))
+  }
   add_butcher_class(x)
 }

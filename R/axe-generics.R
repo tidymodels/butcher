@@ -1,27 +1,36 @@
 #' Butcher an object.
 #'
 #' Reduce the size of a model object so that it takes up less memory on disk.
-#' Currently the model object is stripped down to the point that only the
-#' minimal components necessary for the `predict` function to work remain.
+#' Currently, the model object is stripped down to the point that only the
+#' minimal components necessary for the \code{predict} function to work remain.
 #' Future adjustments to this function will be needed to avoid removal of
 #' model fit components to ensure it works with other downstream functions.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed.
+#'  Notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object with new butcher subclass assignment
+#' @return Axed model object with new butcher subclass assignment.
 #' @export
-butcher <- function(x, ...) {
+butcher <- function(x, verbose = TRUE, ...) {
   old <- x
-  pre <- options(usethis.quiet = TRUE)
-  x <- axe_call(x, ...)
-  x <- axe_ctrl(x, ...)
-  x <- axe_data(x, ...)
-  x <- axe_env(x, ...)
-  x <- axe_fitted(x, ...)
-  pre <- options(usethis.quiet = FALSE)
-  # TODO: figure out inheritance dynamically..
-  assess_object(old, x, working = c("predict"))
+
+  temp_file <- tempfile(fileext = ".txt")
+  sink(file = temp_file)
+  x <- axe_call(x, verbose = verbose, ...)
+  x <- axe_ctrl(x, verbose = verbose, ...)
+  x <- axe_data(x, verbose = verbose, ...)
+  x <- axe_env(x, verbose = verbose, ...)
+  x <- axe_fitted(x, verbose = verbose, ...)
+  sink()
+
+  if (verbose) {
+    all_disabled <- read_tempfile(temp_file)
+    assess_object(old, x, disabled = all_disabled)
+    unlink(temp_file)
+  }
   x
 }
 
@@ -29,10 +38,10 @@ butcher <- function(x, ...) {
 #'
 #' Replace the call object attached to modeling objects with a placeholder.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return model object without call attribute
+#' @return Model object without call attribute.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
@@ -43,7 +52,11 @@ axe_call <- function(x, ...) {
 }
 
 #' @export
-axe_call.default <- function(x, ...) {
+axe_call.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -51,10 +64,10 @@ axe_call.default <- function(x, ...) {
 #'
 #' Remove the controls from training attached to modeling objects.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return model object without control tuning parameters from training
+#' @return Model object without control tuning parameters from training.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_ctrl")}
@@ -65,7 +78,11 @@ axe_ctrl <- function(x, ...) {
 }
 
 #' @export
-axe_ctrl.default <- function(x, ...) {
+axe_ctrl.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -73,10 +90,10 @@ axe_ctrl.default <- function(x, ...) {
 #'
 #' Remove the training data attached to modeling objects.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return model object without the training data
+#' @return Model object without the training data
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_data")}
@@ -87,7 +104,11 @@ axe_data <- function(x, ...) {
 }
 
 #' @export
-axe_data.default <- function(x, ...) {
+axe_data.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -98,10 +119,10 @@ axe_data.default <- function(x, ...) {
 #' not required in the downstream analysis pipeline. Currently, if found,
 #' the environment is replaced with rlang::empty_env.
 #'
-#' @param x model object
-#' @param ... other arguments passed to axe methods
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return model object with empty environments
+#' @return Model object with empty environments.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_env")}
@@ -112,7 +133,11 @@ axe_env <- function(x, ...) {
 }
 
 #' @export
-axe_env.default <- function(x, ...) {
+axe_env.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -120,10 +145,10 @@ axe_env.default <- function(x, ...) {
 #'
 #' Remove the fitted values attached to modeling objects.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return model object without the fitted values
+#' @return Model object without the fitted values.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_fitted")}
@@ -134,7 +159,11 @@ axe_fitted <- function(x, ...) {
 }
 
 #' @export
-axe_fitted.default <- function(x, ...) {
+axe_fitted.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 

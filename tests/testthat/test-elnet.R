@@ -13,4 +13,7 @@ test_that("elnet + predict() works", {
   x <- butcher(elnet_fit)
   new_data <- as.matrix(mtcars[1:3, 2:11])
   expect_equal(predict(x, new_data)[1], 22.5177880899825)
+  x <- axe_call(elnet_fit)
+  expect_equal(x$call, rlang::expr(dummy_call()))
 })
+

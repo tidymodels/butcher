@@ -3,17 +3,27 @@
 \name{axe-randomForest}
 \alias{axe-randomForest}
 \alias{axe_call.randomForest}
+\alias{axe_ctrl.randomForest}
+\alias{axe_env.randomForest}
 \title{Axing an randomForest.}
 \usage{
-\method{axe_call}{randomForest}(x, ...)
+\method{axe_call}{randomForest}(x, verbose = TRUE, ...)
+
+\method{axe_ctrl}{randomForest}(x, verbose = TRUE, ...)
+
+\method{axe_env}{randomForest}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 randomForest objects are created from the \code{randomForest} package,

@@ -2,10 +2,13 @@
 #'
 #' This is where all the lm specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -27,15 +30,18 @@
 #' @name axe-lm
 NULL
 
-#' Remove the call. Note that there may be a rare \code{offset} feature
-#' stored in the call which may be utilized in \code{predict}.
+#' Remove the call.
 #'
 #' @rdname axe-lm
 #' @export
-axe_call.lm <- function(x, ...) {
+axe_call.lm <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  assess_object(old, x, working = c("predict"), broken = ("print"))
+  x$call$offset <- old$call$offset
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("print", "summary"))
+  }
   add_butcher_class(x)
 }
 
@@ -45,11 +51,13 @@ axe_call.lm <- function(x, ...) {
 #'
 #' @rdname axe-lm
 #' @export
-axe_env.lm <- function(x, ...) {
+axe_env.lm <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
-  assess_object(old, x, working = c("predict"))
+  if (verbose) {
+    assess_object(old, x)
+  }
   add_butcher_class(x)
 }
 
@@ -57,10 +65,13 @@ axe_env.lm <- function(x, ...) {
 #'
 #' @rdname axe-lm
 #' @export
-axe_fitted.lm <- function(x, ...) {
+axe_fitted.lm <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- numeric(0)
-  assess_object(old, x, working = c("predict"))
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("fitted", "summary"))
+  }
   add_butcher_class(x)
 }
 

@@ -1,13 +1,22 @@
 #' Axing a nnet.
 #'
-#' nnet objects are created from the \pkg{nnet} package.
 #' This is where all the nnet specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
+#' @examples
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(nnet)))
+#' nnet_fit <- mlp("classification", hidden_units = 2) %>%
+#'   set_engine("nnet") %>%
+#'   fit(Species ~ ., data = iris)
 #'
+#' butcher(nnet_fit)
 #' @name axe-nnet
 NULL
 
@@ -15,10 +24,12 @@ NULL
 #'
 #' @rdname axe-nnet
 #' @export
-axe_call.nnet <- function(x, ...) {
+axe_call.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  assess_object(old, x, working = c("predict"), broken = ("print"))
+  if (verbose) {
+    assess_object(old, x)
+  }
   add_butcher_class(x)
 }
 
@@ -27,10 +38,12 @@ axe_call.nnet <- function(x, ...) {
 #'
 #' @rdname axe-nnet
 #' @export
-axe_env.nnet <- function(x, ...) {
+axe_env.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
-  assess_object(old, x, working = c("predict"))
+  if (verbose) {
+    assess_object(old, x)
+  }
   add_butcher_class(x)
 }
 
@@ -38,9 +51,12 @@ axe_env.nnet <- function(x, ...) {
 #'
 #' @rdname axe-nnet
 #' @export
-axe_fitted.nnet <- function(x, ...) {
+axe_fitted.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- numeric(0)
-  assess_object(old, x, working = c("predict"))
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("fitted", "predict(newdata = NA)", "dimnames(object$fitted.values)"))
+  }
   add_butcher_class(x)
 }

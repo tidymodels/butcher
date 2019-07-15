@@ -34,4 +34,10 @@ test_that("lm + butcher() works", {
 test_that("lm + predict() works", {
   x <- butcher(lm_fit)
   expect_equal(predict(x)[1], c(`Mazda RX4` = 21.5647055857078))
+  set.seed(0); w <- runif(nrow(trees), 1, 2)
+  X <- model.matrix(~ Girth + Volume, trees)
+  y <- trees$Height
+  fit_by_wls <- lm(y ~ X - 1, weights = w)
+  x <- axe_env(fit_by_wls)
+  expect_lt(lobstr::obj_size(fit_by_wls), lobstr::obj_size(x))
 })

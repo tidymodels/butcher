@@ -7,21 +7,33 @@
 \alias{axe_fitted.nnet}
 \title{Axing a nnet.}
 \usage{
-\method{axe_call}{nnet}(x, ...)
+\method{axe_call}{nnet}(x, verbose = TRUE, ...)
 
-\method{axe_env}{nnet}(x, ...)
+\method{axe_env}{nnet}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{nnet}(x, ...)
+\method{axe_fitted}{nnet}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-nnet objects are created from the \pkg{nnet} package.
 This is where all the nnet specific documentation lies.
+}
+\examples{
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(nnet)))
+nnet_fit <- mlp("classification", hidden_units = 2) \%>\%
+  set_engine("nnet") \%>\%
+  fit(Species ~ ., data = iris)
+
+butcher(nnet_fit)
 }

@@ -1,15 +1,15 @@
-#' Find an object.
+#' Locate part of an object.
 #'
 #' Locate where a specific component of a object might exist. This
 #' function is restricted in that only items that can be axed will
 #' be found.
 #'
-#' @param x model object
-#' @param item_name name associated with object component
+#' @param x Model object.
+#' @param item_name Name associated with object component.
 #'
-#' @return location in model object
+#' @return Location in model object.
 #' @export
-find <- function(x, item_name = "env") {
+locate <- function(x, item_name = "env") {
   item <- rlang::arg_match(item_name, c("env",
                                         "call",
                                         "data",
@@ -42,7 +42,7 @@ find <- function(x, item_name = "env") {
   if(length(parsed_loc) > 0) {
     return(paste0("x$", parsed_loc))
   } else {
-    stop("Sorry, this part of the model object was not found.")
+    stop("Sorry, this part of the model object was not located.")
   }
 }
 

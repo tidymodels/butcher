@@ -7,12 +7,12 @@
 axe_fitted(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-model object without the fitted values
+Model object without the fitted values.
 }
 \description{
 Remove the fitted values attached to modeling objects.

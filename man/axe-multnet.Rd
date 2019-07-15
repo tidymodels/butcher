@@ -5,22 +5,22 @@
 \alias{axe_call.multnet}
 \title{Axing an multnet.}
 \usage{
-\method{axe_call}{multnet}(x, ...)
+\method{axe_call}{multnet}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 This is where all the multnet specific documentation lies.
-}
-\details{
-Note: Since multnet object is derived from the \code{glmnet} package it is
-one of the few model objects in which there is no environment to axe.
 }
 \examples{
 # Load libraries

@@ -7,12 +7,12 @@
 axe_env(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{other arguments passed to axe methods}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-model object with empty environments
+Model object with empty environments.
 }
 \description{
 Remove the environment(s) attached to modeling objects as they are often

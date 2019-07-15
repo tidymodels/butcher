@@ -8,12 +8,12 @@
 \method{axe_env}{terms}(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Terms object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed terms object.
 }
 \description{
 Generics related to axing objects of the term class.

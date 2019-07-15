@@ -7,12 +7,12 @@
 axe_data(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-model object without the training data
+Model object without the training data
 }
 \description{
 Remove the training data attached to modeling objects.

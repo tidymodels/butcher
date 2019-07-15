@@ -7,12 +7,12 @@
 axe_ctrl(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-model object without control tuning parameters from training
+Model object without control tuning parameters from training.
 }
 \description{
 Remove the controls from training attached to modeling objects.

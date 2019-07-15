@@ -52,7 +52,11 @@ axe_call <- function(x, ...) {
 }
 
 #' @export
-axe_call.default <- function(x, ...) {
+axe_call.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -74,7 +78,11 @@ axe_ctrl <- function(x, ...) {
 }
 
 #' @export
-axe_ctrl.default <- function(x, ...) {
+axe_ctrl.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -96,7 +104,11 @@ axe_data <- function(x, ...) {
 }
 
 #' @export
-axe_data.default <- function(x, ...) {
+axe_data.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -121,7 +133,11 @@ axe_env <- function(x, ...) {
 }
 
 #' @export
-axe_env.default <- function(x, ...) {
+axe_env.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 
@@ -143,7 +159,11 @@ axe_fitted <- function(x, ...) {
 }
 
 #' @export
-axe_fitted.default <- function(x, ...) {
+axe_fitted.default <- function(x, verbose = TRUE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
   x
 }
 

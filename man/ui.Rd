@@ -8,24 +8,16 @@
 \usage{
 memory_released(og, butchered)
 
-assess_object(og, butchered, working = NULL, broken = NULL,
-  class_added = TRUE)
+assess_object(og, butchered, disabled = NULL, class_added = TRUE)
 }
 \arguments{
-\item{og}{original model object}
+\item{og}{Original model object.}
 
-\item{butchered}{butchered model object}
+\item{butchered}{Butchered model object.}
 
-\item{working}{string of tested working functions}
+\item{disabled}{String of disabled functions as a result of axing.}
 
-\item{broken}{string of nonworking functions}
-
-\item{class_added}{boolean default to true when butcher class appended}
-}
-\value{
-pretty version of memory released
-
-console messages
+\item{class_added}{Boolean that defaults to true when butcher class is added.}
 }
 \description{
 These functions leverage the \code{ui.R} as provided in the
@@ -33,5 +25,5 @@ These functions leverage the \code{ui.R} as provided in the
 \url{https://github.com/r-lib/usethis/blob/master/R/ui.R}.
 These console messages are created such that the user is
 aware of the effects of removing specific components from
-the modeling object.
+the model object.
 }

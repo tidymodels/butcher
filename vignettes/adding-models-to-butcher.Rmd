@@ -67,7 +67,7 @@ As shown by the `R` scripts attached to other model objects that exist in this p
 # … with 15 more rows
 ```
 
-In this example, the fitted model objected generated from `blobber` has a `terms` component that is taking 4.01 Mb. From here, you can examine the structure of this terms component by leveraging `lobstr::sxp(fitted_blob_object$terms)` or simply running `utils::str(fitted_blob_object$terms)`. If you are looking to hunt for a specific component like the environment, fitted values, training data, controls or the call object, there is also the `butcher::find` function. 
+In this example, the fitted model objected generated from `blobber` has a `terms` component that is taking 4.01 Mb. From here, you can examine the structure of this terms component by leveraging `lobstr::sxp(fitted_blob_object$terms)` or simply running `utils::str(fitted_blob_object$terms)`. If you are looking to hunt for a specific component like the environment, fitted values, training data, controls or the call object, there is also the `butcher::locate` function. 
 
 Perhaps from our model object, `blob`, we find that the `call` is the only piece worth axing (or replacing). The `R/blob.R` skeleton would be completed by putting a placeholder for the original call. 
 
@@ -78,10 +78,13 @@ Perhaps from our model object, `blob`, we find that the `call` is the only piece
 #' generally leveraged for classification ... insert anything relevant 
 #' ... This is where all the blob specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @name axe-blob
 NULL
@@ -90,23 +93,25 @@ NULL
 #'
 #' @rdname axe-blob
 #' @export
-axe_call.blob <- function(x, ...) {
+axe_call.blob <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  assess_object(old, x, 
-                disabled = c("print", "summary"))
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("print", "summary"))
+  }
   add_butcher_class(x)
 }
 ```
 
-Here we assign the current blob object `x` to the variable `old` as a means to evaluate the memory released once `axe_call` is executed on the original model object. We also include `assess_object` with the additional string parameter of `disabled` so console messages will be printed out, alerting users that use your axe method of any downstream functions would be affected by axing. Since the original model object is fundamentally different, we attach an additional `butcher_blob` class by including `add_butcher_class` at the end of each axe method. Once the axe methods are set, we then have a skeleton file `tests/testthat/test-blob.R` to aid in any unit testing. 
+Here we assign the current blob object `x` to the variable `old` as a means to evaluate the memory released once `axe_call` is executed on the original model object. We also include `assess_object` with the additional string parameter of `disabled` so console messages will be printed out, alerting users of any downstream functions would be affected by axing the call. Since the original model object is fundamentally different, we attach an additional `butcher_blob` class by including `add_butcher_class` at the end of each axe method. Once the axe methods are set, we then have a skeleton file `tests/testthat/test-blob.R` to aid in any unit testing. 
 
 ## Recap
 
 Adding a new model object to butcher:
 
 1) Run `new_model_butcher(model_class = "blob", package_name = "blobber")`
-2) Use butcher helper functions `butcher::weigh` and `butcher::find` to decide what to axe
+2) Use butcher helper functions `butcher::weigh` and `butcher::locate` to decide what to axe
 3) Finalize edits to `R/blob.R` and `tests/testthat/test-blob.R` 
 4) Make a pull request! 
 

@@ -2,10 +2,10 @@
 #'
 #' Generics related to axing objects of the term class.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Terms object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed terms object.
 #'
 #' @name axe-terms
 NULL
@@ -13,6 +13,6 @@ NULL
 #' @rdname axe-terms
 #' @export
 axe_env.terms <- function(x, ...) {
-  attr(x, ".Environment") <- rlang::base_env()
+  attr(x, ".Environment") <- rlang::empty_env()
   x
 }

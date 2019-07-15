@@ -24,6 +24,7 @@ This is where all the cv.glmnet specific documentation lies.
 }
 \examples{
 # Load libraries
+library(glmnet)
 n <- 500;p <- 30
 nzc <- trunc(p/10)
 x <- matrix(rnorm(n*p), n, p)

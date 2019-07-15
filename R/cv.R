@@ -12,6 +12,7 @@
 #'
 #' @examples
 #' # Load libraries
+#' library(glmnet)
 #' n <- 500;p <- 30
 #' nzc <- trunc(p/10)
 #' x <- matrix(rnorm(n*p), n, p)

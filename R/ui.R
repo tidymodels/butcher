@@ -19,7 +19,7 @@ memory_released <- function(og, butchered) {
   rel <- old - new
   rel <- format(rel, big.mark = ",", scientific = FALSE)
   if (length(rel) == 1) {
-    if (rel < 0) {
+    if (rel <= 0) {
       return(NULL)
     } else {
       return(paste(rel, "B"))
@@ -57,11 +57,11 @@ clean_function_names <- function(output) {
 }
 
 read_tempfile <- function(filename) {
-  temp <- read.delim(filename, header = FALSE, stringsAsFactors = FALSE)
+  temp <- utils::read.delim(filename, header = FALSE, stringsAsFactors = FALSE)
   all_disabled <- c()
   for (i in 1:dim(temp)[1]) {
     output <- unlist(strsplit(temp[i, 1], ":"))
-    if (output[1] == "✖ Disabled") {
+    if (length(grep("Disabled", output[1])) != 0) {
       new <- clean_function_names(output[2])
       all_disabled <- union(all_disabled, new)
     }

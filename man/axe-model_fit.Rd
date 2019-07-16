@@ -20,12 +20,12 @@
 \method{axe_fitted}{model_fit}(x, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 model_fit objects are created from the \code{parsnip} package.

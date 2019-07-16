@@ -7,33 +7,26 @@
 \alias{axe_env.classbagg}
 \title{Axing a classbagg object.}
 \usage{
-\method{axe_call}{classbagg}(x, ...)
+\method{axe_call}{classbagg}(x, verbose = TRUE, ...)
 
-\method{axe_data}{classbagg}(x, ...)
+\method{axe_data}{classbagg}(x, verbose = TRUE, ...)
 
-\method{axe_env}{classbagg}(x, ...)
+\method{axe_env}{classbagg}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{classbagg object}
+\item{x}{Classbagg object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed classbagg object
+Axed classbagg object.
 }
 \description{
-Axing a classbagg object.
-
-Remove the call. Calls located within each subtree is also removed.
-
-Remove training data. There are also responses stored as either a factor
-vector of class labels, a vector of numerical values, or an object of class
-\code{Surv} that can also be removed from \code{x$y} for consistency.
-
-Remove environments. Model objects of this type include references to
-environments in each step of the recipe, and thus must also be
-removed. Note that environments that result from \code{srcref} are
-not axed.
+This is where all the classbagg specific documentation lies.
 }
 \examples{
 # Load libraries

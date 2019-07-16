@@ -7,22 +7,26 @@
 \alias{axe_env.survreg}
 \title{Axing an survreg.}
 \usage{
-\method{axe_call}{survreg}(x, ...)
+\method{axe_call}{survreg}(x, verbose = TRUE, ...)
 
-\method{axe_data}{survreg}(x, ...)
+\method{axe_data}{survreg}(x, verbose = TRUE, ...)
 
-\method{axe_env}{survreg}(x, ...)
+\method{axe_env}{survreg}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-survreg objects are created from the \code{survival} package. They
+survreg objects are created from the \pkg{survival} package. They
 are returned from the \code{survreg} function, representing fitted
 parametric survival models. This is where all the survreg specific
 documentation lies.

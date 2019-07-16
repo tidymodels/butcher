@@ -30,12 +30,10 @@ memory_released <- function(og, butchered) {
 }
 
 #' @rdname ui
-#' @param disabled String of disabled functions as a result of axing.
-#' @param class_added Boolean that defaults to true when butcher class is added.
-assess_object <- function(og, butchered,
-                          disabled = NULL,
-                          class_added = TRUE) {
+assess_object <- function(og, butchered) {
   mem <- memory_released(og, butchered)
+  disabled <- attr(butchered, "butcher_disabled")
+  class_added <- grep("butcher", class(butchered)[1])
   if (is.null(mem)) {
     ui_oops("No memory released. Do not butcher.")
   } else {
@@ -43,28 +41,9 @@ assess_object <- function(og, butchered,
     if (!is.null(disabled)) {
       ui_oops("Disabled: {ui_code(disabled)}")
     }
-    if (!class_added) {
+    if (class_added != 1) {
       class_name <- "butchered"
       ui_oops("Could not add {ui_value(class_name)} class")
     }
   }
-}
-
-clean_function_names <- function(output) {
-  output <- trimws(output)
-  output <- unlist(strsplit(output, ", "))
-  gsub("[`!?\\-]", "", output)
-}
-
-read_tempfile <- function(filename) {
-  temp <- utils::read.delim(filename, header = FALSE, stringsAsFactors = FALSE)
-  all_disabled <- c()
-  for (i in 1:dim(temp)[1]) {
-    output <- unlist(strsplit(temp[i, 1], ":"))
-    if (length(grep("Disabled", output[1])) != 0) {
-      new <- clean_function_names(output[2])
-      all_disabled <- union(all_disabled, new)
-    }
-  }
-  return(all_disabled)
 }

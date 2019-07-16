@@ -36,9 +36,8 @@ NULL
 axe_call.multnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("print.glmnet", "summary"))
-  }
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print.glmnet", "summary"),
+                         verbose = verbose)
 }

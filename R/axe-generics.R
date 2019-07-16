@@ -23,6 +23,7 @@ butcher <- function(x, verbose = TRUE, ...) {
   x <- axe_fitted(x, verbose = FALSE, ...)
 
   add_butcher_attributes(x, old,
+                         add_class = FALSE,
                          verbose = verbose)
 }
 

@@ -41,7 +41,7 @@ assess_object <- function(og, butchered) {
     if (!is.null(disabled)) {
       ui_oops("Disabled: {ui_code(disabled)}")
     }
-    if (class_added != 1) {
+    if (length(class_added) == 0) {
       class_name <- "butchered"
       ui_oops("Could not add {ui_value(class_name)} class")
     }

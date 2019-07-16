@@ -1,14 +1,20 @@
 #' Axing an ranger.
 #'
-#' ranger objects are created from the \code{ranger} package, which is used as
+#' ranger objects are created from the \pkg{ranger} package, which is used as
 #' a means to quickly train random forests. The package supports ensembles
 #' of classification, regression, survival and probability prediction trees.
-#' This is where all the ranger specific documentation lies.
+#' Given the reliance of post processing functions on the model object, like
+#' \code{importance_pvalues} and \code{treeInfo}, on the first class listed,
+#' the \code{butcher_ranger} class is not appended. This is where all the ranger
+#' specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -37,16 +43,28 @@ NULL
 #'
 #' @rdname axe-ranger
 #' @export
-axe_call.ranger <- function(x, ...) {
+axe_call.ranger <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
-  add_butcher_class(x)
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("print", "summary"),
+                  class_added = FALSE)
+  }
+  x
 }
 
 #' Remove predictions.
 #'
 #' @rdname axe-ranger
 #' @export
-axe_fitted.ranger <- function(x, ...) {
+axe_fitted.ranger <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$predictions <- numeric(0)
-  add_butcher_class(x)
+  if (verbose) {
+    assess_object(old, x,
+                  disabled = c("predictions"),
+                  class_added = FALSE)
+  }
+  x
 }

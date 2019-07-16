@@ -8,16 +8,12 @@
 \usage{
 memory_released(og, butchered)
 
-assess_object(og, butchered, disabled = NULL, class_added = TRUE)
+assess_object(og, butchered)
 }
 \arguments{
 \item{og}{Original model object.}
 
 \item{butchered}{Butchered model object.}
-
-\item{disabled}{String of disabled functions as a result of axing.}
-
-\item{class_added}{Boolean that defaults to true when butcher class is added.}
 }
 \description{
 These functions leverage the \code{ui.R} as provided in the

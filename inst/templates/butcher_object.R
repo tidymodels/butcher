@@ -27,6 +27,7 @@ axe_call.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   add_butcher_attributes(x, old,
                          disabled = c("???", "???"),
+                         add_class = TRUE,
                          verbose = verbose)
 }
 
@@ -41,6 +42,7 @@ axe_ctrl.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   add_butcher_attributes(x, old,
                          disabled = c("???", "???"),
+                         add_class = TRUE,
                          verbose = verbose)
 }
 
@@ -55,6 +57,7 @@ axe_data.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   add_butcher_attributes(x, old,
                          disabled = c("???", "???"),
+                         add_class = TRUE,
                          verbose = verbose)
 }
 
@@ -69,6 +72,7 @@ axe_env.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   add_butcher_attributes(x, old,
                          disabled = c("???", "???"),
+                         add_class = TRUE,
                          verbose = verbose)
 }
 
@@ -83,5 +87,6 @@ axe_fitted.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   add_butcher_attributes(x, old,
                          disabled = c("???", "???"),
+                         add_class = TRUE,
                          verbose = verbose)
 }

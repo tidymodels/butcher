@@ -9,6 +9,7 @@ test_that("survreg + butcher_example() works", {
 test_that("survreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("survival")
+  library(survival)
   load(butcher_example("survreg.rda"))
   x <- butcher(survreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))

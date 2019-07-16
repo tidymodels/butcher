@@ -44,11 +44,10 @@ NULL
 axe_call.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("print", "summary"))
-  }
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print", "summary"),
+                         verbose = verbose)
 }
 
 #' Remove controls.
@@ -58,10 +57,9 @@ axe_call.randomForest <- function(x, verbose = TRUE, ...) {
 axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$inbag <- matrix(NA)
-  if (verbose) {
-    assess_object(old, x)
-  }
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
 #' Remove the environment.
@@ -71,8 +69,7 @@ axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
 axe_env.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
-  if (verbose) {
-    assess_object(old, x)
-  }
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }

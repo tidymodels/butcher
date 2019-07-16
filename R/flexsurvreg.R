@@ -30,8 +30,7 @@
 #' @name axe-flexsurvreg
 NULL
 
-#' Remove the call. Note that \code{print} will be broken once this
-#' call is removed.
+#' Remove the call.
 #'
 #' @rdname axe-flexsurvreg
 #' @export
@@ -40,20 +39,7 @@ axe_call.flexsurvreg <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
 
   add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
-}
-
-#' Remove controls. Note this removes the list defining the survival
-#' distribution.
-#'
-#' @rdname axe-flexsurvreg
-#' @export
-axe_ctrl.flexsurvreg <- function(x, verbose = TRUE, ...) {
-  old <- x
-  x$dlist$inits <- NULL
-
-  add_butcher_attributes(x, old,
+                         disabled = c("print"),
                          verbose = verbose)
 }
 
@@ -76,7 +62,7 @@ axe_data.flexsurvreg <- function(x, verbose = TRUE, ...) {
 axe_env.flexsurvreg <- function(x, verbose = TRUE, ...) {
   old <- x
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
-  attributes(x$concat.formula)$`.Environment` <- rlang::base_env()
+  attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()
   x$all.formulae <- purrr::map(x$all.formulae, function(z) axe_env(z, ...))
 
   add_butcher_attributes(x, old,

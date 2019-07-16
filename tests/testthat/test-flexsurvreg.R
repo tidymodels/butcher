@@ -10,11 +10,13 @@ test_that("flexsurvreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("flexsurv")
   load(butcher_example("flexsurvreg.rda"))
-  x <- butcher(flexsurvreg_fit)
+  x <- axe_call(flexsurvreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
+  x <- axe_data(flexsurvreg_fit)
   expect_equal(x$data$Y, numeric(0))
+  x <- axe_env(flexsurvreg_fit)
   expect_identical(attr(attributes(x$data$m)$terms, ".Environment"), rlang::base_env())
-  expect_identical(attr(x$concat.formula, ".Environment"), rlang::base_env())
+  expect_identical(attr(x$concat.formula, ".Environment"), rlang::empty_env())
   expect_identical(attr(x$all.formulae$rate, ".Environment"), rlang::empty_env())
 })
 
@@ -26,7 +28,7 @@ test_that("flexsurvreg markov + predict() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$data$Y, numeric(0))
   expect_identical(attr(attributes(x$data$m)$terms, ".Environment"), rlang::base_env())
-  expect_identical(attr(x$concat.formula, ".Environment"), rlang::base_env())
+  expect_identical(attr(x$concat.formula, ".Environment"), rlang::empty_env())
   expect_identical(attr(x$all.formulae$scale, ".Environment"), rlang::empty_env())
   # Obtain cumulative transition-specific hazards
   tmat <- rbind(c(NA, 1, 2), c(NA, NA, 3), c(NA, NA, NA))
@@ -44,4 +46,12 @@ test_that("flexsurvreg markov + predict() works", {
   expect_equal(flexsurv::pmatrix.simfs(x, trans = tmat, t = 5), expected_output)
 })
 
-
+test_that("flexsurvreg + custom distribution + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("flexsurv")
+  library(flexsurv)
+  fit <- flexsurvreg(Surv(futime, fustat) ~ 1, data = ovarian, dist = "weibull")
+  x <- butcher(fit)
+  expect_equal(model.frame(x), model.frame(fit))
+  expect_equal(model.matrix(x), model.matrix(fit))
+})

@@ -1,33 +1,10 @@
-remove_env <- function(x, list_attributes) {
-  locate_env <- purrr::map_lgl(list_attributes, is.environment)
-  locate_env <- names(list_attributes[locate_env])
-  indexes <- rlang::syms(unlist(strsplit(locate_env, "..Environment")))
-  parsed_indexes <- lapply(indexes, function(z) rlang::expr(attr(`$`(x, !!z), ".Environment") <- NULL))
-  for(i in 1:length(parsed_indexes)) {
-    eval(parsed_indexes[[i]])
-  }
-  return(x)
-}
 
-# Ported and adpated from stats
-remove_response <- function(x) {
-  a <- attributes(x$terms)
-  y <- a$response
-  if(!is.null(y) && y) {
-    x[[2L]] <- NULL
-    a$response <- 0
-    a$variables <- a$variables[-(1+y)]
-    a$predvars <- a$predvars[-(1+y)]
-    if(length(a$factors))
-      a$factors <- a$factors[-y, , drop = FALSE]
-    if(length(a$offset))
-      a$offset <- ifelse(a$offset > y, a$offset-1, a$offset)
-    if(length(a$specials))
-      for(i in seq_along(a$specials)) {
-        b <- a$specials[[i]]
-        a$specials[[i]] <- ifelse(b > y, b-1, b)
-      }
-    attributes(x$terms) <- a
+# butcher attributes helper
+add_butcher_disabled <- function(x, disabled = NULL) {
+  current <- attr(x, "butcher_disabled")
+  if(!is.null(disabled)) {
+    disabled <- union(current, disabled)
+    attr(x, "butcher_disabled") <- disabled
   }
   x
 }
@@ -36,6 +13,18 @@ remove_response <- function(x) {
 add_butcher_class <- function(x) {
   if(!any(grepl("butcher", class(x)))) {
     class(x) <- append(paste0("butchered_", class(x)[1]), class(x))
+  }
+  x
+}
+
+# butcher attributes wrapper
+add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, verbose = TRUE) {
+  x <- add_butcher_disabled(x, disabled)
+  if (add_class) {
+    x <- add_butcher_class(x)
+  }
+  if (verbose & !missing(old)) {
+    assess_object(old, x)
   }
   x
 }

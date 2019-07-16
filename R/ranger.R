@@ -46,12 +46,11 @@ NULL
 axe_call.ranger <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("print", "summary"),
-                  class_added = FALSE)
-  }
-  x
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print", "summary"),
+                         add_class = FALSE,
+                         verbose = verbose)
 }
 
 #' Remove predictions.
@@ -61,10 +60,9 @@ axe_call.ranger <- function(x, verbose = TRUE, ...) {
 axe_fitted.ranger <- function(x, verbose = TRUE, ...) {
   old <- x
   x$predictions <- numeric(0)
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("predictions"),
-                  class_added = FALSE)
-  }
-  x
+
+  add_butcher_attributes(x, old,
+                         disabled = c("predictions"),
+                         add_class = FALSE,
+                         verbose = verbose)
 }

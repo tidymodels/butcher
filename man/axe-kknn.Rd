@@ -7,24 +7,29 @@
 \alias{axe_fitted.kknn}
 \title{Axing an kknn.}
 \usage{
-\method{axe_call}{kknn}(x, ...)
+\method{axe_call}{kknn}(x, verbose = TRUE, ...)
 
-\method{axe_env}{kknn}(x, ...)
+\method{axe_env}{kknn}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{kknn}(x, ...)
+\method{axe_fitted}{kknn}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-kknn objects are created from the \code{kknn} package, which is utilized to
-do weighted k-Nearest Neighbors for classification, regression and clustering.
-This is where all the kknn specific documentation lies.
+kknn objects are created from the \pkg{kknn} package, which is
+utilized to do weighted k-Nearest Neighbors for classification,
+regression and clustering. This is where all the kknn specific
+documentation lies.
 }
 \examples{
 # Load libraries

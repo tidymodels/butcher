@@ -1,13 +1,17 @@
 #' Axing an kknn.
 #'
-#' kknn objects are created from the \code{kknn} package, which is utilized to
-#' do weighted k-Nearest Neighbors for classification, regression and clustering.
-#' This is where all the kknn specific documentation lies.
+#' kknn objects are created from the \pkg{kknn} package, which is
+#' utilized to do weighted k-Nearest Neighbors for classification,
+#' regression and clustering. This is where all the kknn specific
+#' documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -38,27 +42,35 @@ NULL
 #'
 #' @rdname axe-kknn
 #' @export
-axe_call.kknn <- function(x, ...) {
+axe_call.kknn <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print", "summary"),
+                         verbose = verbose)
 }
 
 #' Remove the environment.
 #'
 #' @rdname axe-kknn
 #' @export
-axe_env.kknn <- function(x, ...) {
+axe_env.kknn <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$terms <- axe_env(x$terms, ...)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
-#' Remove fitted values. Note that when fitted values
-#' are removed, \code{predict} will not work if no
-#' new data is provided.
+#' Remove fitted values.
 #'
 #' @rdname axe-kknn
 #' @export
-axe_fitted.kknn <- function(x, ...) {
+axe_fitted.kknn <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$fitted.values <- list(NULL)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }

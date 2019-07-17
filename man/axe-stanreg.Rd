@@ -7,19 +7,23 @@
 \alias{axe_fitted.stanreg}
 \title{Axing a stanreg.}
 \usage{
-\method{axe_call}{stanreg}(x, ...)
+\method{axe_call}{stanreg}(x, verbose = TRUE, ...)
 
-\method{axe_env}{stanreg}(x, ...)
+\method{axe_env}{stanreg}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{stanreg}(x, ...)
+\method{axe_fitted}{stanreg}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 This is where all the stanreg specific documentation lies.

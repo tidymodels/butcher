@@ -1,13 +1,16 @@
 #' Axing a rpart.
 #'
-#' rpart objects are created from the \code{rpart} package, which
+#' rpart objects are created from the \pkg{rpart} package, which
 #' is used for recursive partitioning for classification, regression and
 #' survival trees. This is where all the rpart specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -34,30 +37,53 @@ NULL
 #'
 #' @rdname axe-rpart
 #' @export
-axe_call.rpart <- function(x, ...) {
+axe_call.rpart <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
   x$functions <- call("dummy_call")
-  x
+
+  add_butcher_attributes(x, old,
+                         disabled = c("summary", "printcp"),
+                         verbose = verbose)
 }
 
 #' Remove controls.
 #'
 #' @rdname axe-rpart
 #' @export
-axe_ctrl.rpart <- function(x, ...) {
-  surrogate <- x$control$usesurrogate
+axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$control <- list(NULL)
-  x$control$usesurrogate <- surrogate
-  add_butcher_class(x)
+  x$control$usesurrogate <- old$control$usesurrogate
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
+}
+
+#' Remove data.
+#'
+#' @rdname axe-rpart
+#' @export
+axe_data.rpart <- function(x, verbose = TRUE, ...) {
+  old <- x
+  x$y <- numeric(0)
+  x$x <- matrix(NA)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("xpred.rpart"),
+                         verbose = verbose)
 }
 
 #' Remove the environment.
 #'
 #' @rdname axe-rpart
 #' @export
-axe_env.rpart <- function(x, ...) {
+axe_env.rpart <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$terms <- axe_env(x$terms, ...)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
 

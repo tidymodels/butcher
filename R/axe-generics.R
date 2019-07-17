@@ -16,22 +16,15 @@
 #' @export
 butcher <- function(x, verbose = TRUE, ...) {
   old <- x
+  x <- axe_call(x, verbose = FALSE, ...)
+  x <- axe_ctrl(x, verbose = FALSE, ...)
+  x <- axe_data(x, verbose = FALSE, ...)
+  x <- axe_env(x, verbose = FALSE, ...)
+  x <- axe_fitted(x, verbose = FALSE, ...)
 
-  temp_file <- tempfile(fileext = ".txt")
-  sink(file = temp_file)
-  x <- axe_call(x, verbose = verbose, ...)
-  x <- axe_ctrl(x, verbose = verbose, ...)
-  x <- axe_data(x, verbose = verbose, ...)
-  x <- axe_env(x, verbose = verbose, ...)
-  x <- axe_fitted(x, verbose = verbose, ...)
-  sink()
-
-  if (verbose) {
-    all_disabled <- read_tempfile(temp_file)
-    assess_object(old, x, disabled = all_disabled)
-    unlink(temp_file)
-  }
-  x
+  add_butcher_attributes(x, old,
+                         add_class = FALSE,
+                         verbose = verbose)
 }
 
 #' Axe a call.

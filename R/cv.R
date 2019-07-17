@@ -36,8 +36,7 @@ NULL
 axe_fitted.cv.glmnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fit.preval <- numeric(0)
-  if (verbose) {
-    assess_object(old, x)
-  }
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }

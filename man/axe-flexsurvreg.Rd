@@ -3,29 +3,30 @@
 \name{axe-flexsurvreg}
 \alias{axe-flexsurvreg}
 \alias{axe_call.flexsurvreg}
-\alias{axe_ctrl.flexsurvreg}
 \alias{axe_data.flexsurvreg}
 \alias{axe_env.flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
-\method{axe_call}{flexsurvreg}(x, ...)
+\method{axe_call}{flexsurvreg}(x, verbose = TRUE, ...)
 
-\method{axe_ctrl}{flexsurvreg}(x, ...)
+\method{axe_data}{flexsurvreg}(x, verbose = TRUE, ...)
 
-\method{axe_data}{flexsurvreg}(x, ...)
-
-\method{axe_env}{flexsurvreg}(x, ...)
+\method{axe_env}{flexsurvreg}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-flexsurvreg objects are created from the \code{flexsurv} package. They
+flexsurvreg objects are created from the \pkg{flexsurv} package. They
 differ from survreg in that the fitted models are not limited to certain
 parametric distributions. Users can define their own distribution, or
 leverage distributions like the generalized gamma, generalized F, and

@@ -1,13 +1,16 @@
 #' Axing an earth object.
 #'
-#' earth objects are created from the \code{earth} package, which
+#' earth objects are created from the \pkg{earth} package, which
 #' is leveraged to do multivariate adapative regression splines.
 #' This is where all the earth specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -27,27 +30,39 @@ NULL
 #'
 #' @rdname axe-earth
 #' @export
-axe_call.earth <- function(x, ...) {
+axe_call.earth <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("summary", "update"),
+                         verbose = verbose)
 }
 
 #' Remove original data.
 #'
 #' @rdname axe-earth
 #' @export
-axe_data.earth <- function(x, ...) {
+axe_data.earth <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$x <- data.frame(NA)
   x$y <- numeric(0)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("update"),
+                         verbose = verbose)
 }
 
 #' Remove fitted values.
 #'
 #' @rdname axe-earth
 #' @export
-axe_fitted.earth <- function(x, ...) {
+axe_fitted.earth <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$residuals <- numeric(0)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("residuals"),
+                         verbose = verbose)
 }
 

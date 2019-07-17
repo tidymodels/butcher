@@ -2,10 +2,13 @@
 #'
 #' This is where all the train specific documentation lies.
 #'
-#' @param x train object
-#' @param ... any additional arguments related to axing
+#' @param x Train object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed train object
+#' @return Axed train object.
 #'
 #' @examples
 #' # Load libraries
@@ -30,46 +33,63 @@ NULL
 #'
 #' @rdname axe-train
 #' @export
-axe_call.train <- function(x, ...) {
+axe_call.train <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
   x$dots <- list(NULL)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("summary"),
+                         verbose = verbose)
 }
 
 #' Remove controls.
 #'
 #' @rdname axe-train
 #' @export
-axe_ctrl.train <- function(x, ...) {
-  temp <- x$control$method
+axe_ctrl.train <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$control <- list(NULL)
-  x$control$method <- temp
-  add_butcher_class(x)
+  x$control$method <- old$control$method
+
+  add_butcher_attributes(x, old,
+                         disabled = "update",
+                         verbose = verbose)
 }
 
 #' Remove training data.
 #'
 #' @rdname axe-train
 #' @export
-axe_data.train <- function(x, ...) {
+axe_data.train <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$trainingData <- data.frame(NA)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
 #' Remove environments associated with \code{srcref}.
 #'
 #' @rdname axe-train
 #' @export
-axe_env.train <- function(x, ...) {
+axe_env.train <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
 #' Remove fitted values.
 #'
 #' @rdname axe-train
 #' @export
-axe_fitted.train <- function(x, ...) {
+axe_fitted.train <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$pred <- list(NULL)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = "residuals",
+                         verbose = verbose)
 }

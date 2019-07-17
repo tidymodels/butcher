@@ -3,10 +3,10 @@
 #' model_fit objects are created from the \code{parsnip} package.
 #' This is where all the model_fit specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @name axe-model_fit
 NULL

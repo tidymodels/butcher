@@ -9,7 +9,10 @@
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
-#'
+#' @examples
+#' ##
+#' ## Insert examples to create and axe model object here...
+#' ##
 #' @name axe-{{model_class}}
 NULL
 
@@ -22,73 +25,68 @@ axe_call.{{model_class}} <- function(x, verbose = TRUE, ...) {
   ##
   ## Insert replacements here...
   ##
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("???"))
-  }
-  add_butcher_class(x)
+  add_butcher_attributes(x, old,
+                         disabled = c("???", "???"),
+                         add_class = TRUE,
+                         verbose = verbose)
 }
 
 #' Remove controls used for training.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_ctrl.{{model_class}} <- function(x, ...) {
+axe_ctrl.{{model_class}} <- function(x, verbose = TRUE, ...) {
   old <- x
   ##
   ## Insert replacements here...
   ##
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("???"))
-  }
-  add_butcher_class(x)
+  add_butcher_attributes(x, old,
+                         disabled = c("???", "???"),
+                         add_class = TRUE,
+                         verbose = verbose)
 }
 
 #' Remove the training data.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_data.{{model_class}} <- function(x, ...) {
+axe_data.{{model_class}} <- function(x, verbose = TRUE, ...) {
   old <- x
   ##
   ## Insert replacements here...
   ##
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("???"))
-  }
-  add_butcher_class(x)
+  add_butcher_attributes(x, old,
+                         disabled = c("???", "???"),
+                         add_class = TRUE,
+                         verbose = verbose)
 }
 
 #' Remove environments.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_env.{{model_class}} <- function(x, ...) {
+axe_env.{{model_class}} <- function(x, verbose = TRUE, ...) {
   old <- x
   ##
   ## Insert replacements here...
   ##
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("???"))
-  }
-  add_butcher_class(x)
+  add_butcher_attributes(x, old,
+                         disabled = c("???", "???"),
+                         add_class = TRUE,
+                         verbose = verbose)
 }
 
 #' Remove fitted values.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_fitted.{{model_class}} <- function(x, ...) {
+axe_fitted.{{model_class}} <- function(x, verbose = TRUE, ...) {
   old <- x
   ##
   ## Insert replacements here...
   ##
-  if (verbose) {
-    assess_object(old, x,
-                  disabled = c("???"))
-  }
-  add_butcher_class(x)
+  add_butcher_attributes(x, old,
+                         disabled = c("???", "???"),
+                         add_class = TRUE,
+                         verbose = verbose)
 }

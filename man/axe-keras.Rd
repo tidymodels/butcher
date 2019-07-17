@@ -4,15 +4,15 @@
 \alias{axe-keras}
 \title{Axing an keras.}
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-keras objects are created from the \code{keras} package,
+keras objects are created from the \pkg{keras} package,
 a deep learning framework that can be leveraged to do binary
 classification, multiclass classification, regresssion, and
 more. This is where all the keras specific documentation lies.

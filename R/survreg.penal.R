@@ -1,8 +1,8 @@
-#' Axing an survreg.
+#' Axing an survreg.penal
 #'
-#' survreg objects are created from the \pkg{survival} package. They
+#' survreg.penal objects are created from the \pkg{survival} package. They
 #' are returned from the \code{survreg} function, representing fitted
-#' parametric survival models. This is where all the survreg specific
+#' parametric survival models. This is where all the survreg.penal specific
 #' documentation lies.
 #'
 #' @param x Model object.
@@ -16,23 +16,23 @@
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(flexsurv)))
+#' suppressWarnings(suppressMessages(library(survival)))
 #'
 #' # Create model and fit
 #' survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%
 #'   set_engine("survreg") %>%
-#'   fit(Surv(futime, fustat) ~ 1, data = ovarian)
+#'   fit(Surv(time, status) ~ rx + frailty.gaussian(litter, df = 13), data = rats)
 #'
 #' butcher(survreg_fit)
 #'
-#' @name axe-survreg
+#' @name axe-survreg.penal
 NULL
 
 #' Remove the call.
 #'
-#' @rdname axe-survreg
+#' @rdname axe-survreg.penal
 #' @export
-axe_call.survreg <- function(x, verbose = TRUE, ...) {
+axe_call.survreg.penal <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
@@ -43,9 +43,9 @@ axe_call.survreg <- function(x, verbose = TRUE, ...) {
 
 #' Remove the data.
 #'
-#' @rdname axe-survreg
+#' @rdname axe-survreg.penal
 #' @export
-axe_data.survreg <- function(x, verbose = TRUE, ...) {
+axe_data.survreg.penal <- function(x, verbose = TRUE, ...) {
   old <- x
   x$y <- numeric(0)
 
@@ -56,15 +56,12 @@ axe_data.survreg <- function(x, verbose = TRUE, ...) {
 
 #' Remove environments.
 #'
-#' @rdname axe-survreg
+#' @rdname axe-survreg.penal
 #' @export
-axe_env.survreg <- function(x, verbose = TRUE, ...) {
+axe_env.survreg.penal <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
-  attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
 
   add_butcher_attributes(x, old,
                          verbose = verbose)
 }
-
-

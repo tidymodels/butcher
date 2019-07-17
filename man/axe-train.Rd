@@ -9,23 +9,27 @@
 \alias{axe_fitted.train}
 \title{Axing a train object.}
 \usage{
-\method{axe_call}{train}(x, ...)
+\method{axe_call}{train}(x, verbose = TRUE, ...)
 
-\method{axe_ctrl}{train}(x, ...)
+\method{axe_ctrl}{train}(x, verbose = TRUE, ...)
 
-\method{axe_data}{train}(x, ...)
+\method{axe_data}{train}(x, verbose = TRUE, ...)
 
-\method{axe_env}{train}(x, ...)
+\method{axe_env}{train}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{train}(x, ...)
+\method{axe_fitted}{train}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{train object}
+\item{x}{Train object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed train object
+Axed train object.
 }
 \description{
 This is where all the train specific documentation lies.

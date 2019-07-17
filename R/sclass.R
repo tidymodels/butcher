@@ -1,13 +1,16 @@
 #' Axing a sclass object.
 #'
 #' sclass objects are byproducts of classbagg objects. Since there are
-#' axe functions specific to this class, we keep all documentation
-#' related to sclass objects here.
+#' axe functions specific to this class, there is where all documentation
+#' related to sclass objects lies.
 #'
-#' @param x sclass object
-#' @param ... any additional arguments related to axing
+#' @param x sclass object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed sclass object
+#' @return Axed sclass object.
 #'
 #' @examples
 #' # Load libraries
@@ -28,16 +31,22 @@ NULL
 #'
 #' @rdname axe-sclass
 #' @export
-axe_call.sclass <- function(x, ...) {
+axe_call.sclass <- function(x, verbose = FALSE, ...) {
+  old <- x
   x$btree <- axe_call(x$btree, ...)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
 #' Remove the environment. Each subtree is a rpart object.
 #'
 #' @rdname axe-sclass
 #' @export
-axe_env.sclass <- function(x, ...) {
+axe_env.sclass <- function(x, verbose = FALSE, ...) {
+  old <- x
   x$btree <- axe_env(x$btree, ...)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }

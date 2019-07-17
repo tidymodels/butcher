@@ -5,10 +5,13 @@
 #' generated include basic tree-based models as well as rule-based models.
 #' This is where all the C5.0 specific documentation lies.
 #'
-#' @param x model object
-#' @param ... any additional arguments related to axing
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed model object
+#' @return Axed model object.
 #'
 #' @examples
 #' # Load libraries
@@ -31,33 +34,42 @@
 #' @name axe-C5.0
 NULL
 
-#' Remove the call. Note that \code{summary} will be broken once this
-#' call is removed.
+#' Remove the call.
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_call.C5.0 <- function(x, ...) {
+axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print", "summary"),
+                         verbose = verbose)
 }
 
 #' Remove controls.
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_ctrl.C5.0 <- function(x, ...) {
+axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$control <- list(NULL)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("C5.0Control", "C5imp"),
+                         verbose = verbose)
 }
 
-#' Remove fitted values. Note a single text string of the model fit
-#' is removed here, thus distorting the \code{summary} output; however,
-#' \code{predict} still works.
+#' Remove fitted values.
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_fitted.C5.0 <- function(x, ...) {
+axe_fitted.C5.0 <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$output <- character(0)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("summary", "C5.0Control", "C5imp"),
+                         verbose = verbose)
 }
 

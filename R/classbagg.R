@@ -1,9 +1,14 @@
 #' Axing a classbagg object.
 #'
-#' @param x classbagg object
-#' @param ... any additional arguments related to axing
+#' This is where all the classbagg specific documentation lies.
 #'
-#' @return axed classbagg object
+#' @param x Classbagg object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
+#'
+#' @return Axed classbagg object.
 #'
 #' @examples
 #' # Load libraries
@@ -24,10 +29,14 @@ NULL
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_call.classbagg <- function(x, ...) {
+axe_call.classbagg <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$call <- call("dummy_call")
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_call(z, ...))
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         disabled = c("print", "summary"),
+                         verbose = verbose)
 }
 
 #' Remove training data. There are also responses stored as either a factor
@@ -36,19 +45,22 @@ axe_call.classbagg <- function(x, ...) {
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_data.classbagg <- function(x, ...) {
+axe_data.classbagg <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$X <- data.frame(NA)
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
-#' Remove environments. Model objects of this type include references to
-#' environments in each step of the recipe, and thus must also be
-#' removed. Note that environments that result from \code{srcref} are
-#' not axed.
+#' Remove environments.
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_env.classbagg <- function(x, ...) {
+axe_env.classbagg <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_env(z, ...))
-  add_butcher_class(x)
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }

@@ -4,25 +4,32 @@
 \alias{axe-rpart}
 \alias{axe_call.rpart}
 \alias{axe_ctrl.rpart}
+\alias{axe_data.rpart}
 \alias{axe_env.rpart}
 \title{Axing a rpart.}
 \usage{
-\method{axe_call}{rpart}(x, ...)
+\method{axe_call}{rpart}(x, verbose = TRUE, ...)
 
-\method{axe_ctrl}{rpart}(x, ...)
+\method{axe_ctrl}{rpart}(x, verbose = TRUE, ...)
 
-\method{axe_env}{rpart}(x, ...)
+\method{axe_data}{rpart}(x, verbose = TRUE, ...)
+
+\method{axe_env}{rpart}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-rpart objects are created from the \code{rpart} package, which
+rpart objects are created from the \pkg{rpart} package, which
 is used for recursive partitioning for classification, regression and
 survival trees. This is where all the rpart specific documentation lies.
 }

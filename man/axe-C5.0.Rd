@@ -7,19 +7,23 @@
 \alias{axe_fitted.C5.0}
 \title{Axing a C5.0.}
 \usage{
-\method{axe_call}{C5.0}(x, ...)
+\method{axe_call}{C5.0}(x, verbose = TRUE, ...)
 
-\method{axe_ctrl}{C5.0}(x, ...)
+\method{axe_ctrl}{C5.0}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{C5.0}(x, ...)
+\method{axe_fitted}{C5.0}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 C5.0 objects are created from the \code{C50} package, which provides an

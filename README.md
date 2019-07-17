@@ -157,8 +157,8 @@ but in short, to contribute a set of axe methods:
 
 1)  Run `new_model_butcher(model_class = "your_object", package_name =
     "your_package")`
-2)  Use butcher helper functions `butcher::weigh` and `butcher::find` to
-    decide what to axe
+2)  Use butcher helper functions `butcher::weigh()` and
+    `butcher::locate()` to decide what to axe
 3)  Finalize edits to `R/your_object.R` and
     `tests/testthat/test-your_object.R`
 4)  Make a pull request\!

@@ -39,7 +39,7 @@ axe_call.train <- function(x, verbose = TRUE, ...) {
   x$dots <- list(NULL)
 
   add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
+                         disabled = c("summary"),
                          verbose = verbose)
 }
 
@@ -49,11 +49,11 @@ axe_call.train <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.train <- function(x, verbose = TRUE, ...) {
   old <- x
-  temp <- x$control$method
   x$control <- list(NULL)
-  x$control$method <- temp
+  x$control$method <- old$control$method
 
   add_butcher_attributes(x, old,
+                         disabled = "update",
                          verbose = verbose)
 }
 
@@ -90,5 +90,6 @@ axe_fitted.train <- function(x, verbose = TRUE, ...) {
   x$pred <- list(NULL)
 
   add_butcher_attributes(x, old,
+                         disabled = "residuals",
                          verbose = verbose)
 }

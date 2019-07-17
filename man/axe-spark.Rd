@@ -13,31 +13,35 @@
 \alias{axe_env.ml_summary}
 \title{Axing a spark object.}
 \usage{
-\method{axe_call}{ml_model}(x, ...)
+\method{axe_call}{ml_model}(x, verbose = TRUE, ...)
 
-\method{axe_ctrl}{ml_model}(x, ...)
+\method{axe_ctrl}{ml_model}(x, verbose = TRUE, ...)
 
-\method{axe_data}{ml_model}(x, ...)
+\method{axe_data}{ml_model}(x, verbose = TRUE, ...)
 
-\method{axe_env}{ml_model}(x, ...)
+\method{axe_env}{ml_model}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{ml_model}(x, ...)
+\method{axe_fitted}{ml_model}(x, verbose = TRUE, ...)
 
-\method{axe_env}{ml_pipeline_model}(x, ...)
+\method{axe_env}{ml_pipeline_model}(x, verbose = TRUE, ...)
 
-\method{axe_env}{ml_pipeline}(x, ...)
+\method{axe_env}{ml_pipeline}(x, verbose = TRUE, ...)
 
-\method{axe_env}{ml_pipeline_stage}(x, ...)
+\method{axe_env}{ml_pipeline_stage}(x, verbose = TRUE, ...)
 
-\method{axe_env}{ml_summary}(x, ...)
+\method{axe_env}{ml_summary}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
 spark objects are created from the \pkg{sparklyr} package,

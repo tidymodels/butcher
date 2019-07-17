@@ -12,11 +12,17 @@ test_that("earth + axe_() works", {
     set_engine("earth") %>%
     fit(Volume ~ ., data = trees)
   # Butcher
-  x <- butcher(earth_fit)
+  x <- axe_call(earth_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
+  expect_error(update(x))
+  x <- axe_fitted(earth_fit)
   expect_equal(x$residuals, numeric(0))
+  x <- axe_data(earth_fit)
   expect_equal(x$x, data.frame(NA))
   expect_equal(x$y, numeric(0))
+  expect_equal(residuals(x), residuals(earth_fit$fit))
+  x <- butcher(earth_fit)
+  expect_equal(format(x), format(earth_fit$fit))
   # Predict
   expected_output <- predict(earth_fit$fit, trees[1:3,])
   new_output <- predict(x, trees[1:3,])

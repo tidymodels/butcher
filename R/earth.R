@@ -35,7 +35,7 @@ axe_call.earth <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
 
   add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
+                         disabled = c("summary", "update"),
                          verbose = verbose)
 }
 
@@ -49,6 +49,7 @@ axe_data.earth <- function(x, verbose = TRUE, ...) {
   x$y <- numeric(0)
 
   add_butcher_attributes(x, old,
+                         disabled = c("update"),
                          verbose = verbose)
 }
 
@@ -61,6 +62,7 @@ axe_fitted.earth <- function(x, verbose = TRUE, ...) {
   x$residuals <- numeric(0)
 
   add_butcher_attributes(x, old,
+                         disabled = c("residuals"),
                          verbose = verbose)
 }
 

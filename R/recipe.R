@@ -1,15 +1,20 @@
 #' Axing a recipe object.
 #'
-#' recipe objects are created from the \code{recipes} package, which is
+#' recipe objects are created from the \pkg{recipes} package, which is
 #' leveraged for its set of data pre-processing tools. These recipes work
 #' by sequentially defining each pre-processing step. The implementation of
 #' each step, however, results its own class so we bundle all the axe
-#' generics related to recipe objects in general here.
+#' methods related to recipe objects in general here. Note that the
+#' butchered class is only added to the recipe as a whole, and not to each
+#' pre-processing step.
 #'
-#' @param x recipe object
-#' @param ... any additional arguments related to axing
+#' @param x recipe object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed recipe
+#' @return Axed recipe.
 #'
 #' @name axe-recipe
 NULL
@@ -18,13 +23,17 @@ NULL
 #'
 #' @rdname axe-recipe
 #' @export
-axe_env.recipe <- function(x, ...) {
+axe_env.recipe <- function(x, verbose = TRUE, ...) {
+  old <- x
   x$steps <- purrr::map(x$steps, function(z) axe_env(z, ...))
-  x
+
+  add_butcher_attributes(x, old,
+                         verbose = verbose)
 }
 
-#' No environment to axe in step object. Examples of such objects include \code{step_sample},
-#' \code{step_intercept}, and \code{step_profile}.
+#' No environment to axe in step object. Examples of such objects
+#' include \code{step_sample}, \code{step_intercept}, and
+#' \code{step_profile}.
 #'
 #' @rdname axe-recipe
 #' @export

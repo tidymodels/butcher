@@ -71,7 +71,7 @@
 \alias{axe_env.quosure}
 \title{Axing a recipe object.}
 \usage{
-\method{axe_env}{recipe}(x, ...)
+\method{axe_env}{recipe}(x, verbose = TRUE, ...)
 
 \method{axe_env}{step}(x, ...)
 
@@ -206,17 +206,23 @@
 \method{axe_env}{quosure}(x, ...)
 }
 \arguments{
-\item{x}{recipe object}
+\item{x}{recipe object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed recipe
+Axed recipe.
 }
 \description{
-recipe objects are created from the \code{recipes} package, which is
+recipe objects are created from the \pkg{recipes} package, which is
 leveraged for its set of data pre-processing tools. These recipes work
 by sequentially defining each pre-processing step. The implementation of
 each step, however, results its own class so we bundle all the axe
-generics related to recipe objects in general here.
+methods related to recipe objects in general here. Note that the
+butchered class is only added to the recipe as a whole, and not to each
+pre-processing step.
 }

@@ -3,8 +3,11 @@ context("recipe")
 skip_if_not_installed("recipes")
 skip_if_not_installed("rsample")
 
+# Load libraries
 library(recipes)
 library(rsample)
+
+# Data sets used for testing
 data(biomass)
 biomass_tr <- biomass[biomass$dataset == "Training",]
 data(credit_data)
@@ -12,7 +15,22 @@ set.seed(55)
 train_test_split <- initial_split(credit_data)
 credit_tr <- training(train_test_split)
 
-# For testing purposes
+# Test helpers
+terms_empty_env <- function(axed, step_number) {
+  expect_identical(attr(axed$steps[[step_number]]$terms[[1]], ".Environment"),
+                   rlang::empty_env())
+}
+
+impute_empty_env <- function(axed, step_number) {
+  expect_identical(attr(axed$steps[[step_number]]$impute_with[[1]], ".Environment"),
+                   rlang::empty_env())
+}
+
+inputs_empty_env <- function(axed, input_number) {
+  expect_identical(attr(axed$steps[[1]]$input[[input_number]], ".Environment"),
+                   rlang::empty_env())
+}
+
 test_en <- rlang::empty_env()
 
 test_that("recipe + axe_env() works", {
@@ -22,38 +40,38 @@ test_that("recipe + axe_env() works", {
     step_scale(all_predictors()) %>%
     step_spatialsign(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[3]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  terms_empty_env(x, 2)
+  terms_empty_env(x, 3)
 })
 
 test_that("recipe + step_knnimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_knnimpute(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$impute_with[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
 })
 
 test_that("recipe + step_lowerimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_lowerimpute(Time, Expenses, threshold = c(40,40))
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_rollimpute + axe_env() works", {
   rec <- recipe(credit_tr) %>%
     step_rollimpute(Time, statistic = median, window = 3)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_BoxCox + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_BoxCox(rec, all_numeric())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_bs + axe_env() works", {
@@ -61,21 +79,21 @@ test_that("recipe + step_bs + axe_env() works", {
                 data = biomass_tr) %>%
     step_bs(carbon, hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_hyperbolic + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_hyperbolic(Income, func = "cos", inverse = FALSE)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_inverse + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_inverse(Income)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_invlogit + axe_env() works", {
@@ -85,23 +103,23 @@ test_that("recipe + step_invlogit + axe_env() works", {
     step_scale(carbon, hydrogen) %>%
     step_invlogit(carbon, hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[3]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  terms_empty_env(x, 2)
+  terms_empty_env(x, 3)
 })
 
 test_that("recipe + step_log + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_log(Income)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_logit + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_logit(Income)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_mutate + axe_env() works", {
@@ -111,8 +129,8 @@ test_that("recipe + step_mutate + axe_env() works", {
       half_length = Sepal.Length / 2
     )
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$inputs[[2]], ".Environment"), test_en)
+  inputs_empty_env(x, 1)
+  inputs_empty_env(x, 2)
 })
 
 test_that("recipe + step_ns + axe_env() works", {
@@ -120,8 +138,7 @@ test_that("recipe + step_ns + axe_env() works", {
                 data = biomass_tr) %>%
     step_ns(carbon, hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_poly + axe_env() works", {
@@ -129,8 +146,7 @@ test_that("recipe + step_poly + axe_env() works", {
                 data = biomass_tr) %>%
     step_poly(carbon, hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_relu + axe_env() works", {
@@ -138,28 +154,28 @@ test_that("recipe + step_relu + axe_env() works", {
                 data = biomass_tr) %>%
     step_relu(carbon, shift = 40)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_sqrt + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_sqrt(all_numeric())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_YeoJohnson + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_YeoJohnson(all_numeric())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_discretize + axe_env() works", {
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
     step_discretize(Income)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_bin2factor + axe_env() works", {
@@ -168,16 +184,16 @@ test_that("recipe + step_bin2factor + axe_env() works", {
     step_regex(description, pattern = "(rock|stony)", result = "more_rocks") %>%
     step_bin2factor(rocks)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[3]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  terms_empty_env(x, 2)
+  terms_empty_env(x, 3)
 })
 
 test_that("recipe + step_count + axe_env() works", {
   rec <- recipe(~ description, covers) %>%
     step_count(description, pattern = "(rock|stony)", result = "rocks")
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_date + axe_env() works", {
@@ -188,21 +204,21 @@ test_that("recipe + step_date + axe_env() works", {
   rec <- recipe(~ Dan + Stefan, examples) %>%
     step_date(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_dummy + axe_env() works", {
   rec <- recipe(~ diet + age + height, data = okc) %>%
     step_dummy(diet)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_string2factor + axe_env() works", {
   rec <- recipe(~ diet + age + height, data = okc) %>%
     step_string2factor(diet)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_factor2string + axe_env() works", {
@@ -210,8 +226,8 @@ test_that("recipe + step_factor2string + axe_env() works", {
     step_string2factor(diet) %>%
     step_factor2string(diet)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  terms_empty_env(x, 2)
 })
 
 test_that("recipe + step_holiday + axe_env() works", {
@@ -221,14 +237,14 @@ test_that("recipe + step_holiday + axe_env() works", {
   rec <- recipe(~ someday, examples) %>%
     step_holiday(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_integer + axe_env() works", {
   rec <- recipe(Class ~ ., data = okc) %>%
     step_integer(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_novel + axe_env() works", {
@@ -240,7 +256,7 @@ test_that("recipe + step_novel + axe_env() works", {
     step_novel(diet, location)
   rec <- prep(rec, training = okc_tr)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_num2factor + axe_env() works", {
@@ -251,7 +267,7 @@ test_that("recipe + step_num2factor + axe_env() works", {
   rec <- recipe(Class ~ ., data = okc) %>%
     step_integer(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_ordinalscore + axe_env() works", {
@@ -265,16 +281,15 @@ test_that("recipe + step_ordinalscore + axe_env() works", {
     step_dummy(item) %>%
     step_ordinalscore(fail_severity)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[2]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
+  terms_empty_env(x, 2)
 })
 
 test_that("recipe + step_other + axe_env() works", {
   rec <- recipe(~ diet + location, data = okc) %>%
     step_other(diet, location, threshold = .1, other = "other values")
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_unorder + axe_env() works", {
@@ -285,7 +300,7 @@ test_that("recipe + step_unorder + axe_env() works", {
   rec <- recipe(~ X1 + X2, data = examples) %>%
     step_unorder(all_predictors())
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_interact + axe_env() works", {
@@ -301,8 +316,7 @@ test_that("recipe + step_range + axe_env() works", {
                 data = biomass_tr) %>%
     step_range(carbon, hydrogen)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$terms[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$terms[[2]], ".Environment"), test_en)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_geodist + axe_env() works", {
@@ -333,23 +347,23 @@ test_that("recipe + step_arrange + axe_env() works", {
   rec <- recipe( ~ ., data = iris) %>%
     step_arrange(!!!syms(sort_vars))
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$inputs[[2]], ".Environment"), test_en)
+  inputs_empty_env(x, 1)
+  inputs_empty_env(x, 2)
 })
 
 test_that("recipe + step_filter + axe_env() works", {
   rec <- recipe( ~ ., data = iris) %>%
     step_filter(Sepal.Length > 4.5, Species == "setosa")
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
-  expect_identical(attr(x$steps[[1]]$inputs[[2]], ".Environment"), test_en)
+  inputs_empty_env(x, 1)
+  inputs_empty_env(x, 2)
 })
 
 test_that("recipe + step_slice + axe_env() works", {
   rec <- recipe( ~ ., data = iris) %>%
     step_slice(1:3)
   x <- axe_env(rec)
-  expect_identical(attr(x$steps[[1]]$inputs[[1]], ".Environment"), test_en)
+  inputs_empty_env(x, 1)
 })
 
 

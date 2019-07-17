@@ -30,11 +30,11 @@ devtools::install_github("jyuu/butcher")
 This package provides five S3 generics for you to remove extraneous
 parts of a model object:
 
-  - `axe_call`: To remove the call object.
-  - `axe_ctrl`: To remove controls associated with training.
-  - `axe_data`: To remove the original data.
-  - `axe_env`: To remove inherited environments.
-  - `axe_fitted`: To remove fitted values.
+  - `axe_call()`: To remove the call object.
+  - `axe_ctrl()`: To remove controls associated with training.
+  - `axe_data()`: To remove the original training data.
+  - `axe_env()`: To remove environments.
+  - `axe_fitted()`: To remove fitted values.
 
 This is helpful as modeling pipelines might include junk that often gets
 saved along with a fitted model object. As an example, we take a simple
@@ -67,8 +67,8 @@ obj_size(small_lm)
 
 We don’t want to end up saving this new `in_house_model()` on disk, when
 we could have something like `small_lm` that takes up less memory. So
-what the heck is going on here? We can examine this with the `butcher`
-package:
+what the heck is going on here? We can start by examining the size of
+`in_house_model()` by using `weigh()`:
 
 ``` r
 big_lm <- in_house_model()
@@ -92,11 +92,11 @@ butcher::weigh(big_lm, threshold = 0, units = "MB")
 The problem here is in the `terms` component of `big_lm`. Because of how
 `lm` is implemented in the `stats` package, the environment in which the
 `lm` model was created was carried along in the model output. To remove
-this extraneous component, we leverage the `axe_env` generic within
-`butcher`. In other words,
+this (mostly) extraneous component, we’ll leverage `axe_env()`:
 
 ``` r
 cleaned_lm <- butcher::axe_env(big_lm)
+#> ✔ Memory released: '3,999,528 B'
 ```
 
 Comparing it against our `small_lm`, we’ll find:
@@ -139,11 +139,11 @@ butcher::weigh(small_lm, threshold = 0, units = "MB")
 #> # … with 15 more rows
 ```
 
-Axing the environment, however, is not the only functionality of
-`butcher`. We can also remove `call`, `ctrl`, `data` and
-`fitted_values`, or simply run `butcher` to execute all of these axing
-functions at once. Any kind of axing on the object will append a
-butchered class to the current model object class(es).
+Axing the environment is not the only functionality of `butcher`. We can
+also remove `call`, `ctrl`, `data` and `fitted_values`, or simply run
+`butcher()` to execute all of these axing functions at once. Any kind of
+axing on the object will append a butchered class to the current model
+object class(es).
 
 ## Model Object Coverage
 
@@ -157,8 +157,8 @@ but in short, to contribute a set of axe methods:
 
 1)  Run `new_model_butcher(model_class = "your_object", package_name =
     "your_package")`
-2)  Use butcher helper functions `butcher::weigh` and `butcher::find` to
-    decide what to axe
+2)  Use butcher helper functions `butcher::weigh()` and
+    `butcher::locate()` to decide what to axe
 3)  Finalize edits to `R/your_object.R` and
     `tests/testthat/test-your_object.R`
 4)  Make a pull request\!

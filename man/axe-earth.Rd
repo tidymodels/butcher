@@ -7,22 +7,26 @@
 \alias{axe_fitted.earth}
 \title{Axing an earth object.}
 \usage{
-\method{axe_call}{earth}(x, ...)
+\method{axe_call}{earth}(x, verbose = TRUE, ...)
 
-\method{axe_data}{earth}(x, ...)
+\method{axe_data}{earth}(x, verbose = TRUE, ...)
 
-\method{axe_fitted}{earth}(x, ...)
+\method{axe_fitted}{earth}(x, verbose = TRUE, ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{Model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed model object
+Axed model object.
 }
 \description{
-earth objects are created from the \code{earth} package, which
+earth objects are created from the \pkg{earth} package, which
 is leveraged to do multivariate adapative regression splines.
 This is where all the earth specific documentation lies.
 }

@@ -31,7 +31,7 @@ NULL
 #' @export
 axe_call.classbagg <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_call(z, ...))
 
   add_butcher_attributes(
@@ -50,7 +50,7 @@ axe_call.classbagg <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.classbagg <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$X <- data.frame(NA)
+  x <- exchange(x, "X", data.frame(NA))
 
   add_butcher_attributes(
     x,

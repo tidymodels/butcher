@@ -21,8 +21,11 @@ axe_call.stanreg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
@@ -36,8 +39,11 @@ axe_env.stanreg <- function(x, verbose = TRUE, ...) {
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -48,8 +54,9 @@ axe_fitted.stanreg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- numeric(0)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
-
-

@@ -1,9 +1,10 @@
 #' Axing an randomForest.
 #'
-#' randomForest objects are created from the \code{randomForest} package,
-#' which is used to train random forests based on Breiman et al's 2001 work.
-#' The package supports ensembles of classification and regression trees.
-#' This is where all the randomForest specific documentation lies.
+#' randomForest objects are created from the \code{randomForest}
+#' package, which is used to train random forests based on Breiman's
+#' 2001 work. The package supports ensembles of classification and
+#' regression trees. This is where all the randomForest specific
+#' documentation lies.
 #'
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
@@ -45,9 +46,12 @@ axe_call.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print", "summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove controls.
@@ -58,8 +62,11 @@ axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$inbag <- matrix(NA)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove the environment.
@@ -70,6 +77,9 @@ axe_env.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

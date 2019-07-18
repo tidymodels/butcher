@@ -46,9 +46,12 @@ axe_call.kknn <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print", "summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove the environment.
@@ -59,8 +62,11 @@ axe_env.kknn <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -71,6 +77,9 @@ axe_fitted.kknn <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- list(NULL)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

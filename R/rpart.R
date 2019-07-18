@@ -42,9 +42,12 @@ axe_call.rpart <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
   x$functions <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("summary", "printcp"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("summary", "printcp"),
+    verbose = verbose
+  )
 }
 
 #' Remove controls.
@@ -56,8 +59,11 @@ axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
   x$control <- list(NULL)
   x$control$usesurrogate <- old$control$usesurrogate
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove data.
@@ -69,9 +75,12 @@ axe_data.rpart <- function(x, verbose = TRUE, ...) {
   x$y <- numeric(0)
   x$x <- matrix(NA)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("xpred.rpart"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("xpred.rpart"),
+    verbose = verbose
+  )
 }
 
 #' Remove the environment.
@@ -82,8 +91,9 @@ axe_env.rpart <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
-
-

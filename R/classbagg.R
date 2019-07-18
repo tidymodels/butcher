@@ -34,9 +34,12 @@ axe_call.classbagg <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_call(z, ...))
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print", "summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove training data. There are also responses stored as either a factor
@@ -49,8 +52,11 @@ axe_data.classbagg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$X <- data.frame(NA)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
@@ -61,6 +67,9 @@ axe_env.classbagg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

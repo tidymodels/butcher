@@ -39,9 +39,12 @@ axe_call.lm <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
   x$call$offset <- old$call$offset
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print", "summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove the environment. The same environment is referenced in terms
@@ -55,8 +58,11 @@ axe_env.lm <- function(x, verbose = TRUE, ...) {
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -67,8 +73,11 @@ axe_fitted.lm <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- numeric(0)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("fitted", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("fitted", "summary"),
+    verbose = verbose
+  )
 }
 

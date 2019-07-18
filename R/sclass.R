@@ -35,8 +35,11 @@ axe_call.sclass <- function(x, verbose = FALSE, ...) {
   old <- x
   x$btree <- axe_call(x$btree, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove the environment. Each subtree is a rpart object.
@@ -47,6 +50,9 @@ axe_env.sclass <- function(x, verbose = FALSE, ...) {
   old <- x
   x$btree <- axe_env(x$btree, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

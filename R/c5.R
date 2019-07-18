@@ -42,9 +42,12 @@ axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print", "summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove controls.
@@ -55,9 +58,12 @@ axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
   x$control <- list(NULL)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("C5.0Control", "C5imp"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("C5.0Control", "C5imp"),
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -68,8 +74,10 @@ axe_fitted.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
   x$output <- character(0)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("summary", "C5.0Control", "C5imp"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("summary", "C5.0Control", "C5imp"),
+    verbose = verbose
+  )
 }
-

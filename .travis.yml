@@ -6,15 +6,14 @@ cache: packages
 
 warnings_are_errors: false
 
-r:
-  - 3.5
-  - 3.6
-  - devel
-
 matrix:
   include:
     - os: linux
       dist: trusty
+      r:
+        - 3.5
+        - 3.6
+        - devel
 
 env:
   global:

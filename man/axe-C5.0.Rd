@@ -7,18 +7,18 @@
 \alias{axe_fitted.C5.0}
 \title{Axing a C5.0.}
 \usage{
-\method{axe_call}{C5.0}(x, verbose = TRUE, ...)
+\method{axe_call}{C5.0}(x, verbose = FALSE, ...)
 
-\method{axe_ctrl}{C5.0}(x, verbose = TRUE, ...)
+\method{axe_ctrl}{C5.0}(x, verbose = FALSE, ...)
 
-\method{axe_fitted}{C5.0}(x, verbose = TRUE, ...)
+\method{axe_fitted}{C5.0}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

@@ -5,7 +5,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -24,7 +24,7 @@ NULL
 #'
 #' @rdname axe-nnet
 #' @export
-axe_call.nnet <- function(x, verbose = TRUE, ...) {
+axe_call.nnet <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
@@ -40,7 +40,7 @@ axe_call.nnet <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-nnet
 #' @export
-axe_env.nnet <- function(x, verbose = TRUE, ...) {
+axe_env.nnet <- function(x, verbose = FALSE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 
@@ -55,7 +55,7 @@ axe_env.nnet <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-nnet
 #' @export
-axe_fitted.nnet <- function(x, verbose = TRUE, ...) {
+axe_fitted.nnet <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "fitted.values", numeric(0))
 
@@ -63,9 +63,9 @@ axe_fitted.nnet <- function(x, verbose = TRUE, ...) {
     x,
     old,
     disabled = c(
-      "fitted",
-      "predict(newdata = NA)",
-      "dimnames(object$fitted.values)"
+      "fitted()",
+      "predict() with no new data",
+      "dimnames(axed_object$fitted.values)"
     ),
     verbose = verbose
   )

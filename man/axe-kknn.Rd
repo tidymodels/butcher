@@ -7,18 +7,18 @@
 \alias{axe_fitted.kknn}
 \title{Axing an kknn.}
 \usage{
-\method{axe_call}{kknn}(x, verbose = TRUE, ...)
+\method{axe_call}{kknn}(x, verbose = FALSE, ...)
 
-\method{axe_env}{kknn}(x, verbose = TRUE, ...)
+\method{axe_env}{kknn}(x, verbose = FALSE, ...)
 
-\method{axe_fitted}{kknn}(x, verbose = TRUE, ...)
+\method{axe_fitted}{kknn}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

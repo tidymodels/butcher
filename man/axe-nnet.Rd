@@ -7,18 +7,18 @@
 \alias{axe_fitted.nnet}
 \title{Axing a nnet.}
 \usage{
-\method{axe_call}{nnet}(x, verbose = TRUE, ...)
+\method{axe_call}{nnet}(x, verbose = FALSE, ...)
 
-\method{axe_env}{nnet}(x, verbose = TRUE, ...)
+\method{axe_env}{nnet}(x, verbose = FALSE, ...)
 
-\method{axe_fitted}{nnet}(x, verbose = TRUE, ...)
+\method{axe_fitted}{nnet}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

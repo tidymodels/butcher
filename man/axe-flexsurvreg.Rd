@@ -6,16 +6,16 @@
 \alias{axe_env.flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
-\method{axe_call}{flexsurvreg}(x, verbose = TRUE, ...)
+\method{axe_call}{flexsurvreg}(x, verbose = FALSE, ...)
 
-\method{axe_env}{flexsurvreg}(x, verbose = TRUE, ...)
+\method{axe_env}{flexsurvreg}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

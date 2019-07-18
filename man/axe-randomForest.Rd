@@ -7,18 +7,18 @@
 \alias{axe_env.randomForest}
 \title{Axing an randomForest.}
 \usage{
-\method{axe_call}{randomForest}(x, verbose = TRUE, ...)
+\method{axe_call}{randomForest}(x, verbose = FALSE, ...)
 
-\method{axe_ctrl}{randomForest}(x, verbose = TRUE, ...)
+\method{axe_ctrl}{randomForest}(x, verbose = FALSE, ...)
 
-\method{axe_env}{randomForest}(x, verbose = TRUE, ...)
+\method{axe_env}{randomForest}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

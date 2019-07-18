@@ -22,7 +22,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -34,7 +34,7 @@ NULL
 #'
 #' @rdname axe-spark
 #' @export
-axe_call.ml_model <- function(x, verbose = TRUE, ...) {
+axe_call.ml_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "formula", "")
 
@@ -49,7 +49,7 @@ axe_call.ml_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_ctrl.ml_model <- function(x, verbose = TRUE, ...) {
+axe_ctrl.ml_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "label_col", "")
   x <- exchange(x, "features_col", "")
@@ -68,7 +68,7 @@ axe_ctrl.ml_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_data.ml_model <- function(x, verbose = TRUE, ...) {
+axe_data.ml_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "dataset", NULL)
 
@@ -83,7 +83,7 @@ axe_data.ml_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_env.ml_model <- function(x, verbose = TRUE, ...) {
+axe_env.ml_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x$pipeline_model <- axe_env(x$pipeline_model, ...)
   x$pipeline <- axe_env(x$pipeline, ...)
@@ -99,7 +99,7 @@ axe_env.ml_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_fitted.ml_model <- function(x, verbose = TRUE, ...) {
+axe_fitted.ml_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "coefficients", matrix(NA))
   x <- exchange(x, "model", NULL)
@@ -116,7 +116,7 @@ axe_fitted.ml_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_env.ml_pipeline_model <- function(x, verbose = TRUE, ...) {
+axe_env.ml_pipeline_model <- function(x, verbose = FALSE, ...) {
   old <- x
   x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
 
@@ -131,7 +131,7 @@ axe_env.ml_pipeline_model <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_env.ml_pipeline <- function(x, verbose = TRUE, ...) {
+axe_env.ml_pipeline <- function(x, verbose = FALSE, ...) {
   old <- x
   x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
 
@@ -146,7 +146,7 @@ axe_env.ml_pipeline <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_env.ml_pipeline_stage <- function(x, verbose = TRUE, ...) {
+axe_env.ml_pipeline_stage <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- purrr::map(x, function(z) axe_env(z, ...))
 
@@ -161,7 +161,7 @@ axe_env.ml_pipeline_stage <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-spark
 #' @export
-axe_env.ml_summary<- function(x, verbose = TRUE, ...) {
+axe_env.ml_summary<- function(x, verbose = FALSE, ...) {
   old <- x
   x <- purrr::map(x, function(z) axe_env(z, ...))
 

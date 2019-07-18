@@ -10,7 +10,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -34,14 +34,14 @@ NULL
 #'
 #' @rdname axe-flexsurvreg
 #' @export
-axe_call.flexsurvreg <- function(x, verbose = TRUE, ...) {
+axe_call.flexsurvreg <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print"),
+    disabled = c("print()"),
     verbose = verbose
   )
 }
@@ -50,7 +50,7 @@ axe_call.flexsurvreg <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-flexsurvreg
 #' @export
-axe_env.flexsurvreg <- function(x, verbose = TRUE, ...) {
+axe_env.flexsurvreg <- function(x, verbose = FALSE, ...) {
   old <- x
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
   attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()

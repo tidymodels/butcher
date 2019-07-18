@@ -9,18 +9,22 @@
 \alias{axe_fitted.model_fit}
 \title{Axing an model_fit.}
 \usage{
-\method{axe_call}{model_fit}(x, ...)
+\method{axe_call}{model_fit}(x, verbose = FALSE, ...)
 
-\method{axe_ctrl}{model_fit}(x, ...)
+\method{axe_ctrl}{model_fit}(x, verbose = FALSE, ...)
 
-\method{axe_data}{model_fit}(x, ...)
+\method{axe_data}{model_fit}(x, verbose = FALSE, ...)
 
-\method{axe_env}{model_fit}(x, ...)
+\method{axe_env}{model_fit}(x, verbose = FALSE, ...)
 
-\method{axe_fitted}{model_fit}(x, ...)
+\method{axe_fitted}{model_fit}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
+
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{TRUE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

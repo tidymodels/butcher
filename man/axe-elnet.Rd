@@ -5,14 +5,14 @@
 \alias{axe_call.elnet}
 \title{Axing an elnet.}
 \usage{
-\method{axe_call}{elnet}(x, verbose = TRUE, ...)
+\method{axe_call}{elnet}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

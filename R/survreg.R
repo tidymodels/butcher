@@ -34,7 +34,7 @@ NULL
 #' @export
 axe_call.survreg <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -50,7 +50,7 @@ axe_call.survreg <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.survreg <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$y <- numeric(0)
+  x <- exchange(x, "y", numeric(0))
 
   add_butcher_attributes(
     x,

@@ -366,4 +366,10 @@ test_that("recipe + step_slice + axe_env() works", {
   inputs_empty_env(x, 1)
 })
 
+test_that("recipe + step_nnmf + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_nnmf(all_predictors(), num_comp = 2, seed = 473, num_run = 2)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
 

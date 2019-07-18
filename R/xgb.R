@@ -37,7 +37,7 @@ NULL
 #' @export
 axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -58,7 +58,7 @@ axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$params <- list(NULL)
+  x <- exchange(x, "params", list(NULL))
 
   add_butcher_attributes(
     x,
@@ -95,7 +95,7 @@ axe_env.xgb.Booster <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$raw <- raw()
+  x <- exchange(x, "raw", raw())
 
   add_butcher_attributes(
     x,

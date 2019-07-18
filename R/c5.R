@@ -40,7 +40,7 @@ NULL
 #' @export
 axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -56,7 +56,7 @@ axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$control <- list(NULL)
+  x <- exchange(x, "control", list(NULL))
 
   add_butcher_attributes(
     x,
@@ -72,7 +72,7 @@ axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.C5.0 <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$output <- character(0)
+  x <- exchange(x, "output", character(0))
 
   add_butcher_attributes(
     x,

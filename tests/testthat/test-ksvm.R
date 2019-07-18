@@ -13,11 +13,13 @@ test_that("ksvm + axe_() works", {
   ksvm_class <- svm_poly(mode = "classification") %>%
     set_engine("kernlab", kernel = "rbfdot") %>%
     fit(type ~ ., data = spam)
-  # Butcher
+  x <- axe_call(ksvm_class)
+  expect_equal(x@kcall, rlang::expr(dummy_call()))
+  x <- axe_fitted(ksvm_class)
+  expect_equal(x@fitted, numeric(0))
+  x <- axe_data(ksvm_class)
+  expect_equal(x@ymatrix, numeric(0))
   x <- butcher(ksvm_class)
-  # expect_equal(x@kcall, rlang::expr(dummy_call()))
-  # expect_equal(x@fitted, numeric(0))
-  # expect_equal(x@xmatrix, numeric(0))
   # Predict
   expected_output <- predict(ksvm_class$fit, spam[,-58])
   new_output <- predict(x, spam[,-58])

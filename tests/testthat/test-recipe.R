@@ -373,3 +373,70 @@ test_that("recipe + step_nnmf + axe_env() works", {
   terms_empty_env(x, 1)
 })
 
+test_that("recipe + step_zv + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_zv(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_window + axe_env() works", {
+  rec <- recipe(Species ~ ., data = iris) %>%
+    step_window(starts_with("Sepal"),
+                size = 3,
+                statistic = "median",
+                names = paste0("med_3pt_", 1:2),
+                role = "outcome")
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_upsample + axe_env() works", {
+  rec <- recipe( ~ ., data = okc) %>%
+    step_upsample(diet, ratio = 0.0121)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_unorder + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_unorder(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_spatialsign + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_spatialsign(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_shuffle + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_shuffle(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_rm + axe_env() works", {
+  rec <- recipe(Species ~ ., data = iris) %>%
+    step_rm(contains("Sepal"))
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_pls + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_pls(all_predictors, outcome = "HHV")
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_pca + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_pca(all_numeric(), num_comp = 3)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+

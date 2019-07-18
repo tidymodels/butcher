@@ -28,7 +28,7 @@ test_that("train + knn + predict() works", {
   expect_null(attr(x$modelInfo$sort, "srcref"))
   x <- butcher(train_fit)
   expect_equal(attr(x, "butcher_disabled"),
-               c("summary", "update"))
+               c("summary()", "update()"))
   # Testing data
   test_data <- iris[1:3, 1:4]
   expect_equal(predict(x, newdata = test_data),
@@ -65,7 +65,7 @@ test_that("train + rda + predict() works", {
   expect_null(attr(x$modelInfo$sort, "srcref"))
   x <- butcher(train_fit)
   expect_equal(attr(x, "butcher_disabled"),
-               c("summary", "update"))
+               c("summary()", "update()"))
   expect_equal(predict(x, cars[1:3, ]),
                predict(train_fit, cars[1:3, ]))
 })

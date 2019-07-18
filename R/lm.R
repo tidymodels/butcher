@@ -5,7 +5,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -34,14 +34,14 @@ NULL
 #'
 #' @rdname axe-lm
 #' @export
-axe_call.lm <- function(x, verbose = TRUE, ...) {
+axe_call.lm <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"), "offset", old)
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print", "summary"),
+    disabled = c("print()", "summary()"),
     verbose = verbose
   )
 }
@@ -52,7 +52,7 @@ axe_call.lm <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-lm
 #' @export
-axe_env.lm <- function(x, verbose = TRUE, ...) {
+axe_env.lm <- function(x, verbose = FALSE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
@@ -68,14 +68,14 @@ axe_env.lm <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-lm
 #' @export
-axe_fitted.lm <- function(x, verbose = TRUE, ...) {
+axe_fitted.lm <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "fitted.values", numeric(0))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("fitted", "summary"),
+    disabled = c("fitted()", "summary()"),
     verbose = verbose
   )
 }

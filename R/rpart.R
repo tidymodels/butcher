@@ -7,7 +7,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -37,7 +37,7 @@ NULL
 #'
 #' @rdname axe-rpart
 #' @export
-axe_call.rpart <- function(x, verbose = TRUE, ...) {
+axe_call.rpart <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
   x <- exchange(x, "functions", call("dummy_call"))
@@ -45,7 +45,7 @@ axe_call.rpart <- function(x, verbose = TRUE, ...) {
   add_butcher_attributes(
     x,
     old,
-    disabled = c("summary", "printcp"),
+    disabled = c("summary()", "printcp()"),
     verbose = verbose
   )
 }
@@ -54,7 +54,7 @@ axe_call.rpart <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-rpart
 #' @export
-axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
+axe_ctrl.rpart <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "control", list(NULL), "usesurrogate", old)
 
@@ -69,7 +69,7 @@ axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-rpart
 #' @export
-axe_data.rpart <- function(x, verbose = TRUE, ...) {
+axe_data.rpart <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "y", numeric(0))
   x <- exchange(x, "x", matrix(NA))
@@ -77,7 +77,7 @@ axe_data.rpart <- function(x, verbose = TRUE, ...) {
   add_butcher_attributes(
     x,
     old,
-    disabled = c("xpred.rpart"),
+    disabled = c("xpred.rpart()"),
     verbose = verbose
   )
 }
@@ -86,7 +86,7 @@ axe_data.rpart <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-rpart
 #' @export
-axe_env.rpart <- function(x, verbose = TRUE, ...) {
+axe_env.rpart <- function(x, verbose = FALSE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 

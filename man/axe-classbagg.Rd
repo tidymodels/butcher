@@ -7,18 +7,18 @@
 \alias{axe_env.classbagg}
 \title{Axing a classbagg object.}
 \usage{
-\method{axe_call}{classbagg}(x, verbose = TRUE, ...)
+\method{axe_call}{classbagg}(x, verbose = FALSE, ...)
 
-\method{axe_data}{classbagg}(x, verbose = TRUE, ...)
+\method{axe_data}{classbagg}(x, verbose = FALSE, ...)
 
-\method{axe_env}{classbagg}(x, verbose = TRUE, ...)
+\method{axe_env}{classbagg}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Classbagg object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

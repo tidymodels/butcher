@@ -9,7 +9,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -42,14 +42,14 @@ NULL
 #'
 #' @rdname axe-randomForest
 #' @export
-axe_call.randomForest <- function(x, verbose = TRUE, ...) {
+axe_call.randomForest <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print", "summary"),
+    disabled = c("print()", "summary()"),
     verbose = verbose
   )
 }
@@ -58,7 +58,7 @@ axe_call.randomForest <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-randomForest
 #' @export
-axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
+axe_ctrl.randomForest <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "inbag", matrix(NA))
 
@@ -73,7 +73,7 @@ axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-randomForest
 #' @export
-axe_env.randomForest <- function(x, verbose = TRUE, ...) {
+axe_env.randomForest <- function(x, verbose = FALSE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
 

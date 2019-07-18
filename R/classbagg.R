@@ -5,7 +5,7 @@
 #' @param x Classbagg object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed classbagg object.
@@ -29,7 +29,7 @@ NULL
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_call.classbagg <- function(x, verbose = TRUE, ...) {
+axe_call.classbagg <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_call(z, ...))
@@ -37,7 +37,7 @@ axe_call.classbagg <- function(x, verbose = TRUE, ...) {
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print", "summary"),
+    disabled = c("print()", "summary()"),
     verbose = verbose
   )
 }
@@ -48,7 +48,7 @@ axe_call.classbagg <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_data.classbagg <- function(x, verbose = TRUE, ...) {
+axe_data.classbagg <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "X", data.frame(NA))
 
@@ -63,7 +63,7 @@ axe_data.classbagg <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-classbagg
 #' @export
-axe_env.classbagg <- function(x, verbose = TRUE, ...) {
+axe_env.classbagg <- function(x, verbose = FALSE, ...) {
   old <- x
   x$mtrees <- purrr::map(x$mtrees, function(z) axe_env(z, ...))
 

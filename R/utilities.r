@@ -32,7 +32,7 @@ add_butcher_class <- function(x) {
 }
 
 # butcher attributes wrapper
-add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, verbose = TRUE) {
+add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, verbose = FALSE) {
   if (!identical(x, old)) {
     x <- add_butcher_disabled(x, disabled)
     if (add_class) {

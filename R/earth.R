@@ -7,7 +7,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -30,14 +30,14 @@ NULL
 #'
 #' @rdname axe-earth
 #' @export
-axe_call.earth <- function(x, verbose = TRUE, ...) {
+axe_call.earth <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("summary", "update"),
+    disabled = c("summary()", "update()"),
     verbose = verbose
   )
 }
@@ -46,7 +46,7 @@ axe_call.earth <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-earth
 #' @export
-axe_data.earth <- function(x, verbose = TRUE, ...) {
+axe_data.earth <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "x", data.frame(NA))
   x <- exchange(x, "y", numeric(0))
@@ -54,7 +54,7 @@ axe_data.earth <- function(x, verbose = TRUE, ...) {
   add_butcher_attributes(
     x,
     old,
-    disabled = c("update"),
+    disabled = c("update()"),
     verbose = verbose
   )
 }
@@ -63,14 +63,14 @@ axe_data.earth <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-earth
 #' @export
-axe_fitted.earth <- function(x, verbose = TRUE, ...) {
+axe_fitted.earth <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "residuals", numeric(0))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("residuals"),
+    disabled = c("residuals()"),
     verbose = verbose
   )
 }

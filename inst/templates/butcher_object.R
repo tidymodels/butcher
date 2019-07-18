@@ -5,7 +5,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -20,73 +20,83 @@ NULL
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_call.{{model_class}} <- function(x, verbose = TRUE, ...) {
+axe_call.{{model_class}} <- function(x, verbose = FALSE, ...) {
   old <- x
-  ##
-  ## Insert replacements here...
-  ##
-  add_butcher_attributes(x, old,
-                         disabled = c("???", "???"),
-                         add_class = TRUE,
-                         verbose = verbose)
+  x <- exchange(x, "call", call("dummy_call"))
+
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print()", "summary()"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove controls used for training.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_ctrl.{{model_class}} <- function(x, verbose = TRUE, ...) {
+axe_ctrl.{{model_class}} <- function(x, verbose = FALSE, ...) {
   old <- x
-  ##
-  ## Insert replacements here...
-  ##
-  add_butcher_attributes(x, old,
-                         disabled = c("???", "???"),
-                         add_class = TRUE,
-                         verbose = verbose)
+  x <- exchange(x, "control", "???")
+
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("some_function()", "another_function()"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove the training data.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_data.{{model_class}} <- function(x, verbose = TRUE, ...) {
+axe_data.{{model_class}} <- function(x, verbose = FALSE, ...) {
   old <- x
-  ##
-  ## Insert replacements here...
-  ##
-  add_butcher_attributes(x, old,
-                         disabled = c("???", "???"),
-                         add_class = TRUE,
-                         verbose = verbose)
+  x <- exchange(x, "data", "???")
+
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("some_function()", "another_function()"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_env.{{model_class}} <- function(x, verbose = TRUE, ...) {
+axe_env.{{model_class}} <- function(x, verbose = FALSE, ...) {
   old <- x
-  ##
-  ## Insert replacements here...
-  ##
-  add_butcher_attributes(x, old,
-                         disabled = c("???", "???"),
-                         add_class = TRUE,
-                         verbose = verbose)
+  x$terms <- axe_env(x$terms, ...)
+
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("some_function()", "another_function()"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
 #'
 #' @rdname axe-{{model_class}}
 #' @export
-axe_fitted.{{model_class}} <- function(x, verbose = TRUE, ...) {
+axe_fitted.{{model_class}} <- function(x, verbose = FALSE, ...) {
   old <- x
-  ##
-  ## Insert replacements here...
-  ##
-  add_butcher_attributes(x, old,
-                         disabled = c("???", "???"),
-                         add_class = TRUE,
-                         verbose = verbose)
+  x <- exchange(x, "fitted.values", "???")
+
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("some_function()", "another_function()"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }

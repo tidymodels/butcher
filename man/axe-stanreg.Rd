@@ -7,18 +7,18 @@
 \alias{axe_fitted.stanreg}
 \title{Axing a stanreg.}
 \usage{
-\method{axe_call}{stanreg}(x, verbose = TRUE, ...)
+\method{axe_call}{stanreg}(x, verbose = FALSE, ...)
 
-\method{axe_env}{stanreg}(x, verbose = TRUE, ...)
+\method{axe_env}{stanreg}(x, verbose = FALSE, ...)
 
-\method{axe_fitted}{stanreg}(x, verbose = TRUE, ...)
+\method{axe_fitted}{stanreg}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

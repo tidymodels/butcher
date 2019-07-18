@@ -4,10 +4,14 @@
 \alias{axe_env}
 \title{Axe an environment.}
 \usage{
-axe_env(x, ...)
+axe_env(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
+
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
@@ -15,9 +19,9 @@ axe_env(x, ...)
 Model object with empty environments.
 }
 \description{
-Remove the environment(s) attached to modeling objects as they are often
-not required in the downstream analysis pipeline. Currently, if found,
-the environment is replaced with rlang::empty_env.
+Remove the environment(s) attached to modeling objects as they are
+not required in the downstream analysis pipeline. If found,
+the environment is replaced with \code{rlang::empty_env()}.
 }
 \section{Methods}{
 

@@ -4,10 +4,14 @@
 \alias{axe_call}
 \title{Axe a call.}
 \usage{
-axe_call(x, ...)
+axe_call(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
+
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

@@ -8,20 +8,20 @@
 \alias{axe_env.rpart}
 \title{Axing a rpart.}
 \usage{
-\method{axe_call}{rpart}(x, verbose = TRUE, ...)
+\method{axe_call}{rpart}(x, verbose = FALSE, ...)
 
-\method{axe_ctrl}{rpart}(x, verbose = TRUE, ...)
+\method{axe_ctrl}{rpart}(x, verbose = FALSE, ...)
 
-\method{axe_data}{rpart}(x, verbose = TRUE, ...)
+\method{axe_data}{rpart}(x, verbose = FALSE, ...)
 
-\method{axe_env}{rpart}(x, verbose = TRUE, ...)
+\method{axe_env}{rpart}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed
 that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

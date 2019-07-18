@@ -1,20 +1,21 @@
 #' Butcher an object.
 #'
-#' Reduce the size of a model object so that it takes up less memory on disk.
-#' Currently, the model object is stripped down to the point that only the
-#' minimal components necessary for the \code{predict} function to work remain.
-#' Future adjustments to this function will be needed to avoid removal of
-#' model fit components to ensure it works with other downstream functions.
+#' Reduce the size of a model object so that it takes up less memory on
+#' disk. Currently, the model object is stripped down to the point that
+#' only the minimal components necessary for the \code{predict} function
+#' to work remain. Future adjustments to this function will be needed to
+#' avoid removal of model fit components to ensure it works with other
+#' downstream functions.
 #'
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed.
 #'  Notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object with new butcher subclass assignment.
 #' @export
-butcher <- function(x, verbose = TRUE, ...) {
+butcher <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- axe_call(x, verbose = FALSE, ...)
   x <- axe_ctrl(x, verbose = FALSE, ...)
@@ -35,6 +36,9 @@ butcher <- function(x, verbose = TRUE, ...) {
 #' Replace the call object attached to modeling objects with a placeholder.
 #'
 #' @param x Model object.
+#' @param verbose Print information each time an axe method is executed.
+#'  Notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Model object without call attribute.
@@ -43,12 +47,12 @@ butcher <- function(x, verbose = TRUE, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
 #'
 #' @export
-axe_call <- function(x, ...) {
+axe_call <- function(x, verbose = FALSE, ...) {
   UseMethod("axe_call")
 }
 
 #' @export
-axe_call.default <- function(x, verbose = TRUE, ...) {
+axe_call.default <- function(x, verbose = FALSE, ...) {
   old <- x
   if (verbose) {
     assess_object(old, x)
@@ -61,6 +65,9 @@ axe_call.default <- function(x, verbose = TRUE, ...) {
 #' Remove the controls from training attached to modeling objects.
 #'
 #' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Model object without control tuning parameters from training.
@@ -69,12 +76,12 @@ axe_call.default <- function(x, verbose = TRUE, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_ctrl")}
 #'
 #' @export
-axe_ctrl <- function(x, ...) {
+axe_ctrl <- function(x, verbose = FALSE, ...) {
   UseMethod("axe_ctrl")
 }
 
 #' @export
-axe_ctrl.default <- function(x, verbose = TRUE, ...) {
+axe_ctrl.default <- function(x, verbose = FALSE, ...) {
   old <- x
   if (verbose) {
     assess_object(old, x)
@@ -87,6 +94,9 @@ axe_ctrl.default <- function(x, verbose = TRUE, ...) {
 #' Remove the training data attached to modeling objects.
 #'
 #' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Model object without the training data
@@ -95,12 +105,12 @@ axe_ctrl.default <- function(x, verbose = TRUE, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_data")}
 #'
 #' @export
-axe_data <- function(x, ...) {
+axe_data <- function(x, verbose = FALSE, ...) {
   UseMethod("axe_data")
 }
 
 #' @export
-axe_data.default <- function(x, verbose = TRUE, ...) {
+axe_data.default <- function(x, verbose = FALSE, ...) {
   old <- x
   if (verbose) {
     assess_object(old, x)
@@ -111,11 +121,14 @@ axe_data.default <- function(x, verbose = TRUE, ...) {
 
 #' Axe an environment.
 #'
-#' Remove the environment(s) attached to modeling objects as they are often
-#' not required in the downstream analysis pipeline. Currently, if found,
-#' the environment is replaced with rlang::empty_env.
+#' Remove the environment(s) attached to modeling objects as they are
+#' not required in the downstream analysis pipeline. If found,
+#' the environment is replaced with \code{rlang::empty_env()}.
 #'
 #' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Model object with empty environments.
@@ -124,12 +137,12 @@ axe_data.default <- function(x, verbose = TRUE, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_env")}
 #'
 #' @export
-axe_env <- function(x, ...) {
+axe_env <- function(x, verbose = FALSE, ...) {
   UseMethod("axe_env", object = x)
 }
 
 #' @export
-axe_env.default <- function(x, verbose = TRUE, ...) {
+axe_env.default <- function(x, verbose = FALSE, ...) {
   old <- x
   if (verbose) {
     assess_object(old, x)
@@ -142,6 +155,9 @@ axe_env.default <- function(x, verbose = TRUE, ...) {
 #' Remove the fitted values attached to modeling objects.
 #'
 #' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Model object without the fitted values.
@@ -150,12 +166,12 @@ axe_env.default <- function(x, verbose = TRUE, ...) {
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_fitted")}
 #'
 #' @export
-axe_fitted <- function(x, ...) {
+axe_fitted <- function(x, verbose = FALSE, ...) {
   UseMethod("axe_fitted")
 }
 
 #' @export
-axe_fitted.default <- function(x, verbose = TRUE, ...) {
+axe_fitted.default <- function(x, verbose = FALSE, ...) {
   old <- x
   if (verbose) {
     assess_object(old, x)

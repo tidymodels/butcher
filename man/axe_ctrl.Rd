@@ -4,10 +4,14 @@
 \alias{axe_ctrl}
 \title{Axe controls.}
 \usage{
-axe_ctrl(x, ...)
+axe_ctrl(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
+
+\item{verbose}{Print information each time an axe method is executed
+that notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }

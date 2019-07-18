@@ -11,7 +11,7 @@
 #' @param x recipe object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed recipe.
@@ -23,7 +23,7 @@ NULL
 #'
 #' @rdname axe-recipe
 #' @export
-axe_env.recipe <- function(x, verbose = TRUE, ...) {
+axe_env.recipe <- function(x, verbose = FALSE, ...) {
   old <- x
   x$steps <- purrr::map(x$steps, function(z) axe_env(z, ...))
 

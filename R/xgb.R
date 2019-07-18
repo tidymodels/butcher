@@ -11,7 +11,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -35,7 +35,7 @@ NULL
 #'
 #' @rdname axe-xgb.Booster
 #' @export
-axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
+axe_call.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
@@ -43,9 +43,9 @@ axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
     x,
     old,
     disabled = c(
-      "print",
-      "summary",
-      "xgb.Booster.complete"
+      "print()",
+      "summary()",
+      "xgb.Booster.complete()"
     ),
     add_class = FALSE,
     verbose = verbose
@@ -56,14 +56,14 @@ axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-xgb.Booster
 #' @export
-axe_ctrl.xgb.Booster <- function(x, verbose = TRUE, ...) {
+axe_ctrl.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "params", list(NULL))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print"),
+    disabled = c("print()"),
     add_class = FALSE,
     verbose = verbose
   )
@@ -73,7 +73,7 @@ axe_ctrl.xgb.Booster <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-xgb.Booster
 #' @export
-axe_env.xgb.Booster <- function(x, verbose = TRUE, ...) {
+axe_env.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
   x$callbacks <- purrr::map(x$callbacks,
     function(x)
@@ -93,14 +93,14 @@ axe_env.xgb.Booster <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-xgb.Booster
 #' @export
-axe_fitted.xgb.Booster <- function(x, verbose = TRUE, ...) {
+axe_fitted.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "raw", raw())
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("xgb.Booster.complete"),
+    disabled = c("xgb.Booster.complete()"),
     add_class = FALSE,
     verbose = verbose
   )

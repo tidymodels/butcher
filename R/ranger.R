@@ -11,7 +11,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -43,14 +43,14 @@ NULL
 #'
 #' @rdname axe-ranger
 #' @export
-axe_call.ranger <- function(x, verbose = TRUE, ...) {
+axe_call.ranger <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print", "summary"),
+    disabled = c("print()", "summary()"),
     add_class = FALSE,
     verbose = verbose
   )
@@ -60,14 +60,14 @@ axe_call.ranger <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-ranger
 #' @export
-axe_fitted.ranger <- function(x, verbose = TRUE, ...) {
+axe_fitted.ranger <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "predictions", numeric(0))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("predictions"),
+    disabled = c("predictions()"),
     add_class = FALSE,
     verbose = verbose
   )

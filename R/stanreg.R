@@ -5,7 +5,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -17,7 +17,7 @@ NULL
 #'
 #' @rdname axe-stanreg
 #' @export
-axe_call.stanreg <- function(x, verbose = TRUE, ...) {
+axe_call.stanreg <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
@@ -32,7 +32,7 @@ axe_call.stanreg <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-stanreg
 #' @export
-axe_env.stanreg <- function(x, verbose = TRUE, ...) {
+axe_env.stanreg <- function(x, verbose = FALSE, ...) {
   old <- x
   x$stanfit@.MISC <- rlang::empty_env()
   x$stanfit@stanmodel@dso@.CXXDSOMISC <- rlang::empty_env()
@@ -50,7 +50,7 @@ axe_env.stanreg <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-stanreg
 #' @export
-axe_fitted.stanreg <- function(x, verbose = TRUE, ...) {
+axe_fitted.stanreg <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "fitted.values", numeric(0))
 

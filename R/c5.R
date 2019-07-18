@@ -8,7 +8,7 @@
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
 #'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
+#'  disabled. Default is \code{FALSE}.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed model object.
@@ -38,14 +38,14 @@ NULL
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
+axe_call.C5.0 <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print", "summary"),
+    disabled = c("print()", "summary()"),
     verbose = verbose
   )
 }
@@ -54,14 +54,14 @@ axe_call.C5.0 <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
+axe_ctrl.C5.0 <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "control", list(NULL))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("C5.0Control", "C5imp"),
+    disabled = c("C5.0Control()", "C5imp()"),
     verbose = verbose
   )
 }
@@ -70,14 +70,14 @@ axe_ctrl.C5.0 <- function(x, verbose = TRUE, ...) {
 #'
 #' @rdname axe-C5.0
 #' @export
-axe_fitted.C5.0 <- function(x, verbose = TRUE, ...) {
+axe_fitted.C5.0 <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "output", character(0))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("summary", "C5.0Control", "C5imp"),
+    disabled = c("summary()", "C5.0Control()", "C5imp()"),
     verbose = verbose
   )
 }

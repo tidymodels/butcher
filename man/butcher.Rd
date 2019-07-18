@@ -4,14 +4,14 @@
 \alias{butcher}
 \title{Butcher an object.}
 \usage{
-butcher(x, verbose = TRUE, ...)
+butcher(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}
 
 \item{verbose}{Print information each time an axe method is executed.
 Notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
@@ -19,9 +19,10 @@ disabled. Default is \code{TRUE}.}
 Axed model object with new butcher subclass assignment.
 }
 \description{
-Reduce the size of a model object so that it takes up less memory on disk.
-Currently, the model object is stripped down to the point that only the
-minimal components necessary for the \code{predict} function to work remain.
-Future adjustments to this function will be needed to avoid removal of
-model fit components to ensure it works with other downstream functions.
+Reduce the size of a model object so that it takes up less memory on
+disk. Currently, the model object is stripped down to the point that
+only the minimal components necessary for the \code{predict} function
+to work remain. Future adjustments to this function will be needed to
+avoid removal of model fit components to ensure it works with other
+downstream functions.
 }

@@ -8,21 +8,25 @@ warnings_are_errors: false
 
 matrix:
   include:
-  - os: linux
-    dist: trusty
-    r: release
-    r_binary_packages:
-    - devtools
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-    after_success:
-    - Rscript -e 'covr::codecov()'
+    - os: linux
+      dist: trusty
+      r:
+        - 3.5
+        - 3.6
+        - devel
+
+env:
+  global:
+  - MAKEFLAGS="-j 2"
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+  env:
+    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 before_install:
   - mkdir -p ~/.R/
@@ -32,3 +36,6 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CXX14FLAGS = -O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function  -Wno-unknown-pragmas" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CC = clang" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
+
+after_success:
+  - Rscript -e 'covr::codecov()'

@@ -75,7 +75,7 @@ axe_env.kknn <- function(x, verbose = FALSE, ...) {
 #' @export
 axe_fitted.kknn <- function(x, verbose = FALSE, ...) {
   old <- x
-  x <- exchange(x, "fitted.values()", list(NULL))
+  x <- exchange(x, "fitted.values", list(NULL))
 
   add_butcher_attributes(
     x,

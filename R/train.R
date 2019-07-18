@@ -35,8 +35,8 @@ NULL
 #' @export
 axe_call.train <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
-  x$dots <- list(NULL)
+  x <- exchange(x, "call", call("dummy_call"))
+  x <- exchange(x, "dots", list(NULL))
 
   add_butcher_attributes(
     x,
@@ -52,8 +52,7 @@ axe_call.train <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.train <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$control <- list(NULL)
-  x$control$method <- old$control$method
+  x <- exchange(x, "control", list(NULL), "method", old)
 
   add_butcher_attributes(
     x,
@@ -69,7 +68,7 @@ axe_ctrl.train <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.train <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$trainingData <- data.frame(NA)
+  x <- exchange(x, "trainingData", data.frame(NA))
 
   add_butcher_attributes(
     x,
@@ -99,7 +98,7 @@ axe_env.train <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.train <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$pred <- list(NULL)
+  x <- exchange(x, "pred", list(NULL))
 
   add_butcher_attributes(
     x,

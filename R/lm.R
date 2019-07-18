@@ -36,8 +36,7 @@ NULL
 #' @export
 axe_call.lm <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
-  x$call$offset <- old$call$offset
+  x <- exchange(x, "call", call("dummy_call"), "offset", old)
 
   add_butcher_attributes(
     x,
@@ -71,7 +70,7 @@ axe_env.lm <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.lm <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$fitted.values <- numeric(0)
+  x <- exchange(x, "fitted.values", numeric(0))
 
   add_butcher_attributes(
     x,

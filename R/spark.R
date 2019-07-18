@@ -36,7 +36,7 @@ NULL
 #' @export
 axe_call.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$formula <- ""
+  x <- exchange(x, "formula", "")
 
   add_butcher_attributes(
     x,
@@ -51,11 +51,11 @@ axe_call.ml_model <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$label_col <- ""
-  x$features_col <- ""
-  x$feature_names <- ""
-  x$response <- ""
-  x$index_labels <- ""
+  x <- exchange(x, "label_col", "")
+  x <- exchange(x, "features_col", "")
+  x <- exchange(x, "feature_names", "")
+  x <- exchange(x, "response", "")
+  x <- exchange(x, "index_labels", "")
 
   add_butcher_attributes(
     x,
@@ -70,7 +70,7 @@ axe_ctrl.ml_model <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$dataset <- NULL
+  x <- exchange(x, "dataset", NULL)
 
   add_butcher_attributes(
     x,
@@ -101,9 +101,9 @@ axe_env.ml_model <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$coefficients <- matrix(NA)
-  x$model <- NULL
-  x$summary <- NULL
+  x <- exchange(x, "coefficients", matrix(NA))
+  x <- exchange(x, "model", NULL)
+  x <- exchange(x, "summary", NULL)
 
   add_butcher_attributes(
     x,

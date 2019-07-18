@@ -2,8 +2,8 @@
 #'
 #' recipe objects are created from the \pkg{recipes} package, which is
 #' leveraged for its set of data pre-processing tools. These recipes work
-#' by sequentially defining each pre-processing step. The implementation of
-#' each step, however, results its own class so we bundle all the axe
+#' by sequentially defining each pre-processing step. The implementation
+#' of each step, however, results its own class so we bundle all the axe
 #' methods related to recipe objects in general here. Note that the
 #' butchered class is only added to the recipe as a whole, and not to each
 #' pre-processing step.

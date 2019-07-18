@@ -32,7 +32,7 @@ NULL
 #' @export
 axe_call.earth <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -48,8 +48,8 @@ axe_call.earth <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.earth <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$x <- data.frame(NA)
-  x$y <- numeric(0)
+  x <- exchange(x, "x", data.frame(NA))
+  x <- exchange(x, "y", numeric(0))
 
   add_butcher_attributes(
     x,
@@ -65,7 +65,7 @@ axe_data.earth <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.earth <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$residuals <- numeric(0)
+  x <- exchange(x, "residuals", numeric(0))
 
   add_butcher_attributes(
     x,

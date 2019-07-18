@@ -26,7 +26,7 @@ NULL
 #' @export
 axe_call.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -43,6 +43,7 @@ axe_call.nnet <- function(x, verbose = TRUE, ...) {
 axe_env.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
+
   add_butcher_attributes(
     x,
     old,
@@ -56,7 +57,8 @@ axe_env.nnet <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_fitted.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$fitted.values <- numeric(0)
+  x <- exchange(x, "fitted.values", numeric(0))
+
   add_butcher_attributes(
     x,
     old,

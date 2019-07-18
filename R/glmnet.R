@@ -25,7 +25,7 @@ NULL
 #' @export
 axe_call.glmnet <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,

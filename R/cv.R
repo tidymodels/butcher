@@ -35,7 +35,7 @@ NULL
 #' @export
 axe_fitted.cv.glmnet <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$fit.preval <- numeric(0)
+  x <- exchange(x, "fit.preval", numeric(0))
 
   add_butcher_attributes(
     x,

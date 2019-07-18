@@ -39,8 +39,8 @@ NULL
 #' @export
 axe_call.rpart <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
-  x$functions <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
+  x <- exchange(x, "functions", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -56,8 +56,7 @@ axe_call.rpart <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$control <- list(NULL)
-  x$control$usesurrogate <- old$control$usesurrogate
+  x <- exchange(x, "control", list(NULL), "usesurrogate", old)
 
   add_butcher_attributes(
     x,
@@ -72,8 +71,8 @@ axe_ctrl.rpart <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_data.rpart <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$y <- numeric(0)
-  x$x <- matrix(NA)
+  x <- exchange(x, "y", numeric(0))
+  x <- exchange(x, "x", matrix(NA))
 
   add_butcher_attributes(
     x,

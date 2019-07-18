@@ -2,7 +2,17 @@
 % Please edit documentation in R/ksvm.R
 \name{axe-ksvm}
 \alias{axe-ksvm}
+\alias{axe_call.ksvm}
+\alias{axe_data.ksvm}
+\alias{axe_fitted.ksvm}
 \title{Axing a ksvm object.}
+\usage{
+\method{axe_call}{ksvm}(x, verbose = FALSE, ...)
+
+\method{axe_data}{ksvm}(x, verbose = FALSE, ...)
+
+\method{axe_fitted}{ksvm}(x, verbose = FALSE, ...)
+}
 \arguments{
 \item{x}{Model object.}
 
@@ -16,6 +26,9 @@ disabled. Default is \code{TRUE}.}
 Axed model object.
 }
 \description{
+ksvm objects are created from \pkg{kernlab} package, which provides
+a means to do classification, regression, clustering, novelty
+detection, quantile regression and dimensionality reduction.
 This is where all the ksvm specific documentation lies.
 }
 \examples{

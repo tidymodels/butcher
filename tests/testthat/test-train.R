@@ -44,13 +44,11 @@ test_that("train + rda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("caret")
   library(caret)
+  data(cars)
   # Model
-  set.seed(123)
-  dat <- twoClassSim(500, intercept = -10)
-  train_fit <- train(Class ~ .,
-                     data = dat,
-                     method = "rda",
-                     tuneLength = 4,
+  train_fit <- train(Price ~ .,
+                     data = cars,
+                     method = "glmnet",
                      trControl = trainControl(method = "cv"))
   x <- axe_call(train_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
@@ -68,6 +66,6 @@ test_that("train + rda + predict() works", {
   x <- butcher(train_fit)
   expect_equal(attr(x, "butcher_disabled"),
                c("summary", "update"))
-  expect_equal(predict(x, dat[1:3, ]),
-               predict(train_fit, dat[1:3, ]))
+  expect_equal(predict(x, cars[1:3, ]),
+               predict(train_fit, cars[1:3, ]))
 })

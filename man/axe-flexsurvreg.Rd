@@ -3,13 +3,10 @@
 \name{axe-flexsurvreg}
 \alias{axe-flexsurvreg}
 \alias{axe_call.flexsurvreg}
-\alias{axe_data.flexsurvreg}
 \alias{axe_env.flexsurvreg}
 \title{Axing an flexsurvreg.}
 \usage{
 \method{axe_call}{flexsurvreg}(x, verbose = TRUE, ...)
-
-\method{axe_data}{flexsurvreg}(x, verbose = TRUE, ...)
 
 \method{axe_env}{flexsurvreg}(x, verbose = TRUE, ...)
 }

@@ -36,27 +36,12 @@ NULL
 #' @export
 axe_call.flexsurvreg <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
     disabled = c("print"),
-    verbose = verbose
-  )
-}
-
-#' Remove the data.
-#'
-#' @rdname axe-flexsurvreg
-#' @export
-axe_data.flexsurvreg <- function(x, verbose = TRUE, ...) {
-  old <- x
-  x$data$Y <- numeric(0)
-
-  add_butcher_attributes(
-    x,
-    old,
     verbose = verbose
   )
 }

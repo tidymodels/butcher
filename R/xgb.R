@@ -1,9 +1,12 @@
 #' Axing a xgb.Booster.
 #'
-#' This is where all the xgb.Booster specific documentation lies.
-#'
-#' Note: for these objects, the butchered class is not added as it
-#' interferes with a number of downstream post processing functions.
+#' xgb.Booster objects are created from the \pkg{xgboost} package,
+#' which provides efficient and scalable implementations of gradient
+#' boosted decision trees. Given the reliance of post processing
+#' functions on the model object, like \code{xgb.Booster.complete},
+#' on the first class listed, the \code{butcher_xgb.Booster} class is
+#' not appended. This is where all the xgb.Booster specific documentation
+#' lies.
 #'
 #' @param x Model object.
 #' @param verbose Print information each time an axe method is executed
@@ -36,11 +39,17 @@ axe_call.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print", "summary",
-                                      "xgb.Booster.complete"),
-                         add_class = FALSE,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c(
+      "print",
+      "summary",
+      "xgb.Booster.complete"
+    ),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove controls used for training.
@@ -51,10 +60,13 @@ axe_ctrl.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
   x$params <- list(NULL)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print"),
-                         add_class = FALSE,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
@@ -64,12 +76,16 @@ axe_ctrl.xgb.Booster <- function(x, verbose = TRUE, ...) {
 axe_env.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
   x$callbacks <- purrr::map(x$callbacks,
-                            function(x) as.function(c(formals(x), body(x)),
-                                                    env = rlang::empty_env()))
+    function(x)
+      as.function(c(formals(x), body(x)), env = rlang::empty_env())
+    )
 
-  add_butcher_attributes(x, old,
-                         add_class = FALSE,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 
 #' Remove cached memory dump of xgboost model that was saved as a raw
@@ -81,8 +97,11 @@ axe_fitted.xgb.Booster <- function(x, verbose = TRUE, ...) {
   old <- x
   x$raw <- raw()
 
-  add_butcher_attributes(x, old,
-                         disabled = c("xgb.Booster.complete"),
-                         add_class = FALSE,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("xgb.Booster.complete"),
+    add_class = FALSE,
+    verbose = verbose
+  )
 }

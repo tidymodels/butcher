@@ -38,9 +38,12 @@ axe_call.flexsurvreg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         disabled = c("print"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("print"),
+    verbose = verbose
+  )
 }
 
 #' Remove the data.
@@ -51,8 +54,11 @@ axe_data.flexsurvreg <- function(x, verbose = TRUE, ...) {
   old <- x
   x$data$Y <- numeric(0)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
@@ -65,6 +71,9 @@ axe_env.flexsurvreg <- function(x, verbose = TRUE, ...) {
   attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()
   x$all.formulae <- purrr::map(x$all.formulae, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

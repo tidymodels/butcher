@@ -38,9 +38,12 @@ axe_call.train <- function(x, verbose = TRUE, ...) {
   x$call <- call("dummy_call")
   x$dots <- list(NULL)
 
-  add_butcher_attributes(x, old,
-                         disabled = c("summary"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c("summary"),
+    verbose = verbose
+  )
 }
 
 #' Remove controls.
@@ -52,9 +55,12 @@ axe_ctrl.train <- function(x, verbose = TRUE, ...) {
   x$control <- list(NULL)
   x$control$method <- old$control$method
 
-  add_butcher_attributes(x, old,
-                         disabled = "update",
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = "update",
+    verbose = verbose
+  )
 }
 
 #' Remove training data.
@@ -65,8 +71,11 @@ axe_data.train <- function(x, verbose = TRUE, ...) {
   old <- x
   x$trainingData <- data.frame(NA)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove environments associated with \code{srcref}.
@@ -77,8 +86,11 @@ axe_env.train <- function(x, verbose = TRUE, ...) {
   old <- x
   x$modelInfo <- purrr::map(x$modelInfo, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -89,7 +101,10 @@ axe_fitted.train <- function(x, verbose = TRUE, ...) {
   old <- x
   x$pred <- list(NULL)
 
-  add_butcher_attributes(x, old,
-                         disabled = "residuals",
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = "residuals",
+    verbose = verbose
+  )
 }

@@ -28,8 +28,11 @@ axe_call.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$call <- call("dummy_call")
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 
@@ -40,8 +43,11 @@ axe_call.nnet <- function(x, verbose = TRUE, ...) {
 axe_env.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$terms <- axe_env(x$terms, ...)
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -51,9 +57,15 @@ axe_env.nnet <- function(x, verbose = TRUE, ...) {
 axe_fitted.nnet <- function(x, verbose = TRUE, ...) {
   old <- x
   x$fitted.values <- numeric(0)
-  add_butcher_attributes(x, old,
-                         disabled = c("fitted",
-                                      "predict(newdata = NA)",
-                                      "dimnames(object$fitted.values)"),
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    disabled = c(
+      "fitted",
+      "predict(newdata = NA)",
+      "dimnames(object$fitted.values)"
+    ),
+    verbose = verbose
+  )
 }
+

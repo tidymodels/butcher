@@ -27,8 +27,11 @@ axe_env.recipe <- function(x, verbose = TRUE, ...) {
   old <- x
   x$steps <- purrr::map(x$steps, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' No environment to axe in step object. Examples of such objects

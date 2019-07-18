@@ -38,8 +38,11 @@ axe_call.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
   x$formula <- ""
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove the controls.
@@ -54,8 +57,11 @@ axe_ctrl.ml_model <- function(x, verbose = TRUE, ...) {
   x$response <- ""
   x$index_labels <- ""
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove the data.
@@ -66,8 +72,11 @@ axe_data.ml_model <- function(x, verbose = TRUE, ...) {
   old <- x
   x$dataset <- NULL
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove environments.
@@ -79,8 +88,11 @@ axe_env.ml_model <- function(x, verbose = TRUE, ...) {
   x$pipeline_model <- axe_env(x$pipeline_model, ...)
   x$pipeline <- axe_env(x$pipeline, ...)
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove fitted values.
@@ -93,8 +105,11 @@ axe_fitted.ml_model <- function(x, verbose = TRUE, ...) {
   x$model <- NULL
   x$summary <- NULL
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove possible environments from the \code{pipeline_model} object.
@@ -105,8 +120,11 @@ axe_env.ml_pipeline_model <- function(x, verbose = TRUE, ...) {
   old <- x
   x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove possible environments from the \code{pipeline} object.
@@ -117,8 +135,11 @@ axe_env.ml_pipeline <- function(x, verbose = TRUE, ...) {
   old <- x
   x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove possible environments associated with each pipeline stage.
@@ -129,8 +150,11 @@ axe_env.ml_pipeline_stage <- function(x, verbose = TRUE, ...) {
   old <- x
   x <- purrr::map(x, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
 
 #' Remove the bytecode associated with functions in each pipeline step.
@@ -141,8 +165,10 @@ axe_env.ml_summary<- function(x, verbose = TRUE, ...) {
   old <- x
   x <- purrr::map(x, function(z) axe_env(z, ...))
 
-  add_butcher_attributes(x, old,
-                         verbose = verbose)
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }
-
 

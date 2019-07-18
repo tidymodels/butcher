@@ -26,10 +26,11 @@ disabled. Default is \code{TRUE}.}
 Axed model object.
 }
 \description{
-randomForest objects are created from the \code{randomForest} package,
-which is used to train random forests based on Breiman et al's 2001 work.
-The package supports ensembles of classification and regression trees.
-This is where all the randomForest specific documentation lies.
+randomForest objects are created from the \code{randomForest}
+package, which is used to train random forests based on Breiman's
+2001 work. The package supports ensembles of classification and
+regression trees. This is where all the randomForest specific
+documentation lies.
 }
 \examples{
 # Load libraries

@@ -29,11 +29,13 @@ disabled. Default is \code{TRUE}.}
 Axed model object.
 }
 \description{
-This is where all the xgb.Booster specific documentation lies.
-}
-\details{
-Note: for these objects, the butchered class is not added as it
-interferes with a number of downstream post processing functions.
+xgb.Booster objects are created from the \pkg{xgboost} package,
+which provides efficient and scalable implementations of gradient
+boosted decision trees. Given the reliance of post processing
+functions on the model object, like \code{xgb.Booster.complete},
+on the first class listed, the \code{butcher_xgb.Booster} class is
+not appended. This is where all the xgb.Booster specific documentation
+lies.
 }
 \examples{
 library(xgboost)

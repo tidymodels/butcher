@@ -23,13 +23,13 @@ disabled. Default is \code{TRUE}.}
 Axed model object.
 }
 \description{
-ranger objects are created from the \pkg{ranger} package, which is used as
-a means to quickly train random forests. The package supports ensembles
-of classification, regression, survival and probability prediction trees.
-Given the reliance of post processing functions on the model object, like
-\code{importance_pvalues} and \code{treeInfo}, on the first class listed,
-the \code{butcher_ranger} class is not appended. This is where all the ranger
-specific documentation lies.
+ranger objects are created from the \pkg{ranger} package, which is
+used as a means to quickly train random forests. The package supports
+ensembles of classification, regression, survival and probability
+prediction trees. Given the reliance of post processing functions on
+the model object, like \code{importance_pvalues} and \code{treeInfo},
+on the first class listed, the \code{butcher_ranger} class is not
+appended. This is where all the ranger specific documentation lies.
 }
 \examples{
 # Load libraries

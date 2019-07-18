@@ -44,7 +44,7 @@ NULL
 #' @export
 axe_call.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$call <- call("dummy_call")
+  x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
@@ -60,7 +60,7 @@ axe_call.randomForest <- function(x, verbose = TRUE, ...) {
 #' @export
 axe_ctrl.randomForest <- function(x, verbose = TRUE, ...) {
   old <- x
-  x$inbag <- matrix(NA)
+  x <- exchange(x, "inbag", matrix(NA))
 
   add_butcher_attributes(
     x,

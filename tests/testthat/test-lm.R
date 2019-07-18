@@ -13,6 +13,14 @@ test_that("lm + axe_call() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
 })
 
+test_that("lm + offset + axe_call() works", {
+  example <- lm(Sepal.Length ~ Sepal.Width,
+                offset = rep(10, 150),
+                data = iris)
+  x <- axe_call(example)
+  expect_equal(x$call$offset, example$call$offset)
+})
+
 test_that("lm + axe_env() works", {
   x <- axe_env(lm_fit)
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())

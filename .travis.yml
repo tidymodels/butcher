@@ -7,23 +7,14 @@ cache: packages
 warnings_are_errors: false
 
 r:
-  - 3.2
-  - 3.3
-  - 3.4
   - 3.5
   - 3.6
   - devel
 
 matrix:
-  allow_failures:
-    - r: 3.2
-    - r: 3.3
-    - r: 3.4
   include:
     - os: linux
       dist: trusty
-      r_binary_packages:
-        - devtools
 
 env:
   global:

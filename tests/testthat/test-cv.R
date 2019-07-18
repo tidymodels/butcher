@@ -3,7 +3,8 @@ context("cv.glmnet")
 test_that("cv.glmnet + predict() works", {
   skip_if_not_installed("glmnet")
   library(glmnet)
-  n <- 500;p <- 30
+  n <- 500
+  p <- 30
   nzc <- trunc(p/10)
   x <- matrix(rnorm(n*p), n, p)
   beta3 <- matrix(rnorm(30), 10, nzc)
@@ -18,7 +19,8 @@ test_that("cv.glmnet + predict() works", {
   expect_gt(lobstr::obj_size(cvfit), lobstr::obj_size(axed_cvfit))
   expected_outcome <- predict(cvfit, newx = x[1:3, ])
   expect_equal(predict(axed_cvfit, newx = x[1:3, ]), expected_outcome)
+  set.seed(10101)
   cvfit2 <- cv.glmnet(x, g3, family="multinomial")
   axed_cvfit2 <- axe_fitted(cvfit2)
-  expect_lt(lobstr::obj_size(cvfit2), lobstr::obj_size(axed_cvfit2))
+  expect_equal(axed_cvfit2, cvfit2)
 })

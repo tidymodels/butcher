@@ -31,9 +31,9 @@ Imports:
     fs,
     utils,
     glue,
-    cli,
     clisymbols,
-    crayon
+    crayon,
+    dplyr
 RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 2.1.0),
@@ -54,7 +54,6 @@ Suggests:
     MASS,
     QSARdata,
     caret,
-    dplyr,
     flexsurv,
     methods,
     pkgload,

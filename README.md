@@ -13,7 +13,20 @@ coverage](https://codecov.io/gh/jyuu/butcher/branch/master/graph/badge.svg)](htt
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-This package helps reduce the size of modeling objects saved to disk.
+## Overview
+
+Modeling pipelines in `R` occasionally result in fitted model objects
+that take up too much memory. There are two main culprits:
+
+1.  Heavy dependencies on formulas and closures that capture the
+    enclosing environment in the modeling process; and
+2.  Lack of selectivity in the construction of the model object itself.
+
+As a result, fitted model objects carry over components that are often
+redundant and not required for post-fit estimation activities. `butcher`
+makes it easy to axe parts of the fitted output that are no longer
+needed, without sacrificing much functionality from the original model
+object.
 
 ## Installation
 
@@ -27,8 +40,8 @@ devtools::install_github("jyuu/butcher")
 
 ## Butchering
 
-This package provides five S3 generics for you to remove extraneous
-parts of a model object:
+To make the most of your memory available, this package provides five S3
+generics for you to remove parts of a model object:
 
   - `axe_call()`: To remove the call object.
   - `axe_ctrl()`: To remove controls associated with training.
@@ -36,28 +49,25 @@ parts of a model object:
   - `axe_env()`: To remove environments.
   - `axe_fitted()`: To remove fitted values.
 
-This is helpful as modeling pipelines might include junk that often gets
-saved along with a fitted model object. As an example, we take a simple
-`lm` approach:
+As an example, we wrap a `lm` model:
 
 ``` r
 library(butcher)
-# basic example
-in_house_model <- function() {
-  some_junk_in_the_environment <- matrix(1:1e6, ncol = 10) # we didn't know about
+our_model <- function() {
+  some_junk_in_the_environment <- runif(1e6) # we didn't know about
   lm(mpg ~ ., data = mtcars) 
 }
 ```
 
-The `lm` that exists in our pipeline is:
+The `lm` that exists in our modeling pipeline is:
 
 ``` r
 library(lobstr)
-obj_size(in_house_model())
-#> 4,022,552 B
+obj_size(our_model())
+#> 8,022,440 B
 ```
 
-When, in fact, it’s a simple `lm` model that should only require:
+When, in fact, it should only require:
 
 ``` r
 small_lm <- lm(mpg ~ ., data = mtcars) 
@@ -65,18 +75,16 @@ obj_size(small_lm)
 #> 22,224 B
 ```
 
-We don’t want to end up saving this new `in_house_model()` on disk, when
-we could have something like `small_lm` that takes up less memory. So
-what the heck is going on here? We can start by examining the size of
-`in_house_model()` by using `weigh()`:
+To understand which part of our original model object is taking up the
+most memory, we leverage the `weigh()` function:
 
 ``` r
-big_lm <- in_house_model()
-butcher::weigh(big_lm, threshold = 0, units = "MB")
+big_lm <- our_model()
+butcher::weigh(big_lm)
 #> # A tibble: 25 x 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         4.01    
+#>  1 terms         8.01    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -89,20 +97,20 @@ butcher::weigh(big_lm, threshold = 0, units = "MB")
 #> # … with 15 more rows
 ```
 
-The problem here is in the `terms` component of `big_lm`. Because of how
-`lm` is implemented in the `stats` package, the environment in which the
-`lm` model was created was carried along in the model output. To remove
-this (mostly) extraneous component, we’ll leverage `axe_env()`:
+The problem here is in the `terms` component of our `big_lm`. Because of
+how `lm` is implemented in the `stats` package, the environment (in
+which our model was made) was also carried along in the fitted output.
+To remove this (mostly) extraneous component, we can use `axe_env()`:
 
 ``` r
-cleaned_lm <- butcher::axe_env(big_lm)
-#> ✔ Memory released: '3,999,528 B'
+cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
+#> ✔ Memory released: '7,999,416 B'
 ```
 
 Comparing it against our `small_lm`, we’ll find:
 
 ``` r
-butcher::weigh(cleaned_lm, threshold = 0, units = "MB")
+butcher::weigh(cleaned_lm)
 #> # A tibble: 25 x 2
 #>    object            size
 #>    <chr>            <dbl>
@@ -122,7 +130,7 @@ butcher::weigh(cleaned_lm, threshold = 0, units = "MB")
 …it now takes the same memory on disk as `small_lm`:
 
 ``` r
-butcher::weigh(small_lm, threshold = 0, units = "MB")
+butcher::weigh(small_lm)
 #> # A tibble: 25 x 2
 #>    object            size
 #>    <chr>            <dbl>
@@ -143,7 +151,9 @@ Axing the environment is not the only functionality of `butcher`. We can
 also remove `call`, `ctrl`, `data` and `fitted_values`, or simply run
 `butcher()` to execute all of these axing functions at once. Any kind of
 axing on the object will append a butchered class to the current model
-object class(es).
+object class(es) as well as a new attribute named `butcher_disabled`
+that lists any post-fit estimation functions that are disabled as a
+result.
 
 ## Model Object Coverage
 

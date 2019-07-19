@@ -1,18 +1,4 @@
 
-# Use this with `stop_if_not_installed` since this
-# provides a probe that checks whether the Keras python
-# package in available in sys env
-# Source: https://github.com/rstudio/keras
-skip_if_no_keras <- function(required_version = NULL) {
-  if (!keras::is_keras_available(required_version))
-    skip("required keras version not available for testing")
-}
-
-skip_if_tensorflow_implementation <- function() {
-  if(keras:::is_tensorflow_implementation())
-    skip("test not run for tensorflow implementation")
-}
-
 
 # Spark objects are too large, so we create them on the fly
 # Source: https://github.com/rstudio/sparklyr

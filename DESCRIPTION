@@ -43,7 +43,6 @@ Suggests:
     C50,
     kknn,
     glmnet,
-    keras,
     rpart,
     ranger,
     recipes,

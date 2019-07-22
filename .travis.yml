@@ -8,17 +8,17 @@ warnings_are_errors: false
 
 matrix:
   include:
-    - os: linux
-      dist: trusty
-      r:
-        - 3.5
-        - release
-          before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-          deploy:
-            provider: script
-            script: Rscript -e 'pkgdown::deploy_site_github()'
-            skip_cleanup: true
-        - devel
+  - r: devel
+  - r: release
+    after_success:
+    - Rscript -e 'covr::codecov()'
+    before_cache:
+    - Rscript -e 'remotes::install_cran("pkgdown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github()'
+      skip_cleanup: true
+  - r: 3.5
 
 env:
   global:
@@ -41,6 +41,3 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CXX14FLAGS = -O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function  -Wno-unknown-pragmas" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CC = clang" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
-
-after_success:
-  - Rscript -e 'covr::codecov()'

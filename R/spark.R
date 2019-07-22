@@ -79,22 +79,6 @@ axe_data.ml_model <- function(x, verbose = FALSE, ...) {
   )
 }
 
-#' Remove environments.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_model <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x$pipeline_model <- axe_env(x$pipeline_model, ...)
-  x$pipeline <- axe_env(x$pipeline, ...)
-
-  add_butcher_attributes(
-    x,
-    old,
-    verbose = verbose
-  )
-}
-
 #' Remove fitted values.
 #'
 #' @rdname axe-spark
@@ -111,64 +95,3 @@ axe_fitted.ml_model <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-
-#' Remove possible environments from the \code{pipeline_model} object.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_pipeline_model <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
-
-  add_butcher_attributes(
-    x,
-    old,
-    verbose = verbose
-  )
-}
-
-#' Remove possible environments from the \code{pipeline} object.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_pipeline <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x$stages <- purrr::map(x$stages, function(z) axe_env(z, ...))
-
-  add_butcher_attributes(
-    x,
-    old,
-    verbose = verbose
-  )
-}
-
-#' Remove possible environments associated with each pipeline stage.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_pipeline_stage <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- purrr::map(x, function(z) axe_env(z, ...))
-
-  add_butcher_attributes(
-    x,
-    old,
-    verbose = verbose
-  )
-}
-
-#' Remove the bytecode associated with functions in each pipeline step.
-#'
-#' @rdname axe-spark
-#' @export
-axe_env.ml_summary<- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- purrr::map(x, function(z) axe_env(z, ...))
-
-  add_butcher_attributes(
-    x,
-    old,
-    verbose = verbose
-  )
-}
-

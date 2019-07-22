@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/jyuu/butcher.svg?branch=master)](https://travis-ci.org/jyuu/butcher)
+status](https://travis-ci.org/tidymodels/butcher.svg?branch=master)](https://travis-ci.org/jyuu/butcher)
 [![Codecov test
-coverage](https://codecov.io/gh/jyuu/butcher/branch/master/graph/badge.svg)](https://codecov.io/gh/jyuu/butcher?branch=master)
+coverage](https://codecov.io/gh/tidymodels/butcher/branch/master/graph/badge.svg)](https://codecov.io/gh/jyuu/butcher?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
@@ -35,7 +35,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("jyuu/butcher")
+devtools::install_github("tidymodels/butcher")
 ```
 
 ## Butchering

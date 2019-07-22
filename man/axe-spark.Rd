@@ -5,12 +5,7 @@
 \alias{axe_call.ml_model}
 \alias{axe_ctrl.ml_model}
 \alias{axe_data.ml_model}
-\alias{axe_env.ml_model}
 \alias{axe_fitted.ml_model}
-\alias{axe_env.ml_pipeline_model}
-\alias{axe_env.ml_pipeline}
-\alias{axe_env.ml_pipeline_stage}
-\alias{axe_env.ml_summary}
 \title{Axing a spark object.}
 \usage{
 \method{axe_call}{ml_model}(x, verbose = FALSE, ...)
@@ -19,17 +14,7 @@
 
 \method{axe_data}{ml_model}(x, verbose = FALSE, ...)
 
-\method{axe_env}{ml_model}(x, verbose = FALSE, ...)
-
 \method{axe_fitted}{ml_model}(x, verbose = FALSE, ...)
-
-\method{axe_env}{ml_pipeline_model}(x, verbose = FALSE, ...)
-
-\method{axe_env}{ml_pipeline}(x, verbose = FALSE, ...)
-
-\method{axe_env}{ml_pipeline_stage}(x, verbose = FALSE, ...)
-
-\method{axe_env}{ml_summary}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Model object.}

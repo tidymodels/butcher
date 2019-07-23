@@ -8,15 +8,16 @@
 \method{axe_env}{function}(x, ...)
 }
 \arguments{
-\item{x}{function}
+\item{x}{Function.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed function
+Axed function.
 }
 \description{
-functions often wrap environments that carry a lot of unneccesary junk.
+Functions stored in model objects often have heavy environments
+and bytecode attached.
 }
 \examples{
 # Load libraries

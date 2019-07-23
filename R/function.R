@@ -1,11 +1,12 @@
 #' Axing functions.
 #'
-#' functions often wrap environments that carry a lot of unneccesary junk.
+#' Functions stored in model objects often have heavy environments
+#' and bytecode attached.
 #'
-#' @param x function
-#' @param ... any additional arguments related to axing
+#' @param x Function.
+#' @param ... Any additional arguments related to axing.
 #'
-#' @return axed function
+#' @return Axed function.
 #'
 #' @examples
 #' # Load libraries
@@ -31,6 +32,7 @@ NULL
 #' @rdname axe-function
 #' @export
 axe_env.function <- function(x, ...) {
-  as.function(c(formals(x), body(x)), env = environment(x))
+  x <- as.function(c(formals(x), body(x)), env = environment(x))
+  x
 }
 

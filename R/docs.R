@@ -1,6 +1,7 @@
-# Functions copied from [https://github.com/r-lib/generics/blob/master/R/docs.R] for
-# dynamic documentation
-# Modified from sloop::methods_generic
+# These functions are copied from [https://github.com/r-lib/generics/blob/master/R/docs.R] for dynamic documentation.
+
+# nocov start
+
 methods_find <- function(x) {
   info <- attr(utils::methods(x), "info")
 
@@ -168,3 +169,5 @@ lookup_package <- function(generic, class, is_s4) {
   pkgs <- mapply(lookup_single_package, generic, class, is_s4, SIMPLIFY = FALSE)
   as.vector(pkgs, "character")
 }
+
+# nocov end

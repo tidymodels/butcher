@@ -440,3 +440,113 @@ test_that("recipe + step_pca + axe_env() works", {
   terms_empty_env(x, 1)
 })
 
+test_that("recipe + step_bagimpute + axe_env() works", {
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_bagimpute(Status, Home, Marital, Job, Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
+})
+
+test_that("recipe + step_classdist + axe_env() works", {
+  rec <- recipe(Species ~ ., data = iris) %>%
+    step_classdist(all_predictors(),
+                   class = "Species",
+                   pool = FALSE,
+                   mean_func = mean)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_corr + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_corr(all_numeric(), threshold = .5)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_depth + axe_env() works", {
+  rec <- recipe(Species ~ ., data = iris) %>%
+    step_depth(all_predictors(), class = "Species")
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_downsample + axe_env() works", {
+  rec <- recipe( ~ ., data = okc) %>%
+    step_downsample(diet)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_ica + axe_env() works", {
+  rec <- recipe(Species ~ ., data = iris) %>%
+    step_ica(Petal.Width, Sepal.Width, num_comp = 2)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_isomap + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_isomap(all_predictors(), neighbors = 5, num_terms = 2)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_kpca + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_kpca(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_lag + axe_env() works", {
+  df <- data.frame(x = runif(20),
+                   index = 1:20)
+  rec <- recipe( ~ ., data = df) %>%
+    step_lag(index, lag = 2:3)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_lincomb + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_lincomb(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_meanimpute + axe_env() works", {
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_meanimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_medianimpute + axe_env() works", {
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_medianimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_modeimpute + axe_env() works", {
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_modeimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_naomit + axe_env() works", {
+  rec <- recipe( ~ ., data = okc) %>%
+    step_naomit(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+
+test_that("recipe + step_nzv + axe_env() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_nzv(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})

@@ -15,5 +15,7 @@ test_that("elnet + predict() works", {
   expect_equal(predict(x, new_data)[1], 22.5177880899825)
   x <- axe_call(elnet_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
+  x <- axe_call(elnet_fit$fit)
+  expect_equal(x$call, rlang::expr(dummy_call()))
 })
 

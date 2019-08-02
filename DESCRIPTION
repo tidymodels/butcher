@@ -30,12 +30,10 @@ Imports:
     usethis,
     fs,
     utils,
-    glue,
-    clisymbols,
-    crayon,
     dplyr
 RoxygenNote: 6.1.1
 Suggests: 
+    clisymbols,
     testthat (>= 2.1.0),
     parsnip,
     knitr,

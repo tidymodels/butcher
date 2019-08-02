@@ -34,11 +34,11 @@ documentation lies.
 \examples{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(flexsurv)))
+suppressWarnings(suppressMessages(library(survival)))
 
 # Create model and fit
 survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
-  set_engine("survreg") \%>\%
+  set_engine("survival") \%>\%
   fit(Surv(futime, fustat) ~ 1, data = ovarian)
 
 butcher(survreg_fit)

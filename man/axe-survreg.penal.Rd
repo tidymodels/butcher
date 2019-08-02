@@ -38,7 +38,7 @@ suppressWarnings(suppressMessages(library(survival)))
 
 # Create model and fit
 survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
-  set_engine("survreg") \%>\%
+  set_engine("survival") \%>\%
   fit(Surv(time, status) ~ rx + frailty.gaussian(litter, df = 13), data = rats)
 
 butcher(survreg_fit)

@@ -26,12 +26,18 @@ method_df <- function(method_name) {
   tibble::tibble(class = gsub(paste0(method_name, "[.]"), "", m),
                  !!method_name := clisymbols::symbol$tick)
 }
+
+replace_na <- function(x) {
+  x[is.na(x)] <- " "
+  x
+}
+
 out <- method_df("axe_call") %>% 
   full_join(method_df("axe_ctrl")) %>% 
   full_join(method_df("axe_data")) %>% 
   full_join(method_df("axe_env")) %>% 
   full_join(method_df("axe_fitted")) %>%
-  mutate_all(tidyr::replace_na, " ") %>%
+  replace_na() %>%
   knitr::kable()
 out
 ```

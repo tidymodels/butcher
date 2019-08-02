@@ -197,10 +197,8 @@ test_that("recipe + step_count + axe_env() works", {
 })
 
 test_that("recipe + step_date + axe_env() works", {
-  skip_if_not_installed("lubridate")
-  library(lubridate)
-  examples <- data.frame(Dan = ymd("2002-03-04") + days(1:10),
-                         Stefan = ymd("2006-01-13") + days(1:10))
+  examples <- data.frame(Dan = as.Date("2002-03-04") + 1:10,
+                         Stefan = as.Date("2006-01-13") + 1:10)
   rec <- recipe(~ Dan + Stefan, examples) %>%
     step_date(all_predictors())
   x <- axe_env(rec)

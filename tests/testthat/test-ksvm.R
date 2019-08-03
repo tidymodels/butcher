@@ -11,7 +11,7 @@ test_that("ksvm + axe_() works", {
   data(spam)
   # Fit
   ksvm_class <- svm_poly(mode = "classification") %>%
-    set_engine("kernlab", kernel = "rbfdot") %>%
+    set_engine("kernlab") %>%
     fit(type ~ ., data = spam)
   x <- axe_call(ksvm_class)
   expect_equal(x@kcall, rlang::expr(dummy_call()))

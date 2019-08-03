@@ -23,7 +23,7 @@
 #'
 #' # Create model and fit
 #' ksvm_class <- svm_poly(mode = "classification") %>%
-#'   set_engine("kernlab", kernel = "rbfdot") %>%
+#'   set_engine("kernlab") %>%
 #'   fit(type ~ ., data = spam)
 #'
 #' butcher(ksvm_class)

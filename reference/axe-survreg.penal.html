@@ -177,7 +177,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 
 <span class='co'># Create model and fit</span>
 <span class='no'>survreg_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/surv_reg'>surv_reg</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"regression"</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"weibull"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"survreg"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"survival"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></span>(<span class='no'>time</span>, <span class='no'>status</span>) ~ <span class='no'>rx</span> + <span class='fu'><a href='https://www.rdocumentation.org/packages/survival/topics/frailty'>frailty.gaussian</a></span>(<span class='no'>litter</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>13</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>rats</span>)
 
 <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>survreg_fit</span>)</div><div class='output co'>#&gt; Call:

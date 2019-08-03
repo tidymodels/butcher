@@ -215,7 +215,7 @@
 <p>The problem here is in the <code>terms</code> component of <code>big_lm</code>. Because of how <code>lm</code> is implemented in the base <code>stats</code> package, the environment in which the <code>lm</code> model was created was carried along in the model output. We can see this with the <code>env_print</code> function from <code>rlang</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rlang)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span>(big_lm<span class="op">$</span>terms)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x6855680&gt;</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x64ca038&gt;</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; parent: &lt;environment: global&gt;</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; bindings:</span></a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  * some_junk_in_the_environment: &lt;int&gt;</span></a></code></pre></div>

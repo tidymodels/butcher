@@ -1,6 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
+dist: trusty
 sudo: true
 cache: packages
 
@@ -33,13 +34,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
-      - openjdk-8-jre
+      - openjdk-8-jre-headless
   env:
     - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 before_install:
   - mkdir -p ~/.R/
-  - jdk_switcher use $JAVA_VERSION
   - echo $JAVA_HOME
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "CXX14 = g++-7 -fPIC" >> ~/.R/Makevars; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars; fi

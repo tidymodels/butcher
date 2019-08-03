@@ -1,7 +1,26 @@
-
-
 # Spark objects are too large, so we create them on the fly
 # Source: https://github.com/rstudio/sparklyr
+spark_install_winutils <- function(version) {
+  hadoop_version <- if (version < "2.0.0") "2.6" else "2.7"
+  spark_dir <- paste("spark-", version, "-bin-hadoop", hadoop_version, sep = "")
+  winutils_dir <- file.path(Sys.getenv("LOCALAPPDATA"), "spark", spark_dir, "tmp", "hadoop", "bin", fsep = "\\")
+
+  if (!dir.exists(winutils_dir)) {
+    message("Installing winutils...")
+
+    dir.create(winutils_dir, recursive = TRUE)
+    winutils_path <- file.path(winutils_dir, "winutils.exe", fsep = "\\")
+
+    download.file(
+      "https://github.com/steveloughran/winutils/raw/master/hadoop-2.6.0/bin/winutils.exe",
+      winutils_path,
+      mode = "wb"
+    )
+
+    message("Installed winutils in ", winutils_path)
+  }
+}
+
 testthat_spark_connection <- function() {
   if (!exists(".testthat_latest_spark", envir = .GlobalEnv))
     assign(".testthat_latest_spark", "2.3.0", envir = .GlobalEnv)

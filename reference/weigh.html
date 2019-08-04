@@ -131,24 +131,35 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>weigh</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>weigh</span>(<span class='no'>x</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"MB"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>model object</p></td>
+      <td><p>A model object.</p></td>
+    </tr>
+    <tr>
+      <th>threshold</th>
+      <td><p>The minimum threshold desired for model component
+size to display.</p></td>
+    </tr>
+    <tr>
+      <th>units</th>
+      <td><p>The units in which to display the size of each component
+within the model object of interest. Defaults to codeMB. Other
+options include <code>KB</code> and <code>GB</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments for weighing</p></td>
+      <td><p>Any additional arguments for weighing.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>tibble with weights of object components in decreasing magnitude</p>
+    <p>Tibble with weights of object components in decreasing magnitude.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

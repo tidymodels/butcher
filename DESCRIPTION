@@ -63,7 +63,8 @@ Suggests:
     e1071,
     nnet,
     xgboost,
-    dplyr
+    dplyr,
+    mda
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

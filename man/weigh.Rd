@@ -4,15 +4,22 @@
 \alias{weigh}
 \title{Weigh the object.}
 \usage{
-weigh(x, ...)
+weigh(x, threshold = 0, units = "MB", ...)
 }
 \arguments{
-\item{x}{model object}
+\item{x}{A model object.}
 
-\item{...}{additional arguments for weighing}
+\item{threshold}{The minimum threshold desired for model component
+size to display.}
+
+\item{units}{The units in which to display the size of each component
+within the model object of interest. Defaults to code{MB}. Other
+options include \code{KB} and \code{GB}.}
+
+\item{...}{Any additional arguments for weighing.}
 }
 \value{
-tibble with weights of object components in decreasing magnitude
+Tibble with weights of object components in decreasing magnitude.
 }
 \description{
 Evaluate the size of each element contained in a model object.

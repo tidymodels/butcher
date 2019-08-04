@@ -1,20 +1,30 @@
 #' Locate part of an object.
 #'
-#' Locate where a specific component of a object might exist. This
-#' function is restricted in that only items that can be axed will
-#' be found.
+#' Locate where a specific component of a object might exist within
+#' the model object itself. This function is restricted in that only
+#' items that can be axed can be found.
 #'
-#' @param x Model object.
-#' @param item_name Name associated with object component.
+#' @param x A model object.
+#' @param name A name associated with model component of interest.
+#'   This defaults to NULL. Possible components include: \code{env},
+#'   \code{call}, \code{data}, \code{ctrl}, and \code{fitted}.
 #'
-#' @return Location in model object.
+#' @return Location of specific component in a model object.
+#' @examples
+#' lm_fit <- lm(mpg ~ ., data = mtcars)
+#' locate(lm_fit, name = "env")
+#' locate(lm_fit, name = "call")
 #' @export
-locate <- function(x, item_name = "env") {
-  item <- rlang::arg_match(item_name, c("env",
-                                        "call",
-                                        "data",
-                                        "ctrl",
-                                        "fitted"))
+locate <- function(x, name = NULL) {
+  if(is.null(name)) {
+    stop("No specific model component specified!")
+  } else {
+    item <- rlang::arg_match(name, c("env",
+                                     "call",
+                                     "data",
+                                     "ctrl",
+                                     "fitted"))
+  }
   if(item == "env") {
     loc <- butcher_unlist(butcher_map(x, find_environment), c)
     parsed_loc <- names(loc)[loc]

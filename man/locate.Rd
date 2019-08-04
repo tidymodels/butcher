@@ -4,18 +4,25 @@
 \alias{locate}
 \title{Locate part of an object.}
 \usage{
-locate(x, item_name = "env")
+locate(x, name = NULL)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{item_name}{Name associated with object component.}
+\item{name}{A name associated with model component of interest.
+This defaults to NULL. Possible components include: \code{env},
+\code{call}, \code{data}, \code{ctrl}, and \code{fitted}.}
 }
 \value{
-Location in model object.
+Location of specific component in a model object.
 }
 \description{
-Locate where a specific component of a object might exist. This
-function is restricted in that only items that can be axed will
-be found.
+Locate where a specific component of a object might exist within
+the model object itself. This function is restricted in that only
+items that can be axed can be found.
+}
+\examples{
+lm_fit <- lm(mpg ~ ., data = mtcars)
+locate(lm_fit, name = "env")
+locate(lm_fit, name = "call")
 }

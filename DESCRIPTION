@@ -18,7 +18,7 @@ Authors@R: c(
            family = "Hayes",
            role = "aut",
            email = "alex@rstudio.com"))
-Description: Chop off the garbage modeling objects often carry and reduce the memory saved to disk.
+Description: Axe components of fitted model objects to reduce the size of model objects saved to disk.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -29,8 +29,7 @@ Imports:
     tibble (>= 2.1.1),
     usethis,
     fs,
-    utils,
-    dplyr
+    utils
 RoxygenNote: 6.1.1
 Suggests: 
     clisymbols,
@@ -63,7 +62,8 @@ Suggests:
     rstanarm,
     e1071,
     nnet,
-    xgboost
+    xgboost,
+    dplyr
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

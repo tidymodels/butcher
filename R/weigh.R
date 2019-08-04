@@ -2,10 +2,15 @@
 #'
 #' Evaluate the size of each element contained in a model object.
 #'
-#' @param x model object
-#' @param ... additional arguments for weighing
+#' @param x A model object.
+#' @param threshold The minimum threshold desired for model component
+#'   size to display.
+#' @param units The units in which to display the size of each component
+#'   within the model object of interest. Defaults to code{MB}. Other
+#'   options include \code{KB} and \code{GB}.
+#' @param ... Any additional arguments for weighing.
 #'
-#' @return tibble with weights of object components in decreasing magnitude
+#' @return Tibble with weights of object components in decreasing magnitude.
 #'
 #' @examples
 #' simulate_x <- matrix(runif(1e+6), ncol = 2)
@@ -13,7 +18,7 @@
 #' lm_out <- lm(simulate_y ~ simulate_x)
 #' weigh(lm_out)
 #' @export
-weigh <- function(x, ...) {
+weigh <- function(x, threshold = 0, units = "MB", ...) {
   UseMethod("weigh")
 }
 
@@ -42,7 +47,7 @@ weigh.default <- function(x, threshold = 0, units = "MB", ...) {
 }
 
 #' @export
-weigh.stanreg <- function(x, ...) {
+weigh.stanreg <- function(x, threshold = 0, units = "MB", ...) {
   out <- list()
   for(i in methods::slotNames(x$stanfit)) {
     out[[i]] <- methods::slot(x$stanfit, i)
@@ -53,7 +58,7 @@ weigh.stanreg <- function(x, ...) {
 }
 
 #' @export
-weigh.ksvm <- function(x, ...) {
+weigh.ksvm <- function(x, threshold = 0, units = "MB", ...) {
   out <- list()
   for(i in methods::slotNames(x)) {
     out[[i]] <- methods::slot(x, i)
@@ -62,6 +67,6 @@ weigh.ksvm <- function(x, ...) {
 }
 
 #' @export
-weigh.model_fit <- function(x, ...) {
+weigh.model_fit <- function(x, threshold = 0, units = "MB", ...) {
   weigh(x$fit, ...)
 }

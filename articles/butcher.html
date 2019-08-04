@@ -104,17 +104,17 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3">fitted_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/boost_tree">boost_tree</a></span>(<span class="dt">trees =</span> <span class="dv">15</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/set_engine">set_engine</a></span>(<span class="st">"C5.0"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/reexports">fit</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(am) <span class="op">~</span><span class="st"> </span>disp <span class="op">+</span><span class="st"> </span>hp, <span class="dt">data =</span> mtcars)</a></code></pre></div>
-<p>Or, let’s say you’re working on petabytes of data, in which the data is distributed across clusters of thousands of nodes. Just switch out the engine:</p>
+<p>Or, let’s say you’re working on petabytes of data, in which data are distributed across many nodes, just switch out the <code>parsnip</code> engine:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sparklyr)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">sc &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sparklyr/topics/spark-connections">spark_connect</a></span>(<span class="dt">master =</span> <span class="st">"local"</span>)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">mtcars_tbls &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sparklyr/topics/sdf_copy_to">sdf_copy_to</a></span>(sc, mtcars[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>)], <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">mtcars_tbls &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sparklyr/topics/sdf_copy_to">sdf_copy_to</a></span>(sc, mtcars[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>)])</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">fitted_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/boost_tree">boost_tree</a></span>(<span class="dt">trees =</span> <span class="dv">15</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/set_engine">set_engine</a></span>(<span class="st">"spark"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/reexports">fit</a></span>(am <span class="op">~</span><span class="st"> </span>disp <span class="op">+</span><span class="st"> </span>hp, <span class="dt">data =</span> mtcars_tbls)</a></code></pre></div>
-<p>Yet, while our code might appear compact, the underlying fitted result is not. Currently, <code>parsnip</code> works as a wrapper for many modeling packages built off of base <code>R</code>, and as a result, its inherits the same properties as that of objects that arise from these modeling packages. Take, for example, the popular <code>lm</code> function we often rely on from the base <code>stats</code>. Whether you leverage <code>parsnip</code> or not, you will get the same result:</p>
+<p>Yet, while our code may appear compact, the underlying fitted result may not be. Since <code>parsnip</code> works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the popular <code>lm</code> function from the base <code>stats</code> package. Whether you leverage <code>parsnip</code> or not, you arrive at the same result:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parsnip_lm &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/linear_reg">linear_reg</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/set_engine">set_engine</a></span>(<span class="st">"lm"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/parsnip/topics/reexports">fit</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
@@ -131,27 +131,8 @@
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;          wt         qsec           vs           am         gear  </span></a>
 <a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;    -3.71530      0.82104      0.31776      2.52023      0.65541  </span></a>
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;        carb  </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;    -0.19942</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(parsnip_lm<span class="op">$</span>fit, <span class="dt">max.level =</span> <span class="dv">1</span>, <span class="dt">list.len =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; List of 12</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  $ coefficients : Named num [1:11] 12.3034 -0.1114 0.0133 -0.0215 0.7871 ...</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:11] "(Intercept)" "cyl" "disp" "hp" ...</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  $ residuals    : Named num [1:32] -1.6 -1.112 -3.451 0.163 1.007 ...</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  $ effects      : Named num [1:32] -113.65 -28.6 6.13 -3.06 -4.06 ...</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "(Intercept)" "cyl" "disp" "hp" ...</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  $ rank         : int 11</span></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;  $ fitted.values: Named num [1:32] 22.6 22.1 26.3 21.2 17.7 ...</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  $ assign       : int [1:11] 0 1 2 3 4 5 6 7 8 9 ...</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;  $ qr           :List of 5</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;   ..- attr(*, "class")= chr "qr"</span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  $ df.residual  : int 21</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  $ xlevels      : Named list()</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;  $ call         : language stats::lm(formula = formula, data = data)</span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt;   [list output truncated]</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;  - attr(*, "class")= chr "lm"</span></a></code></pre></div>
-<p>Using base R:</p>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;    -0.19942</span></a></code></pre></div>
+<p>Using just <code>lm</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">old_lm &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">old_lm</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; </span></a>
@@ -164,44 +145,26 @@
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;          wt         qsec           vs           am         gear  </span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;    -3.71530      0.82104      0.31776      2.52023      0.65541  </span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;        carb  </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;    -0.19942</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(old_lm, <span class="dt">max.level =</span> <span class="dv">1</span>, <span class="dt">list.len =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; List of 12</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  $ coefficients : Named num [1:11] 12.3034 -0.1114 0.0133 -0.0215 0.7871 ...</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:11] "(Intercept)" "cyl" "disp" "hp" ...</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  $ residuals    : Named num [1:32] -1.6 -1.112 -3.451 0.163 1.007 ...</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  $ effects      : Named num [1:32] -113.65 -28.6 6.13 -3.06 -4.06 ...</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "(Intercept)" "cyl" "disp" "hp" ...</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  $ rank         : int 11</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  $ fitted.values: Named num [1:32] 22.6 22.1 26.3 21.2 17.7 ...</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:32] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  $ assign       : int [1:11] 0 1 2 3 4 5 6 7 8 9 ...</span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  $ qr           :List of 5</span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;   ..- attr(*, "class")= chr "qr"</span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  $ df.residual  : int 21</span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  $ xlevels      : Named list()</span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  $ call         : language lm(formula = mpg ~ ., data = mtcars)</span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;   [list output truncated]</span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  - attr(*, "class")= chr "lm"</span></a></code></pre></div>
-<p>Given our familiarity with base <code>R</code>, let’s say we take we take the <code>old_lm</code> approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping our <code>lm</code> model in other function. But in doing so, we might end up carrying a lot of junk. For example:</p>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;    -0.19942</span></a></code></pre></div>
+<p>Let’s say we take we take this familiar <code>old_lm</code> approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping <code><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm()</a></code> in other function, but in doing so, we may end up carrying some junk.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">in_house_model &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  some_junk_in_the_environment &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="fl">1e6</span>, <span class="dt">ncol =</span> <span class="dv">10</span>) <span class="co"># we didn't know about</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  some_junk_in_the_environment &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="fl">1e6</span>) <span class="co"># we didn't know about</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">  <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">}</a></code></pre></div>
-<p>This <code>lm</code> that exists in our pipeline is:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">lobstr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(<span class="kw">in_house_model</span>())</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; 4,022,552 B</span></a></code></pre></div>
-<p>When its really just the same as our <code>old_lm</code>, which is only:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">lobstr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(old_lm)</a>
+<p>The linear model fit that exists in our pipeline is:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lobstr)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(<span class="kw">in_house_model</span>())</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; 8,022,440 B</span></a></code></pre></div>
+<p>When it is fundamentally the same as our <code>old_lm</code>, which only takes up:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(old_lm)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; 22,224 B</span></a></code></pre></div>
-<p>Obviously we don’t want to end up saving this new <code>in_house_model()</code> on disk, when we could have something like <code>old_lm</code> that takes up much less memory. So what the heck is going on here? We can examine this with the <code>butcher</code> package:</p>
+<p>Ideally, we want to avoid saving this new <code>in_house_model()</code> on disk, when we could have something like <code>old_lm</code> that takes up less memory. So, what the heck is going on here? We can examine possible issues with a fitted model object using the <code>butcher</code> package:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">big_lm &lt;-<span class="st"> </span><span class="kw">in_house_model</span>()</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(big_lm, <span class="dt">threshold =</span> <span class="dv">0</span>, <span class="dt">units =</span> <span class="st">"MB"</span>)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;    object            size</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;  1 terms         4.01    </span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;  1 terms         8.01    </span></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
@@ -212,16 +175,18 @@
 <a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
 <a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
 <a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
-<p>The problem here is in the <code>terms</code> component of <code>big_lm</code>. Because of how <code>lm</code> is implemented in the base <code>stats</code> package, the environment in which the <code>lm</code> model was created was carried along in the model output. We can see this with the <code>env_print</code> function from <code>rlang</code>:</p>
+<p>The problem here is in the <code>terms</code> component of <code>big_lm</code>. Because of how <code>lm</code> is implemented in the base <code>stats</code> package—relying on intermediate forms of the data from the <code>model.frame</code> and <code>model.matrix</code> output, the <em>environment</em> in which the linear fit was created <em>was carried along</em> in the model output.</p>
+<p>We can see this with the <code>env_print</code> function from the <code>rlang</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rlang)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">rlang<span class="op">::</span><span class="kw"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span>(big_lm<span class="op">$</span>terms)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x64ca038&gt;</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span>(big_lm<span class="op">$</span>terms)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x561b7b0&gt;</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; parent: &lt;environment: global&gt;</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; bindings:</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  * some_junk_in_the_environment: &lt;int&gt;</span></a></code></pre></div>
-<p>To avoid carrying this junk in our production pipeline, whether it be associated with an <code>lm</code> model (or something more complex), we can leverage the <code>axe_env</code> within <code>butcher</code>. In other words,</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">cleaned_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>(big_lm)</a></code></pre></div>
-<p>Comparing it against our <code>old_lm</code>, we’ll find:</p>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  * some_junk_in_the_environment: &lt;dbl&gt;</span></a></code></pre></div>
+<p>To avoid carrying possible junk in our production pipeline, whether it be associated with an <code>lm</code> model (or something more complex), we can leverage <code><a href="../reference/axe_env.html">axe_env()</a></code> within the <code>butcher</code> package. In other words,</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">cleaned_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>(big_lm, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; ✔ Memory released: '7,999,416 B'</span></a></code></pre></div>
+<p>Comparing it against our <code>old_lm</code>, we find:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(cleaned_lm, <span class="dt">threshold =</span> <span class="dv">0</span>, <span class="dt">units =</span> <span class="st">"MB"</span>)</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
@@ -237,7 +202,7 @@
 <a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
 <a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
 <a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
-<p>…it now takes the same memory on disk as <code>old_lm</code>:</p>
+<p>…it now takes the same memory on disk:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(old_lm, <span class="dt">threshold =</span> <span class="dv">0</span>, <span class="dt">units =</span> <span class="st">"MB"</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
@@ -256,17 +221,17 @@
 <p>Axing the environment, however, is not the only functionality of <code>butcher</code>. This package provides five S3 generics that include:</p>
 <ul>
 <li>
-<code>axe_call</code>: Remove the call object.</li>
+<code><a href="../reference/axe_call.html">axe_call()</a></code>: Remove the call object.</li>
 <li>
-<code>axe_ctrl</code>: Remove the controls fixed for training.</li>
+<code><a href="../reference/axe_ctrl.html">axe_ctrl()</a></code>: Remove the controls fixed for training.</li>
 <li>
-<code>axe_data</code>: Remove the original data.</li>
+<code><a href="../reference/axe_data.html">axe_data()</a></code>: Remove the original data.</li>
 <li>
-<code>axe_env</code>: Replace inherited environments with empty environments.</li>
+<code><a href="../reference/axe_env.html">axe_env()</a></code>: Replace inherited environments with empty environments.</li>
 <li>
-<code>axe_fitted</code>: Remove fitted values.</li>
+<code><a href="../reference/axe_fitted.html">axe_fitted()</a></code>: Remove fitted values.</li>
 </ul>
-<p>In our case here with <code>lm</code>, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we axe all the fat that the <code>lm</code> object carries, i.e., the call, its fitted values, the data—all things saved for characterizing the model. If we are comfortable with axing everything we can, we can simply run <code>butcher</code> with the peace of mind that <code>predict</code> still works.</p>
+<p>In our case here with <code>lm</code>, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we execute all the possible axe functions at once. To do so, we simply run <code><a href="../reference/butcher.html">butcher()</a></code>:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">butchered_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/butcher">butcher</a></span>(big_lm)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/predict">predict</a></span>(butchered_lm, mtcars[, <span class="dv">2</span><span class="op">:</span><span class="dv">11</span>])</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt;           Mazda RX4       Mazda RX4 Wag          Datsun 710 </span></a>
@@ -291,7 +256,7 @@
 <a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt;            27.63627            18.87004            19.69383 </span></a>
 <a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt;       Maserati Bora          Volvo 142E </span></a>
 <a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt;            13.94112            24.36827</span></a></code></pre></div>
-<p>Alternatively, we can pick and choose specific axe functions:</p>
+<p>Alternatively, we can pick and choose specific axe functions, removing only those parts of the model object that we are no longer interested in characterizing.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">butchered_lm &lt;-<span class="st"> </span>big_lm <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_fitted">axe_fitted</a></span>()</a>
@@ -318,6 +283,7 @@
 <a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt;            27.63627            18.87004            19.69383 </span></a>
 <a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt;       Maserati Bora          Volvo 142E </span></a>
 <a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt;            13.94112            24.36827</span></a></code></pre></div>
+<p><code>butcher</code> makes it easy to axe parts of the fitted output that are no longer needed, without sacrificing much functionality from the original model object.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

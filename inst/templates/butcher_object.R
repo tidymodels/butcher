@@ -1,14 +1,9 @@
 #' Axing {{article}} {{model_class}}.
 #'
-#' This is where all the {{model_class}} specific documentation lies.
+#' @inheritParams butcher
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @return Axed {{model_class}} object.
 #'
-#' @return Axed model object.
 #' @examples
 #' ##
 #' ## Insert examples to create and axe model object here...

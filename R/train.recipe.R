@@ -4,14 +4,14 @@
 #' created from the \code{caret} package in that it also includes
 #' instructions from a \code{recipe} for data pre-processing. Axing
 #' functions specific to train.recipe are thus included as additional
-#' steps are required to remove the fat attached to train.recipe objects.
+#' steps are required to remove parts of train.recipe objects.
 #'
-#' @param x train.recipe object
-#' @param ... any additional arguments related to axing
+#' @inheritParams butcher
 #'
-#' @return axed train.recipe object
+#' @return Axed train.recipe object.
 #'
 #' @examples
+#' \dontrun{
 #' suppressWarnings(suppressMessages(library(recipes)))
 #' suppressWarnings(suppressMessages(library(caret)))
 #'
@@ -22,10 +22,12 @@
 #'   step_scale(all_predictors()) %>%
 #'   step_spatialsign(all_predictors())
 #'
-#' train.recipe_fit <- train(recipe, biomass, method = "svmRadial", metric = "RMSE")
+#' train.recipe_fit <- train(recipe, biomass,
+#'                           method = "svmRadial",
+#'                           metric = "RMSE")
 #'
 #' out <- butcher(train.recipe_fit)
-#'
+#' }
 #' @name axe-train.recipe
 NULL
 

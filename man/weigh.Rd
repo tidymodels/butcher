@@ -13,7 +13,7 @@ weigh(x, threshold = 0, units = "MB", ...)
 size to display.}
 
 \item{units}{The units in which to display the size of each component
-within the model object of interest. Defaults to code{MB}. Other
+within the model object of interest. Defaults to \code{MB}. Other
 options include \code{KB} and \code{GB}.}
 
 \item{...}{Any additional arguments for weighing.}

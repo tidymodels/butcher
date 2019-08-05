@@ -6,7 +6,7 @@
 #' @param threshold The minimum threshold desired for model component
 #'   size to display.
 #' @param units The units in which to display the size of each component
-#'   within the model object of interest. Defaults to code{MB}. Other
+#'   within the model object of interest. Defaults to \code{MB}. Other
 #'   options include \code{KB} and \code{GB}.
 #' @param ... Any additional arguments for weighing.
 #'

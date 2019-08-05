@@ -20,18 +20,28 @@
 \method{axe_fitted}{model_fit}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed model_fit object.
 }
 \description{
 model_fit objects are created from the \code{parsnip} package.
-This is where all the model_fit specific documentation lies.
+}
+\examples{
+suppressWarnings(suppressMessages(library(parsnip)))
+
+# Create model and fit
+lm_fit <- linear_reg() \%>\%
+  set_engine("lm") \%>\%
+  fit(mpg ~ ., data = mtcars)
+
+butcher(lm_fit)
+
 }

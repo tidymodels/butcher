@@ -14,22 +14,21 @@
 \method{axe_env}{survreg.penal}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed survreg object.
 }
 \description{
 survreg.penal objects are created from the \pkg{survival} package. They
 are returned from the \code{survreg} function, representing fitted
-parametric survival models. This is where all the survreg.penal specific
-documentation lies.
+parametric survival models.
 }
 \examples{
 # Load libraries

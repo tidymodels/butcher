@@ -8,19 +8,20 @@
 \method{axe_fitted}{cv.glmnet}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed cv.glmnet object.
 }
 \description{
-This is where all the cv.glmnet specific documentation lies.
+cv.glmnet objects are created from carrying out k-fold
+cross-validation from the \pkg{glmnet} package.
 }
 \examples{
 # Load libraries

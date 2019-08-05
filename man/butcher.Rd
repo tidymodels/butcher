@@ -7,7 +7,7 @@
 butcher(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
 \item{verbose}{Print information each time an axe method is executed.
 Notes how much memory is released and what functions are

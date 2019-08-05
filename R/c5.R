@@ -3,15 +3,10 @@
 #' C5.0 objects are created from the \code{C50} package, which provides an
 #' interface to the C5.0 classification model. The models that can be
 #' generated include basic tree-based models as well as rule-based models.
-#' This is where all the C5.0 specific documentation lies.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed C5.0 object.
 #'
 #' @examples
 #' # Load libraries

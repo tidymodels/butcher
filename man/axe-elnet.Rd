@@ -8,10 +8,10 @@
 \method{axe_call}{elnet}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
@@ -20,7 +20,8 @@ disabled. Default is \code{FALSE}.}
 Axed model object.
 }
 \description{
-This is where all the elnet specific documentation lies.
+elnet objects are created from the \pkg{glmnet} package, leveraged
+to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
 # Load libraries

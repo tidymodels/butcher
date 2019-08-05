@@ -17,16 +17,16 @@
 \method{axe_fitted}{ml_model}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed spark object.
 }
 \description{
 spark objects are created from the \pkg{sparklyr} package,
@@ -47,4 +47,18 @@ This function gives the user the option to keep either the
 \code{pipeline_model} or the \code{pipeline}, so both of these
 objects are retained from butchering, yet removal of one or the
 other might be conducive to freeing up memory on disk.
+}
+\examples{
+\dontrun{
+library(sparklyr)
+sc <- spark_connect(master = "local")
+
+iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) \%>\%
+  sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
+
+train <- iris_tbls$train
+spark_fit <- ml_logistic_regression(train, Species ~ .)
+
+butcher(spark_fit)
+}
 }

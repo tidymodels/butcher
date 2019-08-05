@@ -8,13 +8,22 @@
 #' butchered class is only added to the recipe as a whole, and not to each
 #' pre-processing step.
 #'
-#' @param x recipe object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed recipe.
+#' @return Axed recipe object.
+#'
+#' @examples
+#' library(recipes)
+#' data(biomass)
+#'
+#' biomass_tr <- biomass[biomass$dataset == "Training",]
+#' rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
+#'               data = biomass_tr) %>%
+#'   step_center(all_predictors()) %>%
+#'   step_scale(all_predictors()) %>%
+#'   step_spatialsign(all_predictors())
+#'
+#' butcher(rec)
 #'
 #' @name axe-recipe
 NULL

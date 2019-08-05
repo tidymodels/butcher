@@ -1,15 +1,18 @@
 #' Axing a stanreg.
 #'
-#' This is where all the stanreg specific documentation lies.
+#' stanreg objects are created from the \pkg{rstanarm} package, leveraged
+#' to do Bayesian regression modeling with \pkg{stan}.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed stanreg object.
 #'
+#' @examples
+#' \dontrun{
+#' library(rstanarm)
+#' fit <- stan_glm(mpg ~ wt, data = mtcars, algorithm = "optimizing")
+#' butcher(fit)
+#' }
 #' @name axe-stanreg
 NULL
 

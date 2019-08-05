@@ -206,16 +206,16 @@
 \method{axe_env}{quosure}(x, ...)
 }
 \arguments{
-\item{x}{recipe object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed recipe.
+Axed recipe object.
 }
 \description{
 recipe objects are created from the \pkg{recipes} package, which is
@@ -225,4 +225,18 @@ of each step, however, results its own class so we bundle all the axe
 methods related to recipe objects in general here. Note that the
 butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
+}
+\examples{
+library(recipes)
+data(biomass)
+
+biomass_tr <- biomass[biomass$dataset == "Training",]
+rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
+              data = biomass_tr) \%>\%
+  step_center(all_predictors()) \%>\%
+  step_scale(all_predictors()) \%>\%
+  step_spatialsign(all_predictors())
+
+butcher(rec)
+
 }

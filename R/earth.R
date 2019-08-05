@@ -2,15 +2,10 @@
 #'
 #' earth objects are created from the \pkg{earth} package, which
 #' is leveraged to do multivariate adapative regression splines.
-#' This is where all the earth specific documentation lies.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed earth object.
 #'
 #' @examples
 #' # Load libraries

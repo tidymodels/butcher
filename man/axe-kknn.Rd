@@ -14,22 +14,21 @@
 \method{axe_fitted}{kknn}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed kknn object.
 }
 \description{
 kknn objects are created from the \pkg{kknn} package, which is
 utilized to do weighted k-Nearest Neighbors for classification,
-regression and clustering. This is where all the kknn specific
-documentation lies.
+regression and clustering.
 }
 \examples{
 # Load libraries

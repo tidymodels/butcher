@@ -1,14 +1,11 @@
 #' Axing an multnet.
 #'
-#' This is where all the multnet specific documentation lies.
+#' multnet objects are created from carrying out multinomial regression
+#' in the \pkg{glmnet} package.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed multnet object.
 #'
 #' @examples
 #' # Load libraries

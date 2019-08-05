@@ -8,19 +8,20 @@
 \method{axe_call}{glmnet}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed glmnet object.
 }
 \description{
-This is where all the glmnet specific documentation lies.
+glmnet objects are created from the \pkg{glmnet} package, leveraged
+to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
 library(glmnet)
@@ -29,4 +30,5 @@ y <- as.matrix(sample(c(1, 0), size = 32, replace = TRUE))
 fit <- glmnet(x, as.factor(y), family = "binomial")
 
 butcher(fit)
+
 }

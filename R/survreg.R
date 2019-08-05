@@ -2,16 +2,11 @@
 #'
 #' survreg objects are created from the \pkg{survival} package. They
 #' are returned from the \code{survreg} function, representing fitted
-#' parametric survival models. This is where all the survreg specific
-#' documentation lies.
+#' parametric survival models.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed survreg object.
 #'
 #' @examples
 #' # Load libraries

@@ -14,22 +14,21 @@
 \method{axe_fitted}{ksvm}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
-disabled. Default is \code{TRUE}.}
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed ksvm object.
 }
 \description{
 ksvm objects are created from \pkg{kernlab} package, which provides
 a means to do classification, regression, clustering, novelty
 detection, quantile regression and dimensionality reduction.
-This is where all the ksvm specific documentation lies.
 }
 \examples{
 # Load libraries

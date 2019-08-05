@@ -17,27 +17,27 @@
 \method{axe_fitted}{gausspr}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed gausspr object.
 }
 \description{
 gausspr objects are created from \pkg{kernlab} package, which
 provides a means to do classification, regression, clustering,
 novelty detection, quantile regression and dimensionality
-reduction. This is where all the gausspr specific documentation
-lies.
+reduction.
 }
 \examples{
 library(kernlab)
 test <- gausspr(Species ~ ., data = iris, var = 2)
 
 butcher(test)
+
 }

@@ -17,16 +17,16 @@
 \method{axe_fitted}{xgb.Booster}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed xgb.Booster object.
 }
 \description{
 xgb.Booster objects are created from the \pkg{xgboost} package,
@@ -34,8 +34,7 @@ which provides efficient and scalable implementations of gradient
 boosted decision trees. Given the reliance of post processing
 functions on the model object, like \code{xgb.Booster.complete},
 on the first class listed, the \code{butcher_xgb.Booster} class is
-not appended. This is where all the xgb.Booster specific documentation
-lies.
+not appended.
 }
 \examples{
 library(xgboost)
@@ -50,4 +49,5 @@ bst <- xgboost(data = agaricus.train$data,
                objective = "binary:logistic")
 
 butcher(bst)
+
 }

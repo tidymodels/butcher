@@ -1,15 +1,20 @@
 #' Axing an model_fit.
 #'
 #' model_fit objects are created from the \code{parsnip} package.
-#' This is where all the model_fit specific documentation lies.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed model_fit object.
+#'
+#' @examples
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#'
+#' # Create model and fit
+#' lm_fit <- linear_reg() %>%
+#'   set_engine("lm") %>%
+#'   fit(mpg ~ ., data = mtcars)
+#'
+#' butcher(lm_fit)
 #'
 #' @name axe-model_fit
 NULL

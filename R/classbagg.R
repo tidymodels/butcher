@@ -1,12 +1,10 @@
 #' Axing a classbagg object.
 #'
-#' This is where all the classbagg specific documentation lies.
+#' classbagg objects are created from the \pkg{ipred} package, which
+#' leverages various resampling and bagging techniques to improve
+#' predictive models.
 #'
-#' @param x Classbagg object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Axed classbagg object.
 #'
@@ -22,6 +20,7 @@
 #' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
 #' butcher(classbagg_fit)
+#'
 #' @name axe-classbagg
 NULL
 

@@ -14,19 +14,19 @@
 \method{axe_fitted}{lm}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed lm object.
 }
 \description{
-This is where all the lm specific documentation lies.
+lm objects are created from the base \pkg{stats} package.
 }
 \examples{
 # Load libraries

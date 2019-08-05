@@ -20,10 +20,10 @@
 \method{axe_fitted}{train}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Train object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
@@ -32,7 +32,7 @@ disabled. Default is \code{FALSE}.}
 Axed train object.
 }
 \description{
-This is where all the train specific documentation lies.
+train objects are created from the \pkg{caret} package.
 }
 \examples{
 # Load libraries

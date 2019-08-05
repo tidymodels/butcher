@@ -1,18 +1,17 @@
 #' Axing a mda.
 #'
-#' This is where all the mda specific documentation lies.
+#' mda objects are created from the \pkg{mda} package, leveraged to
+#' carry out mixture discriminant analysis.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed mda object.
+#'
 #' @examples
-#' ##
-#' ## Insert examples to create and axe model object here...
-#' ##
+#' library(mda)
+#' fit <- mda(Species ~ ., data = iris)
+#' butcher(fit)
+#'
 #' @name axe-mda
 NULL
 

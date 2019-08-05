@@ -1,12 +1,8 @@
 #' Axing a train object.
 #'
-#' This is where all the train specific documentation lies.
+#' train objects are created from the \pkg{caret} package.
 #'
-#' @param x Train object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Axed train object.
 #'

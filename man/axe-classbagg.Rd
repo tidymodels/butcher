@@ -14,10 +14,10 @@
 \method{axe_env}{classbagg}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Classbagg object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
@@ -26,7 +26,9 @@ disabled. Default is \code{FALSE}.}
 Axed classbagg object.
 }
 \description{
-This is where all the classbagg specific documentation lies.
+classbagg objects are created from the \pkg{ipred} package, which
+leverages various resampling and bagging techniques to improve
+predictive models.
 }
 \examples{
 # Load libraries
@@ -40,4 +42,5 @@ data("GlaucomaM", package = "TH.data")
 classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 
 butcher(classbagg_fit)
+
 }

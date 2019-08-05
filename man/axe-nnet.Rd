@@ -14,19 +14,20 @@
 \method{axe_fitted}{nnet}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed nnet object.
 }
 \description{
-This is where all the nnet specific documentation lies.
+nnet objects are created from the \pkg{nnet} package, leveraged to
+fit multilayer perceptron models.
 }
 \examples{
 suppressWarnings(suppressMessages(library(parsnip)))

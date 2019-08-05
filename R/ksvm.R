@@ -3,15 +3,10 @@
 #' ksvm objects are created from \pkg{kernlab} package, which provides
 #' a means to do classification, regression, clustering, novelty
 #' detection, quantile regression and dimensionality reduction.
-#' This is where all the ksvm specific documentation lies.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{TRUE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed ksvm object.
 #'
 #' @examples
 #' # Load libraries

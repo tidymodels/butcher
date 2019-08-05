@@ -11,10 +11,10 @@
 \method{axe_env}{sclass}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{sclass object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
@@ -23,9 +23,7 @@ disabled. Default is \code{FALSE}.}
 Axed sclass object.
 }
 \description{
-sclass objects are byproducts of classbagg objects. Since there are
-axe functions specific to this class, there is where all documentation
-related to sclass objects lies.
+sclass objects are byproducts of classbagg objects.
 }
 \examples{
 # Load libraries
@@ -39,4 +37,5 @@ data("GlaucomaM", package = "TH.data")
 classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 
 butcher(classbagg_fit$mtrees[[1]])
+
 }

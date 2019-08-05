@@ -4,16 +4,11 @@
 #' differ from survreg in that the fitted models are not limited to certain
 #' parametric distributions. Users can define their own distribution, or
 #' leverage distributions like the generalized gamma, generalized F, and
-#' the Royston-Parmar spline model. This is where all the flexsurvreg
-#' specific documentation lies.
+#' the Royston-Parmar spline model.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed flexsurvreg object.
 #'
 #' @examples
 #' # Load libraries

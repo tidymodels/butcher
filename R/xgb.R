@@ -5,16 +5,12 @@
 #' boosted decision trees. Given the reliance of post processing
 #' functions on the model object, like \code{xgb.Booster.complete},
 #' on the first class listed, the \code{butcher_xgb.Booster} class is
-#' not appended. This is where all the xgb.Booster specific documentation
-#' lies.
+#' not appended.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed xgb.Booster object.
+#'
 #' @examples
 #' library(xgboost)
 #' data(agaricus.train)
@@ -28,6 +24,7 @@
 #'                objective = "binary:logistic")
 #'
 #' butcher(bst)
+#'
 #' @name axe-xgb.Booster
 NULL
 

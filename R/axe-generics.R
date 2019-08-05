@@ -7,7 +7,7 @@
 #' avoid removal of model fit components to ensure it works with other
 #' downstream functions.
 #'
-#' @param x Model object.
+#' @param x A model object.
 #' @param verbose Print information each time an axe method is executed.
 #'  Notes how much memory is released and what functions are
 #'  disabled. Default is \code{FALSE}.
@@ -35,11 +35,7 @@ butcher <- function(x, verbose = FALSE, ...) {
 #'
 #' Replace the call object attached to modeling objects with a placeholder.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed.
-#'  Notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Model object without call attribute.
 #'
@@ -64,11 +60,7 @@ axe_call.default <- function(x, verbose = FALSE, ...) {
 #'
 #' Remove the controls from training attached to modeling objects.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Model object without control tuning parameters from training.
 #'
@@ -93,11 +85,7 @@ axe_ctrl.default <- function(x, verbose = FALSE, ...) {
 #'
 #' Remove the training data attached to modeling objects.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Model object without the training data
 #'
@@ -125,11 +113,7 @@ axe_data.default <- function(x, verbose = FALSE, ...) {
 #' not required in the downstream analysis pipeline. If found,
 #' the environment is replaced with \code{rlang::empty_env()}.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Model object with empty environments.
 #'
@@ -154,11 +138,7 @@ axe_env.default <- function(x, verbose = FALSE, ...) {
 #'
 #' Remove the fitted values attached to modeling objects.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Model object without the fitted values.
 #'

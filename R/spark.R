@@ -19,14 +19,23 @@
 #' objects are retained from butchering, yet removal of one or the
 #' other might be conducive to freeing up memory on disk.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed spark object.
 #'
+#' @examples
+#' \dontrun{
+#' library(sparklyr)
+#' sc <- spark_connect(master = "local")
+#'
+#' iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+#'   sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
+#'
+#' train <- iris_tbls$train
+#' spark_fit <- ml_logistic_regression(train, Species ~ .)
+#'
+#' butcher(spark_fit)
+#' }
 #' @name axe-spark
 NULL
 

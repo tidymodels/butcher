@@ -6,15 +6,11 @@
 #' prediction trees. Given the reliance of post processing functions on
 #' the model object, like \code{importance_pvalues} and \code{treeInfo},
 #' on the first class listed, the \code{butcher_ranger} class is not
-#' appended. This is where all the ranger specific documentation lies.
+#' appended.
 #'
-#' @param x Model object.
-#' @param verbose Print information each time an axe method is executed
-#'  that notes how much memory is released and what functions are
-#'  disabled. Default is \code{FALSE}.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
-#' @return Axed model object.
+#' @return Axed ranger object.
 #'
 #' @examples
 #' # Load libraries

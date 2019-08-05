@@ -14,22 +14,21 @@
 \method{axe_fitted}{C5.0}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Model object.}
+\item{x}{A model object.}
 
-\item{verbose}{Print information each time an axe method is executed
-that notes how much memory is released and what functions are
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
 disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed model object.
+Axed C5.0 object.
 }
 \description{
 C5.0 objects are created from the \code{C50} package, which provides an
 interface to the C5.0 classification model. The models that can be
 generated include basic tree-based models as well as rule-based models.
-This is where all the C5.0 specific documentation lies.
 }
 \examples{
 # Load libraries

@@ -229,9 +229,7 @@ test_that("recipe + step_factor2string + axe_env() works", {
 })
 
 test_that("recipe + step_holiday + axe_env() works", {
-  skip_if_not_installed("lubridate")
-  library(lubridate)
-  examples <- data.frame(someday = ymd("2000-12-20") + days(0:40))
+  examples <- data.frame(someday = Sys.Date() + 1:40)
   rec <- recipe(~ someday, examples) %>%
     step_holiday(all_predictors())
   x <- axe_env(rec)

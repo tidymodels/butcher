@@ -1,17 +1,16 @@
 context("multnet")
 
-test_that("multnet + butcher_example() works", {
-  example_files <- butcher_example()
-  expect_true("multnet.rda" %in% example_files)
-  expect_true(file.exists(butcher_example("multnet.rda")))
-})
-
 test_that("multnet + predict() works", {
   skip_on_cran()
   skip_if_not_installed("glmnet")
-  load(butcher_example("multnet.rda"))
-  x <- axe_call(multnet_fit)
+  library(glmnet)
+  set.seed(1234)
+  predictrs <- matrix(rnorm(100*20), ncol = 20)
+  response <- as.factor(sample(1:4, 100, replace = TRUE))
+  fit <- glmnet(predictrs, response, family = "multinomial")
+  x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
-  x <- butcher(multnet_fit)
-  expect_equal(predict(x, newx = matrix(1, ncol = 20), s= 1)[1,1,1], 0.0881926426624652)
+  x <- butcher(fit)
+  expect_equal(predict(fit, newx = predictrs[1:3, ], s = 1),
+               predict(x, newx = predictrs[1:3, ], s = 1))
 })

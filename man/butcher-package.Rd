@@ -30,7 +30,7 @@ function is called, the axed model object will also have the same addition
 of a \code{butcher} class assignment.
 }
 \author{
-\strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com}
+\strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com} (0000-0001-7217-4702)
 
 Authors:
 \itemize{

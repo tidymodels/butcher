@@ -20,21 +20,22 @@
 \method{axe_fitted}{train.recipe}(x, ...)
 }
 \arguments{
-\item{x}{train.recipe object}
+\item{x}{A model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed train.recipe object
+Axed train.recipe object.
 }
 \description{
 train.recipe objects are slightly different from train objects
 created from the \code{caret} package in that it also includes
 instructions from a \code{recipe} for data pre-processing. Axing
 functions specific to train.recipe are thus included as additional
-steps are required to remove the fat attached to train.recipe objects.
+steps are required to remove parts of train.recipe objects.
 }
 \examples{
+\dontrun{
 suppressWarnings(suppressMessages(library(recipes)))
 suppressWarnings(suppressMessages(library(caret)))
 
@@ -45,8 +46,10 @@ recipe <- biomass \%>\%
   step_scale(all_predictors()) \%>\%
   step_spatialsign(all_predictors())
 
-train.recipe_fit <- train(recipe, biomass, method = "svmRadial", metric = "RMSE")
+train.recipe_fit <- train(recipe, biomass,
+                          method = "svmRadial",
+                          metric = "RMSE")
 
 out <- butcher(train.recipe_fit)
-
+}
 }

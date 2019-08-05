@@ -30,13 +30,13 @@ function is called, the axed model object will also have the same addition
 of a \code{butcher} class assignment.
 }
 \author{
-\strong{Maintainer}: Joyce Cahoon \email{joyce@rstudio.com}
+\strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com}
 
 Authors:
 \itemize{
   \item Davis Vaughan \email{davis@rstudio.com}
   \item Max Kuhn \email{max@rstudio.com}
-  \item Alex Hayes \email{alex@rstudio.com}
+  \item Alex Hayes \email{alexpghayes@gmail.com}
 }
 
 }

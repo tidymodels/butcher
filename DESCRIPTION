@@ -18,7 +18,7 @@ Authors@R: c(
            family = "Hayes",
            role = "aut",
            email = "alex@rstudio.com"))
-Description: Axe components of fitted model objects to reduce the size of model objects saved to disk.
+Description: Set of five S3 generics to axe components of fitted model objects and help reduce the size of model objects saved to disk.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -165,13 +165,13 @@
 <a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
 <p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code>lm</code> is implemented in the <code>stats</code> package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use <code><a href="reference/axe_env.html">axe_env()</a></code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">cleaned_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>(big_lm, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; ✔ Memory released: '7,999,416 B'</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; ✔ Memory released: '7,999,256 B'</span></a></code></pre></div>
 <p>Comparing it against our <code>small_lm</code>, we’ll find:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(cleaned_lm)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00781 </span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00789 </span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
 <a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>

@@ -137,14 +137,20 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for terms</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Terms object.</p></td>
+      <td><p>A model object.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -157,6 +163,33 @@
     <p>Axed terms object.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: using type = "numeric" with a factor response will be ignored</span></div><div class='output co'>#&gt; <span class='warning'>Warning: ‘-’ not meaningful for factors</span></div><div class='input'><span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>$<span class='no'>terms</span>)</div><div class='output co'>#&gt; Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width
+#&gt; attr(,"variables")
+#&gt; list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
+#&gt; attr(,"factors")
+#&gt;              Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt; Species                 0           0            0           0
+#&gt; Sepal.Length            1           0            0           0
+#&gt; Sepal.Width             0           1            0           0
+#&gt; Petal.Length            0           0            1           0
+#&gt; Petal.Width             0           0            0           1
+#&gt; attr(,"term.labels")
+#&gt; [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
+#&gt; attr(,"order")
+#&gt; [1] 1 1 1 1
+#&gt; attr(,"intercept")
+#&gt; [1] 1
+#&gt; attr(,"response")
+#&gt; [1] 1
+#&gt; attr(,".Environment")
+#&gt; &lt;environment: base&gt;
+#&gt; attr(,"predvars")
+#&gt; list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
+#&gt; attr(,"dataClasses")
+#&gt;      Species Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+#&gt;     "factor"    "numeric"    "numeric"    "numeric"    "numeric" </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -164,7 +197,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

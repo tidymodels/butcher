@@ -36,7 +36,8 @@
 <meta property="og:description" content="gausspr objects are created from kernlab package, which
 provides a means to do classification, regression, clustering,
 novelty detection, quantile regression and dimensionality
-reduction." />
+reduction. Since fitted model objects from kernlab are S4,
+the butcher_gausspr class is not appended." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -138,7 +139,8 @@ reduction." />
     <p>gausspr objects are created from <span class="pkg">kernlab</span> package, which
 provides a means to do classification, regression, clustering,
 novelty detection, quantile regression and dimensionality
-reduction.</p>
+reduction. Since fitted model objects from <span class="pkg">kernlab</span> are S4,
+the <code>butcher_gausspr</code> class is not appended.</p>
     
     </div>
 
@@ -179,13 +181,15 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>kernlab</span>)
-<span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/kernlab/topics/gausspr'>gausspr</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using automatic sigma estimation (sigest) for RBF or laplace kernel </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>kernlab</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘kernlab’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:ggplot2’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    alpha</span></div><div class='input'><span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/kernlab/topics/gausspr'>gausspr</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using automatic sigma estimation (sigest) for RBF or laplace kernel </div><div class='input'>
 <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; Gaussian Processes object of class "gausspr" 
 #&gt; Problem type: classification 
 #&gt; 
 #&gt; Gaussian Radial Basis kernel function. 
-#&gt;  Hyperparameter : sigma =  1.03672015231404 
+#&gt;  Hyperparameter : sigma =  0.412976097302096 
 #&gt; 
 #&gt; Number of training instances learned : 150 
 #&gt; Train error : 0.033333333 </div><div class='input'>

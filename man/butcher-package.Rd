@@ -29,6 +29,15 @@ an additional \code{butcher} class assignment. If only a specific \code{axe_}
 function is called, the axed model object will also have the same addition
 of a \code{butcher} class assignment.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://tidymodels.github.io/butcher}
+  \item \url{https://github.com/tidymodels/butcher}
+  \item Report bugs at \url{https://github.com/tidymodels/butcher/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com} (0000-0001-7217-4702)
 

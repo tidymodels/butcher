@@ -19,7 +19,7 @@ Authors@R: c(
            family = "Hayes",
            role = "aut",
            email = "alexpghayes@gmail.com"))
-Description: Set of five S3 generics to axe components of fitted model objects and help reduce the size of model objects saved to disk.
+Description: Provides a set of five S3 generics to axe components of fitted model objects and help reduce the size of model objects saved to disk.
 License: MIT + file LICENSE
 URL: https://tidymodels.github.io/butcher, https://github.com/tidymodels/butcher
 BugReports: https://github.com/tidymodels/butcher/issues

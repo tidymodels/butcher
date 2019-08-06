@@ -3,12 +3,13 @@
 #' Functions stored in model objects often have heavy environments
 #' and bytecode attached.
 #'
-#' @param x Function.
+#' @param x A function.
 #' @param ... Any additional arguments related to axing.
 #'
 #' @return Axed function.
 #'
 #' @examples
+#' \dontrun{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(caret)))
 #'
@@ -23,7 +24,7 @@
 #'                    trControl = trainControl(method = "cv"))
 #'
 #' axe_env(train_fit$modelInfo$prob)
-#'
+#' }
 #' @name axe-function
 NULL
 

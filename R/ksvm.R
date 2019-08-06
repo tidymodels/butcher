@@ -9,6 +9,7 @@
 #' @return Axed ksvm object.
 #'
 #' @examples
+#' \dontrun{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(kernlab)))
@@ -22,7 +23,7 @@
 #'   fit(type ~ ., data = spam)
 #'
 #' butcher(ksvm_class)
-#'
+#' }
 #' @name axe-ksvm
 NULL
 

@@ -5,10 +5,14 @@
 \alias{axe_env.terms}
 \title{Axing for terms inputs.}
 \usage{
-\method{axe_env}{terms}(x, ...)
+\method{axe_env}{terms}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{Terms object.}
+\item{x}{A model object.}
+
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
@@ -17,4 +21,9 @@ Axed terms object.
 }
 \description{
 Generics related to axing objects of the term class.
+}
+\examples{
+fit <- lm(Species ~ ., data = iris)
+butcher(fit$terms)
+
 }

@@ -32,7 +32,8 @@ Axed gausspr object.
 gausspr objects are created from \pkg{kernlab} package, which
 provides a means to do classification, regression, clustering,
 novelty detection, quantile regression and dimensionality
-reduction.
+reduction. Since fitted model objects from \pkg{kernlab} are S4,
+the \code{butcher_gausspr} class is not appended.
 }
 \examples{
 library(kernlab)

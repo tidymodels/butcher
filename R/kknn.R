@@ -75,6 +75,7 @@ axe_fitted.kknn <- function(x, verbose = FALSE, ...) {
   add_butcher_attributes(
     x,
     old,
+    disabled = c("fitted()"),
     verbose = verbose
   )
 }

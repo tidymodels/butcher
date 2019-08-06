@@ -109,7 +109,12 @@ detection, quantile regression and dimensionality reduction." />
     </li>
   </ul>
 </li>
-        
+        <li>
+  <a href="https://github.com/tidymodels/butcher">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@ detection, quantile regression and dimensionality reduction." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Axing a ksvm object.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/tidymodels/butcher/blob/master/R/ksvm.R'><code>R/ksvm.R</code></a></small>
     <div class="hidden name"><code>axe-ksvm.Rd</code></div>
     </div>
 
@@ -169,7 +174,8 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Load libraries</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>kernlab</span>)))
 
@@ -179,21 +185,10 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='co'># Create model and fit</span>
 <span class='no'>ksvm_class</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/svm_poly'>svm_poly</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"classification"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"kernlab"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>type</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spam</span>)</div><div class='output co'>#&gt;  Setting default kernel parameters  </div><div class='input'>
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>ksvm_class</span>)</div><div class='output co'>#&gt; Support Vector Machine object of class "ksvm" 
-#&gt; 
-#&gt; SV type: C-svc  (classification) 
-#&gt;  parameter : cost C = 1 
-#&gt; 
-#&gt; Polynomial kernel function. 
-#&gt;  Hyperparameters : degree =  1  scale =  1  offset =  1 
-#&gt; 
-#&gt; Number of Support Vectors : 942 
-#&gt; 
-#&gt; Objective Function Value : -881.4941 
-#&gt; Training error : 0.067377 
-#&gt; Probability model included. </div><div class='input'>
-</div></pre>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>type</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spam</span>)
+
+<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>ksvm_class</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

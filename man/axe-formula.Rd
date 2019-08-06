@@ -5,16 +5,31 @@
 \alias{axe_env.formula}
 \title{Axing formulas.}
 \usage{
-\method{axe_env}{formula}(x, ...)
+\method{axe_env}{formula}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{formula}
+\item{x}{A model object.}
 
-\item{...}{any additional arguments related to axing}
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
+
+\item{...}{Any additional arguments related to axing.}
 }
 \value{
-axed formula
+Axed formula object.
 }
 \description{
-formulas often wrap environments that carry a lot of unneccesary junk.
+formulas might capture an environment from the modeling development
+process that carries objects that will not be used for any post-
+estimation activities.
+}
+\examples{
+test <- function() {
+  x <- runif(10e4)
+  ex <- as.formula(paste("y ~", paste(LETTERS, collapse = "+")))
+  return(ex)
+}
+out <- test()
+axed_out <- axe_env(out)
 }

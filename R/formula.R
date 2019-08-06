@@ -1,12 +1,21 @@
 #' Axing formulas.
 #'
-#' formulas often wrap environments that carry a lot of unneccesary junk.
+#' formulas might capture an environment from the modeling development
+#' process that carries objects that will not be used for any post-
+#' estimation activities.
 #'
-#' @param x formula
-#' @param ... any additional arguments related to axing
+#' @inheritParams butcher
 #'
-#' @return axed formula
+#' @return Axed formula object.
 #'
+#' @examples
+#' test <- function() {
+#'   x <- runif(10e4)
+#'   ex <- as.formula(paste("y ~", paste(LETTERS, collapse = "+")))
+#'   return(ex)
+#' }
+#' out <- test()
+#' axed_out <- axe_env(out)
 #' @name axe-formula
 NULL
 
@@ -14,7 +23,13 @@ NULL
 #'
 #' @rdname axe-formula
 #' @export
-axe_env.formula <- function(x, ...) {
+axe_env.formula <- function(x, verbose = FALSE, ...) {
+  old <- x
   attr(x, ".Environment") <- rlang::empty_env()
-  x
+
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

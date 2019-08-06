@@ -5,10 +5,14 @@
 \alias{axe_env.function}
 \title{Axing functions.}
 \usage{
-\method{axe_env}{function}(x, ...)
+\method{axe_env}{function}(x, verbose = FALSE, ...)
 }
 \arguments{
-\item{x}{A function.}
+\item{x}{A model object.}
+
+\item{verbose}{Print information each time an axe method is executed.
+Notes how much memory is released and what functions are
+disabled. Default is \code{FALSE}.}
 
 \item{...}{Any additional arguments related to axing.}
 }
@@ -17,9 +21,18 @@ Axed function.
 }
 \description{
 Functions stored in model objects often have heavy environments
-and bytecode attached.
+and bytecode attached. To avoid breaking any post-estimation functions
+on the model object, the \code{butchered_function} class is not
+appended.
 }
 \examples{
+# Simple function
+f <- function() {
+  x <- runif(10e4)
+}
+
+axed_f <- axe_env(f, verbose = TRUE)
+
 \dontrun{
 # Load libraries
 suppressWarnings(suppressMessages(library(caret)))

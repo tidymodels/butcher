@@ -1,14 +1,22 @@
 #' Axing functions.
 #'
 #' Functions stored in model objects often have heavy environments
-#' and bytecode attached.
+#' and bytecode attached. To avoid breaking any post-estimation functions
+#' on the model object, the \code{butchered_function} class is not
+#' appended.
 #'
-#' @param x A function.
-#' @param ... Any additional arguments related to axing.
+#' @inheritParams butcher
 #'
 #' @return Axed function.
 #'
 #' @examples
+#' # Simple function
+#' f <- function() {
+#'   x <- runif(10e4)
+#' }
+#'
+#' axed_f <- axe_env(f, verbose = TRUE)
+#'
 #' \dontrun{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(caret)))
@@ -32,8 +40,15 @@ NULL
 #'
 #' @rdname axe-function
 #' @export
-axe_env.function <- function(x, ...) {
+axe_env.function <- function(x, verbose = FALSE, ...) {
+  old <- x
   x <- as.function(c(formals(x), body(x)), env = environment(x))
-  x
+
+  add_butcher_attributes(
+    x,
+    old,
+    add_class = FALSE,
+    verbose = verbose
+  )
 }
 

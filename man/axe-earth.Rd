@@ -27,7 +27,7 @@ Axed earth object.
 }
 \description{
 earth objects are created from the \pkg{earth} package, which
-is leveraged to do multivariate adapative regression splines.
+is leveraged to do multivariate adaptive regression splines.
 }
 \examples{
 # Load libraries

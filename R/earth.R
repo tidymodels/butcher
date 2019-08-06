@@ -1,7 +1,7 @@
 #' Axing an earth object.
 #'
 #' earth objects are created from the \pkg{earth} package, which
-#' is leveraged to do multivariate adapative regression splines.
+#' is leveraged to do multivariate adaptive regression splines.
 #'
 #' @inheritParams butcher
 #'

@@ -8,7 +8,7 @@
 \method{axe_env}{function}(x, ...)
 }
 \arguments{
-\item{x}{Function.}
+\item{x}{A function.}
 
 \item{...}{Any additional arguments related to axing.}
 }
@@ -20,6 +20,7 @@ Functions stored in model objects often have heavy environments
 and bytecode attached.
 }
 \examples{
+\dontrun{
 # Load libraries
 suppressWarnings(suppressMessages(library(caret)))
 
@@ -34,5 +35,5 @@ train_fit <- train(train_data, train_classes,
                    trControl = trainControl(method = "cv"))
 
 axe_env(train_fit$modelInfo$prob)
-
+}
 }

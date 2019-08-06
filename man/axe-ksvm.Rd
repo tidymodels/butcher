@@ -31,6 +31,7 @@ a means to do classification, regression, clustering, novelty
 detection, quantile regression and dimensionality reduction.
 }
 \examples{
+\dontrun{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(kernlab)))
@@ -44,5 +45,5 @@ ksvm_class <- svm_poly(mode = "classification") \%>\%
   fit(type ~ ., data = spam)
 
 butcher(ksvm_class)
-
+}
 }

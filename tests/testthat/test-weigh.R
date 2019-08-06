@@ -12,7 +12,7 @@ test_that("weigh() recursively measures size of each object component", {
 
 test_that("checking internal lm_fit test object", {
   skip_on_cran()
-  load(butcher_example("lm.rda"))
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   expect_equal(dim(weigh(lm_fit, 0))[1], 25)
 })
 

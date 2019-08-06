@@ -1,14 +1,7 @@
 context("lm")
 
-test_that("lm + butcher_example() works", {
-  example_files <- butcher_example()
-  expect_true("lm.rda" %in% example_files)
-  expect_true(file.exists(butcher_example("lm.rda")))
-})
-
-load(butcher_example("lm.rda"))
-
 test_that("lm + axe_call() works", {
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- axe_call(lm_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
 })
@@ -22,16 +15,19 @@ test_that("lm + offset + axe_call() works", {
 })
 
 test_that("lm + axe_env() works", {
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- axe_env(lm_fit)
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
 })
 
 test_that("lm + axe_fitted() works", {
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- axe_fitted(lm_fit)
   expect_equal(x$fitted.values, numeric(0))
 })
 
 test_that("lm + butcher() works", {
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- butcher(lm_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
@@ -40,8 +36,9 @@ test_that("lm + butcher() works", {
 })
 
 test_that("lm + predict() works", {
+  lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- butcher(lm_fit)
-  expect_equal(predict(x)[1], c(`Mazda RX4` = 21.5647055857078))
+  expect_equal(predict(x)[1],predict(lm_fit)[1])
   set.seed(0); w <- runif(nrow(trees), 1, 2)
   X <- model.matrix(~ Girth + Volume, trees)
   y <- trees$Height

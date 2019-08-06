@@ -28,7 +28,9 @@ Axed ksvm object.
 \description{
 ksvm objects are created from \pkg{kernlab} package, which provides
 a means to do classification, regression, clustering, novelty
-detection, quantile regression and dimensionality reduction.
+detection, quantile regression and dimensionality reduction. Since
+fitted model objects from \pkg{kernlab} are S4, the \code{butcher_ksvm}
+class is not appended.
 }
 \examples{
 \dontrun{

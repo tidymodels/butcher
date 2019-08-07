@@ -11,7 +11,7 @@
 #' @return Axed ksvm object.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(kernlab)))

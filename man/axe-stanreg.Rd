@@ -30,7 +30,7 @@ stanreg objects are created from the \pkg{rstanarm} package, leveraged
 to do Bayesian regression modeling with \pkg{stan}.
 }
 \examples{
-\dontrun{
+\donttest{
 library(rstanarm)
 fit <- stan_glm(mpg ~ wt, data = mtcars, algorithm = "optimizing")
 butcher(fit)

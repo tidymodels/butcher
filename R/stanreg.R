@@ -8,7 +8,7 @@
 #' @return Axed stanreg object.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(rstanarm)
 #' fit <- stan_glm(mpg ~ wt, data = mtcars, algorithm = "optimizing")
 #' butcher(fit)

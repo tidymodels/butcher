@@ -24,7 +24,7 @@
 #' @return Axed spark object.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(sparklyr)
 #' sc <- spark_connect(master = "local")
 #'

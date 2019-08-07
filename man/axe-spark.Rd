@@ -49,7 +49,7 @@ objects are retained from butchering, yet removal of one or the
 other might be conducive to freeing up memory on disk.
 }
 \examples{
-\dontrun{
+\donttest{
 library(sparklyr)
 sc <- spark_connect(master = "local")
 

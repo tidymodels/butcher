@@ -11,7 +11,7 @@
 #' @return Axed train.recipe object.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' suppressWarnings(suppressMessages(library(recipes)))
 #' suppressWarnings(suppressMessages(library(caret)))
 #'

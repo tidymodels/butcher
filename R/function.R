@@ -17,7 +17,7 @@
 #'
 #' axed_f <- axe_env(f, verbose = TRUE)
 #'
-#' \dontrun{
+#' \donttest{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(caret)))
 #'

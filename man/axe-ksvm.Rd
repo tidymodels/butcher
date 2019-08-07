@@ -33,7 +33,7 @@ fitted model objects from \pkg{kernlab} are S4, the \code{butcher_ksvm}
 class is not appended.
 }
 \examples{
-\dontrun{
+\donttest{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(kernlab)))

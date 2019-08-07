@@ -1,3 +1,19 @@
+## Resubmission
+
+This a resubmission of butcher based on the improvements suggested: 
+
+```
+Thanks,
+
+\dontrun{} should be only used if the example really cannot be executed 
+(e.g. because of missing additional software, missing API keys, ...) by 
+the user. That's why wrapping examples in \dontrun{} adds the comment 
+("# Not run:") as a warning for the user.
+Please replace \dontrun{} with \donttest.
+```
+
+I replaced all the examples wrapped in `dontrun` with `donttest`. 
+
 ## Test environments
 
 * local OS X install, R 3.6.1
@@ -9,7 +25,3 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
-
-## Comments
-
-* 5 examples are wrapped in `dontrun` as they take > 5s to run. 

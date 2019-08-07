@@ -35,7 +35,7 @@ functions specific to train.recipe are thus included as additional
 steps are required to remove parts of train.recipe objects.
 }
 \examples{
-\dontrun{
+\donttest{
 suppressWarnings(suppressMessages(library(recipes)))
 suppressWarnings(suppressMessages(library(caret)))
 

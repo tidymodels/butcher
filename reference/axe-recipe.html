@@ -396,11 +396,9 @@ disabled. Default is <code>FALSE</code>.</p></td>
   )
 }
 
-<span class='co'># Check object size</span>
-<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_recipes</span>())</div><div class='output co'>#&gt; 8,010,088 B</div><div class='input'>
 <span class='co'># Remove junk</span>
-<span class='no'>cleaned_recipes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_recipes</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,101,216 B'</div><div class='input'>
-<span class='co'># Check size again</span>
+<span class='no'>cleaned_recipes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_recipes</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,100,376 B'</div><div class='input'>
+<span class='co'># Check size</span>
 <span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='no'>cleaned_recipes</span>)</div><div class='output co'>#&gt; 7,104 B</div><div class='input'>
 </div></pre>
   </div>

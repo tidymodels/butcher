@@ -174,11 +174,12 @@ disabled. Default is <code>FALSE</code>.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rsample</span>)))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rstanarm</span>)))
 
 <span class='co'># Load data</span>
-<span class='no'>split</span> <span class='kw'>&lt;-</span> <span class='fu'>initial_split</span>(<span class='no'>mtcars</span>, <span class='kw'>props</span> <span class='kw'>=</span> <span class='fl'>9</span>/<span class='fl'>10</span>)
-<span class='no'>car_train</span> <span class='kw'>&lt;-</span> <span class='fu'>training</span>(<span class='no'>split</span>)
+<span class='no'>split</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rsample/topics/initial_split'>initial_split</a></span>(<span class='no'>mtcars</span>, <span class='kw'>props</span> <span class='kw'>=</span> <span class='fl'>9</span>/<span class='fl'>10</span>)
+<span class='no'>car_train</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rsample/topics/initial_split'>training</a></span>(<span class='no'>split</span>)
 
 <span class='co'># Create model and fit</span>
 <span class='no'>ctrl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/fit_control'>fit_control</a></span>(<span class='kw'>verbosity</span> <span class='kw'>=</span> <span class='fl'>0</span>) <span class='co'># Avoid printing output</span>
@@ -195,12 +196,13 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>),
   <span class='kw'>prior_intercept</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rstanarm/topics/priors'>normal</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>),
   <span class='kw'>QR</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>chains</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>200</span>
+  <span class='kw'>chains</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>200</span> <span class='co'># for speed purposes only</span>
 )</div><div class='output co'>#&gt; 
 #&gt; SAMPLING FOR MODEL 'bernoulli' NOW (CHAIN 1).
 #&gt; Chain 1: 
-#&gt; Chain 1: Gradient evaluation took 0.000843 seconds
-#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.43 seconds.
+#&gt; Chain 1: Gradient evaluation took 0.000855 seconds
+#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.55 seconds.
 #&gt; Chain 1: Adjust your expectations accordingly!
 #&gt; Chain 1: 
 #&gt; Chain 1: 
@@ -225,15 +227,15 @@ disabled. Default is <code>FALSE</code>.</p></td>
 #&gt; Chain 1: Iteration: 180 / 200 [ 90%]  (Sampling)
 #&gt; Chain 1: Iteration: 200 / 200 [100%]  (Sampling)
 #&gt; Chain 1: 
-#&gt; Chain 1:  Elapsed Time: 0.565469 seconds (Warm-up)
-#&gt; Chain 1:                0.645326 seconds (Sampling)
-#&gt; Chain 1:                1.2108 seconds (Total)
+#&gt; Chain 1:  Elapsed Time: 0.651721 seconds (Warm-up)
+#&gt; Chain 1:                0.659113 seconds (Sampling)
+#&gt; Chain 1:                1.31083 seconds (Total)
 #&gt; Chain 1: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'bernoulli' NOW (CHAIN 2).
 #&gt; Chain 2: 
-#&gt; Chain 2: Gradient evaluation took 0.000939 seconds
-#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 9.39 seconds.
+#&gt; Chain 2: Gradient evaluation took 0.000796 seconds
+#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 7.96 seconds.
 #&gt; Chain 2: Adjust your expectations accordingly!
 #&gt; Chain 2: 
 #&gt; Chain 2: 
@@ -258,10 +260,12 @@ disabled. Default is <code>FALSE</code>.</p></td>
 #&gt; Chain 2: Iteration: 180 / 200 [ 90%]  (Sampling)
 #&gt; Chain 2: Iteration: 200 / 200 [100%]  (Sampling)
 #&gt; Chain 2: 
-#&gt; Chain 2:  Elapsed Time: 0.665141 seconds (Warm-up)
-#&gt; Chain 2:                0.656154 seconds (Sampling)
-#&gt; Chain 2:                1.3213 seconds (Total)
-#&gt; Chain 2: </div><div class='output co'>#&gt; <span class='warning'>Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span>
+#&gt; Chain 2:  Elapsed Time: 0.702518 seconds (Warm-up)
+#&gt; Chain 2:                0.661849 seconds (Sampling)
+#&gt; Chain 2:                1.36437 seconds (Total)
+#&gt; Chain 2: </div><div class='output co'>#&gt; <span class='warning'>Warning: The largest R-hat is 1.08, indicating chains have not mixed.</span>
+#&gt; <span class='warning'>Running the chains for more iterations may help. See</span>
+#&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#r-hat</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span>
 #&gt; <span class='warning'>Running the chains for more iterations may help. See</span>
 #&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#bulk-ess</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
 #&gt; <span class='warning'>Running the chains for more iterations may help. See</span>

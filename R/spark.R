@@ -34,7 +34,7 @@
 #' train <- iris_tbls$train
 #' spark_fit <- ml_logistic_regression(train, Species ~ .)
 #'
-#' butcher(spark_fit)
+#' out <- butcher(spark_fit, verbose = TRUE)
 #' }
 #' @name axe-spark
 NULL

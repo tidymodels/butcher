@@ -29,13 +29,10 @@
 #'   return(fit)
 #' }
 #'
-#' # Check object size
-#' lobstr::obj_size(wrapped_classbagg())
-#'
 #' # Remove junk
 #' cleaned_classbagg <- butcher(wrapped_classbagg(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_classbagg)
 #'
 #' @name axe-sclass

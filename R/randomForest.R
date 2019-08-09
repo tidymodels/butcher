@@ -15,7 +15,6 @@
 #' suppressWarnings(suppressMessages(library(rsample)))
 #' suppressWarnings(suppressMessages(library(rpart)))
 #' suppressWarnings(suppressMessages(library(randomForest)))
-#' suppressWarnings(library(lobstr))
 #'
 #' # Load data
 #' set.seed(1234)
@@ -38,18 +37,12 @@
 #'   randomForest_fit <- randomForest(mpg ~ ., data = mtcars)
 #'   return(randomForest_fit)
 #' }
-#' # Check object size
-#' lobstr::obj_size(wrapped_rf())
 #'
 #' # Remove junk
 #' cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_rf)
-#'
-#' # Compare environment in terms component
-#' lobstr::obj_size(wrapped_rf())
-#' lobstr::obj_size(butcher(wrapped_rf(), verbose = TRUE))
 #'
 #' @name axe-randomForest
 NULL

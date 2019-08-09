@@ -30,10 +30,10 @@ leverage distributions like the generalized gamma, generalized F, and
 the Royston-Parmar spline model.
 }
 \examples{
+\donttest{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(flexsurv)))
-suppressWarnings(library(lobstr))
 
 # Create model and fit
 flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
@@ -49,6 +49,7 @@ wrapped_flexsurvreg <- function() {
                      data = ovarian, dist = "weibull")
   return(fit)
 }
-lobstr::obj_size(wrapped_flexsurvreg())
+
 out <- butcher(wrapped_flexsurvreg(), verbose = TRUE)
+}
 }

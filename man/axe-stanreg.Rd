@@ -33,6 +33,7 @@ to do Bayesian regression modeling with \pkg{stan}.
 \donttest{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(rsample)))
 suppressWarnings(suppressMessages(library(rstanarm)))
 
 # Load data
@@ -55,7 +56,8 @@ fit <- stan_glm(
   family = binomial(link = "logit"),
   prior_intercept = normal(0, 10),
   QR = TRUE,
-  chains = 2, iter = 200
+  chains = 2,
+  iter = 200 # for speed purposes only
 )
 
 out <- butcher(fit, verbose = TRUE)

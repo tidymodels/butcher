@@ -36,13 +36,10 @@
 #'   return(fit)
 #' }
 #'
-#' # Check object size
-#' lobstr::obj_size(wrapped_rpart())
-#'
 #' # Remove junk
 #' cleaned_rpart <- axe_env(wrapped_rpart(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_rpart)
 #'
 #' @name axe-rpart

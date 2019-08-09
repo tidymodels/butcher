@@ -36,7 +36,8 @@ reduction. Since fitted model objects from \pkg{kernlab} are S4,
 the \code{butcher_gausspr} class is not appended.
 }
 \examples{
-library(kernlab)
+suppressWarnings(suppressMessages(library(kernlab)))
+
 test <- gausspr(Species ~ ., data = iris, var = 2)
 
 out <- butcher(test, verbose = TRUE)

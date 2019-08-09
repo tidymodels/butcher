@@ -7,8 +7,6 @@
 #' @return Axed terms object.
 #'
 #' @examples
-#' suppressWarnings(library(lobstr))
-#'
 #' # Using lm
 #' wrapped_lm <- function() {
 #'   some_junk_in_environment <- runif(1e6)
@@ -16,13 +14,10 @@
 #'   return(fit)
 #' }
 #'
-#' # Check object size
-#' lobstr::obj_size(wrapped_lm())
-#'
 #' # Remove junk
 #' cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_lm)
 #'
 #' # Compare environment in terms component

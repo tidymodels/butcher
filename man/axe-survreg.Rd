@@ -40,6 +40,23 @@ survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
   set_engine("survival") \%>\%
   fit(Surv(futime, fustat) ~ 1, data = ovarian)
 
-butcher(survreg_fit)
+out <- butcher(survreg_fit, verbose = TRUE)
+
+# Another survreg object
+wrapped_survreg <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- survreg(Surv(time, status) ~ ph.ecog + age + strata(sex),
+                 data = lung)
+  return(fit)
+}
+
+# Check object size
+lobstr::obj_size(wrapped_survreg())
+
+# Remove junk
+cleaned_survreg <- butcher(wrapped_survreg(), verbose = TRUE)
+
+# Check size again
+lobstr::obj_size(cleaned_survreg)
 
 }

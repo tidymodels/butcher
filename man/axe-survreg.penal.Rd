@@ -34,12 +34,31 @@ parametric survival models.
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(survival)))
+suppressWarnings(library(lobstr))
 
 # Create model and fit
 survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
   set_engine("survival") \%>\%
   fit(Surv(time, status) ~ rx + frailty.gaussian(litter, df = 13), data = rats)
 
-butcher(survreg_fit)
+out <- butcher(survreg_fit, verbose = TRUE)
+
+# Another survreg.penal object
+wrapped_survreg.penal <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- survreg(Surv(time, status) ~ rx +
+                   frailty.gaussian(litter, df = 13, sparse = FALSE),
+                 data = rats, subset = (sex == "f"))
+  return(fit)
+}
+
+# Check object size
+lobstr::obj_size(wrapped_survreg.penal())
+
+# Remove junk
+cleaned_sp <- axe_env(wrapped_survreg.penal(), verbose = TRUE)
+
+# Check size again
+lobstr::obj_size(cleaned_sp)
 
 }

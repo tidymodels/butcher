@@ -50,6 +50,6 @@ train.recipe_fit <- train(recipe, biomass,
                           method = "svmRadial",
                           metric = "RMSE")
 
-out <- butcher(train.recipe_fit)
+out <- butcher(train.recipe_fit, verbose = TRUE)
 }
 }

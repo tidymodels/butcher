@@ -227,7 +227,8 @@ butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
 }
 \examples{
-library(recipes)
+suppressWarnings(suppressMessages(library(recipes)))
+
 data(biomass)
 
 biomass_tr <- biomass[biomass$dataset == "Training",]
@@ -237,6 +238,25 @@ rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
   step_scale(all_predictors()) \%>\%
   step_spatialsign(all_predictors())
 
-butcher(rec)
+out <- butcher(rec, verbose = TRUE)
+
+# Another recipe object
+wrapped_recipes <- function() {
+  some_junk_in_environment <- runif(1e6)
+  return(
+    recipe(mpg ~ cyl, data = mtcars) \%>\%
+      step_center(all_predictors()) \%>\%
+      step_scale(all_predictors())
+  )
+}
+
+# Check object size
+lobstr::obj_size(wrapped_recipes())
+
+# Remove junk
+cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
+
+# Check size again
+lobstr::obj_size(cleaned_recipes)
 
 }

@@ -38,6 +38,7 @@ survival trees.
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
 suppressWarnings(suppressMessages(library(rpart)))
+suppressWarnings(library(lobstr))
 
 # Load data
 set.seed(1234)
@@ -49,6 +50,24 @@ rpart_fit <- decision_tree(mode = "regression") \%>\%
   set_engine("rpart") \%>\%
   fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
 
-butcher(rpart_fit)
+out <- butcher(rpart_fit, verbose = TRUE)
+
+# Another rpart object
+wrapped_rpart <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- rpart(Kyphosis ~ Age + Number + Start,
+               data = kyphosis,
+               x = TRUE, y = TRUE)
+  return(fit)
+}
+
+# Check object size
+lobstr::obj_size(wrapped_rpart())
+
+# Remove junk
+cleaned_rpart <- axe_env(wrapped_rpart(), verbose = TRUE)
+
+# Check size again
+lobstr::obj_size(cleaned_rpart)
 
 }

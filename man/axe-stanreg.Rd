@@ -31,8 +31,33 @@ to do Bayesian regression modeling with \pkg{stan}.
 }
 \examples{
 \donttest{
-library(rstanarm)
-fit <- stan_glm(mpg ~ wt, data = mtcars, algorithm = "optimizing")
-butcher(fit)
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(rstanarm)))
+
+# Load data
+split <- initial_split(mtcars, props = 9/10)
+car_train <- training(split)
+
+# Create model and fit
+ctrl <- fit_control(verbosity = 0) # Avoid printing output
+stanreg_fit <- linear_reg() \%>\%
+  set_engine("stan") \%>\%
+  fit(mpg ~ ., data = car_train, control = ctrl)
+
+out <- butcher(stanreg_fit, verbose = TRUE)
+
+# Another stanreg object
+wells$dist100 <- wells$dist / 100
+fit <- stan_glm(
+  switch ~ dist100 + arsenic,
+  data = wells,
+  family = binomial(link = "logit"),
+  prior_intercept = normal(0, 10),
+  QR = TRUE,
+  chains = 2, iter = 200
+)
+
+out <- butcher(fit, verbose = TRUE)
 }
 }

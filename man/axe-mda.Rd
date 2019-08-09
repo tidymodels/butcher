@@ -30,8 +30,20 @@ mda objects are created from the \pkg{mda} package, leveraged to
 carry out mixture discriminant analysis.
 }
 \examples{
-library(mda)
+suppressWarnings(suppressMessages(library(mda)))
+
 fit <- mda(Species ~ ., data = iris)
-butcher(fit)
+out <- butcher(fit, verbose = TRUE)
+
+# Another mda object
+data(glass)
+wrapped_mda <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- mda(Type ~ ., data = glass)
+  return(fit)
+}
+
+lobstr::obj_size(wrapped_mda())
+lobstr::obj_size(butcher(wrapped_mda()))
 
 }

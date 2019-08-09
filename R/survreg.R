@@ -28,13 +28,10 @@
 #'   return(fit)
 #' }
 #'
-#' # Check object size
-#' lobstr::obj_size(wrapped_survreg())
-#'
 #' # Remove junk
 #' cleaned_survreg <- butcher(wrapped_survreg(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_survreg)
 #'
 #' @name axe-survreg

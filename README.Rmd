@@ -31,9 +31,15 @@ As a result, fitted model objects carry over components that are often redundant
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+Install the released version from CRAN:
 
-``` r
+```{r, eval = FALSE}
+install.packages("butcher")
+```
+
+Or install the development version from [GitHub](https://github.com/):
+
+```{r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("tidymodels/butcher")
 ```

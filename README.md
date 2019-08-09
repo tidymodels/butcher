@@ -30,8 +30,13 @@ object.
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+Install the released version from CRAN:
+
+``` r
+install.packages("butcher")
+```
+
+Or install the development version from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
@@ -104,7 +109,7 @@ To remove this (mostly) extraneous component, we can use `axe_env()`:
 
 ``` r
 cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
-#> ✔ Memory released: '7,999,416 B'
+#> ✔ Memory released: '7,999,256 B'
 ```
 
 Comparing it against our `small_lm`, we’ll find:
@@ -114,7 +119,7 @@ butcher::weigh(cleaned_lm)
 #> # A tibble: 25 x 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         0.00781 
+#>  1 terms         0.00789 
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 

@@ -10,6 +10,7 @@
 #' @examples
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(glmnet)))
 #'
 #' # Load data
 #' set.seed(1234)
@@ -21,7 +22,17 @@
 #'   set_engine("glmnet") %>%
 #'   fit_xy(x = predictrs, y = response)
 #'
-#' butcher(multnet_fit)
+#' out <- butcher(multnet_fit, verbose = TRUE)
+#'
+#' # Another multnet object
+#' fit <- glmnet(predictrs, response, family = "multinomial")
+#' out2 <- butcher(fit, verbose = TRUE)
+#'
+#' # Same predictions
+#' original_prediction <- predict(fit, predictrs[c(55, 61, 78), ])
+#' butchered_prediction <- predict(out2, predictrs[c(55, 61, 78), ])
+#' identical(original_prediction,
+#'           butchered_prediction)
 #'
 #' @name axe-multnet
 NULL

@@ -8,12 +8,29 @@
 #' @return Axed glmnet object.
 #'
 #' @examples
-#' library(glmnet)
-#' x <- model.matrix(mpg ~ ., data = mtcars)
-#' y <- as.matrix(sample(c(1, 0), size = 32, replace = TRUE))
-#' fit <- glmnet(x, as.factor(y), family = "binomial")
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(glmnet)))
 #'
-#' butcher(fit)
+#' wrapped_glmnet <- function() {
+#'   some_junk_in_environment <- runif(1e6)
+#'   x <- model.matrix(mpg ~ ., data = mtcars)
+#'   y <- as.matrix(sample(c(1, 0), size = 32, replace = TRUE))
+#'   fit <- glmnet(x, as.factor(y), family = "binomial")
+#'   return(fit)
+#' }
+#'
+#' out <- butcher(wrapped_glmnet, verbose = TRUE)
+#'
+#' # Wrap a parsnip glmnet model
+#' wrapped_parsnip_glmnet <- function() {
+#'   some_junk_in_environment <- runif(1e6)
+#'   model <- logistic_reg(penalty = 10, mixture = 0.1) %>%
+#'     set_engine("glmnet") %>%
+#'     fit(as.factor(vs) ~ ., data = mtcars)
+#'   return(model$fit)
+#' }
+#'
+#' out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
 #'
 #' @name axe-glmnet
 NULL

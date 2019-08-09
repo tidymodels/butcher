@@ -26,7 +26,7 @@
 #'                           method = "svmRadial",
 #'                           metric = "RMSE")
 #'
-#' out <- butcher(train.recipe_fit)
+#' out <- butcher(train.recipe_fit, verbose = TRUE)
 #' }
 #' @name axe-train.recipe
 NULL

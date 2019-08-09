@@ -17,7 +17,26 @@
 #'
 #' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
-#' butcher(classbagg_fit$mtrees[[1]])
+#' out <- butcher(classbagg_fit$mtrees[[1]], verbose = TRUE)
+#'
+#' # Another classbagg object
+#' wrapped_classbagg <- function() {
+#'   some_junk_in_environment <- runif(1e6)
+#'   fit <- bagging(Species ~ .,
+#'                  data = iris,
+#'                  nbagg = 10,
+#'                  coob = TRUE)
+#'   return(fit)
+#' }
+#'
+#' # Check object size
+#' lobstr::obj_size(wrapped_classbagg())
+#'
+#' # Remove junk
+#' cleaned_classbagg <- butcher(wrapped_classbagg(), verbose = TRUE)
+#'
+#' # Check size again
+#' lobstr::obj_size(cleaned_classbagg)
 #'
 #' @name axe-sclass
 NULL

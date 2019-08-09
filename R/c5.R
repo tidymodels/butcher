@@ -24,7 +24,19 @@
 #'   set_engine("C5.0") %>%
 #'   fit(Kyphosis ~ ., data = spine_train)
 #'
-#' out <- butcher(c5_fit)
+#' out <- butcher(c5_fit, verbose = TRUE)
+#'
+#' # Try another model from parsnip
+#' c5_fit2 <- boost_tree(mode = "classification", trees = 100) %>%
+#'   set_engine("C5.0") %>%
+#'   fit(Kyphosis ~ ., data = spine_train)
+#' out <- butcher(c5_fit2, verbose = TRUE)
+#'
+#' # Create model object from original library
+#' library(C50)
+#' data(churn)
+#' c5_fit3 <- C5.0(x = churnTrain[, -20], y = churnTrain$churn)
+#' out <- butcher(c5_fit3, verbose = TRUE)
 #'
 #' @name axe-C5.0
 NULL

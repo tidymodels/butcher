@@ -37,9 +37,10 @@ on the first class listed, the \code{butcher_xgb.Booster} class is
 not appended.
 }
 \examples{
-library(xgboost)
+suppressWarnings(suppressMessages(library(xgboost)))
+suppressWarnings(suppressMessages(library(parsnip)))
+
 data(agaricus.train)
-data(agaricus.test)
 bst <- xgboost(data = agaricus.train$data,
                label = agaricus.train$label,
                max.depth = 2,
@@ -48,6 +49,13 @@ bst <- xgboost(data = agaricus.train$data,
                nrounds = 2,
                objective = "binary:logistic")
 
-butcher(bst)
+out <- butcher(bst, verbose = TRUE)
+
+# Another xgboost model
+fit <- boost_tree(mode = "classification", trees = 20) \%>\%
+  set_engine("xgboost") \%>\%
+  fit(Species ~ ., data = iris)
+
+out <- butcher(fit, verbose = TRUE)
 
 }

@@ -33,12 +33,22 @@ the Royston-Parmar spline model.
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(flexsurv)))
+suppressWarnings(library(lobstr))
 
 # Create model and fit
 flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
   set_engine("flexsurv") \%>\%
   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
 
-butcher(flexsurvreg_fit)
+out <- butcher(flexsurvreg_fit, verbose = TRUE)
 
+# Another flexsurvreg model object
+wrapped_flexsurvreg <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- flexsurvreg(Surv(futime, fustat) ~ 1,
+                     data = ovarian, dist = "weibull")
+  return(fit)
+}
+lobstr::obj_size(wrapped_flexsurvreg())
+out <- butcher(wrapped_flexsurvreg(), verbose = TRUE)
 }

@@ -59,6 +59,6 @@ iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) \%>\%
 train <- iris_tbls$train
 spark_fit <- ml_logistic_regression(train, Species ~ .)
 
-butcher(spark_fit)
+out <- butcher(spark_fit, verbose = TRUE)
 }
 }

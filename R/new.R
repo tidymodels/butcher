@@ -26,7 +26,8 @@ new_model_butcher <- function(model_class, package_name, open = interactive()) {
   if(grepl("\\s", model_class) | grepl("\\s", package_name)) {
     rlang::abort("`model_class` cannot have any spaces")
   }
-  if(!package_name %in% utils::installed.packages()) {
+  package_exists <- find.package(package_name, quiet = TRUE)
+  if(length(package_exists) == 0) {
     rlang::abort("`package_name` referenced is not installed.")
   }
 

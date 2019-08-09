@@ -24,7 +24,7 @@
 #'   set_engine("kernlab") %>%
 #'   fit(type ~ ., data = spam)
 #'
-#' butcher(ksvm_class)
+#' out <- butcher(ksvm_class, verbose = TRUE)
 #' }
 #' @name axe-ksvm
 NULL

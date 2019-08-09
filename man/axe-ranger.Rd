@@ -35,6 +35,7 @@ appended.
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
+suppressWarnings(suppressMessages(library(ranger)))
 
 # Load data
 set.seed(1234)
@@ -49,6 +50,17 @@ ranger_fit <- rand_forest(mode = "classification",
   set_engine("ranger") \%>\%
   fit(Species ~ ., data = iris_train)
 
-butcher(ranger_fit)
+out <- butcher(ranger_fit, verbose = TRUE)
+
+# Another ranger object
+wrapped_ranger <- function() {
+  n <- 100
+  p <- 400
+  dat <- data.frame(y = factor(rbinom(n, 1, .5)), replicate(p, runif(n)))
+  fit <- ranger(y ~ ., dat, importance = "impurity_corrected")
+  return(fit)
+}
+
+cleaned_ranger <- axe_fitted(wrapped_ranger(), verbose = TRUE)
 
 }

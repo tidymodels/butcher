@@ -50,6 +50,22 @@ kknn_fit <- nearest_neighbor(mode = "classification",
   set_engine("kknn") \%>\%
   fit(Kyphosis ~ ., data = spine_train)
 
-butcher(kknn_fit)
-
+out <- butcher(kknn_fit, verbose = TRUE)
+\donttest{
+# Another kknn model object
+library(kknn)
+m <- dim(iris)[1]
+val <- sample(1:m,
+              size = round(m/3),
+              replace = FALSE,
+              prob = rep(1/m, m))
+iris.learn <- iris[-val,]
+iris.valid <- iris[val,]
+kknn_fit <- kknn(Species ~ .,
+                 iris.learn,
+                 iris.valid,
+                 distance = 1,
+                 kernel = "triangular")
+out <- butcher(kknn_fit, verbose = TRUE)
+}
 }

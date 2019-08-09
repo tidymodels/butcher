@@ -14,7 +14,13 @@
 #' library(kernlab)
 #' test <- gausspr(Species ~ ., data = iris, var = 2)
 #'
-#' butcher(test)
+#' out <- butcher(test, verbose = TRUE)
+#'
+#' # Example with simulated regression data
+#' x <- seq(-20, 20, 0.1)
+#' y <- sin(x)/x + rnorm(401, sd = 0.03)
+#' test2 <- gausspr(x, y)
+#' out <- butcher(test2, verbose = TRUE)
 #'
 #' @name axe-gausspr
 NULL

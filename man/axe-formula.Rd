@@ -25,11 +25,24 @@ process that carries objects that will not be used for any post-
 estimation activities.
 }
 \examples{
-test <- function() {
-  x <- runif(10e4)
+suppressWarnings(library(lobstr))
+
+wrapped_formula <- function() {
+  some_junk_in_environment <- runif(1e6)
   ex <- as.formula(paste("y ~", paste(LETTERS, collapse = "+")))
   return(ex)
 }
-out <- test()
-axed_out <- axe_env(out)
+
+lobstr::obj_size(wrapped_formula())
+lobstr::obj_size(butcher(wrapped_formula()))
+
+library(rlang)
+wrapped_quosure <- function() {
+  some_junk_in_environment <- runif(1e6)
+  out <- quo(x)
+  return(out)
+}
+lobstr::obj_size(wrapped_quosure())
+lobstr::obj_size(butcher(wrapped_quosure))
+
 }

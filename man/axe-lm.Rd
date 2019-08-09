@@ -43,6 +43,26 @@ lm_fit <- linear_reg() \%>\%
   set_engine("lm") \%>\%
   fit(mpg ~ ., data = car_train)
 
-butcher(lm_fit)
+out <- butcher(lm_fit, verbose = TRUE)
+
+# Another lm object
+wrapped_lm <- function() {
+  some_junk_in_environment <- runif(1e6)
+  fit <- lm(mpg ~ ., data = mtcars)
+  return(fit)
+}
+
+# Check object size
+lobstr::obj_size(wrapped_lm())
+
+# Remove junk
+cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
+
+# Check size again
+lobstr::obj_size(cleaned_lm)
+
+# Compare environment in terms component
+lobstr::obj_size(attr(wrapped_lm()$terms, ".Environment"))
+lobstr::obj_size(attr(cleaned_lm$terms, ".Environment"))
 
 }

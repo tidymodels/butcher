@@ -8,13 +8,29 @@
 #'
 #' @examples
 #' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(rpart)))
+#' suppressWarnings(suppressMessages(library(glmnet)))
 #'
 #' # Create model and fit
 #' lm_fit <- linear_reg() %>%
 #'   set_engine("lm") %>%
 #'   fit(mpg ~ ., data = mtcars)
 #'
-#' butcher(lm_fit)
+#' out <- butcher(lm_fit, verbose = TRUE)
+#'
+#' # Another parsnip model
+#' elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) %>%
+#'   set_engine("glmnet") %>%
+#'   fit_xy(x = mtcars[, 2:11], y = mtcars[, 1, drop = FALSE])
+#'
+#' out <- butcher(elnet_fit, verbose = TRUE)
+#'
+#' # Another parsnip model
+#' rpart_fit <- decision_tree(mode = "regression") %>%
+#'   set_engine("rpart") %>%
+#'   fit(mpg ~ ., data = mtcars, minsplit = 5, cp = 0.1)
+#'
+#' out <- butcher(rpart_fit, verbose = TRUE)
 #'
 #' @name axe-model_fit
 NULL

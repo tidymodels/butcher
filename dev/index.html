@@ -116,9 +116,11 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"tidymodels/butcher"</span>)</a></code></pre></div>
+<p>Install the released version from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"butcher"</span>)</a></code></pre></div>
+<p>Or install the development version from <a href="https://github.com/">GitHub</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"tidymodels/butcher"</span>)</a></code></pre></div>
 </div>
 <div id="butchering" class="section level2">
 <h2 class="hasAnchor">
@@ -137,61 +139,45 @@
 <code><a href="reference/axe_fitted.html">axe_fitted()</a></code>: To remove fitted values.</li>
 </ul>
 <p>As an example, we wrap a <code>lm</code> model:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(butcher)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">our_model &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  some_junk_in_the_environment &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="fl">1e6</span>) <span class="co"># we didn't know about</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(butcher)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">our_model &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">  some_junk_in_the_environment &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="fl">1e6</span>) <span class="co"># we didn't know about</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">}</a></code></pre></div>
 <p>The <code>lm</code> that exists in our modeling pipeline is:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lobstr)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(<span class="kw">our_model</span>())</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; 8,022,440 B</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lobstr)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(<span class="kw">our_model</span>())</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; 8,022,440 B</span></a></code></pre></div>
 <p>When, in fact, it should only require:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">small_lm &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(small_lm)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; 22,224 B</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">small_lm &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mtcars) </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/lobstr/topics/obj_size">obj_size</a></span>(small_lm)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; 22,224 B</span></a></code></pre></div>
 <p>To understand which part of our original model object is taking up the most memory, we leverage the <code><a href="reference/weigh.html">weigh()</a></code> function:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">big_lm &lt;-<span class="st"> </span><span class="kw">our_model</span>()</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(big_lm)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;    object            size</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  1 terms         8.01    </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  5 effects       0.0014  </span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  6 coefficients  0.00109 </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  7 call          0.000728</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  8 model.mpg     0.000304</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">big_lm &lt;-<span class="st"> </span><span class="kw">our_model</span>()</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(big_lm)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    object            size</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  1 terms         8.01    </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  5 effects       0.0014  </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  6 coefficients  0.00109 </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  7 call          0.000728</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  8 model.mpg     0.000304</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
 <p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code>lm</code> is implemented in the <code>stats</code> package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use <code><a href="reference/axe_env.html">axe_env()</a></code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">cleaned_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>(big_lm, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; ✔ Memory released: '7,999,256 B'</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">cleaned_lm &lt;-<span class="st"> </span>butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/axe_env">axe_env</a></span>(big_lm, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; ✔ Memory released: '7,999,256 B'</span></a></code></pre></div>
 <p>Comparing it against our <code>small_lm</code>, we’ll find:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(cleaned_lm)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00789 </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  5 effects       0.0014  </span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  6 coefficients  0.00109 </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  7 call          0.000728</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  8 model.mpg     0.000304</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
-<p>…it now takes the same memory on disk as <code>small_lm</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(small_lm)</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(cleaned_lm)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00781 </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00789 </span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
 <a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
@@ -202,6 +188,22 @@
 <a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
 <a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
 <a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
+<p>…it now takes the same memory on disk as <code>small_lm</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">butcher<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/butcher/topics/weigh">weigh</a></span>(small_lm)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; # A tibble: 25 x 2</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt;    object            size</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;  1 terms         0.00781 </span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;  2 qr.qr         0.00666 </span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;  3 residuals     0.00286 </span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;  4 fitted.values 0.00286 </span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;  5 effects       0.0014  </span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt;  6 coefficients  0.00109 </span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt;  7 call          0.000728</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;  8 model.mpg     0.000304</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;  9 model.cyl     0.000304</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; 10 model.disp    0.000304</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
 <p>Axing the environment is not the only functionality of <code>butcher</code>. We can also remove <code>call</code>, <code>ctrl</code>, <code>data</code> and <code>fitted_values</code>, or simply run <code><a href="reference/butcher.html">butcher()</a></code> to execute all of these axing functions at once. Any kind of axing on the object will append a butchered class to the current model object class(es) as well as a new attribute named <code>butcher_disabled</code> that lists any post-fit estimation functions that are disabled as a result.</p>
 </div>
 <div id="model-object-coverage" class="section level2">

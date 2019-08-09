@@ -16,7 +16,12 @@
 #'   set_engine("earth") %>%
 #'   fit(Volume ~ ., data = trees)
 #'
-#' butcher(earth_fit)
+#' out <- butcher(earth_fit, verbose = TRUE)
+#'
+#' # Another earth model object
+#' suppressWarnings(suppressMessages(library(earth)))
+#' earth_mod <- earth(Volume ~ ., data = trees)
+#' out <- butcher(earth_mod, verbose = TRUE)
 #'
 #' @name axe-earth
 NULL

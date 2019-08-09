@@ -11,7 +11,8 @@
 #' @return Axed gausspr object.
 #'
 #' @examples
-#' library(kernlab)
+#' suppressWarnings(suppressMessages(library(kernlab)))
+#'
 #' test <- gausspr(Species ~ ., data = iris, var = 2)
 #'
 #' out <- butcher(test, verbose = TRUE)

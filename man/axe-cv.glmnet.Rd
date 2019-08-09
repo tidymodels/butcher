@@ -25,7 +25,7 @@ cross-validation from the \pkg{glmnet} package.
 }
 \examples{
 # Load libraries
-library(glmnet)
+suppressWarnings(suppressMessages(library(glmnet)))
 
 # Example 1
 n <- 500

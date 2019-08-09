@@ -10,13 +10,6 @@
 #' @return Axed function.
 #'
 #' @examples
-#' # Simple function
-#' f <- function() {
-#'   x <- runif(10e4)
-#' }
-#'
-#' axed_f <- axe_env(f, verbose = TRUE)
-#'
 #' \donttest{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(caret)))
@@ -31,7 +24,9 @@
 #'                    tuneLength = 10,
 #'                    trControl = trainControl(method = "cv"))
 #'
-#' axe_env(train_fit$modelInfo$prob)
+#' out <- axe_env(train_fit$modelInfo$prob, verbose = TRUE)
+#' out <- axe_env(train_fit$modelInfo$levels, verbose = TRUE)
+#' out <- axe_env(train_fit$modelInfo$predict, verbose = TRUE)
 #' }
 #' @name axe-function
 NULL

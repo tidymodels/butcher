@@ -14,6 +14,8 @@
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(rsample)))
 #' suppressWarnings(suppressMessages(library(rpart)))
+#' suppressWarnings(suppressMessages(library(randomForest)))
+#' suppressWarnings(library(lobstr))
 #'
 #' # Load data
 #' set.seed(1234)
@@ -28,7 +30,26 @@
 #'   set_engine("randomForest") %>%
 #'   fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 #'
-#' butcher(randomForest_fit)
+#' out <- butcher(randomForest_fit, verbose = TRUE)
+#'
+#' # Another randomForest object
+#' wrapped_rf <- function() {
+#'   some_junk_in_environment <- runif(1e6)
+#'   randomForest_fit <- randomForest(mpg ~ ., data = mtcars)
+#'   return(randomForest_fit)
+#' }
+#' # Check object size
+#' lobstr::obj_size(wrapped_rf())
+#'
+#' # Remove junk
+#' cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
+#'
+#' # Check size again
+#' lobstr::obj_size(cleaned_rf)
+#'
+#' # Compare environment in terms component
+#' lobstr::obj_size(wrapped_rf())
+#' lobstr::obj_size(butcher(wrapped_rf(), verbose = TRUE))
 #'
 #' @name axe-randomForest
 NULL

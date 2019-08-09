@@ -36,13 +36,10 @@
 #'   )
 #' }
 #'
-#' # Check object size
-#' lobstr::obj_size(wrapped_recipes())
-#'
 #' # Remove junk
 #' cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
 #'
-#' # Check size again
+#' # Check size
 #' lobstr::obj_size(cleaned_recipes)
 #'
 #' @name axe-recipe

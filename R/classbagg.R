@@ -19,7 +19,16 @@
 #'
 #' classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 #'
-#' butcher(classbagg_fit)
+#' out <- butcher(classbagg_fit, verbose = TRUE)
+#'
+#' # Fit another model
+#' data("DLBCL", package = "ipred")
+#'
+#' mod <- bagging(Gene.Expression ~ MGEc.1 + MGEc.2 + MGEc.3 + MGEc.4 + IPI,
+#'                data = DLBCL,
+#'                coob = TRUE)
+#'
+#' out <- butcher(mod, verbose = TRUE)
 #'
 #' @name axe-classbagg
 NULL

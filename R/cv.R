@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Load libraries
-#' library(glmnet)
+#' suppressWarnings(suppressMessages(library(glmnet)))
 #'
 #' # Example 1
 #' n <- 500

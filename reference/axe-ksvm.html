@@ -189,19 +189,9 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='no'>ksvm_class</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/svm_poly'>svm_poly</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"classification"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"kernlab"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>type</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spam</span>)</div><div class='output co'>#&gt;  Setting default kernel parameters  </div><div class='input'>
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>ksvm_class</span>)</div><div class='output co'>#&gt; Support Vector Machine object of class "ksvm" 
-#&gt; 
-#&gt; SV type: C-svc  (classification) 
-#&gt;  parameter : cost C = 1 
-#&gt; 
-#&gt; Polynomial kernel function. 
-#&gt;  Hyperparameters : degree =  1  scale =  1  offset =  1 
-#&gt; 
-#&gt; Number of Support Vectors : 942 
-#&gt; 
-#&gt; Objective Function Value : -881.4941 
-#&gt; Training error : 0.067377 
-#&gt; Probability model included. </div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>ksvm_class</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '88,520 B'
+#&gt; ✖ Disabled: `ymatrix()`, `fitted()`
+#&gt; ✖ Could not add 'butchered' class</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

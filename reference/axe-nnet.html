@@ -172,16 +172,36 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+    <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>nnet</span>)))
+
+<span class='co'># Create and fit model</span>
 <span class='no'>nnet_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/mlp'>mlp</a></span>(<span class='st'>"classification"</span>, <span class='kw'>hidden_units</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"nnet"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>nnet_fit</span>)</div><div class='output co'>#&gt; a 4-2-3 network with 19 weights
-#&gt; inputs: Sepal.Length Sepal.Width Petal.Length Petal.Width 
-#&gt; output(s): Species 
-#&gt; options were - softmax modelling </div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>nnet_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '28,552 B'
+#&gt; ✖ Disabled: `fitted()`, `predict() with no new data`, `dimnames(axed_object$fitted.values)`</div><div class='input'>
+<span class='co'># Another nnet object</span>
+<span class='no'>targets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/nnet/topics/class.ind'>class.ind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"setosa"</span>, <span class='fl'>50</span>),
+                       <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"versicolor"</span>, <span class='fl'>50</span>),
+                       <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"virginica"</span>, <span class='fl'>50</span>)))
+
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/nnet/topics/nnet'>nnet</a></span>(<span class='no'>iris</span>[,<span class='fl'>1</span>:<span class='fl'>4</span>],
+            <span class='no'>targets</span>,
+            <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+            <span class='kw'>rang</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+            <span class='kw'>decay</span> <span class='kw'>=</span> <span class='fl'>5e-4</span>,
+            <span class='kw'>maxit</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; # weights:  19
+#&gt; initial  value 112.784345 
+#&gt; iter  10 value 59.321119
+#&gt; iter  20 value 7.905400
+#&gt; final  value 7.905400 
+#&gt; stopped after 20 iterations</div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '5,008 B'
+#&gt; ✖ Disabled: `fitted()`, `predict() with no new data`, `dimnames(axed_object$fitted.values)`</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

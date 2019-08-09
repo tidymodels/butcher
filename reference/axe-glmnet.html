@@ -166,77 +166,29 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>glmnet</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/model.matrix'>model.matrix</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>32</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='no'>y</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"binomial"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>glmnet</span>)))
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; 
-#&gt; Call:  dummy_call() 
-#&gt; 
-#&gt;       Df     %Dev    Lambda
-#&gt;  [1,]  0 0.000000 0.0700300
-#&gt;  [2,]  2 0.004428 0.0638100
-#&gt;  [3,]  2 0.016840 0.0581400
-#&gt;  [4,]  2 0.027290 0.0529700
-#&gt;  [5,]  3 0.036860 0.0482700
-#&gt;  [6,]  3 0.045490 0.0439800
-#&gt;  [7,]  4 0.055740 0.0400700
-#&gt;  [8,]  6 0.068170 0.0365100
-#&gt;  [9,]  6 0.083230 0.0332700
-#&gt; [10,]  7 0.099770 0.0303100
-#&gt; [11,]  7 0.116900 0.0276200
-#&gt; [12,]  7 0.131600 0.0251700
-#&gt; [13,]  7 0.144200 0.0229300
-#&gt; [14,]  8 0.155800 0.0208900
-#&gt; [15,]  8 0.166100 0.0190400
-#&gt; [16,]  8 0.175100 0.0173500
-#&gt; [17,]  8 0.182800 0.0158100
-#&gt; [18,]  8 0.189600 0.0144000
-#&gt; [19,]  8 0.195400 0.0131200
-#&gt; [20,]  9 0.200500 0.0119600
-#&gt; [21,]  9 0.205100 0.0108900
-#&gt; [22,]  9 0.209100 0.0099260
-#&gt; [23,] 10 0.213600 0.0090440
-#&gt; [24,] 10 0.218600 0.0082410
-#&gt; [25,] 10 0.222900 0.0075090
-#&gt; [26,] 10 0.226700 0.0068420
-#&gt; [27,] 10 0.229900 0.0062340
-#&gt; [28,] 10 0.232600 0.0056800
-#&gt; [29,] 10 0.235000 0.0051760
-#&gt; [30,] 10 0.237000 0.0047160
-#&gt; [31,] 10 0.238800 0.0042970
-#&gt; [32,] 10 0.240200 0.0039150
-#&gt; [33,] 10 0.241500 0.0035670
-#&gt; [34,] 10 0.242600 0.0032500
-#&gt; [35,] 10 0.243500 0.0029620
-#&gt; [36,] 10 0.244300 0.0026990
-#&gt; [37,] 10 0.245000 0.0024590
-#&gt; [38,] 10 0.245600 0.0022400
-#&gt; [39,] 10 0.246000 0.0020410
-#&gt; [40,] 10 0.246400 0.0018600
-#&gt; [41,] 10 0.246800 0.0016950
-#&gt; [42,] 10 0.247100 0.0015440
-#&gt; [43,] 10 0.247300 0.0014070
-#&gt; [44,] 10 0.247500 0.0012820
-#&gt; [45,] 10 0.247700 0.0011680
-#&gt; [46,] 10 0.247800 0.0010640
-#&gt; [47,] 10 0.248000 0.0009698
-#&gt; [48,] 10 0.248100 0.0008837
-#&gt; [49,] 10 0.248200 0.0008052
-#&gt; [50,] 10 0.248200 0.0007336
-#&gt; [51,] 10 0.248300 0.0006685
-#&gt; [52,] 10 0.248300 0.0006091
-#&gt; [53,] 10 0.248400 0.0005550
-#&gt; [54,] 10 0.248400 0.0005057
-#&gt; [55,] 10 0.248500 0.0004607
-#&gt; [56,] 10 0.248500 0.0004198
-#&gt; [57,] 10 0.248500 0.0003825
-#&gt; [58,] 10 0.248500 0.0003485
-#&gt; [59,] 10 0.248500 0.0003176
-#&gt; [60,] 10 0.248500 0.0002894
-#&gt; [61,] 10 0.248600 0.0002637
-#&gt; [62,] 10 0.248600 0.0002402</div><div class='input'>
+<span class='no'>wrapped_glmnet</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/model.matrix'>model.matrix</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+  <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>32</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+  <span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></span>(<span class='no'>x</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='no'>y</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"binomial"</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>fit</span>)
+}
+
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>wrapped_glmnet</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✖ No memory released. Do not butcher.</div><div class='input'>
+<span class='co'># Wrap a parsnip glmnet model</span>
+<span class='no'>wrapped_parsnip_glmnet</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/logistic_reg'>logistic_reg</a></span>(<span class='kw'>penalty</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>mixture</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"glmnet"</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>as.factor</a></span>(<span class='no'>vs</span>) ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>model</span>$<span class='no'>fit</span>)
+}
+
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_parsnip_glmnet</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '1,080 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

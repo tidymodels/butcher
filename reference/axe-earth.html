@@ -180,11 +180,12 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"earth"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Volume</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>trees</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>earth_fit</span>)</div><div class='output co'>#&gt; Selected 4 of 5 terms, and 2 of 2 predictors
-#&gt; Termination condition: RSq changed by less than 0.001 at 5 terms
-#&gt; Importance: Girth, Height
-#&gt; Number of terms at each degree of interaction: 1 3 (additive model)
-#&gt; GCV 11.25439    RSS 209.1139    GRSq 0.959692    RSq 0.9742029</div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>earth_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '30,088 B'
+#&gt; ✖ Disabled: `summary()`, `update()`, `residuals()`</div><div class='input'>
+<span class='co'># Another earth model object</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>earth</span>)))
+<span class='no'>earth_mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/earth/topics/earth'>earth</a></span>(<span class='no'>Volume</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>trees</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>earth_mod</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✖ No memory released. Do not butcher.</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

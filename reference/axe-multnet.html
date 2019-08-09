@@ -168,6 +168,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>glmnet</span>)))
 
 <span class='co'># Load data</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1234</span>)
@@ -179,69 +180,17 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"glmnet"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit_xy</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>predictrs</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>response</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>multnet_fit</span>)</div><div class='output co'>#&gt; 
-#&gt; Call:  dummy_call() 
-#&gt; 
-#&gt;       Df       %Dev    Lambda
-#&gt;  [1,]  0 -1.445e-15 0.1010000
-#&gt;  [2,]  2  5.267e-03 0.0919900
-#&gt;  [3,]  2  1.092e-02 0.0838200
-#&gt;  [4,]  2  1.560e-02 0.0763700
-#&gt;  [5,]  3  1.963e-02 0.0695900
-#&gt;  [6,]  5  2.632e-02 0.0634100
-#&gt;  [7,]  5  3.377e-02 0.0577700
-#&gt;  [8,]  9  4.214e-02 0.0526400
-#&gt;  [9,] 11  5.270e-02 0.0479600
-#&gt; [10,] 13  6.365e-02 0.0437000
-#&gt; [11,] 15  7.531e-02 0.0398200
-#&gt; [12,] 17  8.862e-02 0.0362800
-#&gt; [13,] 17  1.007e-01 0.0330600
-#&gt; [14,] 17  1.115e-01 0.0301200
-#&gt; [15,] 18  1.212e-01 0.0274500
-#&gt; [16,] 19  1.300e-01 0.0250100
-#&gt; [17,] 19  1.381e-01 0.0227900
-#&gt; [18,] 19  1.452e-01 0.0207600
-#&gt; [19,] 19  1.517e-01 0.0189200
-#&gt; [20,] 20  1.574e-01 0.0172400
-#&gt; [21,] 20  1.626e-01 0.0157100
-#&gt; [22,] 20  1.669e-01 0.0143100
-#&gt; [23,] 20  1.707e-01 0.0130400
-#&gt; [24,] 20  1.744e-01 0.0118800
-#&gt; [25,] 20  1.776e-01 0.0108300
-#&gt; [26,] 20  1.804e-01 0.0098640
-#&gt; [27,] 20  1.829e-01 0.0089880
-#&gt; [28,] 20  1.850e-01 0.0081890
-#&gt; [29,] 20  1.869e-01 0.0074620
-#&gt; [30,] 20  1.885e-01 0.0067990
-#&gt; [31,] 20  1.898e-01 0.0061950
-#&gt; [32,] 20  1.909e-01 0.0056450
-#&gt; [33,] 20  1.919e-01 0.0051430
-#&gt; [34,] 20  1.928e-01 0.0046860
-#&gt; [35,] 20  1.936e-01 0.0042700
-#&gt; [36,] 20  1.943e-01 0.0038910
-#&gt; [37,] 20  1.949e-01 0.0035450
-#&gt; [38,] 20  1.954e-01 0.0032300
-#&gt; [39,] 20  1.958e-01 0.0029430
-#&gt; [40,] 20  1.962e-01 0.0026820
-#&gt; [41,] 20  1.965e-01 0.0024430
-#&gt; [42,] 20  1.967e-01 0.0022260
-#&gt; [43,] 20  1.970e-01 0.0020290
-#&gt; [44,] 20  1.971e-01 0.0018480
-#&gt; [45,] 20  1.973e-01 0.0016840
-#&gt; [46,] 20  1.974e-01 0.0015350
-#&gt; [47,] 20  1.975e-01 0.0013980
-#&gt; [48,] 20  1.976e-01 0.0012740
-#&gt; [49,] 20  1.977e-01 0.0011610
-#&gt; [50,] 20  1.978e-01 0.0010580
-#&gt; [51,] 20  1.978e-01 0.0009637
-#&gt; [52,] 20  1.979e-01 0.0008781
-#&gt; [53,] 20  1.979e-01 0.0008001
-#&gt; [54,] 20  1.979e-01 0.0007290
-#&gt; [55,] 20  1.980e-01 0.0006643
-#&gt; [56,] 20  1.980e-01 0.0006052
-#&gt; [57,] 20  1.980e-01 0.0005515
-#&gt; [58,] 20  1.980e-01 0.0005025
-#&gt; [59,] 20  1.980e-01 0.0004578</div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>multnet_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '18,080 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
+<span class='co'># Another multnet object</span>
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></span>(<span class='no'>predictrs</span>, <span class='no'>response</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"multinomial"</span>)
+<span class='no'>out2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '120 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
+<span class='co'># Same predictions</span>
+<span class='no'>original_prediction</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>fit</span>, <span class='no'>predictrs</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>55</span>, <span class='fl'>61</span>, <span class='fl'>78</span>), ])
+<span class='no'>butchered_prediction</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>out2</span>, <span class='no'>predictrs</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>55</span>, <span class='fl'>61</span>, <span class='fl'>78</span>), ])
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/identical'>identical</a></span>(<span class='no'>original_prediction</span>,
+          <span class='no'>butchered_prediction</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

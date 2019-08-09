@@ -180,6 +180,8 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rsample</span>)))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rpart</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>randomForest</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>lobstr</span>))
 
 <span class='co'># Load data</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1234</span>)
@@ -194,18 +196,23 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"randomForest"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit_xy</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>spine_train</span>[,<span class='fl'>2</span>:<span class='fl'>4</span>], <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>spine_train</span>$<span class='no'>Kyphosis</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>randomForest_fit</span>)</div><div class='output co'>#&gt; 
-#&gt; Call:
-#&gt;  dummy_call() 
-#&gt;                Type of random forest: classification
-#&gt;                      Number of trees: 2
-#&gt; No. of variables tried at each split: 2
-#&gt; 
-#&gt;         OOB estimate of  error rate: 25%
-#&gt; Confusion matrix:
-#&gt;         absent present class.error
-#&gt; absent      29       2  0.06451613
-#&gt; present      8       1  0.88888889</div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>randomForest_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '12,144 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
+<span class='co'># Another randomForest object</span>
+<span class='no'>wrapped_rf</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>randomForest_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/randomForest/topics/randomForest'>randomForest</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>randomForest_fit</span>)
+}
+<span class='co'># Check object size</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_rf</span>())</div><div class='output co'>#&gt; 8,459,648 B</div><div class='input'>
+<span class='co'># Remove junk</span>
+<span class='no'>cleaned_rf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_rf</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,063,552 B'</div><div class='input'>
+<span class='co'># Check size again</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='no'>cleaned_rf</span>)</div><div class='output co'>#&gt; 459,496 B</div><div class='input'>
+<span class='co'># Compare environment in terms component</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_rf</span>())</div><div class='output co'>#&gt; 8,427,648 B</div><div class='input'><span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_rf</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; ✔ Memory released: '8,516,192 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='output co'>#&gt; 459,288 B</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

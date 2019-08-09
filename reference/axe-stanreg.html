@@ -172,32 +172,101 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rstanarm</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: Rcpp</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘Rcpp’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:rsample’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    populate</span></div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'xts':</span>
-#&gt; <span class='message'>  method     from</span>
-#&gt; <span class='message'>  as.zoo.xts zoo </span></div><div class='output co'>#&gt; <span class='message'>rstanarm (Version 2.18.2, packaged: 2018-11-08 22:19:38 UTC)</span></div><div class='output co'>#&gt; <span class='message'>- Do not expect the default priors to remain the same in future rstanarm versions.</span></div><div class='output co'>#&gt; <span class='message'>Thus, R scripts should specify priors explicitly, even if they are just the defaults.</span></div><div class='output co'>#&gt; <span class='message'>- For execution on a local, multicore CPU with excess RAM we recommend calling</span></div><div class='output co'>#&gt; <span class='message'>options(mc.cores = parallel::detectCores())</span></div><div class='output co'>#&gt; <span class='message'>- Plotting theme set to bayesplot::theme_default().</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘rstanarm’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:caret’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    compare_models, R2</span></div><div class='input'><span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rstanarm/topics/stan_glm'>stan_glm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>wt</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>, <span class='kw'>algorithm</span> <span class='kw'>=</span> <span class='st'>"optimizing"</span>)
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; stan_glm
-#&gt;  family:       gaussian [identity]
-#&gt;  formula:      mpg ~ wt
-#&gt;  observations: 32
-#&gt;  predictors:   2
-#&gt; ------
-#&gt;             Median MAD_SD
-#&gt; (Intercept) 37.2    1.7  
-#&gt; wt          -5.3    0.5  
+    <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rstanarm</span>)))
+
+<span class='co'># Load data</span>
+<span class='no'>split</span> <span class='kw'>&lt;-</span> <span class='fu'>initial_split</span>(<span class='no'>mtcars</span>, <span class='kw'>props</span> <span class='kw'>=</span> <span class='fl'>9</span>/<span class='fl'>10</span>)
+<span class='no'>car_train</span> <span class='kw'>&lt;-</span> <span class='fu'>training</span>(<span class='no'>split</span>)
+
+<span class='co'># Create model and fit</span>
+<span class='no'>ctrl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/fit_control'>fit_control</a></span>(<span class='kw'>verbosity</span> <span class='kw'>=</span> <span class='fl'>0</span>) <span class='co'># Avoid printing output</span>
+<span class='no'>stanreg_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/linear_reg'>linear_reg</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"stan"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>car_train</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='no'>ctrl</span>)
+
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>stanreg_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✖ No memory released. Do not butcher.</div><div class='input'>
+<span class='co'># Another stanreg object</span>
+<span class='no'>wells</span>$<span class='no'>dist100</span> <span class='kw'>&lt;-</span> <span class='no'>wells</span>$<span class='no'>dist</span> / <span class='fl'>100</span>
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rstanarm/topics/stan_glm'>stan_glm</a></span>(
+  <span class='no'>switch</span> ~ <span class='no'>dist100</span> + <span class='no'>arsenic</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>wells</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>),
+  <span class='kw'>prior_intercept</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rstanarm/topics/priors'>normal</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>),
+  <span class='kw'>QR</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>chains</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>200</span>
+)</div><div class='output co'>#&gt; 
+#&gt; SAMPLING FOR MODEL 'bernoulli' NOW (CHAIN 1).
+#&gt; Chain 1: 
+#&gt; Chain 1: Gradient evaluation took 0.000843 seconds
+#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.43 seconds.
+#&gt; Chain 1: Adjust your expectations accordingly!
+#&gt; Chain 1: 
+#&gt; Chain 1: 
+#&gt; Chain 1: WARNING: There aren't enough warmup iterations to fit the
+#&gt; Chain 1:          three stages of adaptation as currently configured.
+#&gt; Chain 1:          Reducing each adaptation stage to 15%/75%/10% of
+#&gt; Chain 1:          the given number of warmup iterations:
+#&gt; Chain 1:            init_buffer = 15
+#&gt; Chain 1:            adapt_window = 75
+#&gt; Chain 1:            term_buffer = 10
+#&gt; Chain 1: 
+#&gt; Chain 1: Iteration:   1 / 200 [  0%]  (Warmup)
+#&gt; Chain 1: Iteration:  20 / 200 [ 10%]  (Warmup)
+#&gt; Chain 1: Iteration:  40 / 200 [ 20%]  (Warmup)
+#&gt; Chain 1: Iteration:  60 / 200 [ 30%]  (Warmup)
+#&gt; Chain 1: Iteration:  80 / 200 [ 40%]  (Warmup)
+#&gt; Chain 1: Iteration: 100 / 200 [ 50%]  (Warmup)
+#&gt; Chain 1: Iteration: 101 / 200 [ 50%]  (Sampling)
+#&gt; Chain 1: Iteration: 120 / 200 [ 60%]  (Sampling)
+#&gt; Chain 1: Iteration: 140 / 200 [ 70%]  (Sampling)
+#&gt; Chain 1: Iteration: 160 / 200 [ 80%]  (Sampling)
+#&gt; Chain 1: Iteration: 180 / 200 [ 90%]  (Sampling)
+#&gt; Chain 1: Iteration: 200 / 200 [100%]  (Sampling)
+#&gt; Chain 1: 
+#&gt; Chain 1:  Elapsed Time: 0.565469 seconds (Warm-up)
+#&gt; Chain 1:                0.645326 seconds (Sampling)
+#&gt; Chain 1:                1.2108 seconds (Total)
+#&gt; Chain 1: 
 #&gt; 
-#&gt; Auxiliary parameter(s):
-#&gt;       Median MAD_SD
-#&gt; sigma 2.9    0.4   
-#&gt; 
-#&gt; ------
-#&gt; * For help interpreting the printed output see ?print.stanreg
-#&gt; * For info on the priors used see ?prior_summary.stanreg</div></pre>
+#&gt; SAMPLING FOR MODEL 'bernoulli' NOW (CHAIN 2).
+#&gt; Chain 2: 
+#&gt; Chain 2: Gradient evaluation took 0.000939 seconds
+#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 9.39 seconds.
+#&gt; Chain 2: Adjust your expectations accordingly!
+#&gt; Chain 2: 
+#&gt; Chain 2: 
+#&gt; Chain 2: WARNING: There aren't enough warmup iterations to fit the
+#&gt; Chain 2:          three stages of adaptation as currently configured.
+#&gt; Chain 2:          Reducing each adaptation stage to 15%/75%/10% of
+#&gt; Chain 2:          the given number of warmup iterations:
+#&gt; Chain 2:            init_buffer = 15
+#&gt; Chain 2:            adapt_window = 75
+#&gt; Chain 2:            term_buffer = 10
+#&gt; Chain 2: 
+#&gt; Chain 2: Iteration:   1 / 200 [  0%]  (Warmup)
+#&gt; Chain 2: Iteration:  20 / 200 [ 10%]  (Warmup)
+#&gt; Chain 2: Iteration:  40 / 200 [ 20%]  (Warmup)
+#&gt; Chain 2: Iteration:  60 / 200 [ 30%]  (Warmup)
+#&gt; Chain 2: Iteration:  80 / 200 [ 40%]  (Warmup)
+#&gt; Chain 2: Iteration: 100 / 200 [ 50%]  (Warmup)
+#&gt; Chain 2: Iteration: 101 / 200 [ 50%]  (Sampling)
+#&gt; Chain 2: Iteration: 120 / 200 [ 60%]  (Sampling)
+#&gt; Chain 2: Iteration: 140 / 200 [ 70%]  (Sampling)
+#&gt; Chain 2: Iteration: 160 / 200 [ 80%]  (Sampling)
+#&gt; Chain 2: Iteration: 180 / 200 [ 90%]  (Sampling)
+#&gt; Chain 2: Iteration: 200 / 200 [100%]  (Sampling)
+#&gt; Chain 2: 
+#&gt; Chain 2:  Elapsed Time: 0.665141 seconds (Warm-up)
+#&gt; Chain 2:                0.656154 seconds (Sampling)
+#&gt; Chain 2:                1.3213 seconds (Total)
+#&gt; Chain 2: </div><div class='output co'>#&gt; <span class='warning'>Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span>
+#&gt; <span class='warning'>Running the chains for more iterations may help. See</span>
+#&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#bulk-ess</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
+#&gt; <span class='warning'>Running the chains for more iterations may help. See</span>
+#&gt; <span class='warning'>http://mc-stan.org/misc/warnings.html#tail-ess</span></div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✖ No memory released. Do not butcher.</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -193,15 +193,25 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"kknn"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Kyphosis</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spine_train</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>kknn_fit</span>)</div><div class='output co'>#&gt; 
-#&gt; Call:
-#&gt; dummy_call()
-#&gt; 
-#&gt; Type of response variable: nominal
-#&gt; Minimal misclassification: 0.2786885
-#&gt; Best kernel: gaussian
-#&gt; Best k: 3</div><div class='input'>
-</div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>kknn_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '28,168 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `fitted()`</div><div class='input'><span class='co'># Another kknn model object</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>kknn</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘kknn’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:caret’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    contr.dummy</span></div><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a></span>(<span class='no'>iris</span>)[<span class='fl'>1</span>]
+<span class='no'>val</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='no'>m</span>,
+              <span class='kw'>size</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>(<span class='no'>m</span>/<span class='fl'>3</span>),
+              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+              <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>/<span class='no'>m</span>, <span class='no'>m</span>))
+<span class='no'>iris.learn</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span>[-<span class='no'>val</span>,]
+<span class='no'>iris.valid</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span>[<span class='no'>val</span>,]
+<span class='no'>kknn_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/kknn/topics/kknn'>kknn</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>,
+                 <span class='no'>iris.learn</span>,
+                 <span class='no'>iris.valid</span>,
+                 <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+                 <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='st'>"triangular"</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>kknn_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '24,816 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `fitted()`</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

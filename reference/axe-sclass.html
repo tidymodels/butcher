@@ -177,52 +177,24 @@ disabled. Default is <code>FALSE</code>.</p></td>
 
 <span class='no'>classbagg_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ipred/topics/bagging'>bagging</a></span>(<span class='no'>Class</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>GlaucomaM</span>, <span class='kw'>coob</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>classbagg_fit</span>$<span class='no'>mtrees</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; $bindx
-#&gt;   [1] 175 168 123  48 108 131  87  41 115  72 160  42  43   2 117  79 182  49
-#&gt;  [19] 102 184  51 134  49  49  57 136  26 145 191 123   8  96  22  35  41 131
-#&gt;  [37]  86  57  10 183 150 109 153 131  83 178  70  20 169 191  71  61  96 179
-#&gt;  [55]  70 127 155  72  48  60 193  36 119 156  19 137 126 158  63 116 145 102
-#&gt;  [73]  58 134  85  85 160  77  17 194 126   6 186 130 181  11  60 100 163  21
-#&gt;  [91] 170 102 134   9 171  19  22 174  40  29 109 185 144 194  38  88 158 107
-#&gt; [109]  70 147 119  79  86 142 151 188 147 147  71 123 188 176 123  99  26 144
-#&gt; [127]  22  28  98 101 176 149 169 163  40  67  72 147 189 121 196 120  84  83
-#&gt; [145]  96  17  25 163 130 101 175 175  30  10  22 185  49  89  80  73 148  12
-#&gt; [163]  37  81 195  47  86 166  82  94 147 146 151 107  31   6   7  72   4  43
-#&gt; [181] 189 143 145 171  39  42  35  58 146 139 184 136  22 170 101 116
-#&gt; 
-#&gt; $btree
-#&gt; n= 196 
-#&gt; 
-#&gt; node), split, n, loss, yval, (yprob)
-#&gt;       * denotes terminal node
-#&gt; 
-#&gt;   1) root 196 92 1  
-#&gt;     2) varg&lt; 0.209 92  8 1  
-#&gt;       4) as&lt; 1.009 87  3 1  
-#&gt;         8) mhcg&lt; 0.3135 86  2 1  
-#&gt;          16) vass&lt; 0.016 82  0 1 *
-#&gt;          17) vass&gt;=0.016 4  2 1  
-#&gt;            34) ag&lt; 2.664 2  0 1 *
-#&gt;            35) ag&gt;=2.664 2  0 2 *
-#&gt;         9) mhcg&gt;=0.3135 1  0 2 *
-#&gt;       5) as&gt;=1.009 5  0 2 *
-#&gt;     3) varg&gt;=0.209 104 20 2  
-#&gt;       6) tmi&gt;=0.0095 20  5 1  
-#&gt;        12) phcn&gt;=-0.0895 15  0 1 *
-#&gt;        13) phcn&lt; -0.0895 5  0 2 *
-#&gt;       7) tmi&lt; 0.0095 84  5 2  
-#&gt;        14) mhcg&gt;=0.165 2  0 1 *
-#&gt;        15) mhcg&lt; 0.165 82  3 2  
-#&gt;          30) mhci&gt;=0.2165 1  0 1 *
-#&gt;          31) mhci&lt; 0.2165 81  2 2  
-#&gt;            62) at&lt; 0.322 11  2 2  
-#&gt;             124) at&gt;=0.3145 2  0 1 *
-#&gt;             125) at&lt; 0.3145 9  0 2 *
-#&gt;            63) at&gt;=0.322 70  0 2 *
-#&gt; 
-#&gt; attr(,"class")
-#&gt;                                 class 
-#&gt; "butchered_sclass"           "sclass" </div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>classbagg_fit</span>$<span class='no'>mtrees</span><span class='kw'>[[</span><span class='fl'>1</span>]], <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '5,215,360 B'</div><div class='input'>
+<span class='co'># Another classbagg object</span>
+<span class='no'>wrapped_classbagg</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ipred/topics/bagging'>bagging</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>,
+                 <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
+                 <span class='kw'>nbagg</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+                 <span class='kw'>coob</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>fit</span>)
+}
+
+<span class='co'># Check object size</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_classbagg</span>())</div><div class='output co'>#&gt; 8,344,768 B</div><div class='input'>
+<span class='co'># Remove junk</span>
+<span class='no'>cleaned_classbagg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_classbagg</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '13,441,704 B'
+#&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
+<span class='co'># Check size again</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='no'>cleaned_classbagg</span>)</div><div class='output co'>#&gt; 159,248 B</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

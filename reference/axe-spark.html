@@ -207,8 +207,10 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>sparklyr</span>)
-<span class='no'>sc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/spark-connections'>spark_connect</a></span>(<span class='kw'>master</span> <span class='kw'>=</span> <span class='st'>"local"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>sparklyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘sparklyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:rlang’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    invoke</span></div><div class='input'><span class='no'>sc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/spark-connections'>spark_connect</a></span>(<span class='kw'>master</span> <span class='kw'>=</span> <span class='st'>"local"</span>)
 
 <span class='no'>iris_tbls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/sdf_copy_to'>sdf_copy_to</a></span>(<span class='no'>sc</span>, <span class='no'>iris</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/sdf_random_split'>sdf_random_split</a></span>(<span class='kw'>train</span> <span class='kw'>=</span> <span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>validation</span> <span class='kw'>=</span> <span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
@@ -216,11 +218,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='no'>train</span> <span class='kw'>&lt;-</span> <span class='no'>iris_tbls</span>$<span class='no'>train</span>
 <span class='no'>spark_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/ml_logistic_regression'>ml_logistic_regression</a></span>(<span class='no'>train</span>, <span class='no'>Species</span> ~ <span class='no'>.</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>spark_fit</span>)</div><div class='output co'>#&gt; Formula: 
-#&gt; 
-#&gt; Coefficients:
-#&gt;      [,1]
-#&gt; [1,]   NA</div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>spark_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '10,376 B'</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

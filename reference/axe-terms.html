@@ -164,32 +164,36 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: using type = "numeric" with a factor response will be ignored</span></div><div class='output co'>#&gt; <span class='warning'>Warning: ‘-’ not meaningful for factors</span></div><div class='input'><span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>$<span class='no'>terms</span>)</div><div class='output co'>#&gt; Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width
-#&gt; attr(,"variables")
-#&gt; list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
-#&gt; attr(,"factors")
-#&gt;              Sepal.Length Sepal.Width Petal.Length Petal.Width
-#&gt; Species                 0           0            0           0
-#&gt; Sepal.Length            1           0            0           0
-#&gt; Sepal.Width             0           1            0           0
-#&gt; Petal.Length            0           0            1           0
-#&gt; Petal.Width             0           0            0           1
-#&gt; attr(,"term.labels")
-#&gt; [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
-#&gt; attr(,"order")
-#&gt; [1] 1 1 1 1
-#&gt; attr(,"intercept")
-#&gt; [1] 1
-#&gt; attr(,"response")
-#&gt; [1] 1
-#&gt; attr(,".Environment")
-#&gt; &lt;environment: base&gt;
-#&gt; attr(,"predvars")
-#&gt; list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
-#&gt; attr(,"dataClasses")
-#&gt;      Species Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#&gt;     "factor"    "numeric"    "numeric"    "numeric"    "numeric" </div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>lobstr</span>))
+
+<span class='co'># Using lm</span>
+<span class='no'>wrapped_lm</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>fit</span>)
+}
+
+<span class='co'># Check object size</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_lm</span>())</div><div class='output co'>#&gt; 8,022,552 B</div><div class='input'>
+<span class='co'># Remove junk</span>
+<span class='no'>cleaned_lm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_lm</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,018,128 B'</div><div class='input'>
+<span class='co'># Check size again</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='no'>cleaned_lm</span>)</div><div class='output co'>#&gt; 23,184 B</div><div class='input'>
+<span class='co'># Compare environment in terms component</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='fu'>wrapped_lm</span>()$<span class='no'>terms</span>, <span class='st'>".Environment"</span>))</div><div class='output co'>#&gt; 8,022,552 B</div><div class='input'><span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>cleaned_lm</span>$<span class='no'>terms</span>, <span class='st'>".Environment"</span>))</div><div class='output co'>#&gt; 0 B</div><div class='input'>
+</div><div class='input'><span class='co'># Using rpart</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rpart</span>))
+
+<span class='no'>wrapped_rpart</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rpart/topics/rpart'>rpart</a></span>(<span class='no'>Kyphosis</span> ~ <span class='no'>Age</span> + <span class='no'>Number</span> + <span class='no'>Start</span>,
+               <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>kyphosis</span>,
+               <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+               <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>fit</span>)
+}
+
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_rpart</span>())</div><div class='output co'>#&gt; 8,054,160 B</div><div class='input'><span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_rpart</span>()))</div><div class='output co'>#&gt; 53,984 B</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

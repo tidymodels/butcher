@@ -183,11 +183,10 @@ disabled. Default is <code>FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>xgboost</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘xgboost’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:dplyr’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    slice</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>agaricus.train</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>agaricus.test</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>xgboost</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/message'>suppressMessages</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>parsnip</span>)))
+
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>agaricus.train</span>)
 <span class='no'>bst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/xgboost/topics/xgb.train'>xgboost</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>agaricus.train</span>$<span class='no'>data</span>,
                <span class='kw'>label</span> <span class='kw'>=</span> <span class='no'>agaricus.train</span>$<span class='no'>label</span>,
                <span class='kw'>max.depth</span> <span class='kw'>=</span> <span class='fl'>2</span>,
@@ -196,22 +195,17 @@ disabled. Default is <code>FALSE</code>.</p></td>
                <span class='kw'>nrounds</span> <span class='kw'>=</span> <span class='fl'>2</span>,
                <span class='kw'>objective</span> <span class='kw'>=</span> <span class='st'>"binary:logistic"</span>)</div><div class='output co'>#&gt; [1]	train-error:0.046522 
 #&gt; [2]	train-error:0.022263 </div><div class='input'>
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>bst</span>)</div><div class='output co'>#&gt; ##### xgb.Booster
-#&gt; raw: 48 bytes 
-#&gt; call:
-#&gt;   dummy_call()
-#&gt; params (as set within xgb.train):
-#&gt;    = ""
-#&gt; xgb.attributes:
-#&gt;   niter
-#&gt; callbacks:
-#&gt; # of features: 126 
-#&gt; niter: 2
-#&gt; nfeatures : 126 
-#&gt; evaluation_log:
-#&gt;  iter train_error
-#&gt;     1    0.046522
-#&gt;     2    0.022263</div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>bst</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '38,944 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `xgb.Booster.complete()`
+#&gt; ✖ Could not add 'butchered' class</div><div class='input'>
+<span class='co'># Another xgboost model</span>
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/boost_tree'>boost_tree</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"classification"</span>, <span class='kw'>trees</span> <span class='kw'>=</span> <span class='fl'>20</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"xgboost"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)
+
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '126,032 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `xgb.Booster.complete()`
+#&gt; ✖ Could not add 'butchered' class</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -184,16 +184,23 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"lm"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>car_train</span>)
 
-<span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>lm_fit</span>)</div><div class='output co'>#&gt; 
-#&gt; Call:
-#&gt; dummy_call()
-#&gt; 
-#&gt; Coefficients:
-#&gt; (Intercept)          cyl         disp           hp         drat           wt  
-#&gt;   28.739240    -1.239583     0.012910    -0.033977     0.081166    -0.661692  
-#&gt;        qsec           vs           am         gear         carb  
-#&gt;    0.299416     0.997004     7.710191    -1.383117     0.001739  
-#&gt; </div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>lm_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '35,584 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `fitted()`</div><div class='input'>
+<span class='co'># Another lm object</span>
+<span class='no'>wrapped_lm</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>1e6</span>)
+  <span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>fit</span>)
+}
+
+<span class='co'># Check object size</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'>wrapped_lm</span>())</div><div class='output co'>#&gt; 8,022,552 B</div><div class='input'>
+<span class='co'># Remove junk</span>
+<span class='no'>cleaned_lm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_lm</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,078,560 B'</div><div class='input'>
+<span class='co'># Check size again</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='no'>cleaned_lm</span>)</div><div class='output co'>#&gt; 23,184 B</div><div class='input'>
+<span class='co'># Compare environment in terms component</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='fu'>wrapped_lm</span>()$<span class='no'>terms</span>, <span class='st'>".Environment"</span>))</div><div class='output co'>#&gt; 8,022,552 B</div><div class='input'><span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lobstr/topics/obj_size'>obj_size</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>cleaned_lm</span>$<span class='no'>terms</span>, <span class='st'>".Environment"</span>))</div><div class='output co'>#&gt; 0 B</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

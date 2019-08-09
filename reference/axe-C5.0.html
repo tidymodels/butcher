@@ -189,7 +189,21 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"C5.0"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Kyphosis</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spine_train</span>)
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>c5_fit</span>)</div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>c5_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '26,752 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `C5.0Control()`, `C5imp()`</div><div class='input'>
+<span class='co'># Try another model from parsnip</span>
+<span class='no'>c5_fit2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/boost_tree'>boost_tree</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"classification"</span>, <span class='kw'>trees</span> <span class='kw'>=</span> <span class='fl'>100</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/set_engine'>set_engine</a></span>(<span class='st'>"C5.0"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/parsnip/topics/reexports'>fit</a></span>(<span class='no'>Kyphosis</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>spine_train</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>c5_fit2</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '43,368 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `C5.0Control()`, `C5imp()`</div><div class='input'>
+<span class='co'># Create model object from original library</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>C50</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>churn</span>)
+<span class='no'>c5_fit3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/C50/topics/C5.0'>C5.0</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>churnTrain</span>[, -<span class='fl'>20</span>], <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>churnTrain</span>$<span class='no'>churn</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>c5_fit3</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '5,560 B'
+#&gt; ✖ Disabled: `print()`, `summary()`, `C5.0Control()`, `C5imp()`</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

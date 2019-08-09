@@ -45,8 +45,9 @@ fit <- glmnet(predictrs, response, family = "multinomial")
 out2 <- butcher(fit, verbose = TRUE)
 
 # Same predictions
-original_prediction <- predict(fit, predictrs[c(55, 61, 78), ])
-butchered_prediction <- predict(out2, predictrs[c(55, 61, 78), ])
+newdata <- matrix(rnorm(100*3), ncol = 20)
+original_prediction <- predict(fit, newdata)
+butchered_prediction <- predict(out2, newdata)
 identical(original_prediction,
           butchered_prediction)
 

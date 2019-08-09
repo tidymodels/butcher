@@ -25,8 +25,6 @@ process that carries objects that will not be used for any post-
 estimation activities.
 }
 \examples{
-suppressWarnings(library(lobstr))
-
 wrapped_formula <- function() {
   some_junk_in_environment <- runif(1e6)
   ex <- as.formula(paste("y ~", paste(LETTERS, collapse = "+")))
@@ -36,10 +34,9 @@ wrapped_formula <- function() {
 lobstr::obj_size(wrapped_formula())
 lobstr::obj_size(butcher(wrapped_formula()))
 
-library(rlang)
 wrapped_quosure <- function() {
   some_junk_in_environment <- runif(1e6)
-  out <- quo(x)
+  out <- rlang::quo(x)
   return(out)
 }
 lobstr::obj_size(wrapped_quosure())

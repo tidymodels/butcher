@@ -36,7 +36,6 @@ suppressWarnings(suppressMessages(library(rsample)))
 # Load data
 split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
-car_test  <- testing(split)
 
 # Create model and fit
 lm_fit <- linear_reg() \%>\%
@@ -52,13 +51,10 @@ wrapped_lm <- function() {
   return(fit)
 }
 
-# Check object size
-lobstr::obj_size(wrapped_lm())
-
 # Remove junk
 cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
 
-# Check size again
+# Check size
 lobstr::obj_size(cleaned_lm)
 
 # Compare environment in terms component

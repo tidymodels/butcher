@@ -23,8 +23,6 @@ Axed terms object.
 Generics related to axing objects of the term class.
 }
 \examples{
-suppressWarnings(library(lobstr))
-
 # Using lm
 wrapped_lm <- function() {
   some_junk_in_environment <- runif(1e6)
@@ -32,13 +30,10 @@ wrapped_lm <- function() {
   return(fit)
 }
 
-# Check object size
-lobstr::obj_size(wrapped_lm())
-
 # Remove junk
 cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
 
-# Check size again
+# Check size
 lobstr::obj_size(cleaned_lm)
 
 # Compare environment in terms component

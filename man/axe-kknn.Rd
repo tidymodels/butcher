@@ -35,12 +35,12 @@ regression and clustering.
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
 suppressWarnings(suppressMessages(library(rpart)))
+suppressWarnings(suppressMessages(library(kknn)))
 
 # Load data
 set.seed(1234)
 split <- initial_split(kyphosis, props = 9/10)
 spine_train <- training(split)
-spine_test  <- testing(split)
 
 # Create model and fit
 kknn_fit <- nearest_neighbor(mode = "classification",
@@ -51,9 +51,9 @@ kknn_fit <- nearest_neighbor(mode = "classification",
   fit(Kyphosis ~ ., data = spine_train)
 
 out <- butcher(kknn_fit, verbose = TRUE)
+
 \donttest{
 # Another kknn model object
-library(kknn)
 m <- dim(iris)[1]
 val <- sample(1:m,
               size = round(m/3),

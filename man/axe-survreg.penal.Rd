@@ -52,13 +52,10 @@ wrapped_survreg.penal <- function() {
   return(fit)
 }
 
-# Check object size
-lobstr::obj_size(wrapped_survreg.penal())
-
 # Remove junk
 cleaned_sp <- axe_env(wrapped_survreg.penal(), verbose = TRUE)
 
-# Check size again
+# Check size
 lobstr::obj_size(cleaned_sp)
 
 }

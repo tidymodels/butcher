@@ -50,7 +50,8 @@ other might be conducive to freeing up memory on disk.
 }
 \examples{
 \donttest{
-library(sparklyr)
+suppressWarnings(suppressMessages(library(sparklyr)))
+
 sc <- spark_connect(master = "local")
 
 iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) \%>\%

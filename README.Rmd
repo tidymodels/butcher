@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# butcher
+# butcher <a href='https://tidymodels.github.io/butcher/'><img src='butcher.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/tidymodels/butcher.svg?branch=master)](https://travis-ci.org/tidymodels/butcher)

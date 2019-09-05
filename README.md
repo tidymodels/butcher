@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# butcher
+# butcher <a href='https://tidymodels.github.io/butcher/'><img src='butcher.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 

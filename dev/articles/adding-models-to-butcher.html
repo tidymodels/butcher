@@ -6,24 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adding models to butcher • butcher</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../tidyverse.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../tidyverse.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../tidyverse-2.css" rel="stylesheet">
 <meta property="og:title" content="Adding models to butcher">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="noindex">
-<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- google analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script><script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
-
- gtag('config', 'UA-115082821-1');
-</script>
+<![endif]-->
 </head>
 <body>
     <div class="container template-article">
@@ -49,7 +44,7 @@
       <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,7 +74,7 @@
 </li>
         <li>
   <a href="https://github.com/tidymodels/butcher">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -92,6 +87,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -105,7 +101,7 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(butcher)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(butcher)</a></code></pre></div>
 <p>If you come across any model objects that should be subject to butchering, but does not exist in our current repository as listed <a href="https://tidymodels.github.io/parsnip/articles/articles/Models.html">here</a>, please consider becoming a contributer to this package! For any first-timers, this is great place to start as we’ve created templates that make this process as seamless as possible.</p>
 <p>Let’s say our new model object, of class <code>blob</code>, was generated from a <code>R</code> package called <code>blobber</code>. If you want to add axe methods for this class, first clone butcher onto your local computer and open up RStudio (see <code><a href="https://usethis.r-lib.org/reference/create_from_github.html">usethis::create_from_github("tidymodels/butcher")</a></code> for an automated way to do this). After you have opened RStudio and are in the <code>butcher</code> RStudio Project, run:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw"><a href="../reference/new_model_butcher.html">new_model_butcher</a></span>(<span class="dt">model_class =</span> <span class="st">"blob"</span>, <span class="dt">package_name =</span> <span class="st">"blobber"</span>)</a></code></pre></div>
@@ -142,7 +138,7 @@
 <a class="sourceLine" id="cb4-13" data-line-number="13"> <span class="dv">9</span> model.cyl     <span class="fl">0.000304</span></a>
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="dv">10</span> model.disp    <span class="fl">0.000304</span></a>
 <a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co"># … with 15 more rows</span></a></code></pre></div>
-<p>In this example, the fitted model objected generated from <code>blobber</code> has a <code>terms</code> component that is taking 4.01 Mb. From here, you can examine the structure of this terms component by leveraging <code><a href="https://www.rdocumentation.org/packages/lobstr/topics/sxp">lobstr::sxp(fitted_blob_object$terms)</a></code> or simply running <code><a href="https://www.rdocumentation.org/packages/utils/topics/str">utils::str(fitted_blob_object$terms)</a></code>. If you are looking to hunt for a specific component like the environment, fitted values, training data, controls or the call object, take a look at <code><a href="../reference/locate.html">butcher::locate()</a></code>.</p>
+<p>In this example, the fitted model objected generated from <code>blobber</code> has a <code>terms</code> component that is taking 4.01 Mb. From here, you can examine the structure of this terms component by leveraging <code><a href="https://rdrr.io/pkg/lobstr/man/sxp.html">lobstr::sxp(fitted_blob_object$terms)</a></code> or simply running <code><a href="https://rdrr.io/r/utils/str.html">utils::str(fitted_blob_object$terms)</a></code>. If you are looking to hunt for a specific component like the environment, fitted values, training data, controls or the call object, take a look at <code><a href="../reference/locate.html">butcher::locate()</a></code>.</p>
 <p>Perhaps from our model object, <code>blob</code>, we find that the <code>call</code> is the only piece worth axing (or replacing). The <code>R/blob.R</code> skeleton would be completed by putting a placeholder for the original call.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#' Axing a blob.</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#'</span></a>
@@ -167,12 +163,12 @@
 <a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#' @export</span></a>
 <a class="sourceLine" id="cb5-22" data-line-number="22">axe_call.blob &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">verbose =</span> <span class="ot">TRUE</span>, ...) {</a>
 <a class="sourceLine" id="cb5-23" data-line-number="23">  old &lt;-<span class="st"> </span>x</a>
-<a class="sourceLine" id="cb5-24" data-line-number="24">  x &lt;-<span class="st"> </span><span class="kw">exchange</span>(x, <span class="st">"call"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/call">call</a></span>(<span class="st">"dummy_call"</span>))</a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">  x &lt;-<span class="st"> </span><span class="kw">exchange</span>(x, <span class="st">"call"</span>, <span class="kw"><a href="https://rdrr.io/r/base/call.html">call</a></span>(<span class="st">"dummy_call"</span>))</a>
 <a class="sourceLine" id="cb5-25" data-line-number="25">  <span class="cf">if</span> (verbose) {</a>
 <a class="sourceLine" id="cb5-26" data-line-number="26">    <span class="kw"><a href="../reference/ui.html">assess_object</a></span>(</a>
 <a class="sourceLine" id="cb5-27" data-line-number="27">      old, </a>
 <a class="sourceLine" id="cb5-28" data-line-number="28">      x,</a>
-<a class="sourceLine" id="cb5-29" data-line-number="29">      <span class="dt">disabled =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"print"</span>, <span class="st">"summary"</span>)</a>
+<a class="sourceLine" id="cb5-29" data-line-number="29">      <span class="dt">disabled =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"print"</span>, <span class="st">"summary"</span>)</a>
 <a class="sourceLine" id="cb5-30" data-line-number="30">    )</a>
 <a class="sourceLine" id="cb5-31" data-line-number="31">  }</a>
 <a class="sourceLine" id="cb5-32" data-line-number="32">  <span class="kw">add_butcher_class</span>(x)</a>
@@ -194,6 +190,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -206,6 +203,7 @@
 </div>
 
 
+
       <footer><div class="tidyverse">
   <p>butcher is a part of the <strong>tidymodels</strong> ecosystem, a collection of modeling packages designed with common APIs and a shared philosophy.</p>
 </div>
@@ -216,10 +214,12 @@
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

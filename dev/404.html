@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Butcher an object. — butcher • butcher</title>
+<title>Page not found (404) • butcher</title>
 
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
-<link href="../tidyverse.css" rel="stylesheet">
+<link href="tidyverse.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -28,20 +28,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
-<link href="../tidyverse-2.css" rel="stylesheet">
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
+<link href="tidyverse-2.css" rel="stylesheet">
 
 
 
-<meta property="og:title" content="Butcher an object. — butcher" />
-<meta property="og:description" content="Reduce the size of a model object so that it takes up less memory on
-disk. Currently, the model object is stripped down to the point that
-only the minimal components necessary for the predict function
-to work remain. Future adjustments to this function will be needed to
-avoid removal of model fit components to ensure it works with other
-downstream functions." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Page not found (404)" />
 
 
 <meta name="robots" content="noindex">
@@ -60,7 +53,7 @@ downstream functions." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -73,7 +66,7 @@ downstream functions." />
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html">butcher</a>
+        <a class="navbar-brand" href="index.html">butcher</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
           <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
@@ -83,16 +76,16 @@ downstream functions." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/butcher.html">Get started</a>
+  <a href="articles/butcher.html">Get started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -102,15 +95,15 @@ downstream functions." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/adding-models-to-butcher.html">Adding models to butcher</a>
+      <a href="articles/adding-models-to-butcher.html">Adding models to butcher</a>
     </li>
     <li>
-      <a href="../articles/available-axe-methods.html">Available axe methods</a>
+      <a href="articles/available-axe-methods.html">Available axe methods</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
         <li>
   <a href="https://github.com/tidymodels/butcher">
@@ -129,57 +122,17 @@ downstream functions." />
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Butcher an object.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tidymodels/butcher/blob/master/R/axe-generics.R'><code>R/axe-generics.R</code></a></small>
-    <div class="hidden name"><code>butcher.Rd</code></div>
+      <h1>Page not found (404)</h1>
     </div>
 
-    <div class="ref-description">
-    <p>Reduce the size of a model object so that it takes up less memory on
-disk. Currently, the model object is stripped down to the point that
-only the minimal components necessary for the <code>predict</code> function
-to work remain. Future adjustments to this function will be needed to
-avoid removal of model fit components to ensure it works with other
-downstream functions.</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>butcher</span>(<span class='no'>x</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A model object.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Print information each time an axe method is executed.
-Notes how much memory is released and what functions are
-disabled. Default is <code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Any additional arguments related to axing.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Axed model object with new butcher subclass assignment.</p>
+Content not found. Please use links in the navbar.
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
 
-  </div>
 </div>
+
 
 
       <footer>

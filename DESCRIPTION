@@ -30,7 +30,7 @@ Imports:
     rlang,
     lobstr (>= 1.1.1),
     tibble (>= 2.1.1),
-    usethis,
+    usethis (>= 1.5.0),
     fs,
     utils,
     methods

@@ -67,7 +67,9 @@ Suggests:
     nnet,
     xgboost,
     dplyr,
-    mda
+    mda,
+    NMF,
+    dimRed
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

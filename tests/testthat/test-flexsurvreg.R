@@ -9,8 +9,8 @@ test_that("flexsurvreg + predict() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_env(fit)
   expect_identical(attr(attributes(x$data$m)$terms, ".Environment"), rlang::base_env())
-  expect_identical(attr(x$concat.formula, ".Environment"), rlang::empty_env())
-  expect_identical(attr(x$all.formulae$rate, ".Environment"), rlang::empty_env())
+  expect_identical(attr(x$concat.formula, ".Environment"), rlang::base_env())
+  expect_identical(attr(x$all.formulae$rate, ".Environment"), rlang::base_env())
 })
 
 test_that("flexsurvreg markov + predict() works", {
@@ -24,8 +24,8 @@ test_that("flexsurvreg markov + predict() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_env(fit)
   expect_identical(attr(attributes(x$data$m)$terms, ".Environment"), rlang::base_env())
-  expect_identical(attr(x$concat.formula, ".Environment"), rlang::empty_env())
-  expect_identical(attr(x$all.formulae$scale, ".Environment"), rlang::empty_env())
+  expect_identical(attr(x$concat.formula, ".Environment"), rlang::base_env())
+  expect_identical(attr(x$all.formulae$scale, ".Environment"), rlang::base_env())
   x <- butcher(fit)
   # Obtain cumulative transition-specific hazards
   tmat <- rbind(c(NA, 1, 2), c(NA, NA, 3), c(NA, NA, NA))

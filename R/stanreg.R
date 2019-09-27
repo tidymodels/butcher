@@ -64,8 +64,8 @@ axe_call.stanreg <- function(x, verbose = FALSE, ...) {
 #' @export
 axe_env.stanreg <- function(x, verbose = FALSE, ...) {
   old <- x
-  x$stanfit@.MISC <- rlang::empty_env()
-  x$stanfit@stanmodel@dso@.CXXDSOMISC <- rlang::empty_env()
+  x$stanfit@.MISC <- rlang::base_env()
+  x$stanfit@stanmodel@dso@.CXXDSOMISC <- rlang::base_env()
   x$terms <- axe_env(x$terms, ...)
   attributes(x$model)$terms <- axe_env(attributes(x$model)$terms, ...)
 

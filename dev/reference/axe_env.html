@@ -37,7 +37,7 @@
 <meta property="og:title" content="Axe an environment. — axe_env" />
 <meta property="og:description" content="Remove the environment(s) attached to modeling objects as they are
 not required in the downstream analysis pipeline. If found,
-the environment is replaced with rlang::empty_env()." />
+the environment is replaced with rlang::base_env()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -136,7 +136,7 @@ the environment is replaced with rlang::empty_env()." />
     <div class="ref-description">
     <p>Remove the environment(s) attached to modeling objects as they are
 not required in the downstream analysis pipeline. If found,
-the environment is replaced with <code><a href='https://rlang.r-lib.org/reference/empty_env.html'>rlang::empty_env()</a></code>.</p>
+the environment is replaced with <code><a href='https://rlang.r-lib.org/reference/search_envs.html'>rlang::base_env()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>axe_env</span>(<span class='no'>x</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>

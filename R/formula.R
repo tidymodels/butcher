@@ -35,7 +35,7 @@ NULL
 #' @export
 axe_env.formula <- function(x, verbose = FALSE, ...) {
   old <- x
-  attr(x, ".Environment") <- rlang::empty_env()
+  attr(x, ".Environment") <- rlang::base_env()
 
   add_butcher_attributes(
     x,

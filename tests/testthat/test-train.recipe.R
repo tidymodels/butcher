@@ -32,7 +32,7 @@ test_that("train + predict() works", {
   expect_equal(x$dots, list(NULL))
   expect_equal(x$control, list(NULL))
   expect_equal(x$trainingData, data.frame(NA))
-  expect_identical(attr(x$recipe$steps[[1]]$terms[[1]], ".Environment"), rlang::empty_env())
+  expect_identical(attr(x$recipe$steps[[1]]$terms[[1]], ".Environment"), rlang::base_env())
   expect_equal(x$pred, list(NULL))
   expected_output <- predict(train.recipe_fit, newdata = biomass_te)
   expect_equal(predict(x, biomass_te), expected_output)

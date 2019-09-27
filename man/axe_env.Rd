@@ -21,7 +21,7 @@ Model object with empty environments.
 \description{
 Remove the environment(s) attached to modeling objects as they are
 not required in the downstream analysis pipeline. If found,
-the environment is replaced with \code{rlang::empty_env()}.
+the environment is replaced with \code{rlang::base_env()}.
 }
 \section{Methods}{
 

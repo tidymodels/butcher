@@ -59,7 +59,7 @@ axe_call.flexsurvreg <- function(x, verbose = FALSE, ...) {
 axe_env.flexsurvreg <- function(x, verbose = FALSE, ...) {
   old <- x
   attributes(x$data$m)$terms <- axe_env(attributes(x$data$m)$terms)
-  attributes(x$concat.formula)$`.Environment` <- rlang::empty_env()
+  attributes(x$concat.formula)$`.Environment` <- rlang::base_env()
   x$all.formulae <- purrr::map(x$all.formulae, function(z) axe_env(z, ...))
 
   add_butcher_attributes(

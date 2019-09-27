@@ -42,7 +42,7 @@ test_that("earth + axe_() works", {
   expect_error(update(x))
   x <- axe_fitted(earth_mod)
   expect_equal(x$residuals, numeric(0))
-  expect_error(residuals(x))
+  expect_warning(expect_error(residuals(x)))
   x <- axe_data(earth_mod)
   expect_equal(x, earth_mod)
   expect_equal(class(x), class(earth_mod))

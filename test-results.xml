@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="c5" timestamp="2019-12-06T11:00:20Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.031">
+    <testcase time="0.0310000000000059" classname="c5" name="c5_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="classbagg" timestamp="2019-12-06T11:00:20Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.041">
+    <testcase time="0.0409999999999968" classname="classbagg" name="classbagg_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="cv.glmnet" timestamp="2019-12-06T11:00:20Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.015">
+    <testcase time="0.0150000000000006" classname="cv.glmnet" name="cv.glmnet_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="earth" timestamp="2019-12-06T11:00:20Z" hostname="Adrians-MacBook-Air.local" tests="2" skipped="2" failures="0" errors="0" time="0.518">
+    <testcase time="0.510999999999996" classname="earth" name="parsnip_earth_axe__works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.007000000000005" classname="earth" name="earth_axe__works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="elnet" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.024">
+    <testcase time="0.0240000000000009" classname="elnet" name="elnet_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="example" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="0" failures="0" errors="0" time="0.015">
+    <testcase time="0.0150000000000006" classname="example" name="default_example_is_returned"/>
+  </testsuite>
+  <testsuite name="flexsurvreg" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="3" skipped="3" failures="0" errors="0" time="0.018">
+    <testcase time="0.00999999999999091" classname="flexsurvreg" name="flexsurvreg_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00400000000000489" classname="flexsurvreg" name="flexsurvreg_markov_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00400000000000489" classname="flexsurvreg" name="flexsurvreg_custom_distribution_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="gausspr" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.013">
+    <testcase time="0.012999999999991" classname="gausspr" name="gausspr_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="glmnet" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.011">
+    <testcase time="0.0109999999999957" classname="glmnet" name="glmnet_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="kknn" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.008">
+    <testcase time="0.00799999999999557" classname="kknn" name="kknn_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ksvm" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.024">
+    <testcase time="0.0240000000000009" classname="ksvm" name="ksvm_axe__works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="lm" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="10" skipped="0" failures="0" errors="0" time="0.068">
+    <testcase time="0.0250000000000057" classname="lm" name="lm_axe_call_works"/>
+    <testcase time="0.00400000000000489" classname="lm" name="lm_offset_axe_call_works"/>
+    <testcase time="0.00799999999999557" classname="lm" name="lm_axe_env_works"/>
+    <testcase time="0.00600000000000023" classname="lm" name="lm_axe_fitted_works"/>
+    <testcase time="0.007000000000005" classname="lm" name="lm_butcher_works"/>
+    <testcase time="0.00199999999999534" classname="lm" name="lm_butcher_works"/>
+    <testcase time="0.00100000000000477" classname="lm" name="lm_butcher_works"/>
+    <testcase time="0.00100000000000477" classname="lm" name="lm_butcher_works"/>
+    <testcase time="0.007000000000005" classname="lm" name="lm_predict_works"/>
+    <testcase time="0.00699999999999079" classname="lm" name="lm_predict_works"/>
+  </testsuite>
+  <testsuite name="locate" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="4" skipped="0" failures="0" errors="0" time="0.043">
+    <testcase time="0.0150000000000006" classname="locate" name="locate_works"/>
+    <testcase time="0.00300000000000011" classname="locate" name="locate_works"/>
+    <testcase time="0.0150000000000006" classname="locate" name="locate_works"/>
+    <testcase time="0.00999999999999091" classname="locate" name="locate_works"/>
+  </testsuite>
+  <testsuite name="mda" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="2" skipped="2" failures="0" errors="0" time="0.015">
+    <testcase time="0.0110000000000099" classname="mda" name="mda_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00399999999999068" classname="mda" name="mda_custom_parsnip_model_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="multnet" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.014">
+    <testcase time="0.01400000000001" classname="multnet" name="multnet_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="nnet" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="5" skipped="0" failures="0" errors="0" time="0.262">
+    <testcase time="0.253" classname="nnet" name="nnet_predict_works"/>
+    <testcase time="0.000999999999990564" classname="nnet" name="nnet_predict_works"/>
+    <testcase time="0.00200000000000955" classname="nnet" name="nnet_predict_works"/>
+    <testcase time="0.00399999999999068" classname="nnet" name="nnet_predict_works"/>
+    <testcase time="0.00200000000000955" classname="nnet" name="nnet_predict_works"/>
+  </testsuite>
+  <testsuite name="randomForest" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.008">
+    <testcase time="0.00799999999999557" classname="randomForest" name="randomForest_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ranger" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="4" skipped="4" failures="0" errors="0" time="0.019">
+    <testcase time="0.00900000000000034" classname="ranger" name="ranger_importance_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00400000000000489" classname="ranger" name="ranger_treeInfo_works_">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00300000000000011" classname="ranger" name="ranger_quantiles_option_works_">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00300000000000011" classname="ranger" name="ranger_survival_option_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="recipe" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.014">
+    <testcase time="0.0139999999999958" classname="recipe" name="_unnamed_">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="rpart" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="10" skipped="0" failures="0" errors="0" time="0.153">
+    <testcase time="0.0870000000000033" classname="rpart" name="rpart_axe_data_works"/>
+    <testcase time="0.027000000000001" classname="rpart" name="rpart_axe_data_works"/>
+    <testcase time="0.00199999999999534" classname="rpart" name="rpart_axe_data_works"/>
+    <testcase time="0.00499999999999545" classname="rpart" name="rpart_axe_data_works"/>
+    <testcase time="0.0130000000000052" classname="rpart" name="rpart_predict_works"/>
+    <testcase time="0.00199999999999534" classname="rpart" name="rpart_predict_works"/>
+    <testcase time="0.00100000000000477" classname="rpart" name="rpart_predict_works"/>
+    <testcase time="0.00600000000000023" classname="rpart" name="rpart_predict_works"/>
+    <testcase time="0.00199999999999534" classname="rpart" name="rpart_predict_works"/>
+    <testcase time="0.00799999999999557" classname="rpart" name="rpart_predict_works"/>
+  </testsuite>
+  <testsuite name="sclass" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.008">
+    <testcase time="0.00800000000000978" classname="sclass" name="sclass_axe__works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="spark" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="4" skipped="4" failures="0" errors="0" time="0.038">
+    <testcase time="0.0240000000000009" classname="spark" name="spark_ml_model_tbl_spark_input_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00300000000000011" classname="spark" name="spark_decision_tree_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00800000000000978" classname="spark" name="spark_boost_tree_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00300000000000011" classname="spark" name="spark_linear_reg_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="stanreg" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.009">
+    <testcase time="0.00900000000000034" classname="stanreg" name="stanreg_butcher_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="survreg.penal" timestamp="2019-12-06T11:00:21Z" hostname="Adrians-MacBook-Air.local" tests="5" skipped="0" failures="0" errors="0" time="1.696">
+    <testcase time="1.66499999999999" classname="survreg.penal" name="survreg_penalized_predict_works"/>
+    <testcase time="0.0150000000000006" classname="survreg.penal" name="survreg_penalized_predict_works"/>
+    <testcase time="0.00300000000000011" classname="survreg.penal" name="survreg_penalized_predict_works"/>
+    <testcase time="0.007000000000005" classname="survreg.penal" name="survreg_penalized_predict_works"/>
+    <testcase time="0.00600000000000023" classname="survreg.penal" name="survreg_penalized_predict_works"/>
+  </testsuite>
+  <testsuite name="survreg" timestamp="2019-12-06T11:00:23Z" hostname="Adrians-MacBook-Air.local" tests="10" skipped="0" failures="0" errors="0" time="0.08">
+    <testcase time="0.019999999999996" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.0130000000000052" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.0109999999999957" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00199999999999534" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.0160000000000053" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00199999999999534" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00400000000000489" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00400000000000489" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00399999999999068" classname="survreg" name="survreg_predict_works"/>
+    <testcase time="0.00400000000000489" classname="survreg" name="survreg_predict_works"/>
+  </testsuite>
+  <testsuite name="train" timestamp="2019-12-06T11:00:23Z" hostname="Adrians-MacBook-Air.local" tests="2" skipped="2" failures="0" errors="0" time="0.016">
+    <testcase time="0.0109999999999957" classname="train" name="train_knn_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00499999999999545" classname="train" name="train_rda_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="train.recipe" timestamp="2019-12-06T11:00:23Z" hostname="Adrians-MacBook-Air.local" tests="1" skipped="1" failures="0" errors="0" time="0.013">
+    <testcase time="0.0130000000000052" classname="train.recipe" name="train_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="weigh" timestamp="2019-12-06T11:00:23Z" hostname="Adrians-MacBook-Air.local" tests="4" skipped="1" failures="0" errors="0" time="2.865">
+    <testcase time="2.83199999999999" classname="weigh" name="weigh_recursively_measures_size_of_each_object_component"/>
+    <testcase time="0.00200000000000955" classname="weigh" name="weigh_recursively_measures_size_of_each_object_component"/>
+    <testcase time="0.0279999999999916" classname="weigh" name="checking_internal_lm_fit_test_object"/>
+    <testcase time="0.00300000000000011" classname="weigh" name="checking_internal_stanreg_test_object">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="xgb.Booster" timestamp="2019-12-06T11:00:26Z" hostname="Adrians-MacBook-Air.local" tests="2" skipped="2" failures="0" errors="0" time="0.011">
+    <testcase time="0.00900000000000034" classname="xgb.Booster" name="xgb.Booster_linear_solver_predict_works">
+      <skipped/>
+    </testcase>
+    <testcase time="0.00199999999999534" classname="xgb.Booster" name="xgb.Booster_tree_learning_algo_predict_works">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

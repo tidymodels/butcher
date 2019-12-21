@@ -14,6 +14,7 @@
 #' \donttest{
 #' suppressWarnings(suppressMessages(library(recipes)))
 #' suppressWarnings(suppressMessages(library(caret)))
+#' library(modeldata)
 #'
 #' data(biomass)
 #' recipe <- biomass %>%

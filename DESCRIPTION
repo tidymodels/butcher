@@ -72,5 +72,5 @@ Suggests:
     NMF,
     dimRed
 Depends: 
-    R (>= 3.1)
+    R (>= 3.6)
 VignetteBuilder: knitr

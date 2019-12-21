@@ -6,6 +6,7 @@ skip_if_not_installed("rsample")
 # Load libraries
 library(recipes)
 library(rsample)
+library(modeldata)
 
 # Data sets used for testing
 data(biomass)

@@ -33,8 +33,9 @@ Imports:
     usethis (>= 1.5.0),
     fs,
     utils,
-    methods
-RoxygenNote: 6.1.1
+    methods,
+    modeldata
+RoxygenNote: 7.0.0
 Suggests: 
     clisymbols,
     testthat (>= 2.1.0),

@@ -20,7 +20,7 @@ matrix:
       provider: script
       script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE, run_dont_run = TRUE)'
       skip_cleanup: true
-  - r: 3.5
+  - r: oldrel
 
 env:
   global:

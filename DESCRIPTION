@@ -71,7 +71,9 @@ Suggests:
     dimRed,
     ddalpha,
     pls,
-    fastICA
+    fastICA,
+    RSpectra,
+    RANN
 Depends: 
     R (>= 3.6)
 VignetteBuilder: knitr

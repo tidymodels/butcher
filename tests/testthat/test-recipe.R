@@ -263,9 +263,10 @@ test_that("recipe + step_num2factor + axe_env() works", {
   iris2 <- iris
   iris2$Species <- as.numeric(iris2$Species)
   rec <- recipe(~ ., data = iris2) %>%
-    step_num2factor(Species)
-  rec <- recipe(Class ~ ., data = okc) %>%
-    step_integer(all_predictors())
+    step_num2factor(
+      Species,
+      levels = c("setosa", "versicolor", "virginica")
+    )
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

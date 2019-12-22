@@ -68,7 +68,10 @@ Suggests:
     dplyr,
     mda,
     NMF,
-    dimRed
+    dimRed,
+    ddalpha,
+    pls,
+    fastICA
 Depends: 
     R (>= 3.6)
 VignetteBuilder: knitr

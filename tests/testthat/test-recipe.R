@@ -16,6 +16,10 @@ set.seed(55)
 train_test_split <- initial_split(credit_data)
 credit_tr <- training(train_test_split)
 
+# Additional data sets used
+data(covers)
+data(okc)
+
 # Test helpers
 terms_empty_env <- function(axed, step_number) {
   expect_identical(attr(axed$steps[[step_number]]$terms[[1]], ".Environment"),

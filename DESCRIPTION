@@ -62,8 +62,6 @@ Suggests:
     kernlab,
     earth,
     covr,
-    rstan,
-    rstanarm,
     e1071,
     nnet,
     xgboost,

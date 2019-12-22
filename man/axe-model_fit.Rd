@@ -37,7 +37,6 @@ model_fit objects are created from the \code{parsnip} package.
 \examples{
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(glmnet)))
 
 # Create model and fit
 lm_fit <- linear_reg() \%>\%
@@ -45,13 +44,6 @@ lm_fit <- linear_reg() \%>\%
   fit(mpg ~ ., data = mtcars)
 
 out <- butcher(lm_fit, verbose = TRUE)
-
-# Another parsnip model
-elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
-  set_engine("glmnet") \%>\%
-  fit_xy(x = mtcars[, 2:11], y = mtcars[, 1, drop = FALSE])
-
-out <- butcher(elnet_fit, verbose = TRUE)
 
 # Another parsnip model
 rpart_fit <- decision_tree(mode = "regression") \%>\%

@@ -44,7 +44,6 @@ Suggests:
     rmarkdown,
     C50,
     kknn,
-    glmnet,
     rpart,
     ranger,
     recipes,
@@ -75,5 +74,5 @@ Suggests:
     RSpectra,
     RANN
 Depends: 
-    R (>= 3.6)
+    R (>= 3.1)
 VignetteBuilder: knitr

@@ -53,7 +53,15 @@ regression trees." />
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-115082821-1');
+</script>
 
   </head>
 
@@ -193,7 +201,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/set_engine.html'>set_engine</a></span>(<span class='st'>"randomForest"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/reexports.html'>fit_xy</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>spine_train</span>[,<span class='fl'>2</span>:<span class='fl'>4</span>], <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>spine_train</span>$<span class='no'>Kyphosis</span>)
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>randomForest_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '12,144 B'
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>randomForest_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '12,912 B'
 #&gt; ✖ Disabled: `print()`, `summary()`</div><div class='input'>
 <span class='co'># Another randomForest object</span>
 <span class='no'>wrapped_rf</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
@@ -203,7 +211,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 }
 
 <span class='co'># Remove junk</span>
-<span class='no'>cleaned_rf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_rf</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,060,136 B'</div><div class='input'>
+<span class='no'>cleaned_rf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_rf</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,060,904 B'</div><div class='input'>
 <span class='co'># Check size</span>
 <span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span>(<span class='no'>cleaned_rf</span>)</div><div class='output co'>#&gt; 459,496 B</div><div class='input'>
 </div></pre>

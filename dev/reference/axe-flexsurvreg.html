@@ -54,7 +54,15 @@ the Royston-Parmar spline model." />
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-115082821-1');
+</script>
 
   </head>
 
@@ -179,12 +187,9 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>flexsurv</span>)))
 
 <span class='co'># Create model and fit</span>
-<span class='no'>flexsurvreg_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/surv_reg.html'>surv_reg</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"regression"</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"gengamma"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/set_engine.html'>set_engine</a></span>(<span class='st'>"flexsurv"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/reexports.html'>fit</a></span>(<span class='fu'>Surv</span>(<span class='no'>Tstart</span>, <span class='no'>Tstop</span>, <span class='no'>status</span>) ~ <span class='no'>trans</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bosms3</span>)
-
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>flexsurvreg_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '18,288 B'
-#&gt; ✖ Disabled: `print()`</div><div class='input'>
+<span class='no'>flexsurvreg_fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/surv_reg.html'>surv_reg</a></span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"regression"</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"gengamma"</span>)
+  <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/set_engine.html'>set_engine</a></span>(<span class='st'>"flexsurv"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: `object` should have class 'model_spec'.</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/reexports.html'>fit</a></span>(<span class='fu'>Surv</span>(<span class='no'>Tstart</span>, <span class='no'>Tstop</span>, <span class='no'>status</span>) ~ <span class='no'>trans</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bosms3</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("fit"): no applicable method for 'fit' applied to an object of class "formula"</span></div><div class='input'>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>flexsurvreg_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✖ No memory released. Do not butcher.</div><div class='input'>
 <span class='co'># Another flexsurvreg model object</span>
 <span class='no'>wrapped_flexsurvreg</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>1e6</span>)
@@ -193,7 +198,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>fit</span>)
 }
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_flexsurvreg</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,190,304 B'
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_flexsurvreg</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,023,800 B'
 #&gt; ✖ Disabled: `print()`</div><div class='input'># }
 </div></pre>
   </div>

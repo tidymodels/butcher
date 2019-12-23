@@ -51,7 +51,15 @@ fit multilayer perceptron models." />
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-115082821-1');
+</script>
 
   </head>
 
@@ -179,7 +187,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/set_engine.html'>set_engine</a></span>(<span class='st'>"nnet"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/reexports.html'>fit</a></span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>nnet_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '28,552 B'
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>nnet_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '28,496 B'
 #&gt; ✖ Disabled: `fitted()`, `predict() with no new data`, `dimnames(axed_object$fitted.values)`</div><div class='input'>
 <span class='co'># Another nnet object</span>
 <span class='no'>targets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nnet/man/class.ind.html'>class.ind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"setosa"</span>, <span class='fl'>50</span>),
@@ -192,10 +200,10 @@ disabled. Default is <code>FALSE</code>.</p></td>
             <span class='kw'>rang</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
             <span class='kw'>decay</span> <span class='kw'>=</span> <span class='fl'>5e-4</span>,
             <span class='kw'>maxit</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; # weights:  19
-#&gt; initial  value 114.328040 
-#&gt; iter  10 value 52.826045
-#&gt; iter  20 value 48.531975
-#&gt; final  value 48.531975 
+#&gt; initial  value 112.910259 
+#&gt; iter  10 value 8.389043
+#&gt; iter  20 value 3.895080
+#&gt; final  value 3.895080 
 #&gt; stopped after 20 iterations</div><div class='input'>
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '5,008 B'
 #&gt; ✖ Disabled: `fitted()`, `predict() with no new data`, `dimnames(axed_object$fitted.values)`</div><div class='input'>

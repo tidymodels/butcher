@@ -20081,3 +20081,4 @@
 19/09/27 15:01:22 INFO ShutdownHookManager: Shutdown hook called
 19/09/27 15:01:22 INFO ShutdownHookManager: Deleting directory /tmp/spark-06b120c4-5e35-4008-afb2-a228151b01e1
 19/09/27 15:01:22 INFO ShutdownHookManager: Deleting directory /tmp/spark-e3da34fa-68ed-49bb-beba-b52359fca1b2
+19/12/23 03:47:16 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable

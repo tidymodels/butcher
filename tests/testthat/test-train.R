@@ -48,7 +48,7 @@ test_that("train + rda + predict() works", {
   # Model
   train_fit <- train(Price ~ .,
                      data = cars,
-                     method = "glmnet",
+                     method = "rpart",
                      trControl = trainControl(method = "cv"))
   x <- axe_call(train_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))

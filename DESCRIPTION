@@ -33,8 +33,9 @@ Imports:
     usethis (>= 1.5.0),
     fs,
     utils,
-    methods
-RoxygenNote: 6.1.1
+    methods,
+    modeldata
+RoxygenNote: 7.0.0
 Suggests: 
     clisymbols,
     testthat (>= 2.1.0),
@@ -43,7 +44,6 @@ Suggests:
     rmarkdown,
     C50,
     kknn,
-    glmnet,
     rpart,
     ranger,
     recipes,
@@ -61,15 +61,18 @@ Suggests:
     kernlab,
     earth,
     covr,
-    rstan,
-    rstanarm,
     e1071,
     nnet,
     xgboost,
     dplyr,
     mda,
     NMF,
-    dimRed
+    dimRed,
+    ddalpha,
+    pls,
+    fastICA,
+    RSpectra,
+    RANN
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

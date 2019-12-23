@@ -14,6 +14,7 @@
 #'
 #' @examples
 #' suppressWarnings(suppressMessages(library(recipes)))
+#' library(modeldata)
 #'
 #' data(biomass)
 #'

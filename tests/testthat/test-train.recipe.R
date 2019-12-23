@@ -14,6 +14,7 @@ test_that("train + predict() works", {
   # Load
   library(recipes)
   library(caret)
+  library(modeldata)
   # Data
   data(biomass)
   biomass_tr <- biomass[biomass$dataset == "Training",]

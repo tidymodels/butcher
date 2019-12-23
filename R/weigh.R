@@ -47,17 +47,6 @@ weigh.default <- function(x, threshold = 0, units = "MB", ...) {
 }
 
 #' @export
-weigh.stanreg <- function(x, threshold = 0, units = "MB", ...) {
-  out <- list()
-  for(i in methods::slotNames(x$stanfit)) {
-    out[[i]] <- methods::slot(x$stanfit, i)
-  }
-  x$stanfit <- out
-  class(x) <- class(x)[2]
-  weigh(x, ...)
-}
-
-#' @export
 weigh.ksvm <- function(x, threshold = 0, units = "MB", ...) {
   out <- list()
   for(i in methods::slotNames(x)) {

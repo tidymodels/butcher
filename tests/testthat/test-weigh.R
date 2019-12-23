@@ -15,17 +15,3 @@ test_that("checking internal lm_fit test object", {
   lm_fit <- lm(mpg ~ ., data = mtcars)
   expect_equal(dim(weigh(lm_fit, 0))[1], 25)
 })
-
-test_that("checking internal stanreg test object", {
-  skip_on_cran()
-  skip_if_not_installed("rstanarm")
-  skip_if_not_installed("parsnip")
-  library(parsnip)
-  ctrl <- fit_control(verbosity = 0) # Avoid printing output
-  stanreg_fit <- linear_reg() %>%
-    set_engine("stan") %>%
-    fit(mpg ~ ., data = mtcars, control = ctrl)
-  stan_weights <- weigh(stanreg_fit, 0)
-  expect_true("stanfit..MISC" %in% stan_weights$object)
-})
-

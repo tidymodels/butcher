@@ -5,7 +5,7 @@
 \alias{axe_env.function}
 \title{Axing functions.}
 \usage{
-\method{axe_env}{function}(x, verbose = FALSE, ...)
+\method{axe_env}{`function`}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{A model object.}

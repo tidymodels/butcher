@@ -39,7 +39,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com} (0000-0001-7217-4702)
+\strong{Maintainer}: Joyce Cahoon \email{joyceyu48@gmail.com} (\href{https://orcid.org/0000-0001-7217-4702}{ORCID})
 
 Authors:
 \itemize{

@@ -38,12 +38,13 @@ steps are required to remove parts of train.recipe objects.
 \donttest{
 suppressWarnings(suppressMessages(library(recipes)))
 suppressWarnings(suppressMessages(library(caret)))
+library(modeldata)
 
 data(biomass)
-recipe <- biomass \%>\%
-  recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) \%>\%
-  step_center(all_predictors()) \%>\%
-  step_scale(all_predictors()) \%>\%
+recipe <- biomass %>%
+  recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors()) %>%
   step_spatialsign(all_predictors())
 
 train.recipe_fit <- train(recipe, biomass,

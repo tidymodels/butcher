@@ -8,6 +8,7 @@
 #' @return Axed multnet object.
 #'
 #' @examples
+#' \donttest{
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #'
@@ -22,7 +23,7 @@
 #'   fit_xy(x = predictrs, y = response)
 #'
 #' out <- butcher(multnet_fit, verbose = TRUE)
-#'
+#' }
 #' @name axe-multnet
 NULL
 

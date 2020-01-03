@@ -8,6 +8,7 @@
 #' @return Axed glmnet object.
 #'
 #' @examples
+#' \donttest{
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #'
 #' # Wrap a parsnip glmnet model
@@ -20,7 +21,7 @@
 #' }
 #'
 #' out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
-#'
+#' }
 #' @name axe-glmnet
 NULL
 

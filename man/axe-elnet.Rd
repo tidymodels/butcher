@@ -24,6 +24,7 @@ elnet objects are created from the \pkg{glmnet} package, leveraged
 to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
+\donttest{
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
@@ -33,10 +34,10 @@ split <- initial_split(mtcars, props = 9/10)
 car_train <- training(split)
 
 # Create model and fit
-elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
-  set_engine("glmnet") \%>\%
+elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) %>%
+  set_engine("glmnet") %>%
   fit_xy(x = car_train[, 2:11], y = car_train[, 1, drop = FALSE])
 
 out <- butcher(elnet_fit, verbose = TRUE)
-
+}
 }

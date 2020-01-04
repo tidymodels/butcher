@@ -24,17 +24,18 @@ glmnet objects are created from the \pkg{glmnet} package, leveraged
 to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
+\donttest{
 suppressWarnings(suppressMessages(library(parsnip)))
 
 # Wrap a parsnip glmnet model
 wrapped_parsnip_glmnet <- function() {
   some_junk_in_environment <- runif(1e6)
-  model <- logistic_reg(penalty = 10, mixture = 0.1) \%>\%
-    set_engine("glmnet") \%>\%
+  model <- logistic_reg(penalty = 10, mixture = 0.1) %>%
+    set_engine("glmnet") %>%
     fit(as.factor(vs) ~ ., data = mtcars)
   return(model$fit)
 }
 
 out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
-
+}
 }

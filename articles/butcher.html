@@ -41,7 +41,7 @@
         <a class="navbar-brand" href="../index.html">butcher</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@
 <a class="sourceLine" id="cb4-4" data-line-number="4">parsnip_lm</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; parsnip model object</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Fit time:  5ms </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Fit time:  4ms </span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; Call:</span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; stats::lm(formula = formula, data = data)</span></a>
@@ -186,7 +186,7 @@
 <p>We can see this with the <code>env_print</code> function from the <code>rlang</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rlang)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span>(big_lm<span class="op">$</span>terms)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x62dc468&gt;</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; &lt;environment: 0x58d6468&gt;</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; parent: &lt;environment: global&gt;</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; bindings:</span></a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  * some_junk_in_the_environment: &lt;dbl&gt;</span></a></code></pre></div>

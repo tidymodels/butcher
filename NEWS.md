@@ -1,5 +1,11 @@
 # butcher (development version)
 
+# butcher 0.1.2
+
+## Fixes
+
+* Examples for `C50` objects were updated to reflect data files were now located in `modeldata`.
+
 # butcher 0.1.1
 
 ## Fixes

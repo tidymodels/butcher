@@ -34,8 +34,9 @@
 #'
 #' # Create model object from original library
 #' library(C50)
-#' data(churn)
-#' c5_fit3 <- C5.0(x = churnTrain[, -20], y = churnTrain$churn)
+#' library(modeldata)
+#' data(mlc_churn)
+#' c5_fit3 <- C5.0(x = mlc_churn[, -20], y = mlc_churn$churn)
 #' out <- butcher(c5_fit3, verbose = TRUE)
 #'
 #' @name axe-C5.0

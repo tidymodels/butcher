@@ -189,7 +189,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/set_engine.html'>set_engine</a></span>(<span class='st'>"survival"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/pkg/parsnip/man/reexports.html'>fit</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span>(<span class='no'>futime</span>, <span class='no'>fustat</span>) ~ <span class='fl'>1</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>ovarian</span>)
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>survreg_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '37,520 B'
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>survreg_fit</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '37,120 B'
 #&gt; ✖ Disabled: `print()`, `summary()`, `residuals()`</div><div class='input'>
 <span class='co'># Another survreg object</span>
 <span class='no'>wrapped_survreg</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
@@ -200,7 +200,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 }
 
 <span class='co'># Remove junk</span>
-<span class='no'>cleaned_survreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_survreg</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,077,480 B'
+<span class='no'>cleaned_survreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='fu'>wrapped_survreg</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,076,296 B'
 #&gt; ✖ Disabled: `print()`, `summary()`, `residuals()`</div><div class='input'>
 <span class='co'># Check size</span>
 <span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span>(<span class='no'>cleaned_survreg</span>)</div><div class='output co'>#&gt; 11,696 B</div><div class='input'>

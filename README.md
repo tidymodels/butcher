@@ -109,7 +109,6 @@ To remove this (mostly) extraneous component, we can use `axe_env()`:
 
 ``` r
 cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
-#> ✔ Memory released: '7,999,256 B'
 ```
 
 Comparing it against our `small_lm`, we’ll find:
@@ -178,6 +177,23 @@ but in short, to contribute a set of axe methods:
     `tests/testthat/test-your_object.R`
 4)  Make a pull request\!
 
-Please note that the `butcher` package is released with a [Contributor
-Code of Conduct](https://usethis.r-lib.org/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+## Contributing
+
+This project is released with a [Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+  - For questions and discussions about tidymodels packages, modeling,
+    and machine learning, please [post on RStudio
+    Community](https://rstd.io/tidymodels-community).
+
+  - If you think you have encountered a bug, please [submit an
+    issue](https://github.com/tidymodels/butcher/issues).
+
+  - Either way, learn how to create and share a
+    [reprex](https://rstd.io/reprex) (a minimal, reproducible example),
+    to clearly communicate about your code.
+
+  - Check out further details on [contributing guidelines for tidymodels
+    packages](https://www.tidymodels.org/contribute/) and [how to get
+    help](https://www.tidymodels.org/help/).

@@ -33,7 +33,7 @@ of a \code{butcher} class assignment.
 Useful links:
 \itemize{
   \item \url{https://tidymodels.github.io/butcher}
-  \item \url{https://github.com/tidymodels/butcher}
+  \item \url{https://butcher.tidymodels.org}
   \item Report bugs at \url{https://github.com/tidymodels/butcher/issues}
 }
 

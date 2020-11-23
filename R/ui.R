@@ -39,7 +39,7 @@ assess_object <- function(og, butchered) {
   } else {
     ui_done("Memory released: {ui_value(mem)}")
     if (!is.null(disabled)) {
-      ui_oops("Disabled: {ui_code(disabled)}")
+      ui_oops("Butchered: {ui_code(disabled)}")
     }
     if (length(class_added) == 0) {
       class_name <- "butchered"

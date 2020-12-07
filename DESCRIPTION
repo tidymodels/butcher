@@ -39,7 +39,7 @@ RoxygenNote: 7.0.0
 Suggests: 
     clisymbols,
     testthat (>= 2.1.0),
-    parsnip,
+    parsnip (>= 0.1.4),
     knitr,
     rmarkdown,
     C50,

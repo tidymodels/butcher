@@ -1,5 +1,9 @@
 # butcher (development version)
 
+## Fixes
+
+* Fixed a few test failures related to changes in parsnip (#157).
+
 # butcher 0.1.2
 
 ## Fixes

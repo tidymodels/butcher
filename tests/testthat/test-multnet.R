@@ -7,6 +7,7 @@ test_that("multnet + predict() works", {
   library(parsnip)
   set.seed(1234)
   predictrs <- matrix(rnorm(100*20), ncol = 20)
+  colnames(predictrs) <- paste0("a", seq_len(ncol(predictrs)))
   response <- as.factor(sample(1:4, 100, replace = TRUE))
   fit <- multinom_reg() %>%
     set_engine("glmnet") %>%

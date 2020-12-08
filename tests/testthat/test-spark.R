@@ -194,14 +194,14 @@ test_that("spark linear_reg + predict() works", {
     select(prediction) %>%
     collect()
   x <- butcher(reg_spark)
-  output <- ml_predict(x$pipeline_model, validation) %>%
+  output <- ml_predict(x$fit$pipeline_model, validation) %>%
     select(prediction) %>%
     collect()
   expect_gt(lobstr::obj_size(reg_spark), lobstr::obj_size(x))
   expect_equal(output, expected_output)
   # Save and load
   path <- tempfile()
-  ml_save(x, path, overwrite = TRUE)
+  ml_save(x$fit, path, overwrite = TRUE)
   x_loaded <- ml_load(sc, path)
   path <- tempfile()
   ml_save(reg_spark$fit, path, overwrite = TRUE)

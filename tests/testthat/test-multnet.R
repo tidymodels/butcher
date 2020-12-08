@@ -13,7 +13,7 @@ test_that("multnet + predict() works", {
     set_engine("glmnet") %>%
     fit_xy(x = predictrs, y = response)
   x <- axe_call(fit)
-  expect_equal(x$call, rlang::expr(dummy_call()))
+  expect_equal(x$fit$call, rlang::expr(dummy_call()))
   x <- butcher(fit)
   expect_equal(
     predict(fit, new_data = predictrs[1:3, ], penalty = 1),

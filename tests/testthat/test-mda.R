@@ -71,12 +71,12 @@ test_that("mda + custom parsnip model + predict() works", {
     set_engine("mda") %>%
     fit(Species ~ ., data = iris)
   x <- axe_call(mda_fit)
-  expect_equal(x$call, rlang::expr(dummy_call()))
-  expect_error(update(x, subclasses = 4))
-  expect_equal(attr(x, "butcher_disabled"),
+  expect_equal(x$fit$call, rlang::expr(dummy_call()))
+  expect_error(update(x$fit, subclasses = 4))
+  expect_equal(attr(x$fit, "butcher_disabled"),
                c("print()", "summary()", "update()"))
   x <- axe_env(mda_fit)
-  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
+  expect_identical(attr(x$fit$terms, ".Environment"), rlang::base_env())
   x <- axe_fitted(mda_fit)
-  expect_equal(x$fit$fitted.values, matrix(NA))
+  expect_equal(x$fit$fit$fitted.values, matrix(NA))
 })

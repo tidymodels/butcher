@@ -14,14 +14,14 @@ test_that("ksvm + axe_() works", {
     set_engine("kernlab") %>%
     fit(type ~ ., data = spam)
   x <- axe_call(ksvm_class)
-  expect_equal(x@kcall, rlang::expr(dummy_call()))
+  expect_equal(x$fit@kcall, rlang::expr(dummy_call()))
   x <- axe_fitted(ksvm_class)
-  expect_equal(x@fitted, numeric(0))
+  expect_equal(x$fit@fitted, numeric(0))
   x <- axe_data(ksvm_class)
-  expect_equal(x@ymatrix, numeric(0))
+  expect_equal(x$fit@ymatrix, numeric(0))
   x <- butcher(ksvm_class)
   # Predict
-  expected_output <- predict(ksvm_class$fit, spam[,-58])
+  expected_output <- predict(ksvm_class, spam[,-58])
   new_output <- predict(x, spam[,-58])
   expect_equal(new_output, expected_output)
 })

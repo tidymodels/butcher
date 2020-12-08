@@ -9,5 +9,5 @@ test_that("glmnet + predict() works", {
     set_engine("glmnet") %>%
     fit(as.factor(vs) ~ ., data = mtcars)
   axed <- axe_call(model)
-  expect_equal(axed$call, rlang::expr(dummy_call()))
+  expect_equal(axed$fit$call, rlang::expr(dummy_call()))
 })

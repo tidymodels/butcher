@@ -48,8 +48,13 @@ axe_call.earth <- function(x, verbose = FALSE, ...) {
 #' @export
 axe_data.earth <- function(x, verbose = FALSE, ...) {
   old <- x
+
+  # xy interface
   x <- exchange(x, "x", data.frame(NA))
   x <- exchange(x, "y", numeric(0))
+
+  # formula interface
+  x <- exchange(x, "data", data.frame(NA))
 
   add_butcher_attributes(
     x,

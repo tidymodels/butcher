@@ -35,11 +35,11 @@ Imports:
     utils,
     methods,
     modeldata
-RoxygenNote: 7.0.0
+RoxygenNote: 7.1.1
 Suggests: 
     clisymbols,
     testthat (>= 2.1.0),
-    parsnip,
+    parsnip (>= 0.1.4),
     knitr,
     rmarkdown,
     C50,

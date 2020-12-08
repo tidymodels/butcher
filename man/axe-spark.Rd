@@ -49,17 +49,19 @@ objects are retained from butchering, yet removal of one or the
 other might be conducive to freeing up memory on disk.
 }
 \examples{
-\donttest{
+\dontrun{
 suppressWarnings(suppressMessages(library(sparklyr)))
 
 sc <- spark_connect(master = "local")
 
-iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) \%>\%
   sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 
 train <- iris_tbls$train
 spark_fit <- ml_logistic_regression(train, Species ~ .)
 
 out <- butcher(spark_fit, verbose = TRUE)
+
+spark_disconnect(sc)
 }
 }

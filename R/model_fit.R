@@ -30,31 +30,41 @@ NULL
 #' @rdname axe-model_fit
 #' @export
 axe_call.model_fit <- function(x, verbose = FALSE, ...) {
-  axe_call(x$fit, verbose = verbose, ...)
+  old <- x
+  x$fit <- axe_call(x$fit, verbose = verbose, ...)
+  add_butcher_attributes(x, old, verbose = verbose)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_ctrl.model_fit <- function(x, verbose = FALSE, ...) {
-  axe_ctrl(x$fit, verbose = verbose, ...)
+  old <- x
+  x$fit <- axe_ctrl(x$fit, verbose = verbose, ...)
+  add_butcher_attributes(x, old, verbose = verbose)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_data.model_fit <- function(x, verbose = FALSE, ...) {
-  axe_data(x$fit, verbose = verbose, ...)
+  old <- x
+  x$fit <- axe_data(x$fit, verbose = verbose, ...)
+  add_butcher_attributes(x, old, verbose = verbose)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_env.model_fit <- function(x, verbose = FALSE, ...) {
-  axe_env(x$fit, verbose = verbose, ...)
+  old <- x
+  x$fit <- axe_env(x$fit, verbose = verbose, ...)
+  add_butcher_attributes(x, old, verbose = verbose)
 }
 
 #' @rdname axe-model_fit
 #' @export
 axe_fitted.model_fit <- function(x, verbose = FALSE, ...) {
-  axe_fitted(x$fit, verbose = verbose, ...)
+  old <- x
+  x$fit <- axe_fitted(x$fit, verbose = verbose, ...)
+  add_butcher_attributes(x, old, verbose = verbose)
 }
 
 

@@ -427,6 +427,9 @@ test_that("recipe + step_rm + axe_env() works", {
 })
 
 test_that("recipe + step_pls + axe_env() works", {
+  # recipes `step_pls()` was changed in 0.1.13 to use mixOmics under the hood
+  skip_if_not_installed("mixOmics")
+
   rec <- recipe(HHV ~ ., data = biomass_tr) %>%
     step_pls(all_predictors, outcome = "HHV")
   x <- axe_env(rec)

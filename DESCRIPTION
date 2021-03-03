@@ -62,7 +62,7 @@ Suggests:
     covr,
     e1071,
     nnet,
-    xgboost,
+    xgboost (>= 1.3.2.1),
     dplyr,
     mda,
     NMF,

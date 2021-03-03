@@ -18,7 +18,6 @@
 #' data(agaricus.train)
 #' bst <- xgboost(data = agaricus.train$data,
 #'                label = agaricus.train$label,
-#'                max.depth = 2,
 #'                eta = 1,
 #'                nthread = 2,
 #'                nrounds = 2,

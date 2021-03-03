@@ -13,7 +13,6 @@ test_that("xgb.Booster + linear solver + predict() works", {
   data(agaricus.test)
   bst <- xgboost(data = agaricus.train$data,
                  label = agaricus.train$label,
-                 max.depth = 2,
                  eta = 1,
                  nthread = 2,
                  nrounds = 2,
@@ -46,10 +45,8 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
                         label = agaricus.train$label)
   bst <- xgb.train(data = dtrain,
                    booster = "gblinear",
-                   max.depth = 2,
                    nthread = 2,
                    nrounds = 2,
-                   eval.metric = "error",
                    eval.metric = "logloss",
                    objective = "binary:logistic")
   x <- axe_call(bst)

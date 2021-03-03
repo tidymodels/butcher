@@ -9,6 +9,8 @@
 #'
 #' @examples
 #' \donttest{
+#' if (rlang::is_installed("glmnet")) {
+#'
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #'
 #' # Wrap a parsnip glmnet model
@@ -21,6 +23,8 @@
 #' }
 #'
 #' out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
+#'
+#' }
 #' }
 #' @name axe-glmnet
 NULL

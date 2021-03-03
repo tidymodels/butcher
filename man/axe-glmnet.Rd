@@ -25,6 +25,8 @@ to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
 \donttest{
+if (rlang::is_installed("glmnet")) {
+
 suppressWarnings(suppressMessages(library(parsnip)))
 
 # Wrap a parsnip glmnet model
@@ -37,5 +39,7 @@ wrapped_parsnip_glmnet <- function() {
 }
 
 out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
+
+}
 }
 }

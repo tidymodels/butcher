@@ -46,6 +46,7 @@ bst <- xgboost(data = agaricus.train$data,
                eta = 1,
                nthread = 2,
                nrounds = 2,
+               eval_metric = "logloss",
                objective = "binary:logistic")
 
 out <- butcher(bst, verbose = TRUE)

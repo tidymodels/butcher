@@ -7,7 +7,8 @@ test_that("gausspr + predict() works", {
   library(kernlab)
   test <- gausspr(Species ~ .,
                   data = iris,
-                  var = 2)
+                  var = 2,
+                  kpar = list(sigma = 2))
   x <- axe_call(test)
   expect_equal(x@kcall, rlang::expr(dummy_call()))
   x <- axe_env(test)

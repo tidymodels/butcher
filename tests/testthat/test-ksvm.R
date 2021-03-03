@@ -10,9 +10,14 @@ test_that("ksvm + axe_() works", {
   # Data
   data(spam)
   # Fit
-  ksvm_class <- svm_poly(mode = "classification") %>%
-    set_engine("kernlab") %>%
-    fit(type ~ ., data = spam)
+
+  # Suppress cat() message about "Setting default kernel parameters"
+  capture.output({
+    ksvm_class <- svm_poly(mode = "classification") %>%
+      set_engine("kernlab") %>%
+      fit(type ~ ., data = spam)
+  })
+
   x <- axe_call(ksvm_class)
   expect_equal(x$fit@kcall, rlang::expr(dummy_call()))
   x <- axe_fitted(ksvm_class)

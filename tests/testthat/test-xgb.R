@@ -16,6 +16,7 @@ test_that("xgb.Booster + linear solver + predict() works", {
                  eta = 1,
                  nthread = 2,
                  nrounds = 2,
+                 eval_metric = "logloss",
                  objective = "binary:logistic")
   x <- axe_call(bst)
   expect_equal(x$call, rlang::expr(dummy_call()))
@@ -47,7 +48,7 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
                    booster = "gblinear",
                    nthread = 2,
                    nrounds = 2,
-                   eval.metric = "logloss",
+                   eval_metric = "logloss",
                    objective = "binary:logistic")
   x <- axe_call(bst)
   expect_equal(x$call, rlang::expr(dummy_call()))

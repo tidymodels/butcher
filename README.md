@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# butcher <a href='https://tidymodels.github.io/butcher/'><img src='butcher.png' align="right" height="139" /></a>
+# butcher <a href='https://butcher.tidymodels.org/'><img src='butcher.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/butcher/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/butcher?branch=master)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R-CMD-check](https://github.com/tidymodels/butcher/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/butcher/actions)
 <!-- badges: end -->
 
@@ -183,14 +183,15 @@ By contributing to this project, you agree to abide by its terms.
 
 -   For questions and discussions about tidymodels packages, modeling,
     and machine learning, please [post on RStudio
-    Community](https://rstd.io/tidymodels-community).
+    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
 -   If you think you have encountered a bug, please [submit an
     issue](https://github.com/tidymodels/butcher/issues).
 
 -   Either way, learn how to create and share a
-    [reprex](https://rstd.io/reprex) (a minimal, reproducible example),
-    to clearly communicate about your code.
+    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+    (a minimal, reproducible example), to clearly communicate about your
+    code.
 
 -   Check out further details on [contributing guidelines for tidymodels
     packages](https://www.tidymodels.org/contribute/) and [how to get

@@ -43,13 +43,20 @@ test_that("train + knn + predict() works", {
 test_that("train + rda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("caret")
+
   library(caret)
   data(cars)
+  set.seed(123)
+
   # Model
-  train_fit <- train(Price ~ .,
-                     data = cars,
-                     method = "rpart",
-                     trControl = trainControl(method = "cv"))
+  # internal Rsquared calculations seem to lead to NA values which throws
+  # a warning, but these end up not breaking anything else
+  train_fit <- suppressWarnings({
+    train(Price ~ .,
+          data = cars,
+          method = "rpart",
+          trControl = trainControl(method = "cv"))
+  })
   x <- axe_call(train_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_equal(x$dots, train_fit$dots)

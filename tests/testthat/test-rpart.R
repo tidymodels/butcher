@@ -9,7 +9,7 @@ test_that("rpart + axe_data() works", {
   x <- axe_data(fit)
   expect_equal(predict(x), predict(fit))
   x <- axe_call(fit)
-  expect_error(summary(x))
+  expect_error(capture.output(summary(x)))
   x <- axe_ctrl(fit)
   expect_equal(x$control$usesurrogate, fit$control$usesurrogate)
   x <- axe_env(fit)

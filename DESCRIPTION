@@ -1,77 +1,81 @@
 Package: butcher
 Title: Model Butcher
 Version: 0.1.2.9000
-Authors@R: c(
-    person(given = "Joyce",
-           family = "Cahoon",
-           role = c("aut", "cre"),
-           email = "joyceyu48@gmail.com", 
-           comment = c(ORCID = "0000-0001-7217-4702")),
-    person(given = "Davis",
-           family = "Vaughan",
-           role = "aut",
-           email = "davis@rstudio.com"),
-    person(given = "Max",
-           family = "Kuhn",
-           role = "aut",
-           email = "max@rstudio.com"),
-    person(given = "Alex",
-           family = "Hayes",
-           role = "aut",
-           email = "alexpghayes@gmail.com"))
-Description: Provides a set of five S3 generics to axe components of fitted model objects and help reduce the size of model objects saved to disk.
+Authors@R: 
+    c(person(given = "Joyce",
+             family = "Cahoon",
+             role = c("aut", "cre"),
+             email = "joyceyu48@gmail.com",
+             comment = c(ORCID = "0000-0001-7217-4702")),
+      person(given = "Davis",
+             family = "Vaughan",
+             role = "aut",
+             email = "davis@rstudio.com"),
+      person(given = "Max",
+             family = "Kuhn",
+             role = "aut",
+             email = "max@rstudio.com"),
+      person(given = "Alex",
+             family = "Hayes",
+             role = "aut",
+             email = "alexpghayes@gmail.com"))
+Description: Provides a set of five S3 generics to axe
+    components of fitted model objects and help reduce the size of model
+    objects saved to disk.
 License: MIT + file LICENSE
-URL: https://tidymodels.github.io/butcher, https://butcher.tidymodels.org
+URL: https://tidymodels.github.io/butcher,
+    https://butcher.tidymodels.org
 BugReports: https://github.com/tidymodels/butcher/issues
-Encoding: UTF-8
-LazyData: true
-Imports: 
-    purrr,
-    rlang,
-    lobstr (>= 1.1.1),
-    tibble (>= 2.1.1),
-    usethis (>= 1.5.0),
-    fs,
-    utils,
-    methods
-RoxygenNote: 7.1.1
-Suggests: 
-    clisymbols,
-    testthat (>= 2.1.0),
-    parsnip (>= 0.1.4),
-    knitr,
-    rmarkdown,
-    C50,
-    kknn,
-    rpart,
-    ranger,
-    recipes,
-    rsample,
-    TH.data,
-    ipred,
-    survival,
-    MASS,
-    QSARdata,
-    caret,
-    flexsurv,
-    pkgload,
-    randomForest,
-    kernlab,
-    earth,
-    covr,
-    e1071,
-    nnet,
-    xgboost (>= 1.3.2.1),
-    dplyr,
-    mda,
-    NMF,
-    dimRed,
-    ddalpha,
-    pls,
-    fastICA,
-    RSpectra,
-    RANN,
-    modeldata
 Depends: 
     R (>= 3.1)
-VignetteBuilder: knitr
+Imports: 
+    fs,
+    lobstr (>= 1.1.1),
+    methods,
+    purrr,
+    rlang,
+    tibble (>= 2.1.1),
+    usethis (>= 1.5.0),
+    utils
+Suggests: 
+    C50,
+    caret,
+    clisymbols,
+    covr,
+    ddalpha,
+    dimRed,
+    dplyr,
+    e1071,
+    earth,
+    fastICA,
+    flexsurv,
+    ipred,
+    kernlab,
+    kknn,
+    knitr,
+    MASS,
+    mda,
+    modeldata,
+    NMF,
+    nnet,
+    parsnip (>= 0.1.4),
+    pkgload,
+    pls,
+    QSARdata,
+    randomForest,
+    ranger,
+    RANN,
+    recipes,
+    rmarkdown,
+    rpart,
+    rsample,
+    RSpectra,
+    survival,
+    testthat (>= 2.1.0),
+    TH.data,
+    xgboost (>= 1.3.2.1)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

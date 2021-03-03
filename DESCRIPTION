@@ -33,8 +33,7 @@ Imports:
     usethis (>= 1.5.0),
     fs,
     utils,
-    methods,
-    modeldata
+    methods
 RoxygenNote: 7.1.1
 Suggests: 
     clisymbols,
@@ -71,7 +70,8 @@ Suggests:
     pls,
     fastICA,
     RSpectra,
-    RANN
+    RANN,
+    modeldata
 Depends: 
     R (>= 3.1)
 VignetteBuilder: knitr

@@ -9,6 +9,8 @@
 #'
 #' @examples
 #' \donttest{
+#' if (rlang::is_installed("glmnet")) {
+#'
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(rsample)))
@@ -23,6 +25,8 @@
 #'   fit_xy(x = car_train[, 2:11], y = car_train[, 1, drop = FALSE])
 #'
 #' out <- butcher(elnet_fit, verbose = TRUE)
+#'
+#' }
 #' }
 #' @name axe-elnet
 NULL

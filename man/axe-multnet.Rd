@@ -25,6 +25,8 @@ in the \pkg{glmnet} package.
 }
 \examples{
 \donttest{
+if (rlang::is_installed("glmnet")) {
+
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 
@@ -40,5 +42,7 @@ multnet_fit <- multinom_reg() \%>\%
   fit_xy(x = predictrs, y = response)
 
 out <- butcher(multnet_fit, verbose = TRUE)
+
+}
 }
 }

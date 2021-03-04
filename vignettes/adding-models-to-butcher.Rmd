@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(butcher)
 ```
 
-If you come across any model objects that should be subject to butchering, but does not exist in our current repository as listed [here](https://tidymodels.github.io/parsnip/articles/articles/Models.html), please consider becoming a contributer to this package! For any first-timers, this is great place to start as we've created templates that make this process as seamless as possible. 
+If you come across any model objects that should be subject to butchering, but does not exist in our current repository as listed [here](https://www.tidymodels.org/find/parsnip/), please consider becoming a contributer to this package! For any first-timers, this is great place to start as we've created templates that make this process as seamless as possible. 
 
 Let's say our new model object, of class `blob`, was generated from a `R` package called `blobber`. If you want to add axe methods for this class, first clone butcher onto your local computer and open up RStudio (see `usethis::create_from_github("tidymodels/butcher")` for an automated way to do this). After you have opened RStudio and are in the `butcher` RStudio Project, run: 
 

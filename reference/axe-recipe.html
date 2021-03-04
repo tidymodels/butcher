@@ -10,27 +10,35 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
 <link href="../tidyverse.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
+
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
 
 
 
@@ -68,7 +76,7 @@ pre-processing step." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,9 +91,9 @@ pre-processing step." />
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">butcher</a>
-        <div class="info">
-          <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <div class="info hidden-xs hidden-sm">
+          <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
         </div>
       </div>
     </div>
@@ -93,7 +101,7 @@ pre-processing step." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -122,8 +130,8 @@ pre-processing step." />
   <a href="../news/index.html">Changelog</a>
 </li>
         <li>
-  <a href="https://github.com/tidymodels/butcher">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/tidymodels/butcher/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -156,205 +164,205 @@ pre-processing step.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for recipe</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_arrange</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_bagimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_bin2factor</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_BoxCox</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_bs</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_center</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_classdist</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_corr</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_count</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_date</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_depth</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_discretize</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_downsample</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_dummy</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_factor2string</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_filter</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_geodist</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_holiday</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_hyperbolic</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_ica</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_integer</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_interact</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_inverse</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_invlogit</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_isomap</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_knnimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_kpca</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_lag</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_lincomb</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_log</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_logit</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_lowerimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_meanimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_medianimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_modeimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_mutate</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_naomit</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_nnmf</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_novel</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_num2factor</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_ns</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_nzv</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_ordinalscore</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_other</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_pca</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_pls</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_poly</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_range</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_ratio</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_regex</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_relu</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_rm</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_rollimpute</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_shuffle</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_slice</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_scale</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_string2factor</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_sqrt</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_spatialsign</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_unorder</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_upsample</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_window</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_YeoJohnson</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for step_zv</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for quosure</span>
-<span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -380,43 +388,42 @@ disabled. Default is <code>FALSE</code>.</p></td>
     <p>Axed recipe object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>recipes</span>)))
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>modeldata</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/recipes'>recipes</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://modeldata.tidymodels.org'>modeldata</a></span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>biomass</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>biomass</span><span class='op'>)</span>
 
-<span class='no'>biomass_tr</span> <span class='kw'>&lt;-</span> <span class='no'>biomass</span>[<span class='no'>biomass</span>$<span class='no'>dataset</span> <span class='kw'>==</span> <span class='st'>"Training"</span>,]
-<span class='no'>rec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/recipe.html'>recipe</a></span>(<span class='no'>HHV</span> ~ <span class='no'>carbon</span> + <span class='no'>hydrogen</span> + <span class='no'>oxygen</span> + <span class='no'>nitrogen</span> + <span class='no'>sulfur</span>,
-              <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>biomass_tr</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/step_center.html'>step_center</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/recipes/man/has_role.html'>all_predictors</a></span>()) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/step_scale.html'>step_scale</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/recipes/man/has_role.html'>all_predictors</a></span>()) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/step_spatialsign.html'>step_spatialsign</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/recipes/man/has_role.html'>all_predictors</a></span>())
+<span class='va'>biomass_tr</span> <span class='op'>&lt;-</span> <span class='va'>biomass</span><span class='op'>[</span><span class='va'>biomass</span><span class='op'>$</span><span class='va'>dataset</span> <span class='op'>==</span> <span class='st'>"Training"</span>,<span class='op'>]</span>
+<span class='va'>rec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/recipe.html'>recipe</a></span><span class='op'>(</span><span class='va'>HHV</span> <span class='op'>~</span> <span class='va'>carbon</span> <span class='op'>+</span> <span class='va'>hydrogen</span> <span class='op'>+</span> <span class='va'>oxygen</span> <span class='op'>+</span> <span class='va'>nitrogen</span> <span class='op'>+</span> <span class='va'>sulfur</span>,
+              data <span class='op'>=</span> <span class='va'>biomass_tr</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_center.html'>step_center</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_scale.html'>step_scale</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_spatialsign.html'>step_spatialsign</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span>(<span class='no'>rec</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '44,976 B'</div><div class='input'>
+<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>rec</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Memory released: </span><span style='color: #0000BB;'>'45,632 B'</span><span></span></div><div class='input'>
 <span class='co'># Another recipe object</span>
-<span class='no'>wrapped_recipes</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='no'>some_junk_in_environment</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>1e6</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/recipe.html'>recipe</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/step_center.html'>step_center</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/recipes/man/has_role.html'>all_predictors</a></span>()) <span class='kw'>%&gt;%</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/recipes/man/step_scale.html'>step_scale</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/recipes/man/has_role.html'>all_predictors</a></span>())
-  )
-}
+<span class='va'>wrapped_recipes</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>some_junk_in_environment</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>1e6</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://recipes.tidymodels.org/reference/recipe.html'>recipe</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+      <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_center.html'>step_center</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+      <span class='fu'><a href='https://recipes.tidymodels.org/reference/step_scale.html'>step_scale</a></span><span class='op'>(</span><span class='fu'><a href='https://recipes.tidymodels.org/reference/has_role.html'>all_predictors</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># Remove junk</span>
-<span class='no'>cleaned_recipes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span>(<span class='fu'>wrapped_recipes</span>(), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ✔ Memory released: '8,100,864 B'</div><div class='input'>
+<span class='va'>cleaned_recipes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='axe_env.html'>axe_env</a></span><span class='op'>(</span><span class='fu'>wrapped_recipes</span><span class='op'>(</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Memory released: </span><span style='color: #0000BB;'>'8,101,352 B'</span><span></span></div><div class='input'>
 <span class='co'># Check size</span>
-<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span>(<span class='no'>cleaned_recipes</span>)</div><div class='output co'>#&gt; 7,216 B</div><div class='input'>
-</div></pre>
+<span class='fu'>lobstr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span><span class='op'>(</span><span class='va'>cleaned_recipes</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 7,216 B</div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

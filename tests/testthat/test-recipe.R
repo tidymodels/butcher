@@ -51,8 +51,19 @@ test_that("recipe + axe_env() works", {
 })
 
 test_that("recipe + step_knnimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(credit_tr) %>%
     step_knnimpute(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
+})
+test_that("recipe + step_impute_knn + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(credit_tr) %>%
+    step_impute_knn(all_predictors())
   x <- axe_env(rec)
   terms_empty_env(x, 1)
   impute_empty_env(x, 1)

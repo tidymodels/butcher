@@ -30,6 +30,7 @@
 \alias{axe_env.step_inverse}
 \alias{axe_env.step_invlogit}
 \alias{axe_env.step_isomap}
+\alias{axe_env.step_impute_knn}
 \alias{axe_env.step_knnimpute}
 \alias{axe_env.step_kpca}
 \alias{axe_env.step_lag}
@@ -127,6 +128,8 @@
 \method{axe_env}{step_invlogit}(x, ...)
 
 \method{axe_env}{step_isomap}(x, ...)
+
+\method{axe_env}{step_impute_knn}(x, ...)
 
 \method{axe_env}{step_knnimpute}(x, ...)
 

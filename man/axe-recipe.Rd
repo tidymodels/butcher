@@ -37,6 +37,7 @@
 \alias{axe_env.step_lincomb}
 \alias{axe_env.step_log}
 \alias{axe_env.step_logit}
+\alias{axe_env.step_impute_lower}
 \alias{axe_env.step_lowerimpute}
 \alias{axe_env.step_meanimpute}
 \alias{axe_env.step_medianimpute}
@@ -142,6 +143,8 @@
 \method{axe_env}{step_log}(x, ...)
 
 \method{axe_env}{step_logit}(x, ...)
+
+\method{axe_env}{step_impute_lower}(x, ...)
 
 \method{axe_env}{step_lowerimpute}(x, ...)
 

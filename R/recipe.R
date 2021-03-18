@@ -371,13 +371,22 @@ axe_env.step_logit <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_lower} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_lower <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_lowerimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_lowerimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_lower()` in recipes 0.1.16
+  axe_env.step_impute_lower(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_meanimpute} function.

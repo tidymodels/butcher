@@ -586,8 +586,18 @@ test_that("recipe + step_impute_median + axe_env() works", {
 })
 
 test_that("recipe + step_modeimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_modeimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+test_that("recipe + step_impute_mode + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_mode(Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

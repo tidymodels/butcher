@@ -5,6 +5,7 @@
 \alias{axe_env.recipe}
 \alias{axe_env.step}
 \alias{axe_env.step_arrange}
+\alias{axe_env.step_impute_bag}
 \alias{axe_env.step_bagimpute}
 \alias{axe_env.step_bin2factor}
 \alias{axe_env.step_BoxCox}
@@ -76,6 +77,8 @@
 \method{axe_env}{step}(x, ...)
 
 \method{axe_env}{step_arrange}(x, ...)
+
+\method{axe_env}{step_impute_bag}(x, ...)
 
 \method{axe_env}{step_bagimpute}(x, ...)
 

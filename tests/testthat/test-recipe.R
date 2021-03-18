@@ -444,8 +444,19 @@ test_that("recipe + step_pca + axe_env() works", {
 })
 
 test_that("recipe + step_bagimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_bagimpute(Status, Home, Marital, Job, Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
+})
+test_that("recipe + step_impute_bag + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_bag(Status, Home, Marital, Job, Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
   impute_empty_env(x, 1)

@@ -80,14 +80,23 @@ axe_env.step_arrange <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_bag} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_bag <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_bagimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_bagimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_bag()` in recipes 0.1.16
+  axe_env.step_impute_bag(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_bin2factor} function.

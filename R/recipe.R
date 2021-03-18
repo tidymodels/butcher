@@ -407,13 +407,22 @@ axe_env.step_meanimpute <- function(x, ...) {
   axe_env.step_impute_mean(x, ...)
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_median} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_median <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_medianimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_medianimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_median()` in recipes 0.1.16
+  axe_env.step_impute_median(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_modeimpute} function.

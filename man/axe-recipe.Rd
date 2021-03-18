@@ -41,6 +41,7 @@
 \alias{axe_env.step_lowerimpute}
 \alias{axe_env.step_impute_mean}
 \alias{axe_env.step_meanimpute}
+\alias{axe_env.step_impute_median}
 \alias{axe_env.step_medianimpute}
 \alias{axe_env.step_modeimpute}
 \alias{axe_env.step_mutate}
@@ -152,6 +153,8 @@
 \method{axe_env}{step_impute_mean}(x, ...)
 
 \method{axe_env}{step_meanimpute}(x, ...)
+
+\method{axe_env}{step_impute_median}(x, ...)
 
 \method{axe_env}{step_medianimpute}(x, ...)
 

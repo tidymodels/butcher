@@ -69,7 +69,7 @@ Suggests:
     rpart,
     rsample,
     RSpectra,
-    survival,
+    survival (>= 3.2-10),
     testthat (>= 2.1.0),
     TH.data,
     xgboost (>= 1.3.2.1)

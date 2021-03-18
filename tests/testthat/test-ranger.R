@@ -54,7 +54,6 @@ test_that("ranger + survival option works", {
   skip_if_not_installed("survival")
   library(ranger)
   library(survival)
-  data(veteran)
   rg.veteran <- ranger(Surv(time, status) ~ ., data = veteran)
   x <- butcher(rg.veteran)
   expect_equal(timepoints(x),

@@ -5,6 +5,7 @@
 \alias{axe_env.recipe}
 \alias{axe_env.step}
 \alias{axe_env.step_arrange}
+\alias{axe_env.step_impute_bag}
 \alias{axe_env.step_bagimpute}
 \alias{axe_env.step_bin2factor}
 \alias{axe_env.step_BoxCox}
@@ -29,15 +30,20 @@
 \alias{axe_env.step_inverse}
 \alias{axe_env.step_invlogit}
 \alias{axe_env.step_isomap}
+\alias{axe_env.step_impute_knn}
 \alias{axe_env.step_knnimpute}
 \alias{axe_env.step_kpca}
 \alias{axe_env.step_lag}
 \alias{axe_env.step_lincomb}
 \alias{axe_env.step_log}
 \alias{axe_env.step_logit}
+\alias{axe_env.step_impute_lower}
 \alias{axe_env.step_lowerimpute}
+\alias{axe_env.step_impute_mean}
 \alias{axe_env.step_meanimpute}
+\alias{axe_env.step_impute_median}
 \alias{axe_env.step_medianimpute}
+\alias{axe_env.step_impute_mode}
 \alias{axe_env.step_modeimpute}
 \alias{axe_env.step_mutate}
 \alias{axe_env.step_naomit}
@@ -56,6 +62,7 @@
 \alias{axe_env.step_regex}
 \alias{axe_env.step_relu}
 \alias{axe_env.step_rm}
+\alias{axe_env.step_impute_roll}
 \alias{axe_env.step_rollimpute}
 \alias{axe_env.step_shuffle}
 \alias{axe_env.step_slice}
@@ -76,6 +83,8 @@
 \method{axe_env}{step}(x, ...)
 
 \method{axe_env}{step_arrange}(x, ...)
+
+\method{axe_env}{step_impute_bag}(x, ...)
 
 \method{axe_env}{step_bagimpute}(x, ...)
 
@@ -125,6 +134,8 @@
 
 \method{axe_env}{step_isomap}(x, ...)
 
+\method{axe_env}{step_impute_knn}(x, ...)
+
 \method{axe_env}{step_knnimpute}(x, ...)
 
 \method{axe_env}{step_kpca}(x, ...)
@@ -137,11 +148,19 @@
 
 \method{axe_env}{step_logit}(x, ...)
 
+\method{axe_env}{step_impute_lower}(x, ...)
+
 \method{axe_env}{step_lowerimpute}(x, ...)
+
+\method{axe_env}{step_impute_mean}(x, ...)
 
 \method{axe_env}{step_meanimpute}(x, ...)
 
+\method{axe_env}{step_impute_median}(x, ...)
+
 \method{axe_env}{step_medianimpute}(x, ...)
+
+\method{axe_env}{step_impute_mode}(x, ...)
 
 \method{axe_env}{step_modeimpute}(x, ...)
 
@@ -178,6 +197,8 @@
 \method{axe_env}{step_relu}(x, ...)
 
 \method{axe_env}{step_rm}(x, ...)
+
+\method{axe_env}{step_impute_roll}(x, ...)
 
 \method{axe_env}{step_rollimpute}(x, ...)
 

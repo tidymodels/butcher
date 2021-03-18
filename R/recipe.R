@@ -80,14 +80,23 @@ axe_env.step_arrange <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_bag} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_bag <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_bagimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_bagimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_bag()` in recipes 0.1.16
+  axe_env.step_impute_bag(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_bin2factor} function.
@@ -298,14 +307,23 @@ axe_env.step_isomap <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_knn} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_knn <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_knnimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_knnimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_knn()` in recipes 0.1.16
+  axe_env.step_impute_knn(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_kpca} function.
@@ -353,11 +371,29 @@ axe_env.step_logit <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_lower} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_lower <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_lowerimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_lowerimpute <- function(x, ...) {
+  # Renamed to `step_impute_lower()` in recipes 0.1.16
+  axe_env.step_impute_lower(x, ...)
+}
+
+#' A means to replace environments wrapped from the \code{step_impute_mean} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_mean <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
@@ -367,6 +403,15 @@ axe_env.step_lowerimpute <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_meanimpute <- function(x, ...) {
+  # Renamed to `step_impute_mean()` in recipes 0.1.16
+  axe_env.step_impute_mean(x, ...)
+}
+
+#' A means to replace environments wrapped from the \code{step_impute_median} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_median <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
@@ -376,6 +421,15 @@ axe_env.step_meanimpute <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_medianimpute <- function(x, ...) {
+  # Renamed to `step_impute_median()` in recipes 0.1.16
+  axe_env.step_impute_median(x, ...)
+}
+
+#' A means to replace environments wrapped from the \code{step_impute_mode} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_mode <- function(x, ...) {
   x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
   x
 }
@@ -385,8 +439,8 @@ axe_env.step_medianimpute <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_modeimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_mode()` in recipes 0.1.16
+  axe_env.step_impute_mode(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_mutate} function.
@@ -543,13 +597,22 @@ axe_env.step_rm <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_roll} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_roll <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_rollimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_rollimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_roll()` in recipes 0.1.16
+  axe_env.step_impute_roll(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_shuffle} function.

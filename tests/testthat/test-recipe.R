@@ -51,23 +51,54 @@ test_that("recipe + axe_env() works", {
 })
 
 test_that("recipe + step_knnimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(credit_tr) %>%
     step_knnimpute(all_predictors())
   x <- axe_env(rec)
   terms_empty_env(x, 1)
   impute_empty_env(x, 1)
 })
+test_that("recipe + step_impute_knn + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(credit_tr) %>%
+    step_impute_knn(all_predictors())
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
+})
 
 test_that("recipe + step_lowerimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(credit_tr) %>%
     step_lowerimpute(Time, Expenses, threshold = c(40,40))
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
+test_that("recipe + step_impute_lower + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(credit_tr) %>%
+    step_impute_lower(Time, Expenses, threshold = c(40,40))
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
 
 test_that("recipe + step_rollimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(credit_tr) %>%
     step_rollimpute(Time, statistic = median, window = 3)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+test_that("recipe + step_impute_roll + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(credit_tr) %>%
+    step_impute_roll(Time, statistic = median, window = 3)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
@@ -444,8 +475,19 @@ test_that("recipe + step_pca + axe_env() works", {
 })
 
 test_that("recipe + step_bagimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_bagimpute(Status, Home, Marital, Job, Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+  impute_empty_env(x, 1)
+})
+test_that("recipe + step_impute_bag + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_bag(Status, Home, Marital, Job, Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
   impute_empty_env(x, 1)
@@ -520,22 +562,52 @@ test_that("recipe + step_lincomb + axe_env() works", {
 })
 
 test_that("recipe + step_meanimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_meanimpute(Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
+test_that("recipe + step_impute_mean + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_mean(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
 
 test_that("recipe + step_medianimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_medianimpute(Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
+test_that("recipe + step_impute_median + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_median(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
 
 test_that("recipe + step_modeimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_modeimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+test_that("recipe + step_impute_mode + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_mode(Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

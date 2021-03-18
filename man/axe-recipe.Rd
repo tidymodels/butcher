@@ -62,6 +62,7 @@
 \alias{axe_env.step_regex}
 \alias{axe_env.step_relu}
 \alias{axe_env.step_rm}
+\alias{axe_env.step_impute_roll}
 \alias{axe_env.step_rollimpute}
 \alias{axe_env.step_shuffle}
 \alias{axe_env.step_slice}
@@ -196,6 +197,8 @@
 \method{axe_env}{step_relu}(x, ...)
 
 \method{axe_env}{step_rm}(x, ...)
+
+\method{axe_env}{step_impute_roll}(x, ...)
 
 \method{axe_env}{step_rollimpute}(x, ...)
 

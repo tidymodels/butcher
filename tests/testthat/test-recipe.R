@@ -87,8 +87,18 @@ test_that("recipe + step_impute_lower + axe_env() works", {
 })
 
 test_that("recipe + step_rollimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(credit_tr) %>%
     step_rollimpute(Time, statistic = median, window = 3)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+test_that("recipe + step_impute_roll + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(credit_tr) %>%
+    step_impute_roll(Time, statistic = median, window = 3)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

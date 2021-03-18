@@ -597,13 +597,22 @@ axe_env.step_rm <- function(x, ...) {
   x
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_roll} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_roll <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_rollimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_rollimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_roll()` in recipes 0.1.16
+  axe_env.step_impute_roll(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_shuffle} function.

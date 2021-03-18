@@ -4,8 +4,11 @@ test_that("survreg + penalized + predict() works", {
   skip_on_cran()
   skip_if_not_installed("survival")
   library(survival)
-  fit <- survreg(Surv(time, status) ~ rx + frailty.gaussian(litter, df = 13, sparse = FALSE),
-                 data = rats, subset = (sex == "f"))
+  fit <- survreg(
+    Surv(time, status) ~ rx,
+    data = rats,
+    subset = (sex == "f")
+  )
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_data(fit)

@@ -17,15 +17,14 @@
 #' # Create model and fit
 #' survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%
 #'   set_engine("survival") %>%
-#'   fit(Surv(time, status) ~ rx + frailty.gaussian(litter, df = 13), data = rats)
+#'   fit(Surv(time, status) ~ rx, data = rats)
 #'
 #' out <- butcher(survreg_fit, verbose = TRUE)
 #'
 #' # Another survreg.penal object
 #' wrapped_survreg.penal <- function() {
 #'   some_junk_in_environment <- runif(1e6)
-#'   fit <- survreg(Surv(time, status) ~ rx +
-#'                    frailty.gaussian(litter, df = 13, sparse = FALSE),
+#'   fit <- survreg(Surv(time, status) ~ rx,
 #'                  data = rats, subset = (sex == "f"))
 #'   return(fit)
 #' }

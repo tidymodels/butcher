@@ -2,6 +2,9 @@
 
 * Ensure butcher is compatible with recipes 0.1.16, where a few steps have been
   renamed.
+  
+* Fixed issue with survival 3.2-10, where butcher was using frailty terms
+  incorrectly (#184).
 
 # butcher 0.1.3
 

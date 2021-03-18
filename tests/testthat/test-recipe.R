@@ -77,7 +77,7 @@ test_that("recipe + step_lowerimpute + axe_env() works", {
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
-test_that("recipe + step_lowerimpute + axe_env() works", {
+test_that("recipe + step_impute_lower + axe_env() works", {
   skip_if_recipes_pre_0.1.16()
 
   rec <- recipe(credit_tr) %>%
@@ -552,8 +552,18 @@ test_that("recipe + step_lincomb + axe_env() works", {
 })
 
 test_that("recipe + step_meanimpute + axe_env() works", {
+  skip_if_recipes_post_0.1.16()
+
   rec <- recipe(Price ~ ., data = credit_tr) %>%
     step_meanimpute(Income, Assets, Debt)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
+})
+test_that("recipe + step_impute_mean + axe_env() works", {
+  skip_if_recipes_pre_0.1.16()
+
+  rec <- recipe(Price ~ ., data = credit_tr) %>%
+    step_impute_mean(Income, Assets, Debt)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

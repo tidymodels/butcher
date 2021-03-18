@@ -389,13 +389,22 @@ axe_env.step_lowerimpute <- function(x, ...) {
   axe_env.step_impute_lower(x, ...)
 }
 
+#' A means to replace environments wrapped from the \code{step_impute_mean} function.
+#'
+#' @rdname axe-recipe
+#' @export
+axe_env.step_impute_mean <- function(x, ...) {
+  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x
+}
+
 #' A means to replace environments wrapped from the \code{step_meanimpute} function.
 #'
 #' @rdname axe-recipe
 #' @export
 axe_env.step_meanimpute <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
-  x
+  # Renamed to `step_impute_mean()` in recipes 0.1.16
+  axe_env.step_impute_mean(x, ...)
 }
 
 #' A means to replace environments wrapped from the \code{step_medianimpute} function.

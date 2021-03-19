@@ -1,4 +1,4 @@
-# butcher (development version)
+# butcher 0.1.4
 
 * Ensure butcher is compatible with recipes 0.1.16, where a few steps have been
   renamed.

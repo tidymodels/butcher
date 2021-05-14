@@ -9,7 +9,7 @@ test_that("multnet + predict() works", {
   predictrs <- matrix(rnorm(100*20), ncol = 20)
   colnames(predictrs) <- paste0("a", seq_len(ncol(predictrs)))
   response <- as.factor(sample(1:4, 100, replace = TRUE))
-  fit <- multinom_reg() %>%
+  fit <- multinom_reg(penalty = 1) %>%
     set_engine("glmnet") %>%
     fit_xy(x = predictrs, y = response)
   x <- axe_call(fit)

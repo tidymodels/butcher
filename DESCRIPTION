@@ -57,7 +57,7 @@ Suggests:
     modeldata,
     NMF,
     nnet,
-    parsnip (>= 0.1.4),
+    parsnip (>= 0.1.5.9002),
     pkgload,
     pls,
     QSARdata,

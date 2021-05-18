@@ -110,7 +110,7 @@ axe_env.step_slice <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_impute_bag <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x <- NextMethod()
   x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
   x
 }
@@ -129,7 +129,7 @@ axe_env.step_bagimpute <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_impute_knn <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x <- NextMethod()
   x$impute_with <- purrr::map(x$impute_with, function(z) axe_env(z, ...))
   x
 }
@@ -167,7 +167,7 @@ axe_env.step_interact <- function(x, ...) {
 #' @rdname axe-recipe
 #' @export
 axe_env.step_ratio <- function(x, ...) {
-  x$terms <- purrr::map(x$terms, function(z) axe_env(z, ...))
+  x <- NextMethod()
   x$denom <- purrr::map(x$denom, function(z) axe_env(z, ...))
   x
 }

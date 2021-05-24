@@ -1,5 +1,9 @@
 # butcher (development version)
 
+* Added an `axe_env()` method to remove the `terms` environment for recipe
+  steps. This covers most recipe steps, but certain steps still need more
+  specific methods (@juliasilge, #193).
+
 # butcher 0.1.4
 
 * Ensure butcher is compatible with recipes 0.1.16, where a few steps have been
@@ -7,10 +11,6 @@
   
 * Fixed issue with survival 3.2-10, where butcher was using frailty terms
   incorrectly (#184).
-  
-* Added an `axe_env()` method to remove the `terms` environment for recipe
-  steps. This covers most recipe steps, but certain steps still need more
-  specific methods (@juliasilge, #193). 
 
 # butcher 0.1.3
 

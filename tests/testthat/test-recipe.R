@@ -422,13 +422,6 @@ test_that("recipe + step_window + axe_env() works", {
   terms_empty_env(x, 1)
 })
 
-test_that("recipe + step_upsample + axe_env() works", {
-  rec <- recipe( ~ ., data = okc) %>%
-    step_upsample(diet, ratio = 0.0121)
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
 test_that("recipe + step_unorder + axe_env() works", {
   rec <- recipe(HHV ~ ., data = biomass_tr) %>%
     step_unorder(all_predictors())
@@ -513,13 +506,6 @@ test_that("recipe + step_corr + axe_env() works", {
 test_that("recipe + step_depth + axe_env() works", {
   rec <- recipe(Species ~ ., data = iris) %>%
     step_depth(all_predictors(), class = "Species")
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
-test_that("recipe + step_downsample + axe_env() works", {
-  rec <- recipe( ~ ., data = okc) %>%
-    step_downsample(diet)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

@@ -197,7 +197,8 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='va'>survreg_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://parsnip.tidymodels.org/reference/surv_reg.html'>surv_reg</a></span><span class='op'>(</span>mode <span class='op'>=</span> <span class='st'>"regression"</span>, dist <span class='op'>=</span> <span class='st'>"weibull"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://parsnip.tidymodels.org/reference/set_engine.html'>set_engine</a></span><span class='op'>(</span><span class='st'>"survival"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://generics.r-lib.org/reference/fit.html'>fit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>status</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>rx</span>, data <span class='op'>=</span> <span class='va'>rats</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `surv_reg()` was deprecated in parsnip 0.1.6.</span>
+#&gt; <span class='warning'>Please use `survival_reg()` instead.</span></div><div class='input'>
 <span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>survreg_fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Memory released: </span><span style='color: #0000BB;'>'7,056 B'</span><span></span></div><div class='input'>
 <span class='co'># Another survreg.penal object</span>

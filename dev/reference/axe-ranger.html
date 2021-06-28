@@ -93,7 +93,7 @@ appended." />
         <a class="navbar-brand" href="../index.html">butcher</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.5.9000</span>
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
   <span class='fu'><a href='https://generics.r-lib.org/reference/fit.html'>fit</a></span><span class='op'>(</span><span class='va'>Species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>iris_train</span><span class='op'>)</span>
 
 <span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>ranger_fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span><span> No memory released. Do not butcher.</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span> No memory released. Do not butcher.</span></div><div class='input'>
 <span class='co'># Another ranger object</span>
 <span class='va'>wrapped_ranger</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
@@ -223,8 +223,8 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='op'>}</span>
 
 <span class='va'>cleaned_ranger</span> <span class='op'>&lt;-</span> <span class='fu'><a href='axe_fitted.html'>axe_fitted</a></span><span class='op'>(</span><span class='fu'>wrapped_ranger</span><span class='op'>(</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Memory released: </span><span style='color: #0000BB;'>'392 B'</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>✖</span><span> Disabled: </span><span style='color: #555555;'>`predictions()`</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>✖</span><span> Could not add </span><span style='color: #0000BB;'>'butchered'</span><span> class</span></div><div class='input'>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'392 B'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span> Disabled: <span style='color: #555555;'>`predictions()`</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span> Could not add <span style='color: #0000BB;'>'butchered'</span> class</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

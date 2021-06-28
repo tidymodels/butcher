@@ -87,7 +87,7 @@
         <a class="navbar-brand" href="../index.html">butcher</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.5.9000</span>
         </div>
       </div>
     </div>
@@ -186,25 +186,25 @@ options include <code>KB</code> and <code>GB</code>.</p></td>
 <span class='va'>simulate_y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>simulate_x</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
 <span class='va'>lm_out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>simulate_y</span> <span class='op'>~</span> <span class='va'>simulate_x</span><span class='op'>)</span>
 <span class='fu'>weigh</span><span class='op'>(</span><span class='va'>lm_out</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16 x 2</span>
 #&gt;    object                size
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> terms            88.0     
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> qr.qr            44.0     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> residuals        36.0     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> fitted.values    36.0     
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> effects           8.00    
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> model.simulate_x  8.00    
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> model.simulate_y  4.00    
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> call              0.000</span><span style='text-decoration: underline;'>56</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> coefficients      0.000</span><span style='text-decoration: underline;'>464</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> qr.qraux          0.000</span><span style='text-decoration: underline;'>08</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> assign            0.000</span><span style='text-decoration: underline;'>064</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> qr.pivot          0.000</span><span style='text-decoration: underline;'>064</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> rank              0.000</span><span style='text-decoration: underline;'>056</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> qr.tol            0.000</span><span style='text-decoration: underline;'>056</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> qr.rank           0.000</span><span style='text-decoration: underline;'>056</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>16</span><span> df.residual       0.000</span><span style='text-decoration: underline;'>056</span><span></div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> terms            88.0     
+#&gt; <span style='color: #BCBCBC;'> 2</span> qr.qr            44.0     
+#&gt; <span style='color: #BCBCBC;'> 3</span> residuals        36.0     
+#&gt; <span style='color: #BCBCBC;'> 4</span> fitted.values    36.0     
+#&gt; <span style='color: #BCBCBC;'> 5</span> effects           8.00    
+#&gt; <span style='color: #BCBCBC;'> 6</span> model.simulate_x  8.00    
+#&gt; <span style='color: #BCBCBC;'> 7</span> model.simulate_y  4.00    
+#&gt; <span style='color: #BCBCBC;'> 8</span> call              0.000<span style='text-decoration: underline;'>56</span> 
+#&gt; <span style='color: #BCBCBC;'> 9</span> coefficients      0.000<span style='text-decoration: underline;'>464</span>
+#&gt; <span style='color: #BCBCBC;'>10</span> qr.qraux          0.000<span style='text-decoration: underline;'>08</span> 
+#&gt; <span style='color: #BCBCBC;'>11</span> assign            0.000<span style='text-decoration: underline;'>064</span>
+#&gt; <span style='color: #BCBCBC;'>12</span> qr.pivot          0.000<span style='text-decoration: underline;'>064</span>
+#&gt; <span style='color: #BCBCBC;'>13</span> rank              0.000<span style='text-decoration: underline;'>056</span>
+#&gt; <span style='color: #BCBCBC;'>14</span> qr.tol            0.000<span style='text-decoration: underline;'>056</span>
+#&gt; <span style='color: #BCBCBC;'>15</span> qr.rank           0.000<span style='text-decoration: underline;'>056</span>
+#&gt; <span style='color: #BCBCBC;'>16</span> df.residual       0.000<span style='text-decoration: underline;'>056</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -88,7 +88,7 @@ carry out mixture discriminant analysis." />
         <a class="navbar-brand" href="../index.html">butcher</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.5.9000</span>
         </div>
       </div>
     </div>
@@ -190,7 +190,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 
 <span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/mda/man/mda.html'>mda</a></span><span class='op'>(</span><span class='va'>Species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>iris</span><span class='op'>)</span>
 <span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Memory released: </span><span style='color: #0000BB;'>'10,680 B'</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>✖</span><span> Disabled: </span><span style='color: #555555;'>`print()`</span><span>, </span><span style='color: #555555;'>`summary()`</span><span>, </span><span style='color: #555555;'>`update()`</span><span></span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'10,680 B'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span> Disabled: <span style='color: #555555;'>`print()`</span>, <span style='color: #555555;'>`summary()`</span>, <span style='color: #555555;'>`update()`</span></span></div><div class='input'>
 <span class='co'># Another mda object</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>glass</span><span class='op'>)</span>
 <span class='va'>wrapped_mda</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
@@ -202,7 +202,7 @@ disabled. Default is <code>FALSE</code>.</p></td>
 <span class='fu'>lobstr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span><span class='op'>(</span><span class='fu'>wrapped_mda</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 8,058,992 B</div><div class='input'><span class='fu'>lobstr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/obj_size.html'>obj_size</a></span><span class='op'>(</span><span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='fu'>wrapped_mda</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 29,600 B</div><div class='input'>
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

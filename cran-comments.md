@@ -1,11 +1,6 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 notes
-
-   New maintainer:
-     Davis Vaughan <davis@rstudio.com>
-   Old maintainer(s):
-     Joyce Cahoon <joyceyu48@gmail.com>
+0 errors | 0 warnings | 0 notes
      
 ## revdepcheck results
 
@@ -13,6 +8,10 @@ We checked 4 reverse dependencies, comparing R CMD check results across CRAN and
 
  * We saw 0 new problems
  * We failed to check 0 packages
+ 
+## Submission 0.1.5
+
+This release improves butchering support for recipe steps.
 
 ## Submission 0.1.4
 

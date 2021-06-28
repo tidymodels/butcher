@@ -1,4 +1,4 @@
-# butcher (development version)
+# butcher 0.1.5
 
 * Added an `axe_env()` method to remove the `terms` environment for recipe
   steps. This covers most recipe steps, but certain steps still need more

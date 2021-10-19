@@ -25,8 +25,10 @@ jobs:
           - {os: macOS-latest,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
+          # Don't use Windows 3.6 build to avoid igraph always being
+          # installed from source and failing
           # Use 3.6 to trigger usage of RTools35
-          - {os: windows-latest, r: '3.6'}
+          # - {os: windows-latest, r: '3.6'}
 
           # Use older ubuntu to maximise backward compatibility
           - {os: ubuntu-18.04,   r: 'devel', http-user-agent: 'release'}
@@ -34,7 +36,8 @@ jobs:
           - {os: ubuntu-18.04,   r: 'oldrel-1'}
           - {os: ubuntu-18.04,   r: 'oldrel-2'}
           - {os: ubuntu-18.04,   r: 'oldrel-3'}
-          - {os: ubuntu-18.04,   r: 'oldrel-4'}
+          # Don't use R 3.4 build. survival, mda, TH.data require >=3.5.
+          # - {os: ubuntu-18.04,   r: 'oldrel-4'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

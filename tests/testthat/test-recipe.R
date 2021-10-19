@@ -510,13 +510,6 @@ test_that("recipe + step_depth + axe_env() works", {
   terms_empty_env(x, 1)
 })
 
-test_that("recipe + step_ica + axe_env() works", {
-  rec <- recipe(Species ~ ., data = iris) %>%
-    step_ica(Petal.Width, Sepal.Width, num_comp = 2)
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
 test_that("recipe + step_isomap + axe_env() works", {
   rec <- recipe(HHV ~ ., data = biomass_tr) %>%
     step_isomap(all_predictors(), neighbors = 5, num_terms = 2)

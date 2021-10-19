@@ -46,7 +46,6 @@ Suggests:
     dplyr,
     e1071,
     earth,
-    fastICA,
     flexsurv,
     ipred,
     kernlab,

@@ -1,5 +1,8 @@
 # butcher (development version)
 
+* Removed fastICA and NMF from Suggests. fastICA requires R >= 4.0.0 now, and
+  NMF is often hard to install and was only used for one test (#201).
+
 # butcher 0.1.5
 
 * Added an `axe_env()` method to remove the `terms` environment for recipe

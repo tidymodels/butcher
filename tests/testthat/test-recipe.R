@@ -397,13 +397,6 @@ test_that("recipe + step_slice + axe_env() works", {
   inputs_empty_env(x, 1)
 })
 
-test_that("recipe + step_nnmf + axe_env() works", {
-  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
-    step_nnmf(all_predictors(), num_comp = 2, seed = 473, num_run = 2)
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
 test_that("recipe + step_zv + axe_env() works", {
   rec <- recipe(HHV ~ ., data = biomass_tr) %>%
     step_zv(all_predictors())
@@ -506,13 +499,6 @@ test_that("recipe + step_corr + axe_env() works", {
 test_that("recipe + step_depth + axe_env() works", {
   rec <- recipe(Species ~ ., data = iris) %>%
     step_depth(all_predictors(), class = "Species")
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
-test_that("recipe + step_ica + axe_env() works", {
-  rec <- recipe(Species ~ ., data = iris) %>%
-    step_ica(Petal.Width, Sepal.Width, num_comp = 2)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

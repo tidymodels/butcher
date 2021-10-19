@@ -180,7 +180,7 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">big_lm</span> <span class="op">&lt;-</span> <span class="fu">in_house_model</span><span class="op">(</span><span class="op">)</span>
 <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">big_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 25 x 2</span>
+<span class="co">#&gt; # A tibble: 25 × 2</span>
 <span class="co">#&gt;    object            size</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 terms         8.01    </span>
@@ -199,7 +199,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org">rlang</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">$</span><span class="va">terms</span><span class="op">)</span>
-<span class="co">#&gt; &lt;environment: 0x5562090072e8&gt;</span>
+<span class="co">#&gt; &lt;environment: 0x55725816b100&gt;</span>
 <span class="co">#&gt; parent: &lt;environment: global&gt;</span>
 <span class="co">#&gt; bindings:</span>
 <span class="co">#&gt;  * some_junk_in_the_environment: &lt;dbl&gt;</span></code></pre></div>
@@ -209,7 +209,7 @@
 <p>Comparing it against our <code>old_lm</code>, we find:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">cleaned_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 25 x 2</span>
+<span class="co">#&gt; # A tibble: 25 × 2</span>
 <span class="co">#&gt;    object            size</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 terms         0.00789 </span>
@@ -226,7 +226,7 @@
 <p>…it now takes the same memory on disk:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">old_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 25 x 2</span>
+<span class="co">#&gt; # A tibble: 25 × 2</span>
 <span class="co">#&gt;    object            size</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 terms         0.00781 </span>

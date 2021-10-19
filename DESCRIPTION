@@ -54,7 +54,6 @@ Suggests:
     MASS,
     mda,
     modeldata,
-    NMF,
     nnet,
     parsnip (>= 0.1.6),
     pkgload,

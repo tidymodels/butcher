@@ -18,7 +18,7 @@ assess_object(og, butchered)
 \description{
 These functions leverage the \code{ui.R} as provided in the
 \pkg{usethis} package. Original reference here:
-\url{https://github.com/r-lib/usethis/blob/master/R/ui.R}.
+\url{https://github.com/r-lib/usethis/blob/main/R/ui.R}.
 These console messages are created such that the user is
 aware of the effects of removing specific components from
 the model object.

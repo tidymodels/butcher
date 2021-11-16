@@ -59,7 +59,7 @@ old_lm <- lm(mpg ~ ., data = mtcars)
 old_lm
 ```
 
-Let's say we take we take this familiar `old_lm` approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping `lm()` in other function, but in doing so, we may end up carrying some junk.
+Let's say we take this familiar `old_lm` approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping `lm()` in other function, but in doing so, we may end up carrying some junk.
 
 ```{r, warning = F, message = F}
 in_house_model <- function() {

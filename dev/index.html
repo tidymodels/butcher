@@ -220,7 +220,7 @@
 <a href="#model-object-coverage" class="anchor"></a>Model Object Coverage</h2>
 <p>The current axe methods have been tested on all <code>parsnip</code> model objects as listed <a href="https://www.tidymodels.org/find/parsnip/">here</a>. If you are working with a new model object that could benefit from any kind of axing, we would love for you to make a pull request! You can visit the <code><a href="articles/adding-models-to-butcher.html">vignette("adding-models-to-butcher")</a></code> for more guidelines, but in short, to contribute a set of axe methods:</p>
 <ol>
-<li>Run <code><a href="reference/new_model_butcher.html">new_model_butcher(model_class = "your_object", package_name = "your_package")</a></code>
+<li>Run <code>new_model_butcher(model_class = "your_object", package_name = "your_package")</code>
 </li>
 <li>Use butcher helper functions <code><a href="reference/weigh.html">butcher::weigh()</a></code> and <code><a href="reference/locate.html">butcher::locate()</a></code> to decide what to axe</li>
 <li>Finalize edits to <code>R/your_object.R</code> and <code>tests/testthat/test-your_object.R</code>

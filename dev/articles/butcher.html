@@ -116,24 +116,24 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart">rpart</a></span><span class="op">)</span>
 
-<span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"C5.0"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"C5.0"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span> <span class="op">~</span> <span class="va">disp</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
 <p>Or, let’s say you’re working on petabytes of data, in which data are distributed across many nodes, just switch out the <code>parsnip</code> engine:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">sparklyr</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://spark.rstudio.com/">sparklyr</a></span><span class="op">)</span>
 
 <span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu">spark_connect</span><span class="op">(</span>master <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span>
 
 <span class="va">mtcars_tbls</span> <span class="op">&lt;-</span> <span class="fu">sdf_copy_to</span><span class="op">(</span><span class="va">sc</span>, <span class="va">mtcars</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 
-<span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"spark"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"spark"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">disp</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars_tbls</span><span class="op">)</span></code></pre></div>
 <p>Yet, while our code may appear compact, the underlying fitted result may not be. Since <code>parsnip</code> works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the popular <code>lm</code> function from the base <code>stats</code> package. Whether you leverage <code>parsnip</code> or not, you arrive at the same result:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">parsnip_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/linear_reg.html">linear_reg</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">parsnip_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/linear_reg.html">linear_reg</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">"lm"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> 
 <span class="va">parsnip_lm</span>
 <span class="co">#&gt; parsnip model object</span>
@@ -161,7 +161,7 @@
 <span class="co">#&gt;    12.30337     -0.11144      0.01334     -0.02148      0.78711     -3.71530  </span>
 <span class="co">#&gt;        qsec           vs           am         gear         carb  </span>
 <span class="co">#&gt;     0.82104      0.31776      2.52023      0.65541     -0.19942</span></code></pre></div>
-<p>Let’s say we take we take this familiar <code>old_lm</code> approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> in other function, but in doing so, we may end up carrying some junk.</p>
+<p>Let’s say we take this familiar <code>old_lm</code> approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> in other function, but in doing so, we may end up carrying some junk.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">in_house_model</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">some_junk_in_the_environment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1e6</span><span class="op">)</span> <span class="co"># we didn't know about</span>
@@ -199,7 +199,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org">rlang</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rlang.r-lib.org/reference/env_print.html">env_print</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">$</span><span class="va">terms</span><span class="op">)</span>
-<span class="co">#&gt; &lt;environment: 0x55f6152d8230&gt;</span>
+<span class="co">#&gt; &lt;environment: 0x555fbabe6240&gt;</span>
 <span class="co">#&gt; parent: &lt;environment: global&gt;</span>
 <span class="co">#&gt; bindings:</span>
 <span class="co">#&gt;  * some_junk_in_the_environment: &lt;dbl&gt;</span></code></pre></div>
@@ -275,8 +275,8 @@
 <span class="co">#&gt;            18.87004            19.69383            13.94112            24.36827</span></code></pre></div>
 <p>Alternatively, we can pick and choose specific axe functions, removing only those parts of the model object that we are no longer interested in characterizing.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">butchered_lm</span> <span class="op">&lt;-</span> <span class="va">big_lm</span> <span class="op">%&gt;%</span>
-  <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">butchered_lm</span> <span class="op">&lt;-</span> <span class="va">big_lm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/axe_fitted.html">axe_fitted</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">butchered_lm</span>, <span class="va">mtcars</span><span class="op">[</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt;           Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive </span>

@@ -186,37 +186,41 @@ disabled. Default is <code>FALSE</code>.</p></td>
     <p>Axed nnet object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Load libraries</span>
-<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://parsnip.tidymodels.org'>parsnip</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>nnet</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Create and fit model</span>
-<span class='va'>nnet_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://parsnip.tidymodels.org/reference/mlp.html'>mlp</a></span><span class='op'>(</span><span class='st'>"classification"</span>, hidden_units <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://parsnip.tidymodels.org/reference/set_engine.html'>set_engine</a></span><span class='op'>(</span><span class='st'>"nnet"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://generics.r-lib.org/reference/fit.html'>fit</a></span><span class='op'>(</span><span class='va'>Species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>iris</span><span class='op'>)</span>
-
-<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>nnet_fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'5,896 B'</span></span></div><div class='input'>
-<span class='co'># Another nnet object</span>
-<span class='va'>targets</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nnet/man/class.ind.html'>class.ind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"setosa"</span>, <span class='fl'>50</span><span class='op'>)</span>,
-                       <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"versicolor"</span>, <span class='fl'>50</span><span class='op'>)</span>,
-                       <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"virginica"</span>, <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nnet/man/nnet.html'>nnet</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,
-            <span class='va'>targets</span>,
-            size <span class='op'>=</span> <span class='fl'>2</span>,
-            rang <span class='op'>=</span> <span class='fl'>0.1</span>,
-            decay <span class='op'>=</span> <span class='fl'>5e-4</span>,
-            maxit <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # weights:  19
-#&gt; initial  value 112.296035 
-#&gt; iter  10 value 73.328732
-#&gt; iter  20 value 38.108142
-#&gt; final  value 38.108142 
-#&gt; stopped after 20 iterations</div><div class='input'>
-<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'4,952 B'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span> Disabled: <span style='color: #555555;'>`fitted()`</span>, <span style='color: #555555;'>`predict() with no new data`</span>, <span style='color: #555555;'>`dimnames(axed_object$fitted.values)`</span></span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Load libraries</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://parsnip.tidymodels.org'>parsnip</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>nnet</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Create and fit model</span></span>
+<span class='r-in'><span class='va'>nnet_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://parsnip.tidymodels.org/reference/mlp.html'>mlp</a></span><span class='op'>(</span><span class='st'>"classification"</span>, hidden_units <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://parsnip.tidymodels.org/reference/set_engine.html'>set_engine</a></span><span class='op'>(</span><span class='st'>"nnet"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://generics.r-lib.org/reference/fit.html'>fit</a></span><span class='op'>(</span><span class='va'>Species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>nnet_fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'5,896 B'</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Another nnet object</span></span>
+<span class='r-in'><span class='va'>targets</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nnet/man/class.ind.html'>class.ind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"setosa"</span>, <span class='fl'>50</span><span class='op'>)</span>,</span>
+<span class='r-in'>                       <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"versicolor"</span>, <span class='fl'>50</span><span class='op'>)</span>,</span>
+<span class='r-in'>                       <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"virginica"</span>, <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nnet/man/nnet.html'>nnet</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,</span>
+<span class='r-in'>            <span class='va'>targets</span>,</span>
+<span class='r-in'>            size <span class='op'>=</span> <span class='fl'>2</span>,</span>
+<span class='r-in'>            rang <span class='op'>=</span> <span class='fl'>0.1</span>,</span>
+<span class='r-in'>            decay <span class='op'>=</span> <span class='fl'>5e-4</span>,</span>
+<span class='r-in'>            maxit <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # weights:  19</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> initial  value 112.296035 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iter  10 value 73.328732</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iter  20 value 38.108142</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> final  value 38.108142 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> stopped after 20 iterations</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='butcher.html'>butcher</a></span><span class='op'>(</span><span class='va'>fit</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Memory released: <span style='color: #0000BB;'>'4,952 B'</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>✖</span> Disabled: <span style='color: #555555;'>`fitted()`</span>, <span style='color: #555555;'>`predict() with no new data`</span>, <span style='color: #555555;'>`dimnames(axed_object$fitted.values)`</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -597,3 +597,10 @@ test_that("recipe + step_nzv + axe_env() works", {
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
+
+test_that("recipe + axe_fitted() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_nzv(all_predictors())
+  x <- axe_fitted(rec)
+  expect_identical(x$template, as_tibble(biomass_tr[integer(), ]))
+})

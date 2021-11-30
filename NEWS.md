@@ -2,6 +2,7 @@
 
 * Removed fastICA and NMF from Suggests. fastICA requires R >= 4.0.0 now, and
   NMF is often hard to install and was only used for one test (#201).
+* Added an `axe_fitted()` method to remove the `template` slot for prepped recipes (@AshesITR, #207).
 
 # butcher 0.1.5
 

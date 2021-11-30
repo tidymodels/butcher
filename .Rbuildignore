@@ -1,5 +1,6 @@
 ^butcher\.Rproj$
 ^\.Rproj\.user$
+^\.idea$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^inst/extdata-scripts$

@@ -33,15 +33,19 @@
 #'   return(
 #'     recipe(mpg ~ cyl, data = mtcars) %>%
 #'       step_center(all_predictors()) %>%
-#'       step_scale(all_predictors())
+#'       step_scale(all_predictors()) %>%
+#'       prep()
 #'   )
 #' }
 #'
 #' # Remove junk
 #' cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
+#' # Remove prepared training data
+#' cleaned_recipes2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 #'
 #' # Check size
 #' lobstr::obj_size(cleaned_recipes)
+#' lobstr::obj_size(cleaned_recipes2)
 #'
 #' @name axe-recipe
 NULL
@@ -179,4 +183,19 @@ axe_env.step_ratio <- function(x, ...) {
 axe_env.quosure <- function(x, ...) {
   attr(x, ".Environment") <- rlang::base_env()
   x
+}
+
+#' Remove fitted values
+#'
+#' @rdname axe-recipe
+#' @export
+axe_fitted.recipe <- function(x, verbose = FALSE, ...) {
+  old <- x
+  x$template <- x$template[integer(), ]
+
+  add_butcher_attributes(
+    x,
+    old,
+    verbose = verbose
+  )
 }

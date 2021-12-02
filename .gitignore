@@ -1,11 +1,8 @@
 .Rproj.user
-.idea
 .Rhistory
 .RData
 inst/doc
 derby.log
 logs/
-
 *.DS_Store
-
 docs/

@@ -13,7 +13,7 @@
 #' @return Axed recipe object.
 #'
 #' @examples
-#' suppressWarnings(suppressMessages(library(recipes)))
+#' suppressPackageStartupMessages(library(recipes))
 #' library(modeldata)
 #'
 #' data(biomass)
@@ -38,14 +38,14 @@
 #'   )
 #' }
 #'
-#' # Remove junk
-#' cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
-#' # Remove prepared training data
-#' cleaned_recipes2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
+#' # Remove junk in environment
+#' cleaned1 <- axe_env(wrapped_recipes(), verbose = TRUE)
+#' # Replace prepared training data with zero-row slice
+#' cleaned2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 #'
 #' # Check size
-#' lobstr::obj_size(cleaned_recipes)
-#' lobstr::obj_size(cleaned_recipes2)
+#' lobstr::obj_size(cleaned1)
+#' lobstr::obj_size(cleaned2)
 #'
 #' @name axe-recipe
 NULL
@@ -191,7 +191,7 @@ axe_env.quosure <- function(x, ...) {
 #' @export
 axe_fitted.recipe <- function(x, verbose = FALSE, ...) {
   old <- x
-  x$template <- x$template[integer(), ]
+  x$template <- vctrs::vec_ptype(x$template)
 
   add_butcher_attributes(
     x,

@@ -71,7 +71,7 @@ butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
 }
 \examples{
-suppressWarnings(suppressMessages(library(recipes)))
+suppressPackageStartupMessages(library(recipes))
 library(modeldata)
 
 data(biomass)
@@ -96,13 +96,13 @@ wrapped_recipes <- function() {
   )
 }
 
-# Remove junk
-cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
-# Remove prepared training data
-cleaned_recipes2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
+# Remove junk in environment
+cleaned1 <- axe_env(wrapped_recipes(), verbose = TRUE)
+# Replace prepared training data with zero-row slice
+cleaned2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 
 # Check size
-lobstr::obj_size(cleaned_recipes)
-lobstr::obj_size(cleaned_recipes2)
+lobstr::obj_size(cleaned1)
+lobstr::obj_size(cleaned2)
 
 }

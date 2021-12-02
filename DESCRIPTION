@@ -35,7 +35,8 @@ Imports:
     rlang,
     tibble (>= 2.1.1),
     usethis (>= 1.5.0),
-    utils
+    utils,
+    vctrs
 Suggests: 
     C50,
     caret,

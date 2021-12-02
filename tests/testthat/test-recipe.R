@@ -11,6 +11,7 @@ library(modeldata)
 # Data sets used for testing
 data(biomass)
 biomass_tr <- biomass[biomass$dataset == "Training",]
+biomass_te <- biomass[biomass$dataset == "Testing",]
 data(credit_data)
 set.seed(55)
 train_test_split <- initial_split(credit_data)
@@ -596,4 +597,19 @@ test_that("recipe + step_nzv + axe_env() works", {
     step_nzv(all_predictors())
   x <- axe_env(rec)
   terms_empty_env(x, 1)
+})
+
+test_that("recipe + axe_fitted() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_nzv(all_predictors())
+  x <- axe_fitted(rec)
+  expect_identical(x$template, as_tibble(biomass_tr[integer(), ]))
+})
+
+test_that("recipe + bake() works", {
+  rec <- recipe(HHV ~ ., data = biomass_tr) %>%
+    step_nzv(all_predictors()) %>%
+    prep()
+  x <- butcher(rec)
+  expect_identical(bake(x, biomass_te), bake(rec, biomass_te))
 })

@@ -16,6 +16,7 @@
 \alias{axe_env.step_interact}
 \alias{axe_env.step_ratio}
 \alias{axe_env.quosure}
+\alias{axe_fitted.recipe}
 \title{Axing a recipe object.}
 \usage{
 \method{axe_env}{recipe}(x, verbose = FALSE, ...)
@@ -45,6 +46,8 @@
 \method{axe_env}{step_ratio}(x, ...)
 
 \method{axe_env}{quosure}(x, ...)
+
+\method{axe_fitted}{recipe}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{A model object.}
@@ -68,7 +71,7 @@ butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
 }
 \examples{
-suppressWarnings(suppressMessages(library(recipes)))
+suppressPackageStartupMessages(library(recipes))
 library(modeldata)
 
 data(biomass)
@@ -88,14 +91,18 @@ wrapped_recipes <- function() {
   return(
     recipe(mpg ~ cyl, data = mtcars) \%>\%
       step_center(all_predictors()) \%>\%
-      step_scale(all_predictors())
+      step_scale(all_predictors()) \%>\%
+      prep()
   )
 }
 
-# Remove junk
-cleaned_recipes <- axe_env(wrapped_recipes(), verbose = TRUE)
+# Remove junk in environment
+cleaned1 <- axe_env(wrapped_recipes(), verbose = TRUE)
+# Replace prepared training data with zero-row slice
+cleaned2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 
 # Check size
-lobstr::obj_size(cleaned_recipes)
+lobstr::obj_size(cleaned1)
+lobstr::obj_size(cleaned2)
 
 }

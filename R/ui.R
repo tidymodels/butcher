@@ -10,6 +10,7 @@
 #' @param og Original model object.
 #' @param butchered Butchered model object.
 #'
+#' @keywords internal
 #' @name ui
 
 #' @rdname ui

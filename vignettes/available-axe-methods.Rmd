@@ -2,7 +2,7 @@
 title: "Available axe methods"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{available-axe-methods}
+  %\VignetteIndexEntry{Available axe methods}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

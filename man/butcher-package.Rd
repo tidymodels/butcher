@@ -32,7 +32,8 @@ of a \code{butcher} class assignment.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://butcher.tidymodels.org}
+  \item \url{https://butcher.tidymodels.org/}
+  \item \url{https://github.com/tidymodels/butcher}
   \item Report bugs at \url{https://github.com/tidymodels/butcher/issues}
 }
 
@@ -45,6 +46,11 @@ Authors:
   \item Joyce Cahoon \email{joyceyu48@gmail.com} (\href{https://orcid.org/0000-0001-7217-4702}{ORCID})
   \item Max Kuhn \email{max@rstudio.com}
   \item Alex Hayes \email{alexpghayes@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder, funder]
 }
 
 }

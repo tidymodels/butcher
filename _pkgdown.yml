@@ -1,22 +1,17 @@
 url: https://butcher.tidymodels.org
 
-destination: docs
-
 template:
+  bootstrap: 5
+  bslib:
+    danger: "#CA225E"
+    primary: "#CA225E"
   package: tidytemplate
-  params:
-    theme: tidymodels
-    part_of: <a href="https://tidymodels.org">tidymodels</a>
-    footer: butcher is a part of the <strong>tidymodels</strong> ecosystem, a collection of modeling packages designed with common APIs and a shared philosophy.
 
 development:
   mode: auto
 
-home:
-  strip_header: true
-
 reference:
-- title: Butchering Objects
+- title: How to use butcher
   contents:
   - butcher
   - axe_call
@@ -24,6 +19,9 @@ reference:
   - axe_data
   - axe_env
   - axe_fitted
+- title: Specific butchering methods
+  contents:
+  - starts_with("axe-")
 - title: Adding new model objects
   contents:
   - new_model_butcher

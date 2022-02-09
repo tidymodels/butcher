@@ -5,6 +5,8 @@
 
 * Added an `axe_fitted()` method to butcher the `template` slot for prepped 
   recipes (@AshesITR, #207).
+  
+* Added butcher methods for `glm()`.  
 
 # butcher 0.1.5
 

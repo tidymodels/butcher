@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Codecov test
-coverage](https://codecov.io/gh/tidymodels/butcher/branch/main/graph/badge.svg)](https://codecov.io/gh/tidymodels/butcher?branch=main)
+coverage](https://codecov.io/gh/tidymodels/butcher/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher?branch=main)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R-CMD-check](https://github.com/tidymodels/butcher/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/butcher/actions)

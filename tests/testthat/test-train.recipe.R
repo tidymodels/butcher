@@ -10,9 +10,9 @@ test_that("train + predict() works", {
   skip_if_not_installed("caret")
   skip_if_not_installed("recipes")
   # Load
-  library(recipes)
-  library(caret)
-  library(modeldata)
+  suppressPackageStartupMessages(library(recipes))
+  suppressPackageStartupMessages(library(caret))
+  suppressPackageStartupMessages(library(modeldata))
   # Data
   data(biomass)
   biomass_tr <- biomass[biomass$dataset == "Training",]

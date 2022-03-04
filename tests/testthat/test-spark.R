@@ -12,8 +12,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
@@ -93,8 +93,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
@@ -120,8 +120,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Binary classification data
@@ -180,9 +180,9 @@
 #   skip_if_not_installed("dplyr")
 #   skip_if_not_installed("parsnip")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
-#   library(parsnip)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
+#   suppressPackageStartupMessages(library(parsnip))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data

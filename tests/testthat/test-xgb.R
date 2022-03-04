@@ -5,7 +5,7 @@
 test_that("xgb.Booster + linear solver + predict() works", {
   skip_on_cran()
   skip_if_not_installed("xgboost")
-  library(xgboost)
+  suppressPackageStartupMessages(library(xgboost))
   # Load data
   data(agaricus.train)
   data(agaricus.test)
@@ -37,7 +37,7 @@ test_that("xgb.Booster + linear solver + predict() works", {
 test_that("xgb.Booster + tree-learning algo + predict() works", {
   skip_on_cran()
   skip_if_not_installed("xgboost")
-  library(xgboost)
+  suppressPackageStartupMessages(library(xgboost))
   # Load data
   data(agaricus.train)
   data(agaricus.test)

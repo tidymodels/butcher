@@ -3,8 +3,8 @@ test_that("sclass + axe_() works", {
   skip_if_not_installed("ipred")
   skip_if_not_installed("TH.data")
   # Load
-  library(ipred)
-  library(TH.data)
+  suppressPackageStartupMessages(library(ipred))
+  suppressPackageStartupMessages(library(TH.data))
   # Data
   data("GlaucomaM", package = "TH.data")
   # Fit

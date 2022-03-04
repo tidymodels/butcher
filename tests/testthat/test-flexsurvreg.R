@@ -45,6 +45,5 @@ test_that("flexsurvreg + custom distribution + predict() works", {
   library(flexsurv)
   fit <- flexsurvreg(Surv(futime, fustat) ~ 1, data = ovarian, dist = "weibull")
   x <- butcher(fit)
-  expect_equal(model.frame(x), model.frame(fit))
   expect_equal(model.matrix(x), model.matrix(fit))
 })

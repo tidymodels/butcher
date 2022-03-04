@@ -1,5 +1,3 @@
-context("weigh")
-
 test_that("weigh() recursively measures size of each object component", {
   simulate_x <- matrix(runif(1e+6), ncol = 2)
   simulate_y <- runif(dim(simulate_x)[1])

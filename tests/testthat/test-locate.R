@@ -1,5 +1,3 @@
-context("locate")
-
 test_that("locate works", {
   lm_fit <- lm(mpg ~ ., data = mtcars)
   expect_equal(locate(lm_fit, "env"), "x$terms")

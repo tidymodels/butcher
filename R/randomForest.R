@@ -9,7 +9,7 @@
 #'
 #' @return Axed randomForest object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("randomForest")
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(rsample)))

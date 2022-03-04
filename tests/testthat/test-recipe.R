@@ -1,12 +1,10 @@
-context("recipe")
-
 skip_if_not_installed("recipes")
 skip_if_not_installed("rsample")
 
 # Load libraries
-library(recipes)
-library(rsample)
-library(modeldata)
+suppressPackageStartupMessages(library(recipes))
+suppressPackageStartupMessages(library(rsample))
+suppressPackageStartupMessages(library(modeldata))
 
 # Data sets used for testing
 data(biomass)

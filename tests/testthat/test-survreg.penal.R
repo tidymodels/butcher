@@ -1,9 +1,7 @@
-context("survreg.penal")
-
 test_that("survreg + penalized + predict() works", {
   skip_on_cran()
   skip_if_not_installed("survival")
-  library(survival)
+  suppressPackageStartupMessages(library(survival))
   fit <- survreg(
     Surv(time, status) ~ rx,
     data = rats,

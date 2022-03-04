@@ -1,9 +1,7 @@
-context("train")
-
 test_that("train + knn + predict() works", {
   skip_on_cran()
   skip_if_not_installed("caret")
-  library(caret)
+  suppressPackageStartupMessages(library(caret))
   # Model
   train_data <- iris[, 1:4]
   train_classes <- iris[, 5]
@@ -44,7 +42,7 @@ test_that("train + rda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("caret")
 
-  library(caret)
+  suppressPackageStartupMessages(library(caret))
   data(cars)
   set.seed(123)
 

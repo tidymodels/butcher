@@ -1,9 +1,7 @@
-context("survreg")
-
 test_that("survreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("survival")
-  library(survival)
+  suppressPackageStartupMessages(library(survival))
   survreg_fit <- survreg(Surv(futime, fustat) ~ 1, data = ovarian)
   x <- axe_call(survreg_fit)
   expect_equal(x$call, rlang::expr(dummy_call()))

@@ -3,7 +3,6 @@
 # issues across all platforms. Because of this, we choose not to test it at
 # all. It is also not listed as a Suggest-ed package anymore.
 
-# context("spark")
 #
 # source("utils.R")
 #
@@ -13,8 +12,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
@@ -94,8 +93,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
@@ -121,8 +120,8 @@
 #   skip_if_not_installed("sparklyr")
 #   skip_if_not_installed("dplyr")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Binary classification data
@@ -181,9 +180,9 @@
 #   skip_if_not_installed("dplyr")
 #   skip_if_not_installed("parsnip")
 #   # Load
-#   library(sparklyr)
-#   library(dplyr)
-#   library(parsnip)
+#   suppressPackageStartupMessages(library(sparklyr))
+#   suppressPackageStartupMessages(library(dplyr))
+#   suppressPackageStartupMessages(library(parsnip))
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data

@@ -1,11 +1,9 @@
-context("nnet")
-
 test_that("nnet + predict() works", {
   skip_on_cran()
   skip_if_not_installed("nnet")
   skip_if_not_installed("parsnip")
-  library(parsnip)
-  library(nnet)
+  suppressPackageStartupMessages(library(parsnip))
+  suppressPackageStartupMessages(library(nnet))
   nnet_fit <- mlp("classification", hidden_units = 2) %>%
     set_engine("nnet") %>%
     fit(Species ~ ., data = iris)

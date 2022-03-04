@@ -1,12 +1,10 @@
-context("ksvm")
-
 test_that("ksvm + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("parsnip")
   skip_if_not_installed("kernlab")
   # Load
-  library(parsnip)
-  library(kernlab)
+  suppressPackageStartupMessages(library(parsnip))
+  suppressPackageStartupMessages(library(kernlab))
   # Data
   data(spam)
   # Fit

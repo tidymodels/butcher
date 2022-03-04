@@ -1,9 +1,7 @@
-context("mda")
-
 test_that("mda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("mda")
-  library(mda)
+  suppressPackageStartupMessages(library(mda))
   fit <- mda(Species ~ ., data = iris)
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
@@ -25,8 +23,8 @@ test_that("mda + custom parsnip model + predict() works", {
   skip_on_cran()
   skip_if_not_installed("mda")
   skip_if_not_installed("parsnip")
-  library(mda)
-  library(parsnip)
+  suppressPackageStartupMessages(library(mda))
+  suppressPackageStartupMessages(library(parsnip))
   # Create a custom parsnip model using mda engine
   set_new_model("mixture_da")
   set_model_mode(model = "mixture_da", mode = "classification")

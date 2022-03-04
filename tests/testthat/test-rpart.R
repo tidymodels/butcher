@@ -1,9 +1,7 @@
-context("rpart")
-
 test_that("rpart + axe_data() works", {
   skip_on_cran()
   skip_if_not_installed("rpart")
-  library(rpart)
+  suppressPackageStartupMessages(library(rpart))
   fit <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis,
                x = TRUE, y = TRUE)
   x <- axe_data(fit)
@@ -19,7 +17,7 @@ test_that("rpart + axe_data() works", {
 test_that("rpart + predict() works", {
   skip_on_cran()
   skip_if_not_installed("rpart")
-  library(rpart)
+  suppressPackageStartupMessages(library(rpart))
   rpart_fit <- rpart(mpg ~ .,
                      data = mtcars,
                      minsplit = 5,

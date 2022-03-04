@@ -1,10 +1,8 @@
-context("gausspr")
-
 test_that("gausspr + predict() works", {
   skip_on_cran()
   skip_if_not_installed("kernlab")
   # Load
-  library(kernlab)
+  suppressPackageStartupMessages(library(kernlab))
   test <- gausspr(Species ~ .,
                   data = iris,
                   var = 2,

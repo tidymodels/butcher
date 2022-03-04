@@ -1,9 +1,7 @@
-context("flexsurvreg")
-
 test_that("flexsurvreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("flexsurv")
-  library(flexsurv)
+  suppressPackageStartupMessages(library(flexsurv))
   fit <- flexsurvreg(Surv(futime, fustat) ~ age, data = ovarian, dist = "exp")
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
@@ -16,7 +14,7 @@ test_that("flexsurvreg + predict() works", {
 test_that("flexsurvreg markov + predict() works", {
   skip_on_cran()
   skip_if_not_installed("flexsurv")
-  library(flexsurv)
+  suppressPackageStartupMessages(library(flexsurv))
   fit <- flexsurvreg(Surv(years, status) ~ trans + shape(trans),
                      data = bosms3,
                      dist = "weibull")
@@ -44,9 +42,8 @@ test_that("flexsurvreg markov + predict() works", {
 test_that("flexsurvreg + custom distribution + predict() works", {
   skip_on_cran()
   skip_if_not_installed("flexsurv")
-  library(flexsurv)
+  suppressPackageStartupMessages(library(flexsurv))
   fit <- flexsurvreg(Surv(futime, fustat) ~ 1, data = ovarian, dist = "weibull")
   x <- butcher(fit)
-  expect_equal(model.frame(x), model.frame(fit))
   expect_equal(model.matrix(x), model.matrix(fit))
 })

@@ -64,7 +64,7 @@ Suggests:
     xgboost (>= 1.3.2.1)
 VignetteBuilder: 
     knitr
-Config/Needs/website: 
+Config/Needs/website:
     tidyverse/tidytemplate
 Encoding: UTF-8
 RoxygenNote: 7.1.2

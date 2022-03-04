@@ -88,7 +88,7 @@ butcher::weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.06    
+#>  1 terms         8.01    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -137,7 +137,7 @@ butcher::weigh(small_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.06    
+#>  1 terms         0.00781 
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -166,13 +166,13 @@ benefit from any kind of axing, we would love for you to make a pull
 request! You can visit the `vignette("adding-models-to-butcher")` for
 more guidelines, but in short, to contribute a set of axe methods:
 
-1.  Run
+1)  Run
     `new_model_butcher(model_class = "your_object", package_name = "your_package")`
-2.  Use butcher helper functions `butcher::weigh()` and
+2)  Use butcher helper functions `butcher::weigh()` and
     `butcher::locate()` to decide what to axe
-3.  Finalize edits to `R/your_object.R` and
+3)  Finalize edits to `R/your_object.R` and
     `tests/testthat/test-your_object.R`
-4.  Make a pull request!
+4)  Make a pull request!
 
 ## Contributing
 

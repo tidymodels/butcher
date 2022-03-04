@@ -1,5 +1,3 @@
-context("xgb.Booster")
-
 # TODO: this particular model relies on a setup and teardown infrastructure
 # since saving the model object from xgboost in R results in a handle
 # (pointer) to an internal xgboost model that is invalid

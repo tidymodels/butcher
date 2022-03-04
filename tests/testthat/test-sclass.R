@@ -1,5 +1,3 @@
-context("sclass")
-
 test_that("sclass + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("ipred")

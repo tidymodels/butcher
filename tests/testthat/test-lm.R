@@ -1,5 +1,3 @@
-context("lm")
-
 test_that("lm + axe_call() works", {
   lm_fit <- lm(mpg ~ ., data = mtcars)
   x <- axe_call(lm_fit)

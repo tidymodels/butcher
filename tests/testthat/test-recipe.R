@@ -1,5 +1,3 @@
-context("recipe")
-
 skip_if_not_installed("recipes")
 skip_if_not_installed("rsample")
 

@@ -1,5 +1,3 @@
-context("randomForest")
-
 test_that("randomForest + predict() works", {
   skip_on_cran()
   skip_if_not_installed("randomForest")

@@ -1,5 +1,3 @@
-context("train.recipe")
-
 # Train objects are large so create on the fly
 # test_that("train + butcher_example() works", {
 #   example_files <- butcher_example()

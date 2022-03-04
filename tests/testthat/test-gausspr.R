@@ -1,5 +1,3 @@
-context("gausspr")
-
 test_that("gausspr + predict() works", {
   skip_on_cran()
   skip_if_not_installed("kernlab")

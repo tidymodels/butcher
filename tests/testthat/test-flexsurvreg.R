@@ -1,5 +1,3 @@
-context("flexsurvreg")
-
 test_that("flexsurvreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("flexsurv")

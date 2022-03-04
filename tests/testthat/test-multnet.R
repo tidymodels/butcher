@@ -1,5 +1,3 @@
-context("multnet")
-
 test_that("multnet + predict() works", {
   skip_on_cran()
   skip_if(do_not_run_glmnet)

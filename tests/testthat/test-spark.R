@@ -3,7 +3,6 @@
 # issues across all platforms. Because of this, we choose not to test it at
 # all. It is also not listed as a Suggest-ed package anymore.
 
-# context("spark")
 #
 # source("utils.R")
 #

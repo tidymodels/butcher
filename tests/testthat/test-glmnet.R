@@ -1,5 +1,3 @@
-context("glmnet")
-
 test_that("glmnet + predict() works", {
   skip_on_cran()
   skip_if(do_not_run_glmnet)

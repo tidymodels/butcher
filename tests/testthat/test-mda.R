@@ -1,5 +1,3 @@
-context("mda")
-
 test_that("mda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("mda")

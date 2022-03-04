@@ -1,5 +1,3 @@
-context("c5")
-
 test_that("c5 + predict() works", {
   skip_on_cran()
   skip_if_not_installed("C50")

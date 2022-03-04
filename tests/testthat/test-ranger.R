@@ -1,5 +1,3 @@
-context("ranger")
-
 test_that("ranger + importance() works", {
   skip_if_not_installed("ranger")
   library(ranger)

@@ -1,5 +1,3 @@
-context("nnet")
-
 test_that("nnet + predict() works", {
   skip_on_cran()
   skip_if_not_installed("nnet")

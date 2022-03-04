@@ -1,5 +1,3 @@
-context("kknn")
-
 test_that("kknn + predict() works", {
   skip_on_cran()
   skip_if_not_installed("kknn")

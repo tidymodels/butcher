@@ -1,5 +1,3 @@
-context("rpart")
-
 test_that("rpart + axe_data() works", {
   skip_on_cran()
   skip_if_not_installed("rpart")

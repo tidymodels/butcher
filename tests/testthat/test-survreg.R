@@ -1,5 +1,3 @@
-context("survreg")
-
 test_that("survreg + predict() works", {
   skip_on_cran()
   skip_if_not_installed("survival")

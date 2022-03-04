@@ -1,5 +1,3 @@
-context("earth")
-
 test_that("parsnip + earth + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("parsnip")

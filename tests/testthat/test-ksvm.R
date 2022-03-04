@@ -1,5 +1,3 @@
-context("ksvm")
-
 test_that("ksvm + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("parsnip")

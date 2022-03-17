@@ -93,21 +93,3 @@ axe_env.xgb.Booster <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-
-#' Remove cached memory dump of xgboost model that was saved as a raw
-#' data type.
-#'
-#' @rdname axe-xgb.Booster
-#' @export
-axe_fitted.xgb.Booster <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "raw", raw())
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("xgb.Booster.complete()"),
-    add_class = FALSE,
-    verbose = verbose
-  )
-}

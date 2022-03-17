@@ -1,8 +1,6 @@
-context("ranger")
-
 test_that("ranger + importance() works", {
   skip_if_not_installed("ranger")
-  library(ranger)
+  suppressPackageStartupMessages(library(ranger))
   n <- 50
   p <- 400
   dat <- data.frame(y = factor(rbinom(n, 1, .5)), replicate(p, runif(n)))
@@ -19,7 +17,7 @@ test_that("ranger + importance() works", {
 
 test_that("ranger + treeInfo() works ", {
   skip_if_not_installed("ranger")
-  library(ranger)
+  suppressPackageStartupMessages(library(ranger))
   rf.iris <- ranger(Species ~ ., data = iris, importance = "permutation")
   set.seed(123)
   expected_outcome <- importance_pvalues(rf.iris, method = "altmann",
@@ -41,7 +39,7 @@ test_that("ranger + treeInfo() works ", {
 
 test_that("ranger + quantiles option works ", {
   skip_if_not_installed("ranger")
-  library(ranger)
+  suppressPackageStartupMessages(library(ranger))
   rf <- ranger(mpg ~ ., data = mtcars, quantreg = TRUE)
   expected_outcome <- predict(rf, mtcars[27:32, ], type = "quantiles")
   x <- butcher(rf)
@@ -52,8 +50,8 @@ test_that("ranger + quantiles option works ", {
 test_that("ranger + survival option works", {
   skip_if_not_installed("ranger")
   skip_if_not_installed("survival")
-  library(ranger)
-  library(survival)
+  suppressPackageStartupMessages(library(ranger))
+  suppressPackageStartupMessages(library(survival))
   rg.veteran <- ranger(Surv(time, status) ~ ., data = veteran)
   x <- butcher(rg.veteran)
   expect_equal(timepoints(x),

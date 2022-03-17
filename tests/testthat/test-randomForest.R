@@ -1,9 +1,7 @@
-context("randomForest")
-
 test_that("randomForest + predict() works", {
   skip_on_cran()
   skip_if_not_installed("randomForest")
-  library(randomForest)
+  suppressPackageStartupMessages(library(randomForest))
   randomForest_fit <- randomForest(mpg ~ .,
                                    data = mtcars)
   x <- axe_call(randomForest_fit)

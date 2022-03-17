@@ -1,9 +1,7 @@
-context("kknn")
-
 test_that("kknn + predict() works", {
   skip_on_cran()
   skip_if_not_installed("kknn")
-  library(kknn)
+  suppressPackageStartupMessages(library(kknn))
   m <- dim(iris)[1]
   val <- sample(1:m,
                 size = round(m/3),

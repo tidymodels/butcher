@@ -1,10 +1,8 @@
-context("c5")
-
 test_that("c5 + predict() works", {
   skip_on_cran()
   skip_if_not_installed("C50")
-  library(C50)
-  library(modeldata)
+  suppressPackageStartupMessages(library(C50))
+  suppressPackageStartupMessages(library(modeldata))
   data(mlc_churn)
   c5_fit <- C5.0(x = mlc_churn[, -20], y = mlc_churn$churn)
   x <- axe_call(c5_fit)

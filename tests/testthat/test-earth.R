@@ -1,12 +1,10 @@
-context("earth")
-
 test_that("parsnip + earth + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("parsnip")
   skip_if_not_installed("earth")
   # Load
-  library(parsnip)
-  library(earth)
+  suppressPackageStartupMessages(library(parsnip))
+  suppressPackageStartupMessages(library(earth))
   # Fit
   earth_fit <- mars(mode = "regression") %>%
     set_engine("earth") %>%
@@ -33,7 +31,7 @@ test_that("earth + axe_() works", {
   skip_on_cran()
   skip_if_not_installed("earth")
   # Load
-  library(earth)
+  suppressPackageStartupMessages(library(earth))
   # Fit
   earth_mod <- earth(Volume ~ ., data = trees)
   # Butcher

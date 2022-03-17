@@ -32,6 +32,7 @@ package, which is used to train random forests based on Breiman's
 regression trees.
 }
 \examples{
+\dontshow{if (rlang::is_installed("randomForest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
@@ -65,5 +66,5 @@ cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
 
 # Check size
 lobstr::obj_size(cleaned_rf)
-
+\dontshow{\}) # examplesIf}
 }

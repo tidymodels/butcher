@@ -1,10 +1,8 @@
-context("multnet")
-
 test_that("multnet + predict() works", {
   skip_on_cran()
   skip_if(do_not_run_glmnet)
   skip_if_not_installed("glmnet")
-  library(parsnip)
+  suppressPackageStartupMessages(library(parsnip))
   set.seed(1234)
   predictrs <- matrix(rnorm(100*20), ncol = 20)
   colnames(predictrs) <- paste0("a", seq_len(ncol(predictrs)))

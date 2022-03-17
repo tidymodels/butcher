@@ -1,5 +1,3 @@
-context("{{model_class}}")
-
 test_that("{{model_class}} + axe_call() works", {
 })
 

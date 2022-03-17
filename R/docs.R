@@ -1,4 +1,4 @@
-# These functions are copied from [https://github.com/r-lib/generics/blob/master/R/docs.R] for dynamic documentation.
+# These functions are copied from [https://github.com/r-lib/generics/blob/main/R/docs.R] for dynamic documentation.
 
 # nocov start
 

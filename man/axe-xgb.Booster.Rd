@@ -3,13 +3,10 @@
 \name{axe-xgb.Booster}
 \alias{axe-xgb.Booster}
 \alias{axe_call.xgb.Booster}
-\alias{axe_ctrl.xgb.Booster}
 \alias{axe_env.xgb.Booster}
 \title{Axing a xgb.Booster.}
 \usage{
 \method{axe_call}{xgb.Booster}(x, verbose = FALSE, ...)
-
-\method{axe_ctrl}{xgb.Booster}(x, verbose = FALSE, ...)
 
 \method{axe_env}{xgb.Booster}(x, verbose = FALSE, ...)
 }

@@ -23,8 +23,6 @@ test_that("glm + axe_fitted() works", {
   glm_fit <- glm(mpg ~ ., data = mtcars)
   x <- axe_fitted(glm_fit)
   expect_equal(x$fitted.values, numeric(0))
-  expect_equal(x$residuals, numeric(0))
-  expect_equal(x$qr$qr, matrix(0))
 })
 
 test_that("glm + butcher() works", {
@@ -33,7 +31,6 @@ test_that("glm + butcher() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
   expect_equal(x$fitted.values, numeric(0))
-  expect_equal(x$qr$qr, matrix(0))
   expect_equal(class(x)[1], "butchered_glm")
 })
 

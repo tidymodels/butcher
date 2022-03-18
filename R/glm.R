@@ -26,7 +26,7 @@ axe_call.glm <- function(x, verbose = FALSE, ...) {
     x,
     old,
     disabled = c("print()", "summary()"),
-    add_class = FALSE,
+    add_class = TRUE,
     verbose = verbose
   )
 }
@@ -74,8 +74,6 @@ axe_env.glm <- function(x, verbose = FALSE, ...) {
 axe_fitted.glm <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "fitted.values", numeric(0))
-  x <- exchange(x, "residuals", numeric(0))
-  x$qr <- exchange(x$qr, "qr", matrix(0))
 
   add_butcher_attributes(
     x,

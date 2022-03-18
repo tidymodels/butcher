@@ -6,7 +6,10 @@
 * Added an `axe_fitted()` method to butcher the `template` slot for prepped 
   recipes (@AshesITR, #207).
   
-* Added butcher support for `glm()` (#212).  
+* Removed `axe_fitted()` and `axe_ctrl()` for xgboost, because these methods
+  caused problems for prediction (#218).
+
+* Added butcher methods for `glm()` (#212).  
 
 # butcher 0.1.5
 

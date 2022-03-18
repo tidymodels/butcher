@@ -9,6 +9,8 @@
 * Removed `axe_fitted()` and `axe_ctrl()` for xgboost, because these methods
   caused problems for prediction (#218).
 
+* Added butcher methods for `glm()` (#212).  
+
 # butcher 0.1.5
 
 * Added an `axe_env()` method to remove the `terms` environment for recipe

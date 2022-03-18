@@ -21,10 +21,6 @@ test_that("xgb.Booster + linear solver + predict() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_env(bst)
   expect_lt(lobstr::obj_size(x), lobstr::obj_size(bst))
-  x <- axe_ctrl(bst)
-  expect_equal(x$params, list(NULL))
-  x <- axe_fitted(bst)
-  expect_equal(x$raw, raw())
   x <- butcher(bst)
   expect_equal(xgb.importance(model = x),
                xgb.importance(model = bst))
@@ -54,10 +50,6 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_env(bst)
   expect_lt(lobstr::obj_size(x), lobstr::obj_size(bst))
-  x <- axe_ctrl(bst)
-  expect_equal(x$params, list(NULL))
-  x <- axe_fitted(bst)
-  expect_equal(x$raw, raw())
   x <- butcher(bst)
   expect_equal(xgb.importance(model = x),
                xgb.importance(model = bst))

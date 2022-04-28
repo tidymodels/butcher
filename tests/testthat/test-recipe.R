@@ -17,7 +17,7 @@ credit_tr <- training(train_test_split)
 
 # Additional data sets used
 data(covers)
-data(okc)
+data(Sacramento)
 
 # Test helpers
 terms_empty_env <- function(axed, step_number) {
@@ -241,26 +241,26 @@ test_that("recipe + step_date + axe_env() works", {
 })
 
 test_that("recipe + step_dummy + axe_env() works", {
-  rec <- recipe(~ diet + age + height, data = okc) %>%
-    step_dummy(diet)
+  rec <- recipe(~ city + sqft + price, data = Sacramento) %>%
+    step_dummy(city)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_string2factor + axe_env() works", {
-  rec <- recipe(~ diet + age + height, data = okc) %>%
-    step_string2factor(diet)
-  x <- axe_env(rec)
-  terms_empty_env(x, 1)
-})
-
-test_that("recipe + step_factor2string + axe_env() works", {
-  rec <- recipe(~ diet + age + height, data = okc) %>%
-    step_string2factor(diet) %>%
-    step_factor2string(diet)
+  rec <- recipe(~ city + sqft + price, data = Sacramento) %>%
+    step_factor2string(city) %>%
+    step_string2factor(city)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
   terms_empty_env(x, 2)
+})
+
+test_that("recipe + step_factor2string + axe_env() works", {
+  rec <- recipe(~ city + sqft + price, data = Sacramento) %>%
+    step_factor2string(city)
+  x <- axe_env(rec)
+  terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_holiday + axe_env() works", {
@@ -272,19 +272,21 @@ test_that("recipe + step_holiday + axe_env() works", {
 })
 
 test_that("recipe + step_integer + axe_env() works", {
-  rec <- recipe(Class ~ ., data = okc) %>%
+  rec <- Sacramento %>%
+    dplyr::select(type, sqft, price, beds) %>%
+    recipe(type ~ .) %>%
     step_integer(all_predictors())
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
 
 test_that("recipe + step_novel + axe_env() works", {
-  okc_tr <- okc[1:30000,]
-  okc_te <- okc[30001:30006,]
-  okc_te$diet[3] <- "cannibalism"
-  okc_te$diet[4] <- "vampirism"
-  rec <- recipe(Class ~ ., data = okc_tr) %>%
-    step_novel(diet, location)
+  sacr_tr <- Sacramento[1:500,] %>% dplyr::mutate(city = as.character(city))
+  sacr_te <- Sacramento[501:nrow(Sacramento),] %>% dplyr::mutate(city = as.character(city))
+  sacr_te$city[3] <- "boopville"
+  sacr_te$city[4] <- "beeptown"
+  rec <- recipe(type ~ ., data = sacr_tr) %>%
+    step_novel(city, zip)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
@@ -317,8 +319,8 @@ test_that("recipe + step_ordinalscore + axe_env() works", {
 })
 
 test_that("recipe + step_other + axe_env() works", {
-  rec <- recipe(~ diet + location, data = okc) %>%
-    step_other(diet, location, threshold = .1, other = "other values")
+  rec <- recipe(~ city + zip, data = Sacramento) %>%
+    step_other(city, zip, threshold = .1, other = "other values")
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })
@@ -584,7 +586,7 @@ test_that("recipe + step_impute_mode + axe_env() works", {
 })
 
 test_that("recipe + step_naomit + axe_env() works", {
-  rec <- recipe( ~ ., data = okc) %>%
+  rec <- recipe( ~ ., data = Sacramento) %>%
     step_naomit(all_predictors())
   x <- axe_env(rec)
   terms_empty_env(x, 1)

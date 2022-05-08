@@ -9,7 +9,11 @@
 * Removed `axe_fitted()` and `axe_ctrl()` for xgboost, because these methods
   caused problems for prediction (#218).
 
-* Added butcher methods for `glm()` (#212).  
+* Added butcher methods for `glm()` (#212).
+
+* Transitioned unit tests to make use of `modeldata::Sacramento` rather than
+`modeldata::okc` in anticipation of `okc`'s deprecation in an upcoming
+release of modeldata (@simonpcouch, #219).
 
 # butcher 0.1.5
 

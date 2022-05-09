@@ -1,5 +1,9 @@
 # butcher (development version)
 
+* Transitioned unit tests to make use of `modeldata::Sacramento` rather than
+  `modeldata::okc` in anticipation of `okc`'s deprecation in an upcoming
+  release of modeldata (@simonpcouch, #219).
+
 * Removed fastICA and NMF from Suggests. fastICA requires R >= 4.0.0 now, and
   NMF is often hard to install and was only used for one test (#201).
 
@@ -10,10 +14,6 @@
   caused problems for prediction (#218).
 
 * Added butcher methods for `glm()` (#212).
-
-* Transitioned unit tests to make use of `modeldata::Sacramento` rather than
-`modeldata::okc` in anticipation of `okc`'s deprecation in an upcoming
-release of modeldata (@simonpcouch, #219).
 
 # butcher 0.1.5
 

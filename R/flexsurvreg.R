@@ -10,8 +10,7 @@
 #'
 #' @return Axed flexsurvreg object.
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf rlang::is_installed("flexsurv")
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(flexsurv)))
@@ -32,7 +31,6 @@
 #' }
 #'
 #' out <- butcher(wrapped_flexsurvreg(), verbose = TRUE)
-#' }
 #' @name axe-flexsurvreg
 NULL
 

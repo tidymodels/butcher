@@ -30,7 +30,7 @@ leverage distributions like the generalized gamma, generalized F, and
 the Royston-Parmar spline model.
 }
 \examples{
-\donttest{
+\dontshow{if (rlang::is_installed("flexsurv")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(flexsurv)))
@@ -51,5 +51,5 @@ wrapped_flexsurvreg <- function() {
 }
 
 out <- butcher(wrapped_flexsurvreg(), verbose = TRUE)
-}
+\dontshow{\}) # examplesIf}
 }

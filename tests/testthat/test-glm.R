@@ -1,5 +1,3 @@
-context("glm")
-
 test_that("glm + axe_call() works", {
   glm_fit <- glm(mpg ~ ., data = mtcars)
   x <- axe_call(glm_fit)

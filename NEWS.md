@@ -15,6 +15,9 @@
 
 * Added butcher methods for `glm()` (#212).
 
+* Preemptively fixed a test related to a recipes change in `step_hyperbolic()` 
+  (#220).
+
 # butcher 0.1.5
 
 * Added an `axe_env()` method to remove the `terms` environment for recipe

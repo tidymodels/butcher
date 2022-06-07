@@ -118,8 +118,9 @@ test_that("recipe + step_bs + axe_env() works", {
 })
 
 test_that("recipe + step_hyperbolic + axe_env() works", {
+  skip_if_recipes_pre_0.2.1()
   rec <- recipe(~ ., data = as.data.frame(state.x77)) %>%
-    step_hyperbolic(Income, func = "cos", inverse = FALSE)
+    step_hyperbolic(Income, func = "cosh", inverse = FALSE)
   x <- axe_env(rec)
   terms_empty_env(x, 1)
 })

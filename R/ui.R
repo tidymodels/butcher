@@ -1,8 +1,5 @@
 #' Console Messages
 #'
-#' These functions leverage the \code{ui.R} as provided in the
-#' \pkg{usethis} package. Original reference here:
-#' \url{https://github.com/r-lib/usethis/blob/main/R/ui.R}.
 #' These console messages are created such that the user is
 #' aware of the effects of removing specific components from
 #' the model object.
@@ -36,15 +33,15 @@ assess_object <- function(og, butchered) {
   disabled <- attr(butchered, "butcher_disabled")
   class_added <- grep("butcher", class(butchered)[1])
   if (is.null(mem)) {
-    ui_oops("No memory released. Do not butcher.")
+    cli::cli_alert_danger("No memory released. Do not butcher.")
   } else {
-    ui_done("Memory released: {ui_value(mem)}")
+    cli::cli_alert_success("Memory released: {.val {mem}}")
     if (!is.null(disabled)) {
-      ui_oops("Disabled: {ui_code(disabled)}")
+      cli::cli_alert_danger("Disabled: {.code {disabled}}")
     }
     if (length(class_added) == 0) {
       class_name <- "butchered"
-      ui_oops("Could not add {ui_value(class_name)} class")
+      cli::cli_alert_danger("Could not add {.cls {class_name}} class")
     }
   }
 }

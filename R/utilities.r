@@ -44,11 +44,3 @@ add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, ve
   }
   x
 }
-
-# from usethis
-slug <- function(x, ext) {
-  x_base <- fs::path_ext_remove(x)
-  x_ext <- fs::path_ext(x)
-  ext <- if (identical(tolower(x_ext), tolower(ext))) x_ext else ext
-  fs::path_ext_set(x_base, ext)
-}

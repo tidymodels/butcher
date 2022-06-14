@@ -114,7 +114,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `survival_reg()` instead.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">survreg_fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'2,472 B'</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"2,472 B"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Another survreg object</span></span>
 <span class="r-in"><span class="va">wrapped_survreg</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
@@ -126,8 +126,8 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Remove junk</span></span>
 <span class="r-in"><span class="va">cleaned_survreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="fu">wrapped_survreg</span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'8,076,736 B'</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: <span style="color: #555555;">`print()`</span>, <span style="color: #555555;">`summary()`</span>, <span style="color: #555555;">`residuals()`</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"8,076,736 B"</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: `print()`, `summary()`, and `residuals()`</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Check size</span></span>
 <span class="r-in"><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/lobstr/man/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="va">cleaned_survreg</span><span class="op">)</span></span>

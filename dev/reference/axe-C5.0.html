@@ -133,8 +133,8 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mlc_churn</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">c5_fit3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://topepo.github.io/C5.0/reference/C5.0.html" class="external-link">C5.0</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mlc_churn</span><span class="op">[</span>, <span class="op">-</span><span class="fl">20</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">mlc_churn</span><span class="op">$</span><span class="va">churn</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">c5_fit3</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'6,280 B'</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: <span style="color: #555555;">`print()`</span>, <span style="color: #555555;">`summary()`</span>, <span style="color: #555555;">`C5.0Control()`</span>, <span style="color: #555555;">`C5imp()`</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"6,280 B"</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: `print()`, `summary()`, `C5.0Control()`, and `C5imp()`</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

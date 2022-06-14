@@ -109,7 +109,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in">  <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">nnet_fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'6,232 B'</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"6,232 B"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Another nnet object</span></span>
 <span class="r-in"><span class="va">targets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/nnet/man/class.ind.html" class="external-link">class.ind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="fl">50</span><span class="op">)</span>,</span>
@@ -130,8 +130,8 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> stopped after 20 iterations</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'4,952 B'</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: <span style="color: #555555;">`fitted()`</span>, <span style="color: #555555;">`predict() with no new data`</span>, <span style="color: #555555;">`dimnames(axed_object$fitted.values)`</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"4,952 B"</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Disabled: `fitted()`, `predict() with no new data`, and `dimnames(axed_object$fitted.values)`</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

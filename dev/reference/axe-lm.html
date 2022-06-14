@@ -110,7 +110,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in">  <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">car_train</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">lm_fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'11,424 B'</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"11,424 B"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Another lm object</span></span>
 <span class="r-in"><span class="va">wrapped_lm</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
@@ -121,7 +121,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Remove junk</span></span>
 <span class="r-in"><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="axe_env.html">axe_env</a></span><span class="op">(</span><span class="fu">wrapped_lm</span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">'8,076,112 B'</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #0000BB;">"8,076,112 B"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Check size</span></span>
 <span class="r-in"><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/lobstr/man/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="va">cleaned_lm</span><span class="op">)</span></span>

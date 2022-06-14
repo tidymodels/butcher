@@ -20,6 +20,9 @@
 #'
 #' @export
 new_model_butcher <- function(model_class, package_name, open = interactive()) {
+  rlang::check_installed("fs", reason = "to create new axe functions.")
+  rlang::check_installed("usethis", reason = "to create new axe functions.")
+
   if(!rlang::is_string(model_class) | !rlang::is_string(package_name)) {
     rlang::abort("`model_class` must be a string")
   }
@@ -69,4 +72,12 @@ new_model_butcher <- function(model_class, package_name, open = interactive()) {
 
   usethis::ui_line("")
   invisible(model_class)
+}
+
+# From usethis
+slug <- function(x, ext) {
+  x_base <- fs::path_ext_remove(x)
+  x_ext <- fs::path_ext(x)
+  ext <- if (identical(tolower(x_ext), tolower(ext))) x_ext else ext
+  fs::path_ext_set(x_base, ext)
 }

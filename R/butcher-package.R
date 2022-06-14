@@ -29,6 +29,5 @@
 # The following block is used by usethis to automatically manage
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
-#' @importFrom usethis ui_code ui_value ui_line ui_oops ui_done
 ## usethis namespace: end
 NULL

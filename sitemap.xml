@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://butcher.tidymodels.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/articles/adding-models-to-butcher.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/articles/available-axe-methods.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/articles/butcher.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://butcher.tidymodels.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/axe-C5.0.html</loc>
@@ -26,6 +56,9 @@
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/axe-gausspr.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/reference/axe-glm.html</loc>
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/axe-glmnet.html</loc>
@@ -112,6 +145,9 @@
     <loc>https://butcher.tidymodels.org/reference/butcher_example.html</loc>
   </url>
   <url>
+    <loc>https://butcher.tidymodels.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://butcher.tidymodels.org/reference/locate.html</loc>
   </url>
   <url>
@@ -122,14 +158,5 @@
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/weigh.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/articles/adding-models-to-butcher.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/articles/available-axe-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/articles/butcher.html</loc>
   </url>
 </urlset>

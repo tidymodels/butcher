@@ -21,11 +21,11 @@ Imports:
     cli (>= 3.3.0),
     lobstr (>= 1.1.1),
     methods,
-    purrr,
-    rlang,
-    tibble (>= 2.1.1),
+    purrr (>= 0.3.4),
+    rlang (>= 1.0.2),
+    tibble (>= 3.1.7),
     utils,
-    vctrs
+    vctrs (>= 0.4.1)
 Suggests: 
     C50,
     caret,

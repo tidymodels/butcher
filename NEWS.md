@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Moved usethis and fs to Suggests (#222).
+
 * Transitioned unit tests to make use of `modeldata::Sacramento` rather than
   `modeldata::okc` in anticipation of `okc`'s deprecation in an upcoming
   release of modeldata (@simonpcouch, #219).

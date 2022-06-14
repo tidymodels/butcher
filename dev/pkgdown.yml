@@ -1,11 +1,11 @@
 pandoc: 2.14.2
-pkgdown: 2.0.3
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   adding-models-to-butcher: adding-models-to-butcher.html
   available-axe-methods: available-axe-methods.html
   butcher: butcher.html
-last_built: 2022-06-07T19:48Z
+last_built: 2022-06-14T14:34Z
 urls:
   reference: https://butcher.tidymodels.org/reference
   article: https://butcher.tidymodels.org/articles

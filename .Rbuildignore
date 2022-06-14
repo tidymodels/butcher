@@ -18,3 +18,4 @@ butcher.png
 ^CODE_OF_CONDUCT\.md$
 ^\.github$
 ^revdep$
+^CRAN-SUBMISSION$

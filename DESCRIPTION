@@ -59,6 +59,7 @@ Suggests:
     rsample,
     RSpectra,
     survival (>= 3.2-10),
+    tabnet,
     testthat (>= 3.0.0),
     TH.data,
     usethis (>= 1.5.0),

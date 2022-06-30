@@ -29,27 +29,3 @@ parametric distributions. Users can define their own distribution, or
 leverage distributions like the generalized gamma, generalized F, and
 the Royston-Parmar spline model.
 }
-\examples{
-\dontshow{if (rlang::is_installed("flexsurv")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(flexsurv)))
-
-# Create model and fit
-flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
-  set_engine("flexsurv") \%>\%
-  fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
-
-out <- butcher(flexsurvreg_fit, verbose = TRUE)
-
-# Another flexsurvreg model object
-wrapped_flexsurvreg <- function() {
-  some_junk_in_environment <- runif(1e6)
-  fit <- flexsurvreg(Surv(futime, fustat) ~ 1,
-                     data = ovarian, dist = "weibull")
-  return(fit)
-}
-
-out <- butcher(wrapped_flexsurvreg(), verbose = TRUE)
-\dontshow{\}) # examplesIf}
-}

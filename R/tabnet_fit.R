@@ -5,9 +5,27 @@
 #' @return Axed tabnet_fit object.
 #'
 #' @examples
-#' ##
-#' ## Insert examples to create and axe model object here...
-#' ##
+#' \donttest{
+#' if (rlang::is_installed("tabnet")) {
+#'
+#' # Load libraries
+#' suppressWarnings(suppressMessages(library(parsnip)))
+#' suppressWarnings(suppressMessages(library(rsample)))
+#'
+#' # Load data
+#' split <- initial_split(mtcars, props = 9/10)
+#' car_train <- training(split)
+#'
+#' # Create model and fit
+#' mtcar_fit <- tabnet() %>%
+#'   set_mode("regression") %>%
+#'   set_engine("torch")
+#'   fit(mpg ~ ., data = car_train)
+#'
+#' out <- butcher(mtcar_fit, verbose = TRUE)
+#'
+#' }
+#' }
 #' @name axe-tabnet_fit
 NULL
 
@@ -15,14 +33,14 @@ NULL
 #'
 #' @rdname axe-tabnet_fit
 #' @export
-axe_call.tabnet_fit <- function(x, verbose = FALSE, ...) {
+axe_call._tabnet_fit <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("print()", "summary()"),
+    disabled = c("print()", "tabnet_explain()"),
     add_class = FALSE,
     verbose = verbose
   )
@@ -32,43 +50,9 @@ axe_call.tabnet_fit <- function(x, verbose = FALSE, ...) {
 #'
 #' @rdname axe-tabnet_fit
 #' @export
-axe_ctrl.tabnet_fit <- function(x, verbose = FALSE, ...) {
+axe_ctrl._tabnet_fit <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "control", "???")
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("some_function()", "another_function()"),
-    add_class = FALSE,
-    verbose = verbose
-  )
-}
-
-#' Remove the training data.
-#'
-#' @rdname axe-tabnet_fit
-#' @export
-axe_data.tabnet_fit <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "data", "???")
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("some_function()", "another_function()"),
-    add_class = FALSE,
-    verbose = verbose
-  )
-}
-
-#' Remove environments.
-#'
-#' @rdname axe-tabnet_fit
-#' @export
-axe_env.tabnet_fit <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x$terms <- axe_env(x$terms, ...)
 
   add_butcher_attributes(
     x,
@@ -83,14 +67,17 @@ axe_env.tabnet_fit <- function(x, verbose = FALSE, ...) {
 #'
 #' @rdname axe-tabnet_fit
 #' @export
-axe_fitted.tabnet_fit <- function(x, verbose = FALSE, ...) {
+axe_fitted._tabnet_fit <- function(x, verbose = FALSE, ...) {
   old <- x
-  x <- exchange(x, "fitted.values", "???")
+  x <- exchange(x, "fit.checkpoints", list(NULL))
+  x <- exchange(x, "fit.importances.variables", list(NULL))
+  x <- exchange(x, "fit.importances.importance", list(NULL))
+  x <- exchange(x, "fit.config", list(NULL))
 
   add_butcher_attributes(
     x,
     old,
-    disabled = c("some_function()", "another_function()"),
+    disabled = NULL,
     add_class = FALSE,
     verbose = verbose
   )

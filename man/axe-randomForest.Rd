@@ -31,3 +31,40 @@ package, which is used to train random forests based on Breiman's
 2001 work. The package supports ensembles of classification and
 regression trees.
 }
+\examples{
+\dontshow{if (rlang::is_installed("randomForest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Load libraries
+suppressWarnings(suppressMessages(library(parsnip)))
+suppressWarnings(suppressMessages(library(rsample)))
+suppressWarnings(suppressMessages(library(rpart)))
+suppressWarnings(suppressMessages(library(randomForest)))
+
+# Load data
+set.seed(1234)
+split <- initial_split(kyphosis, props = 9/10)
+spine_train <- training(split)
+
+# Create model and fit
+randomForest_fit <- rand_forest(mode = "classification",
+                                mtry = 2,
+                                trees = 2,
+                                min_n = 3) \%>\%
+  set_engine("randomForest") \%>\%
+  fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
+
+out <- butcher(randomForest_fit, verbose = TRUE)
+
+# Another randomForest object
+wrapped_rf <- function() {
+  some_junk_in_environment <- runif(1e6)
+  randomForest_fit <- randomForest(mpg ~ ., data = mtcars)
+  return(randomForest_fit)
+}
+
+# Remove junk
+cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
+
+# Check size
+lobstr::obj_size(cleaned_rf)
+\dontshow{\}) # examplesIf}
+}

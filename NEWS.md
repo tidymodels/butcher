@@ -1,5 +1,8 @@
 # butcher (development version)
 
+* Added butcher methods for `tabnet()` (@cregouby #226).
+
+
 # butcher 0.2.0
 
 * Added an `axe_fitted()` method to butcher the `template` slot for prepped 

@@ -2,15 +2,9 @@
 % Please edit documentation in R/tabnet_fit.R
 \name{axe-tabnet_fit}
 \alias{axe-tabnet_fit}
-\alias{axe_call._tabnet_fit}
-\alias{axe_ctrl._tabnet_fit}
 \alias{axe_fitted._tabnet_fit}
 \title{Axing a tabnet_fit.}
 \usage{
-\method{axe_call}{`_tabnet_fit`}(x, verbose = FALSE, ...)
-
-\method{axe_ctrl}{`_tabnet_fit`}(x, verbose = FALSE, ...)
-
 \method{axe_fitted}{`_tabnet_fit`}(x, verbose = FALSE, ...)
 }
 \arguments{
@@ -27,10 +21,6 @@ Axed tabnet_fit object.
 }
 \description{
 Axing a tabnet_fit.
-
-Remove the call.
-
-Remove controls used for training.
 
 Remove fitted values.
 }

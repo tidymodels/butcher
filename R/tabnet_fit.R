@@ -29,50 +29,15 @@
 #' @name axe-tabnet_fit
 NULL
 
-#' Remove the call.
-#'
-#' @rdname axe-tabnet_fit
-#' @export
-axe_call._tabnet_fit <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "call", call("dummy_call"))
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("print()", "tabnet_explain()"),
-    add_class = FALSE,
-    verbose = verbose
-  )
-}
-
-#' Remove controls used for training.
-#'
-#' @rdname axe-tabnet_fit
-#' @export
-axe_ctrl._tabnet_fit <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "control", "???")
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("some_function()", "another_function()"),
-    add_class = FALSE,
-    verbose = verbose
-  )
-}
-
 #' Remove fitted values.
 #'
 #' @rdname axe-tabnet_fit
 #' @export
 axe_fitted._tabnet_fit <- function(x, verbose = FALSE, ...) {
   old <- x
-  x <- exchange(x, "fit.checkpoints", list(NULL))
-  x <- exchange(x, "fit.importances.variables", list(NULL))
-  x <- exchange(x, "fit.importances.importance", list(NULL))
-  x <- exchange(x, "fit.config", list(NULL))
+  x$fit$fit <- exchange(x$fit$fit, "checkpoints", list(NULL))
+  x$fit$fit$importances <- exchange(x$fit$fit$importances, "variables", list(NULL))
+  x$fit$fit$importances <- exchange(x$fit$fit$importances, "importance", list(NULL))
 
   add_butcher_attributes(
     x,

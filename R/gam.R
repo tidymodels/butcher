@@ -94,6 +94,7 @@ axe_env.gam <- function(x, verbose = FALSE, ...) {
 axe_fitted.gam <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "fitted.values", numeric(0))
+  x <- exchange(x, "residuals", numeric(0))
   x <- exchange(x, "linear.predictors", numeric(0))
 
   add_butcher_attributes(

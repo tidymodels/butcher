@@ -54,6 +54,8 @@ axe_ctrl.gam <- function(x, verbose = FALSE, ...) {
 axe_data.gam <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "y", numeric(0))
+  x <- exchange(x, "weights", numeric(0))
+  x <- exchange(x, "prior.weights", numeric(0))
 
   add_butcher_attributes(
     x,

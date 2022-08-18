@@ -39,4 +39,12 @@ test_that("gam + predict() works", {
   gam_fit <- mgcv::gam(mpg ~ s(disp, k = 3) + s(wt), data = mtcars)
   x <- butcher(gam_fit)
   expect_equal(predict(x)[1], predict(gam_fit)[1])
+  expect_equal(
+    predict(x, type = "terms")[1,],
+    predict(gam_fit, type = "terms")[1,]
+  )
+  expect_equal(
+    predict(x, se.fit = TRUE)$se.fit[1],
+    predict(gam_fit, se.fit = TRUE)$se.fit[1]
+  )
 })

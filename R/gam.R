@@ -21,7 +21,6 @@ NULL
 axe_call.gam <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- exchange(x, "call", call("dummy_call"))
-  x <- exchange(x, "mgcv.conv.score.calls", call("dummy_call"))
 
   add_butcher_attributes(
     x,

@@ -41,7 +41,7 @@ test_that("gam + predict() works", {
   expect_equal(
     predict(x, newdata = head(mtcars))[1],
     predict(gam_fit, newdata = head(mtcars))[1]
-    )
+  )
   expect_equal(
     predict(x, newdata = head(mtcars), type = "terms")[1,],
     predict(gam_fit, newdata = head(mtcars), type = "terms")[1,]

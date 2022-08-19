@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Updated printing for `memory_released()` (#229).
+
 # butcher 0.2.0
 
 * Added an `axe_fitted()` method to butcher the `template` slot for prepped 

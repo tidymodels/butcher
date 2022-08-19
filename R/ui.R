@@ -20,7 +20,7 @@ memory_released <- function(og, butchered) {
     if (rel <= 0) {
       return(NULL)
     } else {
-      return(paste(rel, "B"))
+      return(rel)
     }
   } else {
     return(NULL)

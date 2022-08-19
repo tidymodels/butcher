@@ -2,6 +2,8 @@
 
 * Updated printing for `memory_released()` (#229).
 
+* Added butcher methods for `mgcv::gam()` (#228).
+
 # butcher 0.2.0
 
 * Added an `axe_fitted()` method to butcher the `template` slot for prepped 

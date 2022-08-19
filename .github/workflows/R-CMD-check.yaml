@@ -54,11 +54,8 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - name: Install sfsmisc (for ddalpha)
-        run: install.packages("sfsmisc")
-        shell: Rscript {0}
-
       - uses: r-lib/actions/setup-r-dependencies@v2
+        pak-version: devel
         with:
           extra-packages:
             any::rcmdcheck,

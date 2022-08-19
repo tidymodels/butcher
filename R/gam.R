@@ -53,6 +53,7 @@ axe_ctrl.gam <- function(x, verbose = FALSE, ...) {
 #' @export
 axe_data.gam <- function(x, verbose = FALSE, ...) {
   old <- x
+  x <- exchange(x, "model", data.frame(NA))
   x <- exchange(x, "y", numeric(0))
   x <- exchange(x, "weights", numeric(0))
   x <- exchange(x, "prior.weights", numeric(0))

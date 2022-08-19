@@ -38,13 +38,16 @@ test_that("gam + butcher() works", {
 test_that("gam + predict() works", {
   gam_fit <- mgcv::gam(mpg ~ s(disp, k = 3) + s(wt), data = mtcars)
   x <- butcher(gam_fit)
-  expect_equal(predict(x)[1], predict(gam_fit)[1])
   expect_equal(
-    predict(x, type = "terms")[1,],
-    predict(gam_fit, type = "terms")[1,]
+    predict(x, newdata = head(mtcars))[1],
+    predict(gam_fit, newdata = head(mtcars))[1]
+    )
+  expect_equal(
+    predict(x, newdata = head(mtcars), type = "terms")[1,],
+    predict(gam_fit, newdata = head(mtcars), type = "terms")[1,]
   )
   expect_equal(
-    predict(x, se.fit = TRUE)$se.fit[1],
-    predict(gam_fit, se.fit = TRUE)$se.fit[1]
+    predict(x, newdata = head(mtcars), se.fit = TRUE)$se.fit[1],
+    predict(gam_fit, newdata = head(mtcars), se.fit = TRUE)$se.fit[1]
   )
 })

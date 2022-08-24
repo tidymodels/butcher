@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Julia Silge is now the maintainer (#230).
+
 * Updated printing for `memory_released()` (#229).
 
 * Added butcher methods for `mgcv::gam()` (#228).

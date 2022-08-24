@@ -4,9 +4,11 @@ Version: 0.2.0.9000
 Authors@R: c(
     person("Joyce", "Cahoon", , "joyceyu48@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-7217-4702")),
-    person("Davis", "Vaughan", , "davis@rstudio.com", role = c("aut", "cre")),
+    person("Davis", "Vaughan", , "davis@rstudio.com", role = "aut"),
     person("Max", "Kuhn", , "max@rstudio.com", role = "aut"),
     person("Alex", "Hayes", , "alexpghayes@gmail.com", role = "aut"),
+    person("Julia", "Silge", , "julia.silge@rstudio.com", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-3671-836X")),
     person("RStudio", role = c("cph", "fnd"))
   )
 Description: Provides a set of S3 generics to axe components of fitted

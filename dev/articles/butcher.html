@@ -36,7 +36,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">butcher</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,14 +181,13 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
 <p>The problem here is in the <code>terms</code> component of <code>big_lm</code>. Because of how <code>lm</code> is implemented in the base <code>stats</code> package—relying on intermediate forms of the data from the <code>model.frame</code> and <code>model.matrix</code> output, the <em>environment</em> in which the linear fit was created <em>was carried along</em> in the model output.</p>
 <p>We can see this with the <code>env_print</code> function from the <code>rlang</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rlang.r-lib.org/reference/env_print.html" class="external-link">env_print</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">$</span><span class="va">terms</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x556067079660&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x5625e1ae7dd8&gt;</span></span></span>
 <span><span class="co">#&gt; Parent: &lt;environment: global&gt;</span></span>
 <span><span class="co">#&gt; Bindings:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> some_junk_in_the_environment: &lt;dbl&gt;</span></span></code></pre></div>
@@ -211,8 +210,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
 <p>…it now takes the same memory on disk:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">old_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span></span>
@@ -229,8 +227,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
 <p>Axing the environment, however, is not the only functionality of <code>butcher</code>. This package provides five S3 generics that include:</p>
 <ul>
 <li>

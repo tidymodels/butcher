@@ -14,9 +14,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="../deps/_Source%20Sans%20Pro-0.4.1/font.css" rel="stylesheet">
-<link href="../deps/_Source%20Code%20Pro-0.4.1/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Adding models to butcher">
@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">butcher</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +94,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://butcher.tidymodels.org/">butcher</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://butcher.tidymodels.org/">butcher</a></span><span class="op">)</span></span></code></pre></div>
 <p>If you come across any model objects that should be subject to butchering, but does not exist in our current repository as listed <a href="https://www.tidymodels.org/find/parsnip/" class="external-link">here</a>, please consider becoming a contributor to this package! For any first-timers, this is great place to start as we’ve created templates that make this process as seamless as possible.</p>
 <p>Let’s say our new model object, of class <code>blob</code>, was generated from a <code>R</code> package called <code>blobber</code>. If you want to add axe methods for this class, first clone butcher onto your local computer and open up RStudio (see <code>usethis::create_from_github("tidymodels/butcher")</code> for an automated way to do this). After you have opened RStudio and are in the <code>butcher</code> RStudio Project, run:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">new_model_butcher</span>(<span class="at">model_class =</span> <span class="st">"blob"</span>, <span class="at">package_name =</span> <span class="st">"blobber"</span>)</span></code></pre></div>
@@ -134,39 +134,39 @@
 <p>In this example, the fitted model objected generated from <code>blobber</code> has a <code>terms</code> component that is taking 4.01 Mb. From here, you can examine the structure of this terms component by leveraging <code>lobstr::sxp(fitted_blob_object$terms)</code> or simply running <code>utils::str(fitted_blob_object$terms)</code>. If you are looking to hunt for a specific component like the environment, fitted values, training data, controls or the call object, take a look at <code><a href="../reference/locate.html">butcher::locate()</a></code>.</p>
 <p>Perhaps from our model object, <code>blob</code>, we find that the <code>call</code> is the only piece worth axing (or replacing). The <code>R/blob.R</code> skeleton would be completed by putting a placeholder for the original call.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#' Axing a blob.</span>
-<span class="co">#'</span>
-<span class="co">#' blob model objects are created from the blobber package. They are</span>
-<span class="co">#' generally leveraged for classification ... insert anything relevant </span>
-<span class="co">#' ... This is where all the blob specific documentation lies.</span>
-<span class="co">#'</span>
-<span class="co">#' @param x Model object.</span>
-<span class="co">#' @param verbose Print information each time an axe method is executed</span>
-<span class="co">#'  that notes how much memory is released and what functions are</span>
-<span class="co">#'  disabled. Default is \code{TRUE}.</span>
-<span class="co">#' @param ... Any additional arguments related to axing.</span>
-<span class="co">#'</span>
-<span class="co">#' @return Axed model object.</span>
-<span class="co">#'</span>
-<span class="co">#' @name axe-blob</span>
-<span class="cn">NULL</span>
-
-<span class="co">#' Remove the call.</span>
-<span class="co">#'</span>
-<span class="co">#' @rdname axe-blob</span>
-<span class="co">#' @export</span>
-<span class="va">axe_call.blob</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">verbose</span> <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">old</span> <span class="op">&lt;-</span> <span class="va">x</span>
-  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">exchange</span><span class="op">(</span><span class="va">x</span>, <span class="st">"call"</span>, <span class="fu"><a href="https://rdrr.io/r/base/call.html" class="external-link">call</a></span><span class="op">(</span><span class="st">"dummy_call"</span><span class="op">)</span><span class="op">)</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="va">verbose</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="../reference/ui.html">assess_object</a></span><span class="op">(</span>
-      <span class="va">old</span>, 
-      <span class="va">x</span>,
-      disabled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"print"</span>, <span class="st">"summary"</span><span class="op">)</span>
-    <span class="op">)</span>
-  <span class="op">}</span>
-  <span class="fu">add_butcher_class</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#' Axing a blob.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' blob model objects are created from the blobber package. They are</span></span>
+<span><span class="co">#' generally leveraged for classification ... insert anything relevant </span></span>
+<span><span class="co">#' ... This is where all the blob specific documentation lies.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param x Model object.</span></span>
+<span><span class="co">#' @param verbose Print information each time an axe method is executed</span></span>
+<span><span class="co">#'  that notes how much memory is released and what functions are</span></span>
+<span><span class="co">#'  disabled. Default is \code{TRUE}.</span></span>
+<span><span class="co">#' @param ... Any additional arguments related to axing.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return Axed model object.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @name axe-blob</span></span>
+<span><span class="cn">NULL</span></span>
+<span></span>
+<span><span class="co">#' Remove the call.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @rdname axe-blob</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="va">axe_call.blob</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">verbose</span> <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">old</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">exchange</span><span class="op">(</span><span class="va">x</span>, <span class="st">"call"</span>, <span class="fu"><a href="https://rdrr.io/r/base/call.html" class="external-link">call</a></span><span class="op">(</span><span class="st">"dummy_call"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">verbose</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/ui.html">assess_object</a></span><span class="op">(</span></span>
+<span>      <span class="va">old</span>, </span>
+<span>      <span class="va">x</span>,</span>
+<span>      disabled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"print"</span>, <span class="st">"summary"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="fu">add_butcher_class</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Here we assign the current blob object <code>x</code> to the variable <code>old</code> as a means to evaluate the memory released once <code><a href="../reference/axe_call.html">axe_call()</a></code> is executed on the original model object. Next, we actually <code>exchange()</code> the current call with a dummy call of a (hopefully) smaller size. We also include <code><a href="../reference/ui.html">assess_object()</a></code> with the additional string parameter of <code>disabled</code> so console messages will be printed out, alerting users of any downstream functions would be affected by axing the call. Since the original model object is fundamentally different, we attach an additional <code>butcher_blob</code> class by calling <code>add_butcher_class()</code> at the end of each axe method. Once the axe methods are set, we then have a skeleton file <code>tests/testthat/test-blob.R</code> to aid in any unit testing.</p>
 <div class="section level2">
 <h2 id="recap">Recap<a class="anchor" aria-label="anchor" href="#recap"></a>
@@ -190,12 +190,12 @@
   <footer><div class="container">
   <div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Joyce Cahoon, <a href="https://github.com/DavisVaughan" class="external-link">Davis Vaughan</a>, <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, Alex Hayes, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+<p>Developed by Joyce Cahoon, <a href="https://github.com/DavisVaughan" class="external-link">Davis Vaughan</a>, <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, Alex Hayes, <a href="https://juliasilge.com/" class="external-link">Julia Silge</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
   </div></footer>

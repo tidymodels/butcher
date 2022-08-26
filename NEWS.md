@@ -2,6 +2,13 @@
 
 * Added butcher methods for `tabnet()` (@cregouby #226).
 
+# butcher 0.3.0
+
+* Julia Silge is now the maintainer (#230).
+
+* Updated printing for `memory_released()` (#229).
+
+* Added butcher methods for `mgcv::gam()` (#228).
 
 # butcher 0.2.0
 

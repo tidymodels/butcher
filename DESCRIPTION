@@ -32,6 +32,7 @@ Suggests:
     C50,
     caret,
     clisymbols,
+    clustMixType,
     covr,
     ddalpha,
     dimRed,

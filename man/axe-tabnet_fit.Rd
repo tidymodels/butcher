@@ -25,8 +25,7 @@ Axing a tabnet_fit.
 Remove fitted values.
 }
 \examples{
-\donttest{
-if (rlang::is_installed("tabnet")) {
+\dontshow{if (rlang::is_installed("tabnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
@@ -43,7 +42,5 @@ mtcar_fit <- tabnet() \%>\%
   fit(mpg ~ ., data = car_train)
 
 out <- butcher(mtcar_fit, verbose = TRUE)
-
-}
-}
+\dontshow{\}) # examplesIf}
 }

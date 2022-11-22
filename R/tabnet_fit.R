@@ -4,9 +4,7 @@
 #'
 #' @return Axed tabnet_fit object.
 #'
-#' @examples
-#' \donttest{
-#' if (rlang::is_installed("tabnet")) {
+#' @examplesIf rlang::is_installed("tabnet")
 #'
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
@@ -24,8 +22,6 @@
 #'
 #' out <- butcher(mtcar_fit, verbose = TRUE)
 #'
-#' }
-#' }
 #' @name axe-tabnet_fit
 NULL
 

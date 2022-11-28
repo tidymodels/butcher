@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for `ClusterR::KMeans_rcpp()` (#236).
+
 # butcher 0.3.0
 
 * Julia Silge is now the maintainer (#230).

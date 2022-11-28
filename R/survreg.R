@@ -8,10 +8,10 @@
 #'
 #' @return Axed survreg object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "survival"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(survival)))
+#' library(parsnip)
+#' library(survival)
 #'
 #' # Create model and fit
 #' survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%

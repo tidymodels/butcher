@@ -12,8 +12,8 @@
 #'
 #' @examplesIf rlang::is_installed("flexsurv")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(flexsurv)))
+#' library(parsnip)
+#' library(flexsurv)
 #'
 #' # Create model and fit
 #' flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") %>%

@@ -29,9 +29,10 @@ Axed lm object.
 lm objects are created from the base \pkg{stats} package.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
+library(parsnip)
+library(rsample)
 
 # Load data
 split <- initial_split(mtcars, props = 9/10)
@@ -60,5 +61,5 @@ lobstr::obj_size(cleaned_lm)
 # Compare environment in terms component
 lobstr::obj_size(attr(wrapped_lm()$terms, ".Environment"))
 lobstr::obj_size(attr(cleaned_lm$terms, ".Environment"))
-
+\dontshow{\}) # examplesIf}
 }

@@ -8,12 +8,12 @@
 #'
 #' @return Axed kknn object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
-#' suppressWarnings(suppressMessages(library(rpart)))
-#' suppressWarnings(suppressMessages(library(kknn)))
+#' library(parsnip)
+#' library(rsample)
+#' library(rpart)
+#' library(kknn)
 #'
 #' # Load data
 #' set.seed(1234)

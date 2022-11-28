@@ -6,10 +6,10 @@
 #'
 #' @return Axed lm object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
+#' library(parsnip)
+#' library(rsample)
 #'
 #' # Load data
 #' split <- initial_split(mtcars, props = 9/10)

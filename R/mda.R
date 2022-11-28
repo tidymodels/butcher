@@ -7,8 +7,8 @@
 #'
 #' @return Axed mda object.
 #'
-#' @examples
-#' suppressWarnings(suppressMessages(library(mda)))
+#' @examplesIf rlang::is_installed("mda")
+#' library(mda)
 #'
 #' fit <- mda(Species ~ ., data = iris)
 #' out <- butcher(fit, verbose = TRUE)

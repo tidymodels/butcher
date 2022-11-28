@@ -7,13 +7,10 @@
 #'
 #' @return Axed model object.
 #'
-#' @examples
-#' \donttest{
-#' if (rlang::is_installed("glmnet")) {
-#'
+#' @examplesIf rlang::is_installed("glmnet")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
+#' library(parsnip)
+#' library(rsample)
 #'
 #' # Load data
 #' split <- initial_split(mtcars, props = 9/10)
@@ -26,8 +23,6 @@
 #'
 #' out <- butcher(elnet_fit, verbose = TRUE)
 #'
-#' }
-#' }
 #' @name axe-elnet
 NULL
 

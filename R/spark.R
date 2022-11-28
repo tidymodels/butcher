@@ -23,11 +23,8 @@
 #'
 #' @return Axed spark object.
 #'
-#' @examples
-#' \dontrun{
-#' if (FALSE) {
-#'
-#' suppressWarnings(suppressMessages(library(sparklyr)))
+#' @examplesIf FALSE
+#' library(sparklyr)
 #'
 #' sc <- spark_connect(master = "local")
 #'
@@ -41,8 +38,6 @@
 #'
 #' spark_disconnect(sc)
 #'
-#' }
-#' }
 #' @name axe-spark
 NULL
 

@@ -10,11 +10,10 @@
 #'
 #' @return Axed ksvm object.
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf rlang::is_installed(c("parsnip", "kernlab"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(kernlab)))
+#' library(parsnip)
+#' library(kernlab)
 #'
 #' # Load data
 #' data(spam)
@@ -25,7 +24,6 @@
 #'   fit(type ~ ., data = spam)
 #'
 #' out <- butcher(ksvm_class, verbose = TRUE)
-#' }
 #' @name axe-ksvm
 NULL
 

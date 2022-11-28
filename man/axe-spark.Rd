@@ -49,10 +49,8 @@ objects are retained from butchering, yet removal of one or the
 other might be conducive to freeing up memory on disk.
 }
 \examples{
-\dontrun{
-if (FALSE) {
-
-suppressWarnings(suppressMessages(library(sparklyr)))
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(sparklyr)
 
 sc <- spark_connect(master = "local")
 
@@ -65,7 +63,5 @@ spark_fit <- ml_logistic_regression(train, Species ~ .)
 out <- butcher(spark_fit, verbose = TRUE)
 
 spark_disconnect(sc)
-
-}
-}
+\dontshow{\}) # examplesIf}
 }

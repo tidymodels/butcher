@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for `ClusterR::KMeans_rcpp()` (#236).
+
 * Added butcher methods for `clustMixType::kproto()` (@galen-ft, #235).
 
 # butcher 0.3.0

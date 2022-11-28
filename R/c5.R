@@ -8,11 +8,11 @@
 #'
 #' @return Axed C5.0 object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
-#' suppressWarnings(suppressMessages(library(rpart)))
+#' library(parsnip)
+#' library(rsample)
+#' library(rpart)
 #'
 #' # Load data
 #' set.seed(1234)

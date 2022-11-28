@@ -31,10 +31,11 @@ interface to the C5.0 classification model. The models that can be
 generated include basic tree-based models as well as rule-based models.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
-suppressWarnings(suppressMessages(library(rpart)))
+library(parsnip)
+library(rsample)
+library(rpart)
 
 # Load data
 set.seed(1234)
@@ -60,5 +61,5 @@ library(modeldata)
 data(mlc_churn)
 c5_fit3 <- C5.0(x = mlc_churn[, -20], y = mlc_churn$churn)
 out <- butcher(c5_fit3, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

@@ -23,6 +23,7 @@ Axed terms object.
 Generics related to axing objects of the term class.
 }
 \examples{
+\dontshow{if (rlang::is_installed("rpart")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Using lm
 wrapped_lm <- function() {
   some_junk_in_environment <- runif(1e6)
@@ -40,9 +41,8 @@ lobstr::obj_size(cleaned_lm)
 lobstr::obj_size(attr(wrapped_lm()$terms, ".Environment"))
 lobstr::obj_size(attr(cleaned_lm$terms, ".Environment"))
 
-\donttest{
 # Using rpart
-suppressWarnings(library(rpart))
+library(rpart)
 
 wrapped_rpart <- function() {
   some_junk_in_environment <- runif(1e6)
@@ -55,5 +55,5 @@ wrapped_rpart <- function() {
 
 lobstr::obj_size(wrapped_rpart())
 lobstr::obj_size(axe_env(wrapped_rpart()))
-}
+\dontshow{\}) # examplesIf}
 }

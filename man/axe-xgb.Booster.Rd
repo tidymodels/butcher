@@ -31,8 +31,9 @@ on the first class listed, the \code{butcher_xgb.Booster} class is
 not appended.
 }
 \examples{
-suppressWarnings(suppressMessages(library(xgboost)))
-suppressWarnings(suppressMessages(library(parsnip)))
+\dontshow{if (rlang::is_installed(c("parsnip", "xgboost"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(xgboost)
+library(parsnip)
 
 data(agaricus.train)
 bst <- xgboost(data = agaricus.train$data,
@@ -52,5 +53,5 @@ fit <- boost_tree(mode = "classification", trees = 20) \%>\%
   fit(Species ~ ., data = iris)
 
 out <- butcher(fit, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

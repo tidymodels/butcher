@@ -31,11 +31,12 @@ utilized to do weighted k-Nearest Neighbors for classification,
 regression and clustering.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(kknn)))
+library(parsnip)
+library(rsample)
+library(rpart)
+library(kknn)
 
 # Load data
 set.seed(1234)
@@ -68,4 +69,5 @@ kknn_fit <- kknn(Species ~ .,
                  kernel = "triangular")
 out <- butcher(kknn_fit, verbose = TRUE)
 }
+\dontshow{\}) # examplesIf}
 }

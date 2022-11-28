@@ -10,8 +10,8 @@
 #'
 #' @return Axed gausspr object.
 #'
-#' @examples
-#' suppressWarnings(suppressMessages(library(kernlab)))
+#' @examplesIf rlang::is_installed("kernlab")
+#' library(kernlab)
 #'
 #' test <- gausspr(Species ~ ., data = iris, var = 2)
 #'

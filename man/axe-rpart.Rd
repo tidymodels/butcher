@@ -34,11 +34,11 @@ is used for recursive partitioning for classification, regression and
 survival trees.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(library(lobstr))
+library(parsnip)
+library(rsample)
+library(rpart)
 
 # Load data
 set.seed(1234)
@@ -66,5 +66,5 @@ cleaned_rpart <- axe_env(wrapped_rpart(), verbose = TRUE)
 
 # Check size
 lobstr::obj_size(cleaned_rpart)
-
+\dontshow{\}) # examplesIf}
 }

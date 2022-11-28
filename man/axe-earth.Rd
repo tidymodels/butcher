@@ -30,8 +30,9 @@ earth objects are created from the \pkg{earth} package, which
 is leveraged to do multivariate adaptive regression splines.
 }
 \examples{
+\dontshow{if (rlang::is_installed("parsnip")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
+library(parsnip)
 
 # Create model and fit
 earth_fit <- mars(mode = "regression") \%>\%
@@ -44,5 +45,5 @@ out <- butcher(earth_fit, verbose = TRUE)
 suppressWarnings(suppressMessages(library(earth)))
 earth_mod <- earth(Volume ~ ., data = trees)
 out <- butcher(earth_mod, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

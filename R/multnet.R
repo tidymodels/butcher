@@ -7,12 +7,9 @@
 #'
 #' @return Axed multnet object.
 #'
-#' @examples
-#' \donttest{
-#' if (rlang::is_installed("glmnet")) {
-#'
+#' @examplesIf rlang::is_installed("glmnet")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
+#' library(parsnip)
 #'
 #' # Load data
 #' set.seed(1234)
@@ -27,8 +24,6 @@
 #'
 #' out <- butcher(multnet_fit, verbose = TRUE)
 #'
-#' }
-#' }
 #' @name axe-multnet
 NULL
 

@@ -31,10 +31,11 @@ leverages various resampling and bagging techniques to improve
 predictive models.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("ipred", "rpart", "MASS"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(ipred)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(MASS)))
+library(ipred)
+library(rpart)
+library(MASS)
 
 # Load data
 data("GlaucomaM", package = "TH.data")
@@ -51,5 +52,5 @@ mod <- bagging(Gene.Expression ~ MGEc.1 + MGEc.2 + MGEc.3 + MGEc.4 + IPI,
                coob = TRUE)
 
 out <- butcher(mod, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

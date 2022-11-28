@@ -6,9 +6,9 @@
 #'
 #' @return Axed model_fit object.
 #'
-#' @examples
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rpart)))
+#' @examplesIf rlang::is_installed(c("parsnip", "rpart"))
+#' library(parsnip)
+#' library(rpart)
 #'
 #' # Create model and fit
 #' lm_fit <- linear_reg() %>%

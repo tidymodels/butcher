@@ -9,10 +9,9 @@
 #'
 #' @return Axed function.
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf rlang::is_installed("caret")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(caret)))
+#' library(caret)
 #'
 #' data(iris)
 #' train_data <- iris[, 1:4]
@@ -27,7 +26,6 @@
 #' out <- axe_env(train_fit$modelInfo$prob, verbose = TRUE)
 #' out <- axe_env(train_fit$modelInfo$levels, verbose = TRUE)
 #' out <- axe_env(train_fit$modelInfo$predict, verbose = TRUE)
-#' }
 #' @name axe-function
 NULL
 

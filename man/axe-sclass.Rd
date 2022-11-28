@@ -26,10 +26,11 @@ Axed sclass object.
 sclass objects are byproducts of classbagg objects.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("ipred", "rpart", "MASS", "TH.data"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(ipred)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(MASS)))
+library(ipred)
+library(rpart)
+library(MASS)
 
 # Load data
 data("GlaucomaM", package = "TH.data")
@@ -53,5 +54,5 @@ cleaned_classbagg <- butcher(wrapped_classbagg(), verbose = TRUE)
 
 # Check size
 lobstr::obj_size(cleaned_classbagg)
-
+\dontshow{\}) # examplesIf}
 }

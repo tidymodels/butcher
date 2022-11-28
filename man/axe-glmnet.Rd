@@ -24,10 +24,8 @@ glmnet objects are created from the \pkg{glmnet} package, leveraged
 to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
-\donttest{
-if (rlang::is_installed("glmnet")) {
-
-suppressWarnings(suppressMessages(library(parsnip)))
+\dontshow{if (rlang::is_installed("glmnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(parsnip)
 
 # Wrap a parsnip glmnet model
 wrapped_parsnip_glmnet <- function() {
@@ -39,7 +37,5 @@ wrapped_parsnip_glmnet <- function() {
 }
 
 out <- butcher(wrapped_parsnip_glmnet(), verbose = TRUE)
-
-}
-}
+\dontshow{\}) # examplesIf}
 }

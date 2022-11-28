@@ -63,6 +63,7 @@ Suggests:
     rpart,
     rsample,
     RSpectra,
+    sparklyr,
     survival (>= 3.2-10),
     testthat (>= 3.0.0),
     TH.data,

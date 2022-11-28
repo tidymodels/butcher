@@ -6,7 +6,7 @@
 #'
 #' @return Axed terms object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("rpart")
 #' # Using lm
 #' wrapped_lm <- function() {
 #'   some_junk_in_environment <- runif(1e6)
@@ -24,9 +24,8 @@
 #' lobstr::obj_size(attr(wrapped_lm()$terms, ".Environment"))
 #' lobstr::obj_size(attr(cleaned_lm$terms, ".Environment"))
 #'
-#' \donttest{
 #' # Using rpart
-#' suppressWarnings(library(rpart))
+#' library(rpart)
 #'
 #' wrapped_rpart <- function() {
 #'   some_junk_in_environment <- runif(1e6)
@@ -39,7 +38,6 @@
 #'
 #' lobstr::obj_size(wrapped_rpart())
 #' lobstr::obj_size(axe_env(wrapped_rpart()))
-#' }
 #' @name axe-terms
 NULL
 

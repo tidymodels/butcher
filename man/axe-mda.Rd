@@ -30,7 +30,8 @@ mda objects are created from the \pkg{mda} package, leveraged to
 carry out mixture discriminant analysis.
 }
 \examples{
-suppressWarnings(suppressMessages(library(mda)))
+\dontshow{if (rlang::is_installed("mda")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(mda)
 
 fit <- mda(Species ~ ., data = iris)
 out <- butcher(fit, verbose = TRUE)
@@ -45,5 +46,5 @@ wrapped_mda <- function() {
 
 lobstr::obj_size(wrapped_mda())
 lobstr::obj_size(butcher(wrapped_mda()))
-
+\dontshow{\}) # examplesIf}
 }

@@ -6,11 +6,11 @@
 #'
 #' @return Axed sclass object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("ipred", "rpart", "MASS", "TH.data"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(ipred)))
-#' suppressWarnings(suppressMessages(library(rpart)))
-#' suppressWarnings(suppressMessages(library(MASS)))
+#' library(ipred)
+#' library(rpart)
+#' library(MASS)
 #'
 #' # Load data
 #' data("GlaucomaM", package = "TH.data")

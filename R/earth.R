@@ -7,9 +7,9 @@
 #'
 #' @return Axed earth object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("parsnip")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
+#' library(parsnip)
 #'
 #' # Create model and fit
 #' earth_fit <- mars(mode = "regression") %>%

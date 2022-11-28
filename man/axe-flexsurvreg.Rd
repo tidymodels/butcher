@@ -32,8 +32,8 @@ the Royston-Parmar spline model.
 \examples{
 \dontshow{if (rlang::is_installed("flexsurv")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(flexsurv)))
+library(parsnip)
+library(flexsurv)
 
 # Create model and fit
 flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%

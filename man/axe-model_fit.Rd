@@ -35,8 +35,9 @@ Axed model_fit object.
 model_fit objects are created from the \code{parsnip} package.
 }
 \examples{
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rpart)))
+\dontshow{if (rlang::is_installed(c("parsnip", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(parsnip)
+library(rpart)
 
 # Create model and fit
 lm_fit <- linear_reg() \%>\%
@@ -51,5 +52,5 @@ rpart_fit <- decision_tree(mode = "regression") \%>\%
   fit(mpg ~ ., data = mtcars, minsplit = 5, cp = 0.1)
 
 out <- butcher(rpart_fit, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

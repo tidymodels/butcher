@@ -31,10 +31,10 @@ are returned from the \code{survreg} function, representing fitted
 parametric survival models.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "survival"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(survival)))
-suppressWarnings(library(lobstr))
+library(parsnip)
+library(survival)
 
 # Create model and fit
 survreg_fit <- surv_reg(mode = "regression", dist = "weibull") \%>\%
@@ -56,5 +56,5 @@ cleaned_sp <- axe_env(wrapped_survreg.penal(), verbose = TRUE)
 
 # Check size
 lobstr::obj_size(cleaned_sp)
-
+\dontshow{\}) # examplesIf}
 }

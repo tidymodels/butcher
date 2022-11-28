@@ -35,8 +35,9 @@ Axed train object.
 train objects are created from the \pkg{caret} package.
 }
 \examples{
+\dontshow{if (rlang::is_installed("caret")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(caret)))
+library(caret)
 
 data(iris)
 train_data <- iris[, 1:4]
@@ -49,5 +50,5 @@ train_fit <- train(train_data, train_classes,
                    trControl = trainControl(method = "cv"))
 
 out <- butcher(train_fit, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

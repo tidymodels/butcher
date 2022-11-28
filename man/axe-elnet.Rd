@@ -24,12 +24,10 @@ elnet objects are created from the \pkg{glmnet} package, leveraged
 to fit generalized linear models via penalized maximum likelihood.
 }
 \examples{
-\donttest{
-if (rlang::is_installed("glmnet")) {
-
+\dontshow{if (rlang::is_installed("glmnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
+library(parsnip)
+library(rsample)
 
 # Load data
 split <- initial_split(mtcars, props = 9/10)
@@ -41,7 +39,5 @@ elnet_fit <- linear_reg(mixture = 0, penalty = 0.1) \%>\%
   fit_xy(x = car_train[, 2:11], y = car_train[, 1, drop = FALSE])
 
 out <- butcher(elnet_fit, verbose = TRUE)
-
-}
-}
+\dontshow{\}) # examplesIf}
 }

@@ -33,6 +33,7 @@ Suggests:
     caret,
     clisymbols,
     ClusterR,
+    clustMixType,
     covr,
     ddalpha,
     dimRed,

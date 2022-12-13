@@ -45,11 +45,11 @@ devtools::install_github("tidymodels/butcher")
 To make the most of your memory available, this package provides five S3
 generics for you to remove parts of a model object:
 
--   `axe_call()`: To remove the call object.
--   `axe_ctrl()`: To remove controls associated with training.
--   `axe_data()`: To remove the original training data.
--   `axe_env()`: To remove environments.
--   `axe_fitted()`: To remove fitted values.
+- `axe_call()`: To remove the call object.
+- `axe_ctrl()`: To remove controls associated with training.
+- `axe_data()`: To remove the original training data.
+- `axe_env()`: To remove environments.
+- `axe_fitted()`: To remove fitted values.
 
 As an example, we wrap a `lm` model:
 
@@ -66,7 +66,7 @@ The `lm` that exists in our modeling pipeline is:
 ``` r
 library(lobstr)
 obj_size(our_model())
-#> 8,022,440 B
+#> 8.02 MB
 ```
 
 When, in fact, it should only require:
@@ -74,7 +74,7 @@ When, in fact, it should only require:
 ``` r
 small_lm <- lm(mpg ~ ., data = mtcars) 
 obj_size(small_lm)
-#> 22,224 B
+#> 22.22 kB
 ```
 
 To understand which part of our original model object is taking up the
@@ -86,7 +86,7 @@ butcher::weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.01    
+#>  1 terms         8.06    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -106,6 +106,7 @@ To remove this (mostly) extraneous component, we can use `axe_env()`:
 
 ``` r
 cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
+#> ✔ Memory released: "8.03 MB"
 ```
 
 Comparing it against our `small_lm`, we’ll find:
@@ -178,18 +179,18 @@ This project is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
--   For questions and discussions about tidymodels packages, modeling,
-    and machine learning, please [post on RStudio
-    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
+- For questions and discussions about tidymodels packages, modeling, and
+  machine learning, please [post on RStudio
+  Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
--   If you think you have encountered a bug, please [submit an
-    issue](https://github.com/tidymodels/butcher/issues).
+- If you think you have encountered a bug, please [submit an
+  issue](https://github.com/tidymodels/butcher/issues).
 
--   Either way, learn how to create and share a
-    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
-    (a minimal, reproducible example), to clearly communicate about your
-    code.
+- Either way, learn how to create and share a
+  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+  (a minimal, reproducible example), to clearly communicate about your
+  code.
 
--   Check out further details on [contributing guidelines for tidymodels
-    packages](https://www.tidymodels.org/contribute/) and [how to get
-    help](https://www.tidymodels.org/help/).
+- Check out further details on [contributing guidelines for tidymodels
+  packages](https://www.tidymodels.org/contribute/) and [how to get
+  help](https://www.tidymodels.org/help/).

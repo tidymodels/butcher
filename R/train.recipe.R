@@ -10,7 +10,7 @@
 #'
 #' @return Axed train.recipe object.
 #'
-#' @examplesIf rlang::is_installed(c("recipes", "caret"))
+#' @examplesIf interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' library(recipes)
 #' library(caret)
 #' data(biomass, package = "modeldata")

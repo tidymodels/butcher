@@ -1,4 +1,4 @@
-# butcher (development version)
+# butcher 0.3.1
 
 * Added butcher methods for `ClusterR::KMeans_rcpp()` (#236).
 

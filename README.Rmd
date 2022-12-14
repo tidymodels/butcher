@@ -66,40 +66,40 @@ our_model <- function() {
 
 The `lm` that exists in our modeling pipeline is: 
 
-```{r, warning = F, message = F}
+```{r}
 library(lobstr)
 obj_size(our_model())
 ```
 
 When, in fact, it should only require: 
 
-```{r, warning = F, message = F}
+```{r}
 small_lm <- lm(mpg ~ ., data = mtcars) 
 obj_size(small_lm)
 ```
 
 To understand which part of our original model object is taking up the most memory, we leverage the `weigh()` function: 
 
-```{r, warning = F, message = F}
+```{r}
 big_lm <- our_model()
 butcher::weigh(big_lm)
 ```
 
 The problem here is in the `terms` component of our `big_lm`. Because of how `lm` is implemented in the `stats` package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use `axe_env()`:
 
-```{r, warning = F, message = F}
+```{r}
 cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
 ```
 
 Comparing it against our `small_lm`, we'll find:
 
-```{r, warning = F, message = F}
+```{r}
 butcher::weigh(cleaned_lm)
 ```
 
 ...it now takes the same memory on disk as `small_lm`:
 
-```{r, warning = F, message = F}
+```{r}
 butcher::weigh(small_lm)
 ```
 

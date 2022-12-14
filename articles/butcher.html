@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.2/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.2/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.4/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="butcher">
@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">butcher</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,25 +96,38 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://butcher.tidymodels.org/">butcher</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/parsnip" class="external-link">parsnip</a></span><span class="op">)</span></span></code></pre></div>
-<p>One of the beauties of working with <code>R</code> is the ease with which you can implement intricate models and make challenging data analysis pipelines seem almost trivial. Take, for example, the <code>parsnip</code> package; with the installation of a few associated libraries and a few lines of code, you can fit something as complex as a boosted tree:</p>
+<p>One of the beauties of working with <code>R</code> is the ease with
+which you can implement intricate models and make challenging data
+analysis pipelines seem almost trivial. Take, for example, the
+<code>parsnip</code> package; with the installation of a few associated
+libraries and a few lines of code, you can fit something as complex as a
+boosted tree:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart" class="external-link">rpart</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html" class="external-link">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"C5.0"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span> <span class="op">~</span> <span class="va">disp</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<p>Or, let’s say you’re working on petabytes of data, in which data are distributed across many nodes, just switch out the <code>parsnip</code> engine:</p>
+<p>Or, let’s say you’re working on petabytes of data, in which data are
+distributed across many nodes, just switch out the <code>parsnip</code>
+engine:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://spark.rstudio.com/" class="external-link">sparklyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu">spark_connect</span><span class="op">(</span>master <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span></span>
+<span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sparklyr/man/spark-connections.html" class="external-link">spark_connect</a></span><span class="op">(</span>master <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mtcars_tbls</span> <span class="op">&lt;-</span> <span class="fu">sdf_copy_to</span><span class="op">(</span><span class="va">sc</span>, <span class="va">mtcars</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">mtcars_tbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sparklyr/man/sdf_copy_to.html" class="external-link">sdf_copy_to</a></span><span class="op">(</span><span class="va">sc</span>, <span class="va">mtcars</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">fitted_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/boost_tree.html" class="external-link">boost_tree</a></span><span class="op">(</span>trees <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"spark"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">disp</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars_tbls</span><span class="op">)</span></span></code></pre></div>
-<p>Yet, while our code may appear compact, the underlying fitted result may not be. Since <code>parsnip</code> works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the popular <code>lm</code> function from the base <code>stats</code> package. Whether you leverage <code>parsnip</code> or not, you arrive at the same result:</p>
+<p>Yet, while our code may appear compact, the underlying fitted result
+may not be. Since <code>parsnip</code> works as a wrapper for many
+modeling packages, its fitted model objects inherit the same properties
+as those that arise from the original modeling package. A
+straightforward example is the popular <code>lm</code> function from the
+base <code>stats</code> package. Whether you leverage
+<code>parsnip</code> or not, you arrive at the same result:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">parsnip_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/linear_reg.html" class="external-link">linear_reg</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"lm"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -148,7 +161,10 @@
 <span><span class="co">#&gt;    -3.71530      0.82104      0.31776      2.52023      0.65541  </span></span>
 <span><span class="co">#&gt;        carb  </span></span>
 <span><span class="co">#&gt;    -0.19942</span></span></code></pre></div>
-<p>Let’s say we take this familiar <code>old_lm</code> approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> in other function, but in doing so, we may end up carrying some junk.</p>
+<p>Let’s say we take this familiar <code>old_lm</code> approach in
+building our in-house modeling pipeline. Such a pipeline might entail
+wrapping <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> in other function, but in doing so, we may
+end up carrying some junk.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">in_house_model</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">some_junk_in_the_environment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">1e6</span><span class="op">)</span> <span class="co"># we didn't know about</span></span>
@@ -159,11 +175,16 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lobstr.r-lib.org/" class="external-link">lobstr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="fu">in_house_model</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 8.02 MB</span></span></code></pre></div>
-<p>When it is fundamentally the same as our <code>old_lm</code>, which only takes up:</p>
+<p>When it is fundamentally the same as our <code>old_lm</code>, which
+only takes up:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="va">old_lm</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 22.22 kB</span></span></code></pre></div>
-<p>Ideally, we want to avoid saving this new <code>in_house_model()</code> on disk, when we could have something like <code>old_lm</code> that takes up less memory. So, what the heck is going on here? We can examine possible issues with a fitted model object using the <code>butcher</code> package:</p>
+<p>Ideally, we want to avoid saving this new
+<code>in_house_model()</code> on disk, when we could have something like
+<code>old_lm</code> that takes up less memory. So, what the heck is
+going on here? We can examine possible issues with a fitted model object
+using the <code>butcher</code> package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">big_lm</span> <span class="op">&lt;-</span> <span class="fu">in_house_model</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">big_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span></span>
@@ -181,16 +202,25 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
-<p>The problem here is in the <code>terms</code> component of <code>big_lm</code>. Because of how <code>lm</code> is implemented in the base <code>stats</code> package—relying on intermediate forms of the data from the <code>model.frame</code> and <code>model.matrix</code> output, the <em>environment</em> in which the linear fit was created <em>was carried along</em> in the model output.</p>
-<p>We can see this with the <code>env_print</code> function from the <code>rlang</code> package:</p>
+<p>The problem here is in the <code>terms</code> component of
+<code>big_lm</code>. Because of how <code>lm</code> is implemented in
+the base <code>stats</code> package—relying on intermediate forms of the
+data from the <code>model.frame</code> and <code>model.matrix</code>
+output, the <em>environment</em> in which the linear fit was created
+<em>was carried along</em> in the model output.</p>
+<p>We can see this with the <code>env_print</code> function from the
+<code>rlang</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rlang.r-lib.org/reference/env_print.html" class="external-link">env_print</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">$</span><span class="va">terms</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x56546e41b2e8&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x561711f5cbe0&gt;</span></span></span>
 <span><span class="co">#&gt; Parent: &lt;environment: global&gt;</span></span>
 <span><span class="co">#&gt; Bindings:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> some_junk_in_the_environment: &lt;dbl&gt;</span></span></code></pre></div>
-<p>To avoid carrying possible junk in our production pipeline, whether it be associated with an <code>lm</code> model (or something more complex), we can leverage <code><a href="../reference/axe_env.html">axe_env()</a></code> within the <code>butcher</code> package. In other words,</p>
+<p>To avoid carrying possible junk in our production pipeline, whether
+it be associated with an <code>lm</code> model (or something more
+complex), we can leverage <code><a href="../reference/axe_env.html">axe_env()</a></code> within the
+<code>butcher</code> package. In other words,</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Comparing it against our <code>old_lm</code>, we find:</p>
@@ -227,20 +257,27 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
-<p>Axing the environment, however, is not the only functionality of <code>butcher</code>. This package provides five S3 generics that include:</p>
+<p>Axing the environment, however, is not the only functionality of
+<code>butcher</code>. This package provides five S3 generics that
+include:</p>
 <ul>
 <li>
 <code><a href="../reference/axe_call.html">axe_call()</a></code>: Remove the call object.</li>
 <li>
-<code><a href="../reference/axe_ctrl.html">axe_ctrl()</a></code>: Remove the controls fixed for training.</li>
+<code><a href="../reference/axe_ctrl.html">axe_ctrl()</a></code>: Remove the controls fixed for
+training.</li>
 <li>
 <code><a href="../reference/axe_data.html">axe_data()</a></code>: Remove the original data.</li>
 <li>
-<code><a href="../reference/axe_env.html">axe_env()</a></code>: Replace inherited environments with empty environments.</li>
+<code><a href="../reference/axe_env.html">axe_env()</a></code>: Replace inherited environments with empty
+environments.</li>
 <li>
 <code><a href="../reference/axe_fitted.html">axe_fitted()</a></code>: Remove fitted values.</li>
 </ul>
-<p>In our case here with <code>lm</code>, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we execute all the possible axe functions at once. To do so, we simply run <code><a href="../reference/butcher.html">butcher()</a></code>:</p>
+<p>In our case here with <code>lm</code>, if we are only interested in
+prediction as the end product of our modeling pipeline, we could free up
+a lot of memory if we execute all the possible axe functions at once. To
+do so, we simply run <code><a href="../reference/butcher.html">butcher()</a></code>:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">butchered_lm</span> <span class="op">&lt;-</span> <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/butcher.html">butcher</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">butchered_lm</span>, <span class="va">mtcars</span><span class="op">[</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></span>
@@ -266,7 +303,9 @@
 <span><span class="co">#&gt;            27.63627            18.87004            19.69383 </span></span>
 <span><span class="co">#&gt;       Maserati Bora          Volvo 142E </span></span>
 <span><span class="co">#&gt;            13.94112            24.36827</span></span></code></pre></div>
-<p>Alternatively, we can pick and choose specific axe functions, removing only those parts of the model object that we are no longer interested in characterizing.</p>
+<p>Alternatively, we can pick and choose specific axe functions,
+removing only those parts of the model object that we are no longer
+interested in characterizing.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">butchered_lm</span> <span class="op">&lt;-</span> <span class="va">big_lm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -294,7 +333,9 @@
 <span><span class="co">#&gt;            27.63627            18.87004            19.69383 </span></span>
 <span><span class="co">#&gt;       Maserati Bora          Volvo 142E </span></span>
 <span><span class="co">#&gt;            13.94112            24.36827</span></span></code></pre></div>
-<p><code>butcher</code> makes it easy to axe parts of the fitted output that are no longer needed, without sacrificing much functionality from the original model object.</p>
+<p><code>butcher</code> makes it easy to axe parts of the fitted output
+that are no longer needed, without sacrificing much functionality from
+the original model object.</p>
   </main>
 </div>
 

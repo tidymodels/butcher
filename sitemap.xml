@@ -37,6 +37,9 @@
     <loc>https://butcher.tidymodels.org/reference/axe-C5.0.html</loc>
   </url>
   <url>
+    <loc>https://butcher.tidymodels.org/reference/axe-KMeansCluster.html</loc>
+  </url>
+  <url>
     <loc>https://butcher.tidymodels.org/reference/axe-classbagg.html</loc>
   </url>
   <url>
@@ -68,6 +71,9 @@
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/axe-kknn.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/reference/axe-kproto.html</loc>
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/reference/axe-ksvm.html</loc>

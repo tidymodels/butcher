@@ -14,7 +14,6 @@ test_that("coxph + axe_env() works", {
   x <- axe_env(res)
 
   expect_equal(attr(x$formula, ".Environment"), rlang::base_env())
-  expect_equal(attr(x$terms, ".Environment"), rlang::base_env())
 })
 
 test_that("coxph + axe_data() works", {
@@ -45,7 +44,6 @@ test_that("coxph + butcher() works", {
 
   x <- butcher(res)
   expect_equal(attr(x$formula, ".Environment"), rlang::base_env())
-  expect_equal(attr(x$terms, ".Environment"), rlang::base_env())
   expect_equal(x$y, numeric(0))
 })
 

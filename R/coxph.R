@@ -34,9 +34,6 @@ NULL
 #' @export
 axe_env.coxph <- function(x, verbose = FALSE, ...) {
   res <- x
-  #res$terms <- axe_env(res$terms, verbose = verbose, ...)
-  #attr(res$terms, ".Environment") <- rlang::base_env()
-  #attributes(res$model)$terms <- axe_env(attributes(res$model)$terms, ...)
   res$formula <- axe_env(res$formula, verbose = verbose, ...)
 
   add_butcher_attributes(

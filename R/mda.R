@@ -1,7 +1,8 @@
 #' Axing a mda.
 #'
-#' mda objects are created from the \pkg{mda} package, leveraged to
-#' carry out mixture discriminant analysis.
+#' mda and fda objects are created from the \pkg{mda} package, leveraged to
+#' carry out mixture discriminant analysis and flexible discriminat analysis,
+#' respectively.
 #'
 #' @inheritParams butcher
 #'
@@ -10,19 +11,27 @@
 #' @examplesIf rlang::is_installed("mda")
 #' library(mda)
 #'
-#' fit <- mda(Species ~ ., data = iris)
+#' mtcars$cyl <- as.factor(mtcars$cyl)
+#'
+#' fit <- mda(cyl ~ ., data = mtcars)
 #' out <- butcher(fit, verbose = TRUE)
+#'
+#' fit2 <- fda(cyl ~ ., data = mtcars)
+#' out2 <- butcher(fit2, verbose = TRUE)
 #'
 #' # Another mda object
 #' data(glass)
-#' wrapped_mda <- function() {
+#' wrapped_mda <- function(fit_fn) {
 #'   some_junk_in_environment <- runif(1e6)
-#'   fit <- mda(Type ~ ., data = glass)
+#'   fit <- fit_fn(Type ~ ., data = glass)
 #'   return(fit)
 #' }
 #'
-#' lobstr::obj_size(wrapped_mda())
-#' lobstr::obj_size(butcher(wrapped_mda()))
+#' lobstr::obj_size(wrapped_mda(mda))
+#' lobstr::obj_size(butcher(wrapped_mda(mda)))
+#'
+#' lobstr::obj_size(wrapped_mda(fda))
+#' lobstr::obj_size(butcher(wrapped_mda(fda)))
 #'
 #' @name axe-mda
 NULL
@@ -43,6 +52,10 @@ axe_call.mda <- function(x, verbose = FALSE, ...) {
   )
 }
 
+#' @rdname axe-mda
+#' @export
+axe_call.fda <- axe_call.mda
+
 #' Remove environments.
 #'
 #' @rdname axe-mda
@@ -58,6 +71,10 @@ axe_env.mda <- function(x, verbose = FALSE, ...) {
   )
 }
 
+#' @rdname axe-mda
+#' @export
+axe_env.fda <- axe_env.mda
+
 #' Remove fitted values.
 #'
 #' @rdname axe-mda
@@ -72,3 +89,7 @@ axe_fitted.mda <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
+
+#' @rdname axe-mda
+#' @export
+axe_fitted.fda <- axe_fitted.mda

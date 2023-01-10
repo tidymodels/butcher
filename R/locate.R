@@ -69,7 +69,7 @@ butcher_unlist <- function(.x, .f, ...){
   .f <- purrr::as_mapper(.f)
   is_sublist <- purrr::map_lgl(.x, rlang::is_list)
   .x[is_sublist] <- purrr::map(.x[is_sublist], butcher_unlist, .f, ...)
-  purrr::invoke(.f, .x, ...)
+  rlang::exec(.f, !!!.x, ...)
 }
 
 find_environment <- function(x) {

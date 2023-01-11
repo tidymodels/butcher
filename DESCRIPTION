@@ -35,6 +35,7 @@ Suggests:
     ClusterR,
     clustMixType,
     covr,
+    dbarts,
     ddalpha,
     dimRed,
     dplyr,

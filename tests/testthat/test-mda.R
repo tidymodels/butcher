@@ -78,3 +78,25 @@ test_that("mda + custom parsnip model + predict() works", {
   x <- axe_fitted(mda_fit)
   expect_equal(x$fit$fit$fitted.values, matrix(NA))
 })
+
+test_that("fda + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("mda")
+  suppressPackageStartupMessages(library(mda))
+  mtcars$cyl <- as.factor(mtcars$cyl)
+  fit <- fda(cyl ~ ., data = mtcars)
+  x <- axe_call(fit)
+  expect_equal(x$call, rlang::expr(dummy_call()))
+  expect_error(update(x, subclasses = 4))
+  expect_equal(attr(x, "butcher_disabled"),
+               c("print()", "summary()", "update()"))
+  x <- axe_data(fit)
+  expect_identical(x, fit)
+  x <- axe_env(fit)
+  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
+  x <- axe_fitted(fit)
+  expect_equal(x$fit$fitted.values, matrix(NA))
+  x <- butcher(fit)
+  expect_equal(predict(x, mtcars[1:3, ]),
+               predict(fit, mtcars[1:3, ]))
+})

@@ -3,15 +3,24 @@
 \name{axe-mda}
 \alias{axe-mda}
 \alias{axe_call.mda}
+\alias{axe_call.fda}
 \alias{axe_env.mda}
+\alias{axe_env.fda}
 \alias{axe_fitted.mda}
+\alias{axe_fitted.fda}
 \title{Axing a mda.}
 \usage{
 \method{axe_call}{mda}(x, verbose = FALSE, ...)
 
+\method{axe_call}{fda}(x, verbose = FALSE, ...)
+
 \method{axe_env}{mda}(x, verbose = FALSE, ...)
 
+\method{axe_env}{fda}(x, verbose = FALSE, ...)
+
 \method{axe_fitted}{mda}(x, verbose = FALSE, ...)
+
+\method{axe_fitted}{fda}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{A model object.}
@@ -26,25 +35,34 @@ disabled. Default is \code{FALSE}.}
 Axed mda object.
 }
 \description{
-mda objects are created from the \pkg{mda} package, leveraged to
-carry out mixture discriminant analysis.
+mda and fda objects are created from the \pkg{mda} package, leveraged to
+carry out mixture discriminant analysis and flexible discriminat analysis,
+respectively.
 }
 \examples{
 \dontshow{if (rlang::is_installed("mda")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(mda)
 
-fit <- mda(Species ~ ., data = iris)
+mtcars$cyl <- as.factor(mtcars$cyl)
+
+fit <- mda(cyl ~ ., data = mtcars)
 out <- butcher(fit, verbose = TRUE)
+
+fit2 <- fda(cyl ~ ., data = mtcars)
+out2 <- butcher(fit2, verbose = TRUE)
 
 # Another mda object
 data(glass)
-wrapped_mda <- function() {
+wrapped_mda <- function(fit_fn) {
   some_junk_in_environment <- runif(1e6)
-  fit <- mda(Type ~ ., data = glass)
+  fit <- fit_fn(Type ~ ., data = glass)
   return(fit)
 }
 
-lobstr::obj_size(wrapped_mda())
-lobstr::obj_size(butcher(wrapped_mda()))
+lobstr::obj_size(wrapped_mda(mda))
+lobstr::obj_size(butcher(wrapped_mda(mda)))
+
+lobstr::obj_size(wrapped_mda(fda))
+lobstr::obj_size(butcher(wrapped_mda(fda)))
 \dontshow{\}) # examplesIf}
 }

@@ -1,5 +1,9 @@
 # butcher (development version)
 
+* Added butcher methods for `mda::fda()` (#241).
+
+* Added butcher methods for `dbarts::bart()` (#240).
+
 # butcher 0.3.1
 
 * Added butcher methods for `ClusterR::KMeans_rcpp()` (#236).

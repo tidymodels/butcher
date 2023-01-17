@@ -2,7 +2,7 @@ skip_if_not_installed("xrf")
 
 test_that("xrf + axe_call() works", {
   res <-
-    xrf(
+    xrf::xrf(
       mpg ~ .,
       mtcars,
       xgb_control = list(nrounds = 2, max_depth = 2),
@@ -16,7 +16,7 @@ test_that("xrf + axe_call() works", {
 
 test_that("xrf + axe_env() works", {
   res <-
-    xrf(
+    xrf::xrf(
       mpg ~ .,
       mtcars,
       xgb_control = list(nrounds = 2, max_depth = 2),
@@ -31,7 +31,7 @@ test_that("xrf + axe_env() works", {
 
 test_that("xrf + butcher() works", {
   res <-
-    xrf(
+    xrf::xrf(
       mpg ~ .,
       mtcars,
       xgb_control = list(nrounds = 2, max_depth = 2),
@@ -49,7 +49,7 @@ test_that("xrf + butcher() works", {
 
 test_that("xrf + predict() works", {
   res <-
-    xrf(
+    xrf::xrf(
       mpg ~ .,
       mtcars,
       xgb_control = list(nrounds = 2, max_depth = 2),

@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for `survival::coxph()` (#243).
+
 * Added butcher methods for `xrf::xrf()` (#242).
 
 * Added butcher methods for `mda::fda()` (#241).

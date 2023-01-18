@@ -1,4 +1,5 @@
 skip_if_not_installed("survival")
+library(survival)
 
 test_that("coxph + axe_env() works", {
   example_data <-

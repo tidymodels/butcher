@@ -1,4 +1,5 @@
 skip_if_not_installed("MASS")
+library(MASS)
 
 test_that("lda + axe_env() works", {
   mt <- mtcars[,1:5]

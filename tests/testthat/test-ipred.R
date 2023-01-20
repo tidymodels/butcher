@@ -1,6 +1,11 @@
 skip_if_not_installed("ipred")
 library(ipred)
 
+skip_if_not_installed("survival")
+library(survival)
+
+data("DLBCL", package = "ipred")
+
 test_that("ipred + rpart + axing works (regbagg)", {
   fit <- bagging(y ~ x, data.frame(y = rnorm(1e3), x = rnorm(1e3)))
 
@@ -96,9 +101,6 @@ test_that("ipred + rpart + predict() works (classbagg)", {
 })
 
 test_that("ipred + rpart + predict() works (survbagg)", {
-  skip_if_not_installed("survival")
-  library(survival)
-
   fit <-
     bagging(Surv(time,cens) ~ MGEc.1 + MGEc.2 + MGEc.3 + MGEc.4 + MGEc.5 +
               MGEc.6 + MGEc.7 + MGEc.8 + MGEc.9 +

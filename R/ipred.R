@@ -22,9 +22,7 @@
 #' weigh(mod_res)
 #'
 #' @name axe-ipred
-#' @aliases axe-regbagg
-#' @aliases axe-classbagg
-#' @aliases axe-survbagg
+#' @aliases axe-regbagg axe-classbagg axe-survbagg
 NULL
 
 #' @rdname axe-ipred
@@ -41,6 +39,7 @@ axe_call.regbagg <- function(x, verbose = FALSE, ...) {
   add_butcher_attributes(
     x,
     old,
+    disabled = c("print()", "summary()"),
     verbose = verbose
   )
 }

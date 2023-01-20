@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for `ipred::bagging` (#245).
+
 * Added butcher methods for `MASS::lda()` and `MASS::qda()` (#244).
 
 * Added butcher methods for `survival::coxph()` (#243).

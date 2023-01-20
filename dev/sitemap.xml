@@ -40,9 +40,6 @@
     <loc>https://butcher.tidymodels.org/dev/reference/axe-bart.html</loc>
   </url>
   <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-classbagg.html</loc>
-  </url>
-  <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-coxph.html</loc>
   </url>
   <url>
@@ -71,6 +68,9 @@
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-glmnet.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/dev/reference/axe-ipred.html</loc>
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-kknn.html</loc>

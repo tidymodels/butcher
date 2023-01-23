@@ -1,8 +1,8 @@
 # butcher (development version)
 
-* Added butcher methods for `klaR::rda` and `klaR::NaiveBayes` (#246).
+* Added butcher methods for `klaR::rda()` and `klaR::NaiveBayes()` (#246).
 
-* Added butcher methods for `ipred::bagging` (#245).
+* Added butcher methods for `ipred::bagging()` (#245).
 
 * Added butcher methods for `MASS::lda()` and `MASS::qda()` (#244).
 

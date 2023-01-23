@@ -37,6 +37,9 @@
     <loc>https://butcher.tidymodels.org/dev/reference/axe-KMeansCluster.html</loc>
   </url>
   <url>
+    <loc>https://butcher.tidymodels.org/dev/reference/axe-NaiveBayes.html</loc>
+  </url>
+  <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-bart.html</loc>
   </url>
   <url>
@@ -104,6 +107,9 @@
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-ranger.html</loc>
+  </url>
+  <url>
+    <loc>https://butcher.tidymodels.org/dev/reference/axe-rda.html</loc>
   </url>
   <url>
     <loc>https://butcher.tidymodels.org/dev/reference/axe-recipe.html</loc>

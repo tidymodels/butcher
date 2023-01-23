@@ -1,7 +1,7 @@
 # butcher (development version)
 
 * Added butcher methods for `mixOmics::pls()`, `mixOmics::spls()`, 
-  and `mixOmics::plsda()` (#247).
+  and `mixOmics::plsda()` (#249).
 
 * Added butcher methods for `klaR::rda` and `klaR::NaiveBayes` (#246).
 

@@ -58,6 +58,7 @@ jobs:
           pak-version: devel
           extra-packages:
             any::rcmdcheck,
+            bioc::mixOmics,
             randomForest=?ignore-before-r=4.1.0,
             flexsurv=?ignore-before-r=4.0.0
           needs: check

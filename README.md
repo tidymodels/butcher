@@ -5,9 +5,13 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/tidymodels/butcher/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/butcher/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/butcher)](https://CRAN.R-project.org/package=butcher)
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/butcher/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher?branch=main)
-[![R-CMD-check](https://github.com/tidymodels/butcher/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/butcher/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 ## Overview
@@ -36,8 +40,8 @@ install.packages("butcher")
 Or install the development version from [GitHub](https://github.com/):
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("tidymodels/butcher")
+# install.packages("pak")
+pak::pkg_install("tidymodels/butcher")
 ```
 
 ## Butchering

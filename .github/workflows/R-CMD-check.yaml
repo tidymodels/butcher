@@ -22,20 +22,21 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
+          - {os: macos-latest,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
           # Don't use Windows 3.6 build to avoid igraph always being
           # installed from source and failing
-          # Use 3.6 to trigger usage of RTools35
           # - {os: windows-latest, r: '3.6'}
+          # use 4.1 to check with rtools40's older compiler
+          - {os: windows-latest, r: '4.1'}
 
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
           - {os: ubuntu-latest,   r: 'oldrel-2'}
           - {os: ubuntu-latest,   r: 'oldrel-3'}
-          # Don't use R 3.4 build. survival, mda, TH.data require >=3.5.
+          # Don't use R 3.5: RSpectra, timeDate, glmnet require >=3.6
           # - {os: ubuntu-latest,   r: 'oldrel-4'}
 
     env:
@@ -43,7 +44,7 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -55,7 +56,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          pak-version: devel
           extra-packages:
             any::rcmdcheck,
             randomForest=?ignore-before-r=4.1.0,

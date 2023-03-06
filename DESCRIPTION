@@ -4,12 +4,12 @@ Version: 0.3.1.9000
 Authors@R: c(
     person("Joyce", "Cahoon", , "joyceyu48@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-7217-4702")),
-    person("Davis", "Vaughan", , "davis@rstudio.com", role = "aut"),
-    person("Max", "Kuhn", , "max@rstudio.com", role = "aut"),
+    person("Davis", "Vaughan", , "davis@posit.co", role = "aut"),
+    person("Max", "Kuhn", , "max@posit.co", role = "aut"),
     person("Alex", "Hayes", , "alexpghayes@gmail.com", role = "aut"),
-    person("Julia", "Silge", , "julia.silge@rstudio.com", role = c("cre", "aut"),
+    person("Julia", "Silge", , "julia.silge@posit.co", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-3671-836X")),
-    person("RStudio", role = c("cph", "fnd"))
+    person(given = "Posit, PBC", role = c("cph", "fnd"))
   )
 Description: Provides a set of S3 generics to axe components of fitted
     model objects and help reduce the size of model objects saved to disk.
@@ -18,7 +18,7 @@ URL: https://butcher.tidymodels.org/,
     https://github.com/tidymodels/butcher
 BugReports: https://github.com/tidymodels/butcher/issues
 Depends: 
-    R (>= 3.4.0)
+    R (>= 3.5.0)
 Imports: 
     cli (>= 3.3.0),
     lobstr (>= 1.1.2),
@@ -45,8 +45,8 @@ Suggests:
     fs,
     ipred,
     kernlab,
-    klaR,
     kknn,
+    klaR,
     knitr,
     MASS,
     mda,

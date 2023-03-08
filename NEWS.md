@@ -1,3 +1,5 @@
+# butcher (development version)
+
 # butcher 0.3.2
 
 * Added butcher methods for `mixOmics::pls()`, `mixOmics::spls()`, 

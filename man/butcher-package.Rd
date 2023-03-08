@@ -39,19 +39,19 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Julia Silge \email{julia.silge@rstudio.com} (\href{https://orcid.org/0000-0002-3671-836X}{ORCID})
+\strong{Maintainer}: Julia Silge \email{julia.silge@posit.co} (\href{https://orcid.org/0000-0002-3671-836X}{ORCID})
 
 Authors:
 \itemize{
   \item Joyce Cahoon \email{joyceyu48@gmail.com} (\href{https://orcid.org/0000-0001-7217-4702}{ORCID})
-  \item Davis Vaughan \email{davis@rstudio.com}
-  \item Max Kuhn \email{max@rstudio.com}
+  \item Davis Vaughan \email{davis@posit.co}
+  \item Max Kuhn \email{max@posit.co}
   \item Alex Hayes \email{alexpghayes@gmail.com}
 }
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder, funder]
+  \item Posit, PBC [copyright holder, funder]
 }
 
 }

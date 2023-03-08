@@ -41,7 +41,7 @@ Or install the development version from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("pak")
-pak::pkg_install("tidymodels/butcher")
+pak::pak("tidymodels/butcher")
 ```
 
 ## Butchering

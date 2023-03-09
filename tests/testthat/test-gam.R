@@ -43,8 +43,25 @@ test_that("gam + predict() works", {
     predict(gam_fit, newdata = head(mtcars))[1]
   )
   expect_equal(
-    predict(x, newdata = head(mtcars), type = "terms")[1,],
-    predict(gam_fit, newdata = head(mtcars), type = "terms")[1,]
+    predict(x, newdata = head(mtcars), type = "terms")[1, ],
+    predict(gam_fit, newdata = head(mtcars), type = "terms")[1, ]
+  )
+  expect_equal(
+    predict(x, newdata = head(mtcars), se.fit = TRUE)$se.fit[1],
+    predict(gam_fit, newdata = head(mtcars), se.fit = TRUE)$se.fit[1]
+  )
+})
+
+test_that("gam + predict() works with offset", {
+  gam_fit <- mgcv::gam(mpg ~ s(disp, k = 3) + s(wt), data = mtcars, offset = seq(1, nrow(mtcars)))
+  x <- butcher(gam_fit)
+  expect_equal(
+    predict(x, newdata = head(mtcars))[1],
+    predict(gam_fit, newdata = head(mtcars))[1]
+  )
+  expect_equal(
+    predict(x, newdata = head(mtcars), type = "terms")[1, ],
+    predict(gam_fit, newdata = head(mtcars), type = "terms")[1, ]
   )
   expect_equal(
     predict(x, newdata = head(mtcars), se.fit = TRUE)$se.fit[1],

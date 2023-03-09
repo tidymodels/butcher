@@ -1,3 +1,8 @@
+# butcher (development version)
+
+* Updated methods for `mgcv::gam()` to also remove the `hat` and `offset` 
+  components (@rdavis120, #255).
+
 # butcher 0.3.2
 
 * Added butcher methods for `mixOmics::pls()`, `mixOmics::spls()`, 

@@ -39,6 +39,15 @@ nested_model_fit object involves axing all the inner model_fit objects.
 \examples{
 \dontshow{if (rlang::is_installed(c("parsnip", "nestedmodels"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
+library(nestedmodels)
+library(parsnip)
+model <- linear_reg() \%>\%
+#  set_engine("lm") \%>\%
+#  nested()
+nested_data <- tidyr::nest(example_nested_data, data = -id)
+fit <- fit(model, z ~ x + y + a + b, nested_data)
+## Reduce the model size
+butcher(fit)
 \dontshow{\}) # examplesIf}
 }
 \seealso{

@@ -3,29 +3,25 @@
 #' nested_model_fit objects are created from the \pkg{nestedmodels}
 #' package, which allows parsnip models to be fitted on nested data. Axing a
 #' nested_model_fit object involves axing all the inner model_fit objects.
-#' 
+#'
 #' @inheritParams butcher
-#' 
+#'
 #' @seealso [axe-model_fit]
-#' 
+#'
 #' @return Axed nested_model_fit object.
 #'
 #' @examplesIf rlang::is_installed(c("parsnip", "nestedmodels"))
-#' 
-# library(nestedmodels)
-# library(parsnip)
-# 
-# model <- linear_reg() %>%
-#   set_engine("lm") %>%
-#   nested()
-# 
-# nested_data <- tidyr::nest(example_nested_data, data = -id)
-# 
-# fit <- fit(model, z ~ x + y + a + b, nested_data)
-# 
-# # Reduce the model size
-# butcher(fit)
-#' 
+#'
+#' library(nestedmodels)
+#' library(parsnip)
+#' model <- linear_reg() %>%
+#' #  set_engine("lm") %>%
+#' #  nested()
+#' nested_data <- tidyr::nest(example_nested_data, data = -id)
+#' fit <- fit(model, z ~ x + y + a + b, nested_data)
+#' ## Reduce the model size
+#' butcher(fit)
+#'
 #' @name axe-nested_model_fit
 NULL
 
@@ -44,7 +40,7 @@ axe_call.nested_model_fit <- function(x, verbose = FALSE, ...) {
 
   all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
   disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if(length(disabled) == 0) {
+  if (length(disabled) == 0) {
     disabled <- NULL
   }
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
@@ -65,7 +61,7 @@ axe_ctrl.nested_model_fit <- function(x, verbose = FALSE, ...) {
 
   all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
   disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if(length(disabled) == 0) {
+  if (length(disabled) == 0) {
     disabled <- NULL
   }
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
@@ -86,7 +82,7 @@ axe_data.nested_model_fit <- function(x, verbose = FALSE, ...) {
 
   all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
   disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if(length(disabled) == 0) {
+  if (length(disabled) == 0) {
     disabled <- NULL
   }
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
@@ -107,7 +103,7 @@ axe_env.nested_model_fit <- function(x, verbose = FALSE, ...) {
 
   all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
   disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if(length(disabled) == 0) {
+  if (length(disabled) == 0) {
     disabled <- NULL
   }
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
@@ -127,7 +123,7 @@ axe_fitted.nested_model_fit <- function(x, verbose = FALSE, ...) {
   )
   all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
   disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if(length(disabled) == 0) {
+  if (length(disabled) == 0) {
     disabled <- NULL
   }
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)

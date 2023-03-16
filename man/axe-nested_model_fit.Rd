@@ -41,11 +41,15 @@ nested_model_fit object involves axing all the inner model_fit objects.
 
 library(nestedmodels)
 library(parsnip)
+
 model <- linear_reg() \%>\%
-#  set_engine("lm") \%>\%
-#  nested()
+  set_engine("lm") \%>\%
+  nested()
+
 nested_data <- tidyr::nest(example_nested_data, data = -id)
+
 fit <- fit(model, z ~ x + y + a + b, nested_data)
+
 ## Reduce the model size
 butcher(fit)
 \dontshow{\}) # examplesIf}

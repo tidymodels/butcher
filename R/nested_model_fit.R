@@ -14,12 +14,16 @@
 #'
 #' library(nestedmodels)
 #' library(parsnip)
+#'
 #' model <- linear_reg() %>%
-#' #  set_engine("lm") %>%
-#' #  nested()
+#'   set_engine("lm") %>%
+#'   nested()
+#'
 #' nested_data <- tidyr::nest(example_nested_data, data = -id)
+#'
 #' fit <- fit(model, z ~ x + y + a + b, nested_data)
-#' ## Reduce the model size
+#'
+#' # Reduce the model size
 #' butcher(fit)
 #'
 #' @name axe-nested_model_fit

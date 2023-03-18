@@ -42,11 +42,7 @@ axe_call.nested_model_fit <- function(x, verbose = FALSE, ...) {
     ...
   )
 
-  all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
-  disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if (length(disabled) == 0) {
-    disabled <- NULL
-  }
+  disabled <- attr(x$fit$.model_fit[[1]]$fit, "butcher_disabled")
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
 }
 
@@ -63,11 +59,7 @@ axe_ctrl.nested_model_fit <- function(x, verbose = FALSE, ...) {
     ...
   )
 
-  all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
-  disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if (length(disabled) == 0) {
-    disabled <- NULL
-  }
+  disabled <- attr(x$fit$.model_fit[[1]]$fit, "butcher_disabled")
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
 }
 
@@ -84,11 +76,7 @@ axe_data.nested_model_fit <- function(x, verbose = FALSE, ...) {
     ...
   )
 
-  all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
-  disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if (length(disabled) == 0) {
-    disabled <- NULL
-  }
+  disabled <- attr(x$fit$.model_fit[[1]]$fit, "butcher_disabled")
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
 }
 
@@ -105,11 +93,7 @@ axe_env.nested_model_fit <- function(x, verbose = FALSE, ...) {
     ...
   )
 
-  all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
-  disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if (length(disabled) == 0) {
-    disabled <- NULL
-  }
+  disabled <- attr(x$fit$.model_fit[[1]]$fit, "butcher_disabled")
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
 }
 
@@ -125,10 +109,7 @@ axe_fitted.nested_model_fit <- function(x, verbose = FALSE, ...) {
     verbose = FALSE,
     ...
   )
-  all_disabled <- purrr::map(x$fit$.model_fit, attr, "disabled")
-  disabled <- unique(purrr::list_c(all_disabled, ptype = character()))
-  if (length(disabled) == 0) {
-    disabled <- NULL
-  }
+
+  disabled <- attr(x$fit$.model_fit[[1]]$fit, "butcher_disabled")
   add_butcher_attributes(x, old, disabled = disabled, verbose = verbose)
 }

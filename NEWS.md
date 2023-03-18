@@ -1,6 +1,6 @@
 # butcher (development version)
 
-* Added methods for `nestedmodels::nested()` (#256).
+* Added methods for `nestedmodels::nested()` (@ashbythorpe, #256).
 
 * Updated methods for `mgcv::gam()` to also remove the `hat` and `offset` 
   components (@rdavis120, #255).

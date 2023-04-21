@@ -59,7 +59,8 @@ jobs:
           extra-packages:
             any::rcmdcheck,
             randomForest=?ignore-before-r=4.1.0,
-            flexsurv=?ignore-before-r=4.0.0
+            flexsurv=?ignore-before-r=4.0.0,
+            ranger=?ignore-before-r=4.1.0
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2

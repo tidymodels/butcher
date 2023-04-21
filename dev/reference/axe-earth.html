@@ -106,6 +106,15 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span><span class="va">earth_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/mars.html" class="external-link">mars</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"regression"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"earth"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="va">Volume</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">trees</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Formula</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: plotmo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: plotrix</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: TeachingDemos</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘TeachingDemos’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:klaR’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     triplot</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">earth_fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> No memory released. Do not butcher.</span>

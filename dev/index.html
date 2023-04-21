@@ -151,7 +151,7 @@
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 terms         8.06    </span></span>
+<span><span class="co">#&gt;  1 terms         8.05    </span></span>
 <span><span class="co">#&gt;  2 qr.qr         0.00666 </span></span>
 <span><span class="co">#&gt;  3 residuals     0.00286 </span></span>
 <span><span class="co">#&gt;  4 fitted.values 0.00286 </span></span>
@@ -161,7 +161,7 @@
 <span><span class="co">#&gt;  8 model.mpg     0.000304</span></span>
 <span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
 <span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
-<span><span class="co">#&gt; # … with 15 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
 <p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code>lm</code> is implemented in the <code>stats</code> package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use <code><a href="reference/axe_env.html">axe_env()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -172,7 +172,7 @@
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 terms         0.00789 </span></span>
+<span><span class="co">#&gt;  1 terms         0.00771 </span></span>
 <span><span class="co">#&gt;  2 qr.qr         0.00666 </span></span>
 <span><span class="co">#&gt;  3 residuals     0.00286 </span></span>
 <span><span class="co">#&gt;  4 fitted.values 0.00286 </span></span>
@@ -182,7 +182,7 @@
 <span><span class="co">#&gt;  8 model.mpg     0.000304</span></span>
 <span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
 <span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
-<span><span class="co">#&gt; # … with 15 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
 <p>…it now takes the same memory on disk as <code>small_lm</code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">small_lm</span><span class="op">)</span></span>
@@ -199,7 +199,7 @@
 <span><span class="co">#&gt;  8 model.mpg     0.000304</span></span>
 <span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
 <span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
-<span><span class="co">#&gt; # … with 15 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
 <p>Axing the environment is not the only functionality of <code>butcher</code>. We can also remove <code>call</code>, <code>ctrl</code>, <code>data</code> and <code>fitted_values</code>, or simply run <code><a href="reference/butcher.html">butcher()</a></code> to execute all of these axing functions at once. Any kind of axing on the object will append a butchered class to the current model object class(es) as well as a new attribute named <code>butcher_disabled</code> that lists any post-fit estimation functions that are disabled as a result.</p>
 </div>
 <div class="section level2">

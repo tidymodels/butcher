@@ -202,7 +202,7 @@ using the <code>butcher</code> package:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 <p>The problem here is in the <code>terms</code> component of
 <code>big_lm</code>. Because of how <code>lm</code> is implemented in
 the base <code>stats</code> package—relying on intermediate forms of the
@@ -214,7 +214,7 @@ output, the <em>environment</em> in which the linear fit was created
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rlang.r-lib.org/reference/env_print.html" class="external-link">env_print</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">$</span><span class="va">terms</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x558e01107f00&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">&lt;environment: 0x5566f78c8140&gt;</span></span></span>
 <span><span class="co">#&gt; Parent: &lt;environment: global&gt;</span></span>
 <span><span class="co">#&gt; Bindings:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> some_junk_in_the_environment: &lt;dbl&gt;</span></span></code></pre></div>
@@ -240,7 +240,7 @@ complex), we can leverage <code><a href="../reference/axe_env.html">axe_env()</a
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 <p>…it now takes the same memory on disk:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="../reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">old_lm</span>, threshold <span class="op">=</span> <span class="fl">0</span>, units <span class="op">=</span> <span class="st">"MB"</span><span class="op">)</span></span>
@@ -257,7 +257,7 @@ complex), we can leverage <code><a href="../reference/axe_env.html">axe_env()</a
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> model.mpg     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> model.cyl     0.000<span style="text-decoration: underline;">304</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> model.disp    0.000<span style="text-decoration: underline;">304</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 <p>Axing the environment, however, is not the only functionality of
 <code>butcher</code>. This package provides five S3 generics that
 include:</p>

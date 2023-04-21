@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# butcher <a href='https://butcher.tidymodels.org/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# butcher <a href="https://butcher.tidymodels.org"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 
@@ -90,7 +90,7 @@ butcher::weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.06    
+#>  1 terms         8.05    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -100,7 +100,7 @@ butcher::weigh(big_lm)
 #>  8 model.mpg     0.000304
 #>  9 model.cyl     0.000304
 #> 10 model.disp    0.000304
-#> # … with 15 more rows
+#> # ℹ 15 more rows
 ```
 
 The problem here is in the `terms` component of our `big_lm`. Because of
@@ -120,7 +120,7 @@ butcher::weigh(cleaned_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         0.00789 
+#>  1 terms         0.00771 
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -130,7 +130,7 @@ butcher::weigh(cleaned_lm)
 #>  8 model.mpg     0.000304
 #>  9 model.cyl     0.000304
 #> 10 model.disp    0.000304
-#> # … with 15 more rows
+#> # ℹ 15 more rows
 ```
 
 …it now takes the same memory on disk as `small_lm`:
@@ -150,7 +150,7 @@ butcher::weigh(small_lm)
 #>  8 model.mpg     0.000304
 #>  9 model.cyl     0.000304
 #> 10 model.disp    0.000304
-#> # … with 15 more rows
+#> # ℹ 15 more rows
 ```
 
 Axing the environment is not the only functionality of `butcher`. We can

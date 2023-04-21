@@ -40,7 +40,7 @@ library(ranger)
 
 # Load data
 set.seed(1234)
-split <- initial_split(iris, props = 9/10)
+split <- initial_split(iris, prop = 9/10)
 iris_train <- training(split)
 
 # Create model and fit

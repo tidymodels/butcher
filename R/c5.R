@@ -16,7 +16,7 @@
 #'
 #' # Load data
 #' set.seed(1234)
-#' split <- initial_split(kyphosis, props = 9/10)
+#' split <- initial_split(kyphosis, prop = 9/10)
 #' spine_train <- training(split)
 #'
 #' # Create model and fit

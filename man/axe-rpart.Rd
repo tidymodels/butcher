@@ -42,7 +42,7 @@ library(rpart)
 
 # Load data
 set.seed(1234)
-split <- initial_split(mtcars, props = 9/10)
+split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
 
 # Create model and fit

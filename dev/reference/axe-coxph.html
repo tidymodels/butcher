@@ -90,6 +90,30 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 
 <p>Axed coxph object.</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The <code><a href="https://rdrr.io/pkg/survival/man/coxph.html" class="external-link">survival::coxph()</a></code> model is unique in how it uses environments in
+its components, and butchering such an object can behave in surprising ways
+in any environment other than the
+<a href="https://adv-r.hadley.nz/environments.html#important-environments" class="external-link">global environment</a>
+(such as when wrapped in a function). We do not recommend that you use
+<code><a href="butcher.html">butcher()</a></code> with a <code>coxph</code> object anywhere other than the global environment.</p>
+<p>Do this:</p>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">my_coxph_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html" class="external-link">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">status</span><span class="op">)</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/strata.html" class="external-link">strata</a></span><span class="op">(</span><span class="va">covar</span><span class="op">)</span>, <span class="va">df</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">## in global environment only:</span></span>
+<span><span class="fu"><a href="../reference/butcher.html">butcher</a></span><span class="op">(</span><span class="fu">my_coxph_func</span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span></span></code></pre><p></p></div>
+<p>Do <em>not</em> do this:</p>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">my_coxph_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/coxph.html" class="external-link">coxph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">status</span><span class="op">)</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/strata.html" class="external-link">strata</a></span><span class="op">(</span><span class="va">covar</span><span class="op">)</span>, <span class="va">df</span><span class="op">)</span></span>
+<span>    <span class="co">## no:</span></span>
+<span>    <span class="fu"><a href="../reference/butcher.html">butcher</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co">## will not work correctly:</span></span>
+<span><span class="fu">my_coxph_func</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre><p></p></div>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

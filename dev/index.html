@@ -165,7 +165,7 @@
 <p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code>lm</code> is implemented in the <code>stats</code> package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use <code><a href="reference/axe_env.html">axe_env()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ Memory released: "8.03 MB"</span></span></code></pre></div>
+<span><span class="co">#&gt; ✔ Memory released: 8.03 MB</span></span></code></pre></div>
 <p>Comparing it against our <code>small_lm</code>, we’ll find:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">cleaned_lm</span><span class="op">)</span></span>

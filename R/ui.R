@@ -35,9 +35,9 @@ assess_object <- function(og, butchered) {
   } else {
     abs_mem <- format(abs(mem), big.mark = ",", scientific = FALSE)
     if (mem < 0) {
-      cli::cli_alert_danger("The butchered object is {.val {abs_mem}} larger than the original. Do not butcher.")
+      cli::cli_alert_danger("The butchered object is {.field {abs_mem}} larger than the original. Do not butcher.")
     } else {
-      cli::cli_alert_success("Memory released: {.val {abs_mem}}")
+      cli::cli_alert_success("Memory released: {.field {abs_mem}}")
       if (!is.null(disabled)) {
         cli::cli_alert_danger("Disabled: {.code {disabled}}")
       }

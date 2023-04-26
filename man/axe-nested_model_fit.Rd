@@ -55,5 +55,5 @@ butcher(fit)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-[axe-model_fit]
+\link{axe-model_fit}
 }

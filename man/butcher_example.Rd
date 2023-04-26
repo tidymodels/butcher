@@ -7,10 +7,10 @@
 butcher_example(path = NULL)
 }
 \arguments{
-\item{path}{Name of file. If `NULL`, the example files will be listed.}
+\item{path}{Name of file. If \code{NULL}, the example files will be listed.}
 }
 \description{
-butcher comes bundled with some example files in its `inst/extdata`
+butcher comes bundled with some example files in its \code{inst/extdata}
 directory. This function was copied from readxl and placed here to
 make the instantiated model objects easy to access.
 }

@@ -25,6 +25,35 @@ Axed coxph object.
 \description{
 Axing a coxph.
 }
+\details{
+The \code{\link[survival:coxph]{survival::coxph()}} model is unique in how it uses environments in
+its components, and butchering such an object can behave in surprising ways
+in any environment other than the
+\href{https://adv-r.hadley.nz/environments.html#important-environments}{global environment}
+(such as when wrapped in a function). We do not recommend that you use
+\code{butcher()} with a \code{coxph} object anywhere other than the global environment.
+
+Do this:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{my_coxph_func <- function(df) \{
+    coxph(Surv(time, status) ~ x + strata(covar), df)
+\}
+## in global environment only:
+butcher(my_coxph_func(df))
+}\if{html}{\out{</div>}}
+
+Do \emph{not} do this:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{my_coxph_func <- function(df) \{
+    res <- coxph(Surv(time, status) ~ x + strata(covar), df)
+    ## no:
+    butcher(res)
+\}
+
+## will not work correctly:
+my_coxph_func(df)
+}\if{html}{\out{</div>}}
+}
 \examples{
 \dontshow{if (rlang::is_installed("survival")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(survival)

@@ -4,6 +4,37 @@
 #'
 #' @return Axed coxph object.
 #'
+#' @details
+#' The [survival::coxph()] model is unique in how it uses environments in
+#' its components, and butchering such an object can behave in surprising ways
+#' in any environment other than the
+#' [global environment](https://adv-r.hadley.nz/environments.html#important-environments)
+#' (such as when wrapped in a function). We do not recommend that you use
+#'  `butcher()` with a `coxph` object anywhere other than the global environment.
+#'
+#'  Do this:
+#'
+#' ```r
+#' my_coxph_func <- function(df) {
+#'     coxph(Surv(time, status) ~ x + strata(covar), df)
+#' }
+#' ## in global environment only:
+#' butcher(my_coxph_func(df))
+#' ```
+#'
+#' Do *not* do this:
+#'
+#' ```r
+#' my_coxph_func <- function(df) {
+#'     res <- coxph(Surv(time, status) ~ x + strata(covar), df)
+#'     ## no:
+#'     butcher(res)
+#' }
+#'
+#' ## will not work correctly:
+#' my_coxph_func(df)
+#' ```
+#'
 #' @examplesIf rlang::is_installed("survival")
 #' library(survival)
 #'

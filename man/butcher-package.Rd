@@ -13,11 +13,11 @@ should support additional analysis functions outside of just \code{predict}.
 
 This package provides five S3 generics:
 \itemize{
-  \item \code{\link{axe_call}} To remove the call object.
-  \item \code{\link{axe_ctrl}} To remove controls associated with training.
-  \item \code{\link{axe_data}} To remove the original data.
-  \item \code{\link{axe_env}} To remove inherited environments.
-  \item \code{\link{axe_fitted}} To remove fitted values.
+\item \code{\link{axe_call}} To remove the call object.
+\item \code{\link{axe_ctrl}} To remove controls associated with training.
+\item \code{\link{axe_data}} To remove the original data.
+\item \code{\link{axe_env}} To remove inherited environments.
+\item \code{\link{axe_fitted}} To remove fitted values.
 }
 
 These specific attributes of the model objects are chosen as they are

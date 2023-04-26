@@ -4,6 +4,9 @@
 
 * Updated methods for `mgcv::gam()` to also remove the `hat` and `offset` 
   components (@rdavis120, #255).
+  
+* Clarified the messaging for butchering results, as well as when butchering 
+  may not work for `survival::coxph()` (#261).
 
 # butcher 0.3.2
 

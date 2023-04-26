@@ -18,11 +18,11 @@ opens the new files for editing.}
 }
 \description{
 \code{new_model_butcher()} will instantiate the following to help
-  us develop new axe functions around removing parts of a new
-  modeling object:
+us develop new axe functions around removing parts of a new
+modeling object:
 \itemize{
-  \item Add modeling package to \code{Suggests}
-  \item Generate and populate an axe file under \code{R/}
-  \item Generate and populate an test file under \code{testthat/}
+\item Add modeling package to \code{Suggests}
+\item Generate and populate an axe file under \code{R/}
+\item Generate and populate an test file under \code{testthat/}
 }
 }

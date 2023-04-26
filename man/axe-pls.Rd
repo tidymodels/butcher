@@ -33,16 +33,16 @@ disabled. Default is \code{FALSE}.}
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed `mixo_pls`, `mixo_spls`, or `mixo_plsda` object.
+Axed \code{mixo_pls}, \code{mixo_spls}, or \code{mixo_plsda} object.
 }
 \description{
-`mixo_pls` (via `pls()`), `mixo_spls` (via `spls()`), and `mixo_plsda`
-(via `plsda()`) objects are created with the mixOmics package,
+\code{mixo_pls} (via \code{pls()}), \code{mixo_spls} (via \code{spls()}), and \code{mixo_plsda}
+(via \code{plsda()}) objects are created with the mixOmics package,
 leveraged to fit partial least squares models.
 }
 \details{
 The mixOmics package is not available on CRAN, but can be installed
-from the Bioconductor repository via `remotes::install_bioc("mixOmics")`.
+from the Bioconductor repository via \code{remotes::install_bioc("mixOmics")}.
 }
 \examples{
 \dontshow{if (rlang::is_installed("mixOmics")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

@@ -53,10 +53,10 @@ disabled. Default is \code{FALSE}.}
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-Axed `*_bagg` object.
+Axed \verb{*_bagg} object.
 }
 \description{
-`*_bagg` objects are created from the \pkg{ipred} package, which
+\verb{*_bagg} objects are created from the \pkg{ipred} package, which
 is used for bagging classification, regression and survival trees.
 }
 \examples{

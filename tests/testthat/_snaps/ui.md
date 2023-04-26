@@ -11,5 +11,5 @@
     Code
       assess_object(small, big)
     Message
-      v Memory released: "<redacted>"
+      x The butchered object is "<redacted>" larger than the original. Do not butcher.
 

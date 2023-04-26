@@ -11,7 +11,6 @@ test_that("Generate expected UI messages", {
     assess_object(small, small)
     assess_object(small, big)
   },
-  transform = function(snapshot)
-    gsub(obj_size_diff, "<redacted>", snapshot, fixed = TRUE)
+  transform = function(x) gsub(obj_size_diff, "<redacted>", x, fixed = TRUE)
   )
 })

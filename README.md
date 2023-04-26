@@ -110,7 +110,7 @@ To remove this (mostly) extraneous component, we can use `axe_env()`:
 
 ``` r
 cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
-#> ✔ Memory released: "8.03 MB"
+#> ✔ Memory released: 8.03 MB
 ```
 
 Comparing it against our `small_lm`, we’ll find:

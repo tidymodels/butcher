@@ -37,7 +37,6 @@ axe_fitted.bart <- function(x, verbose = FALSE, ...) {
     res <- exchange(res, "yhat.test", numeric(0))
     res <- exchange(res, "yhat.test.mean", numeric(0))
   }
-  res <- exchange(res, "sigma", numeric(0))
   res <- exchange(res, "varcount", numeric(0))
 
   add_butcher_attributes(

@@ -1,4 +1,5 @@
 skip_if_not_installed("dbarts")
+skip_if_not_installed("parsnip")
 
 test_that("dbarts + axe_call() works", {
   res <- dbarts::bart(mtcars[,2:5], mtcars[,1], verbose = FALSE)
@@ -13,7 +14,6 @@ test_that("dbarts + axe_fitted() works", {
   expect_equal(x$yhat.train.mean, numeric(0))
   expect_equal(x$yhat.test, numeric(0))
   expect_equal(x$yhat.test.mean, numeric(0))
-  expect_equal(x$sigma, numeric(0))
   expect_equal(x$varcount, numeric(0))
 })
 
@@ -31,5 +31,33 @@ test_that("dbarts + predict() works", {
   expect_equal(
     predict(x, newdata = head(mtcars))[1],
     predict(res, newdata = head(mtcars))[1]
+  )
+  expect_equal(
+    mean(predict(x, newdata = head(mtcars), type = "ppd")),
+    mean(predict(res, newdata = head(mtcars), type = "ppd")),
+    tolerance = 0.1
+  )
+})
+
+test_that("bart() from parsnip + predict() works", {
+  library(parsnip)
+  spec <- bart(mode = "regression", trees = 5)
+  res <- fit(spec, mpg ~ ., mtcars)
+  x <- butcher(res)
+
+  expect_equal(
+    mean(predict(x, new_data = head(mtcars))$.pred),
+    mean(predict(res, new_data = head(mtcars))$.pred),
+    tolerance = 0.1
+  )
+  expect_equal(
+    mean(predict(x, new_data = head(mtcars), type = "conf_int")$.pred_lower),
+    mean(predict(res, new_data = head(mtcars), type = "conf_int")$.pred_lower),
+    tolerance = 0.1
+  )
+  expect_equal(
+    mean(predict(x, new_data = head(mtcars), type = "pred_int")$.pred_lower),
+    mean(predict(res, new_data = head(mtcars), type = "pred_int")$.pred_lower),
+    tolerance = 0.1
   )
 })

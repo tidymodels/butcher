@@ -8,6 +8,8 @@
 * Clarified the messaging for butchering results, as well as when butchering 
   may not work for `survival::coxph()` (#261).
 
+* Fixed a bug in butchering BART models (#263).
+
 # butcher 0.3.2
 
 * Added butcher methods for `mixOmics::pls()`, `mixOmics::spls()`, 

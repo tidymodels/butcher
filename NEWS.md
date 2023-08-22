@@ -1,4 +1,4 @@
-# butcher (development version)
+# butcher 0.3.3
 
 * Added methods for `nestedmodels::nested()` (@ashbythorpe, #256).
 

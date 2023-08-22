@@ -50,4 +50,14 @@ test_that("bart() from parsnip + predict() works", {
     mean(predict(res, new_data = head(mtcars))$.pred),
     tolerance = 0.1
   )
+  expect_equal(
+    mean(predict(x, new_data = head(mtcars), type = "conf_int")$.pred_lower),
+    mean(predict(res, new_data = head(mtcars), type = "conf_int")$.pred_lower),
+    tolerance = 0.1
+  )
+  expect_equal(
+    mean(predict(x, new_data = head(mtcars), type = "pred_int")$.pred_lower),
+    mean(predict(res, new_data = head(mtcars), type = "pred_int")$.pred_lower),
+    tolerance = 0.1
+  )
 })

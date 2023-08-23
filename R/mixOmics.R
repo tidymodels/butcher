@@ -11,7 +11,7 @@
 #'
 #' @return Axed `mixo_pls`, `mixo_spls`, or `mixo_plsda` object.
 #'
-#' @examplesIf rlang::is_installed("mixOmics")
+#' @examplesIf rlang::is_installed("mixOmics") && !butcher:::is_cran_check()
 #' library(butcher)
 #' do.call(library, list(package = "mixOmics"))
 #'

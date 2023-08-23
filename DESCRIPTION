@@ -1,6 +1,6 @@
 Package: butcher
 Title: Model Butcher
-Version: 0.3.2.9000
+Version: 0.3.3
 Authors@R: c(
     person("Joyce", "Cahoon", , "joyceyu48@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-7217-4702")),
@@ -18,7 +18,7 @@ URL: https://butcher.tidymodels.org/,
     https://github.com/tidymodels/butcher
 BugReports: https://github.com/tidymodels/butcher/issues
 Depends: 
-    R (>= 3.5.0)
+    R (>= 3.6.0)
 Imports: 
     cli (>= 3.3.0),
     lobstr (>= 1.1.2),

@@ -16,18 +16,18 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## Overview
 
-Modeling pipelines in `R` occasionally result in fitted model objects
+Modeling or machine learning in R can result in fitted model objects
 that take up too much memory. There are two main culprits:
 
-1.  Heavy dependencies on formulas and closures that capture the
-    enclosing environment in the modeling process; and
-2.  Lack of selectivity in the construction of the model object itself.
+1.  Heavy usage of formulas and closures that capture the enclosing
+    environment in model training
+2.  Lack of selectivity in the construction of the model object itself
 
-As a result, fitted model objects carry over components that are often
-redundant and not required for post-fit estimation activities. `butcher`
-makes it easy to axe parts of the fitted output that are no longer
-needed, without sacrificing much functionality from the original model
-object.
+As a result, fitted model objects contain components that are often
+redundant and not required for post-fit estimation activities. The
+butcher package provides tooling to “axe” parts of the fitted output
+that are no longer needed, without sacrificing prediction functionality
+from the original model object.
 
 ## Installation
 
@@ -46,16 +46,8 @@ pak::pak("tidymodels/butcher")
 
 ## Butchering
 
-To make the most of your memory available, this package provides five S3
-generics for you to remove parts of a model object:
-
-- `axe_call()`: To remove the call object.
-- `axe_ctrl()`: To remove controls associated with training.
-- `axe_data()`: To remove the original training data.
-- `axe_env()`: To remove environments.
-- `axe_fitted()`: To remove fitted values.
-
-As an example, we wrap a `lm` model:
+As an example, let’s wrap an `lm` model so it contains a lot of
+unnecessary stuff:
 
 ``` r
 library(butcher)
@@ -65,7 +57,7 @@ our_model <- function() {
 }
 ```
 
-The `lm` that exists in our modeling pipeline is:
+This object is unnecessarily large:
 
 ``` r
 library(lobstr)
@@ -73,7 +65,7 @@ obj_size(our_model())
 #> 8.02 MB
 ```
 
-When, in fact, it should only require:
+When, in fact, it should only be:
 
 ``` r
 small_lm <- lm(mpg ~ ., data = mtcars) 
@@ -104,36 +96,37 @@ butcher::weigh(big_lm)
 ```
 
 The problem here is in the `terms` component of our `big_lm`. Because of
-how `lm` is implemented in the `stats` package, the environment (in
-which our model was made) was also carried along in the fitted output.
-To remove this (mostly) extraneous component, we can use `axe_env()`:
+how `lm()` is implemented in the `stats` package, the environment in
+which our model was made is carried along in the fitted output. To
+remove the (mostly) extraneous component, we can use `butcher()`:
 
 ``` r
-cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
+cleaned_lm <- butcher::butcher(big_lm, verbose = TRUE)
 #> ✔ Memory released: 8.03 MB
+#> ✖ Disabled: `print()`, `summary()`, and `fitted()`
 ```
 
-Comparing it against our `small_lm`, we’ll find:
+Comparing it against our `small_lm`, we find:
 
 ``` r
 butcher::weigh(cleaned_lm)
 #> # A tibble: 25 × 2
-#>    object            size
-#>    <chr>            <dbl>
-#>  1 terms         0.00771 
-#>  2 qr.qr         0.00666 
-#>  3 residuals     0.00286 
-#>  4 fitted.values 0.00286 
-#>  5 effects       0.0014  
-#>  6 coefficients  0.00109 
-#>  7 call          0.000728
-#>  8 model.mpg     0.000304
-#>  9 model.cyl     0.000304
-#> 10 model.disp    0.000304
+#>    object           size
+#>    <chr>           <dbl>
+#>  1 terms        0.00771 
+#>  2 qr.qr        0.00666 
+#>  3 residuals    0.00286 
+#>  4 effects      0.0014  
+#>  5 coefficients 0.00109 
+#>  6 model.mpg    0.000304
+#>  7 model.cyl    0.000304
+#>  8 model.disp   0.000304
+#>  9 model.hp     0.000304
+#> 10 model.drat   0.000304
 #> # ℹ 15 more rows
 ```
 
-…it now takes the same memory on disk as `small_lm`:
+And now it will take up about the same memory on disk as `small_lm`:
 
 ``` r
 butcher::weigh(small_lm)
@@ -153,13 +146,20 @@ butcher::weigh(small_lm)
 #> # ℹ 15 more rows
 ```
 
-Axing the environment is not the only functionality of `butcher`. We can
-also remove `call`, `ctrl`, `data` and `fitted_values`, or simply run
-`butcher()` to execute all of these axing functions at once. Any kind of
-axing on the object will append a butchered class to the current model
-object class(es) as well as a new attribute named `butcher_disabled`
-that lists any post-fit estimation functions that are disabled as a
-result.
+To make the most of your memory available, this package provides five S3
+generics for you to remove parts of a model object:
+
+-   `axe_call()`: To remove the call object.
+-   `axe_ctrl()`: To remove controls associated with training.
+-   `axe_data()`: To remove the original training data.
+-   `axe_env()`: To remove environments.
+-   `axe_fitted()`: To remove fitted values.
+
+When you run `butcher()`, you execute all of these axing functions at
+once. Any kind of axing on the object will append a butchered class to
+the current model object class(es) as well as a new attribute named
+`butcher_disabled` that lists any post-fit estimation functions that are
+disabled as a result.
 
 ## Model Object Coverage
 
@@ -169,13 +169,13 @@ benefit from any kind of axing, we would love for you to make a pull
 request! You can visit the `vignette("adding-models-to-butcher")` for
 more guidelines, but in short, to contribute a set of axe methods:
 
-1)  Run
+1.  Run
     `new_model_butcher(model_class = "your_object", package_name = "your_package")`
-2)  Use butcher helper functions `butcher::weigh()` and
+2.  Use butcher helper functions `butcher::weigh()` and
     `butcher::locate()` to decide what to axe
-3)  Finalize edits to `R/your_object.R` and
+3.  Finalize edits to `R/your_object.R` and
     `tests/testthat/test-your_object.R`
-4)  Make a pull request!
+4.  Make a pull request!
 
 ## Contributing
 
@@ -183,18 +183,18 @@ This project is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
-- For questions and discussions about tidymodels packages, modeling, and
-  machine learning, please [post on RStudio
-  Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
+-   For questions and discussions about tidymodels packages, modeling,
+    and machine learning, please [post on RStudio
+    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
-- If you think you have encountered a bug, please [submit an
-  issue](https://github.com/tidymodels/butcher/issues).
+-   If you think you have encountered a bug, please [submit an
+    issue](https://github.com/tidymodels/butcher/issues).
 
-- Either way, learn how to create and share a
-  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
-  (a minimal, reproducible example), to clearly communicate about your
-  code.
+-   Either way, learn how to create and share a
+    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+    (a minimal, reproducible example), to clearly communicate about your
+    code.
 
-- Check out further details on [contributing guidelines for tidymodels
-  packages](https://www.tidymodels.org/contribute/) and [how to get
-  help](https://www.tidymodels.org/help/).
+-   Check out further details on [contributing guidelines for tidymodels
+    packages](https://www.tidymodels.org/contribute/) and [how to get
+    help](https://www.tidymodels.org/help/).

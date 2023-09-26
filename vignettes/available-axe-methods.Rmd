@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The following axe methods are currently available in `butcher`: 
+The following axe methods are currently available in butcher: 
 
 ```{r setup, echo = FALSE, warnings = FALSE, message = FALSE}
 suppressWarnings(library(butcher))

@@ -54,16 +54,7 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - if: matrix.config.r == 'devel'
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages:
-            any::rcmdcheck,
-            bioc::mixOmics=?ignore
-          needs: check
-
-      - if: matrix.config.r != 'devel'
-        uses: r-lib/actions/setup-r-dependencies@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages:
             any::rcmdcheck,

@@ -20,103 +20,85 @@ library(butcher)
 library(parsnip)
 ```
 
-One of the beauties of working with `R` is the ease with which you can implement intricate models and make challenging data analysis pipelines seem almost trivial. Take, for example, the `parsnip` package; with the installation of a few associated libraries and a few lines of code, you can fit something as complex as a boosted tree:  
+One of the benefits of working in R is the ease with which you can implement complex models and implement challenging data analysis pipelines. Take, for example, the parsnip package; with the installation of a few associated libraries and a few lines of code, you can fit something as sophisticated as a boosted tree:  
 
-```{r, warning = F, message = F, eval = F}
-library(rpart)
-
-fitted_model <- boost_tree(trees = 15) %>%
-  set_engine("C5.0") %>%
-  fit(as.factor(am) ~ disp + hp, data = mtcars)
+```{r, eval = FALSE}
+fitted_model <- boost_tree(mode = "regression") %>%
+  fit(mpg ~ ., data = mtcars)
 ```
 
-Or, let’s say you’re working on petabytes of data, in which data are distributed across many nodes, just switch out the `parsnip` engine: 
+Yet, while this code is compact, the underlying fitted result may not be. Since parsnip works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the `lm()` function from the base `stats` package. Whether you leverage parsnip or not, you get the same result:
 
-```{r, warning = F, message = F, eval = F}
-library(sparklyr)
-
-sc <- spark_connect(master = "local")
-
-mtcars_tbls <- sdf_copy_to(sc, mtcars[, c("am", "disp", "hp")])
-
-fitted_model <- boost_tree(trees = 15) %>%
-  set_engine("spark") %>%
-  fit(am ~ disp + hp, data = mtcars_tbls)
-```
-
-Yet, while our code may appear compact, the underlying fitted result may not be. Since `parsnip` works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the popular `lm` function from the base `stats` package. Whether you leverage `parsnip` or not, you arrive at the same result:
-
-```{r, warning = F, message = F}
+```{r}
 parsnip_lm <- linear_reg() %>% 
-  set_engine("lm") %>% 
   fit(mpg ~ ., data = mtcars) 
 parsnip_lm
 ```
 
-Using just `lm`:
+Using just `lm()`:
 
-```{r, warning = F, message = F}
+```{r}
 old_lm <- lm(mpg ~ ., data = mtcars) 
 old_lm
 ```
 
-Let's say we take this familiar `old_lm` approach in building our in-house modeling pipeline. Such a pipeline might entail wrapping `lm()` in other function, but in doing so, we may end up carrying some junk.
+Let's say we take this familiar `old_lm` approach in building a custom in-house modeling pipeline. Such a pipeline might entail wrapping `lm()` in other function, but in doing so, we may end up carrying around some unnecessary junk.
 
-```{r, warning = F, message = F}
+```{r}
 in_house_model <- function() {
   some_junk_in_the_environment <- runif(1e6) # we didn't know about
   lm(mpg ~ ., data = mtcars) 
 }
 ```
 
-The linear model fit that exists in our pipeline is: 
+The linear model fit that exists in our custom modeling pipeline is then: 
 
-```{r, warning = F, message = F}
+```{r}
 library(lobstr)
 obj_size(in_house_model())
 ```
 
-When it is fundamentally the same as our `old_lm`, which only takes up: 
+But it is functionally the same as our `old_lm`, which only takes up: 
 
-```{r, warning = F, message = F}
+```{r}
 obj_size(old_lm)
 ```
 
-Ideally, we want to avoid saving this new `in_house_model()` on disk, when we could have something like `old_lm` that takes up less memory. So, what the heck is going on here? We can examine possible issues with a fitted model object using the `butcher` package: 
+Ideally, we want to avoid saving this new `in_house_model()` on disk, when we could have something like `old_lm` that takes up less memory. But what the heck is going on here? We can examine possible issues with a fitted model object using the butcher package: 
 
-```{r, warning = F, message = F}
+```{r}
 big_lm <- in_house_model()
-butcher::weigh(big_lm, threshold = 0, units = "MB")
+weigh(big_lm, threshold = 0, units = "MB")
 ```
 
-The problem here is in the `terms` component of `big_lm`. Because of how `lm` is implemented in the base `stats` package---relying on intermediate forms of the data from the `model.frame` and `model.matrix` output, the *environment* in which the linear fit was created *was carried along* in the model output. 
+The problem here is in the `terms` component of `big_lm`. Because of how `lm()` is implemented in the base `stats` package (relying on intermediate forms of the data from `model.frame` and `model.matrix`) the **environment** in which the linear fit was created is carried along in the model output. 
 
-We can see this with the `env_print` function from the `rlang` package:  
+We can see this with the `env_print()` function from the rlang package:  
 
-```{r, warning = F, message = F}
+```{r}
 library(rlang)
 env_print(big_lm$terms)
 ```
 
-To avoid carrying possible junk in our production pipeline, whether it be associated with an `lm` model (or something more complex), we can leverage `axe_env()` within the `butcher` package. In other words, 
+To avoid carrying possible junk around in our production pipeline, whether it be associated with an `lm()` model (or something more complex), we can leverage `axe_env()` from the butcher package: 
 
-```{r, warning = F, message = F}
-cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
+```{r}
+cleaned_lm <- axe_env(big_lm, verbose = TRUE)
 ```
 
 Comparing it against our `old_lm`, we find:
 
-```{r, warning = F, message = F}
-butcher::weigh(cleaned_lm, threshold = 0, units = "MB")
+```{r}
+weigh(cleaned_lm, threshold = 0, units = "MB")
 ```
 
-...it now takes the same memory on disk:
+And now it takes the same memory on disk:
 
-```{r, warning = F, message = F}
-butcher::weigh(old_lm, threshold = 0, units = "MB")
+```{r}
+weigh(old_lm, threshold = 0, units = "MB")
 ```
 
-Axing the environment, however, is not the only functionality of `butcher`. This package provides five S3 generics that include: 
+Axing the environment, however, is not the only functionality of butcher. This package provides five S3 generics that include: 
 
 - `axe_call()`: Remove the call object. 
 - `axe_ctrl()`: Remove the controls fixed for training.
@@ -124,20 +106,20 @@ Axing the environment, however, is not the only functionality of `butcher`. This
 - `axe_env()`: Replace inherited environments with empty environments. 
 - `axe_fitted()`: Remove fitted values.
 
-In our case here with `lm`, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we execute all the possible axe functions at once. To do so, we simply run `butcher()`: 
+In our case here with `lm()`, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we execute all the possible axe functions at once. To do so, we simply run `butcher()`: 
 
-```{r, warning = F, message = F}
-butchered_lm <- butcher::butcher(big_lm)
+```{r}
+butchered_lm <- butcher(big_lm)
 predict(butchered_lm, mtcars[, 2:11])
 ```
 
 Alternatively, we can pick and choose specific axe functions, removing only those parts of the model object that we are no longer interested in characterizing.
 
-```{r, warning = F, message = F}
+```{r}
 butchered_lm <- big_lm %>%
-  butcher::axe_env() %>% 
-  butcher::axe_fitted()
+  axe_env() %>% 
+  axe_fitted()
 predict(butchered_lm, mtcars[, 2:11])
 ```
 
-`butcher` makes it easy to axe parts of the fitted output that are no longer needed, without sacrificing much functionality from the original model object.
+The butcher package provides tooling to axe parts of the fitted output that are no longer needed, without sacrificing much functionality from the original model object.

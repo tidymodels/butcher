@@ -54,6 +54,11 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - name: Set bioc env var for R-devel
+        if: ${{ matrix.config.r == 'devel'}}
+        run: |
+          echo "R_BIOC_VERSION=3.17" >> $GITHUB_ENV    
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages:

@@ -76,25 +76,25 @@ To understand which part of our original model object is taking up the most memo
 
 ```{r}
 big_lm <- our_model()
-butcher::weigh(big_lm)
+weigh(big_lm)
 ```
 
 The problem here is in the `terms` component of our `big_lm`. Because of how `lm()` is implemented in the `stats` package, the environment in which our model was made is carried along in the fitted output. To remove the (mostly) extraneous component, we can use `butcher()`:
 
 ```{r}
-cleaned_lm <- butcher::butcher(big_lm, verbose = TRUE)
+cleaned_lm <- butcher(big_lm, verbose = TRUE)
 ```
 
 Comparing it against our `small_lm`, we find:
 
 ```{r}
-butcher::weigh(cleaned_lm)
+weigh(cleaned_lm)
 ```
 
 And now it will take up about the same memory on disk as `small_lm`:
 
 ```{r}
-butcher::weigh(small_lm)
+weigh(small_lm)
 ```
 
 To make the most of your memory available, this package provides five S3 generics for you to remove parts of a model object:
@@ -112,7 +112,7 @@ When you run `butcher()`, you execute all of these axing functions at once. Any 
 Check out the `vignette("available-axe-methods")` to see butcher's current coverage. If you are working with a new model object that could benefit from any kind of axing, we would love for you to make a pull request! You can visit the `vignette("adding-models-to-butcher")` for more guidelines, but in short, to contribute a set of axe methods:
 
 1. Run `new_model_butcher(model_class = "your_object", package_name = "your_package")`
-2. Use butcher helper functions `butcher::weigh()` and `butcher::locate()` to decide what to axe
+2. Use butcher helper functions `weigh()` and `locate()` to decide what to axe
 3. Finalize edits to `R/your_object.R` and `tests/testthat/test-your_object.R` 
 4. Make a pull request! 
 

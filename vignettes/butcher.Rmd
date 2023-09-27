@@ -68,7 +68,7 @@ Ideally, we want to avoid saving this new `in_house_model()` on disk, when we co
 
 ```{r}
 big_lm <- in_house_model()
-butcher::weigh(big_lm, threshold = 0, units = "MB")
+weigh(big_lm, threshold = 0, units = "MB")
 ```
 
 The problem here is in the `terms` component of `big_lm`. Because of how `lm()` is implemented in the base `stats` package (relying on intermediate forms of the data from `model.frame` and `model.matrix`) the **environment** in which the linear fit was created is carried along in the model output. 
@@ -83,19 +83,19 @@ env_print(big_lm$terms)
 To avoid carrying possible junk around in our production pipeline, whether it be associated with an `lm()` model (or something more complex), we can leverage `axe_env()` from the butcher package: 
 
 ```{r}
-cleaned_lm <- butcher::axe_env(big_lm, verbose = TRUE)
+cleaned_lm <- axe_env(big_lm, verbose = TRUE)
 ```
 
 Comparing it against our `old_lm`, we find:
 
 ```{r}
-butcher::weigh(cleaned_lm, threshold = 0, units = "MB")
+weigh(cleaned_lm, threshold = 0, units = "MB")
 ```
 
 And now it takes the same memory on disk:
 
 ```{r}
-butcher::weigh(old_lm, threshold = 0, units = "MB")
+weigh(old_lm, threshold = 0, units = "MB")
 ```
 
 Axing the environment, however, is not the only functionality of butcher. This package provides five S3 generics that include: 
@@ -109,7 +109,7 @@ Axing the environment, however, is not the only functionality of butcher. This p
 In our case here with `lm()`, if we are only interested in prediction as the end product of our modeling pipeline, we could free up a lot of memory if we execute all the possible axe functions at once. To do so, we simply run `butcher()`: 
 
 ```{r}
-butchered_lm <- butcher::butcher(big_lm)
+butchered_lm <- butcher(big_lm)
 predict(butchered_lm, mtcars[, 2:11])
 ```
 
@@ -117,8 +117,8 @@ Alternatively, we can pick and choose specific axe functions, removing only thos
 
 ```{r}
 butchered_lm <- big_lm %>%
-  butcher::axe_env() %>% 
-  butcher::axe_fitted()
+  axe_env() %>% 
+  axe_fitted()
 predict(butchered_lm, mtcars[, 2:11])
 ```
 

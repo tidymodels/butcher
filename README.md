@@ -78,7 +78,7 @@ most memory, we leverage the `weigh()` function:
 
 ``` r
 big_lm <- our_model()
-butcher::weigh(big_lm)
+weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
@@ -101,7 +101,7 @@ which our model was made is carried along in the fitted output. To
 remove the (mostly) extraneous component, we can use `butcher()`:
 
 ``` r
-cleaned_lm <- butcher::butcher(big_lm, verbose = TRUE)
+cleaned_lm <- butcher(big_lm, verbose = TRUE)
 #> ✔ Memory released: 8.03 MB
 #> ✖ Disabled: `print()`, `summary()`, and `fitted()`
 ```
@@ -109,7 +109,7 @@ cleaned_lm <- butcher::butcher(big_lm, verbose = TRUE)
 Comparing it against our `small_lm`, we find:
 
 ``` r
-butcher::weigh(cleaned_lm)
+weigh(cleaned_lm)
 #> # A tibble: 25 × 2
 #>    object           size
 #>    <chr>           <dbl>
@@ -129,7 +129,7 @@ butcher::weigh(cleaned_lm)
 And now it will take up about the same memory on disk as `small_lm`:
 
 ``` r
-butcher::weigh(small_lm)
+weigh(small_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
@@ -171,8 +171,8 @@ more guidelines, but in short, to contribute a set of axe methods:
 
 1.  Run
     `new_model_butcher(model_class = "your_object", package_name = "your_package")`
-2.  Use butcher helper functions `butcher::weigh()` and
-    `butcher::locate()` to decide what to axe
+2.  Use butcher helper functions `weigh()` and `locate()` to decide what
+    to axe
 3.  Finalize edits to `R/your_object.R` and
     `tests/testthat/test-your_object.R`
 4.  Make a pull request!

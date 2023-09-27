@@ -93,12 +93,12 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Modeling pipelines in <code>R</code> occasionally result in fitted model objects that take up too much memory. There are two main culprits:</p>
+<p>Modeling or machine learning in R can result in fitted model objects that take up too much memory. There are two main culprits:</p>
 <ol style="list-style-type: decimal">
-<li>Heavy dependencies on formulas and closures that capture the enclosing environment in the modeling process; and</li>
-<li>Lack of selectivity in the construction of the model object itself.</li>
+<li>Heavy usage of formulas and closures that capture the enclosing environment in model training</li>
+<li>Lack of selectivity in the construction of the model object itself</li>
 </ol>
-<p>As a result, fitted model objects carry over components that are often redundant and not required for post-fit estimation activities. <code>butcher</code> makes it easy to axe parts of the fitted output that are no longer needed, without sacrificing much functionality from the original model object.</p>
+<p>As a result, fitted model objects contain components that are often redundant and not required for post-fit estimation activities. The butcher package provides tooling to “axe” parts of the fitted output that are no longer needed, without sacrificing prediction functionality from the original model object.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -109,37 +109,24 @@
 <p>Or install the development version from <a href="https://github.com/" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"tidymodels/butcher"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"tidymodels/butcher"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="butchering">Butchering<a class="anchor" aria-label="anchor" href="#butchering"></a>
 </h2>
-<p>To make the most of your memory available, this package provides five S3 generics for you to remove parts of a model object:</p>
-<ul>
-<li>
-<code><a href="reference/axe_call.html">axe_call()</a></code>: To remove the call object.</li>
-<li>
-<code><a href="reference/axe_ctrl.html">axe_ctrl()</a></code>: To remove controls associated with training.</li>
-<li>
-<code><a href="reference/axe_data.html">axe_data()</a></code>: To remove the original training data.</li>
-<li>
-<code><a href="reference/axe_env.html">axe_env()</a></code>: To remove environments.</li>
-<li>
-<code><a href="reference/axe_fitted.html">axe_fitted()</a></code>: To remove fitted values.</li>
-</ul>
-<p>As an example, we wrap a <code>lm</code> model:</p>
+<p>As an example, let’s wrap an <code>lm</code> model so it contains a lot of unnecessary stuff:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://butcher.tidymodels.org/">butcher</a></span><span class="op">)</span></span>
 <span><span class="va">our_model</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">some_junk_in_the_environment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">1e6</span><span class="op">)</span> <span class="co"># we didn't know about</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> </span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>The <code>lm</code> that exists in our modeling pipeline is:</p>
+<p>This object is unnecessarily large:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lobstr.r-lib.org/" class="external-link">lobstr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="fu">our_model</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 8.02 MB</span></span></code></pre></div>
-<p>When, in fact, it should only require:</p>
+<p>When, in fact, it should only be:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">small_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="va">small_lm</span><span class="op">)</span></span>
@@ -147,7 +134,7 @@
 <p>To understand which part of our original model object is taking up the most memory, we leverage the <code><a href="reference/weigh.html">weigh()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">big_lm</span> <span class="op">&lt;-</span> <span class="fu">our_model</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">big_lm</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
@@ -162,30 +149,31 @@
 <span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
 <span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
 <span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
-<p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code>lm</code> is implemented in the <code>stats</code> package, the environment (in which our model was made) was also carried along in the fitted output. To remove this (mostly) extraneous component, we can use <code><a href="reference/axe_env.html">axe_env()</a></code>:</p>
+<p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> is implemented in the <code>stats</code> package, the environment in which our model was made is carried along in the fitted output. To remove the (mostly) extraneous component, we can use <code><a href="reference/butcher.html">butcher()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/axe_env.html">axe_env</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ Memory released: 8.03 MB</span></span></code></pre></div>
-<p>Comparing it against our <code>small_lm</code>, we’ll find:</p>
+<code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/butcher.html">butcher</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Memory released: 8.03 MB</span></span>
+<span><span class="co">#&gt; ✖ Disabled: `print()`, `summary()`, and `fitted()`</span></span></code></pre></div>
+<p>Comparing it against our <code>small_lm</code>, we find:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">cleaned_lm</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">cleaned_lm</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
-<span><span class="co">#&gt;    object            size</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 terms         0.00771 </span></span>
-<span><span class="co">#&gt;  2 qr.qr         0.00666 </span></span>
-<span><span class="co">#&gt;  3 residuals     0.00286 </span></span>
-<span><span class="co">#&gt;  4 fitted.values 0.00286 </span></span>
-<span><span class="co">#&gt;  5 effects       0.0014  </span></span>
-<span><span class="co">#&gt;  6 coefficients  0.00109 </span></span>
-<span><span class="co">#&gt;  7 call          0.000728</span></span>
-<span><span class="co">#&gt;  8 model.mpg     0.000304</span></span>
-<span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
-<span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
+<span><span class="co">#&gt;    object           size</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 terms        0.00771 </span></span>
+<span><span class="co">#&gt;  2 qr.qr        0.00666 </span></span>
+<span><span class="co">#&gt;  3 residuals    0.00286 </span></span>
+<span><span class="co">#&gt;  4 effects      0.0014  </span></span>
+<span><span class="co">#&gt;  5 coefficients 0.00109 </span></span>
+<span><span class="co">#&gt;  6 model.mpg    0.000304</span></span>
+<span><span class="co">#&gt;  7 model.cyl    0.000304</span></span>
+<span><span class="co">#&gt;  8 model.disp   0.000304</span></span>
+<span><span class="co">#&gt;  9 model.hp     0.000304</span></span>
+<span><span class="co">#&gt; 10 model.drat   0.000304</span></span>
 <span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
-<p>…it now takes the same memory on disk as <code>small_lm</code>:</p>
+<p>And now it will take up about the same memory on disk as <code>small_lm</code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">butcher</span><span class="fu">::</span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">small_lm</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/weigh.html">weigh</a></span><span class="op">(</span><span class="va">small_lm</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
@@ -200,7 +188,20 @@
 <span><span class="co">#&gt;  9 model.cyl     0.000304</span></span>
 <span><span class="co">#&gt; 10 model.disp    0.000304</span></span>
 <span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
-<p>Axing the environment is not the only functionality of <code>butcher</code>. We can also remove <code>call</code>, <code>ctrl</code>, <code>data</code> and <code>fitted_values</code>, or simply run <code><a href="reference/butcher.html">butcher()</a></code> to execute all of these axing functions at once. Any kind of axing on the object will append a butchered class to the current model object class(es) as well as a new attribute named <code>butcher_disabled</code> that lists any post-fit estimation functions that are disabled as a result.</p>
+<p>To make the most of your memory available, this package provides five S3 generics for you to remove parts of a model object:</p>
+<ul>
+<li>
+<code><a href="reference/axe_call.html">axe_call()</a></code>: To remove the call object.</li>
+<li>
+<code><a href="reference/axe_ctrl.html">axe_ctrl()</a></code>: To remove controls associated with training.</li>
+<li>
+<code><a href="reference/axe_data.html">axe_data()</a></code>: To remove the original training data.</li>
+<li>
+<code><a href="reference/axe_env.html">axe_env()</a></code>: To remove environments.</li>
+<li>
+<code><a href="reference/axe_fitted.html">axe_fitted()</a></code>: To remove fitted values.</li>
+</ul>
+<p>When you run <code><a href="reference/butcher.html">butcher()</a></code>, you execute all of these axing functions at once. Any kind of axing on the object will append a butchered class to the current model object class(es) as well as a new attribute named <code>butcher_disabled</code> that lists any post-fit estimation functions that are disabled as a result.</p>
 </div>
 <div class="section level2">
 <h2 id="model-object-coverage">Model Object Coverage<a class="anchor" aria-label="anchor" href="#model-object-coverage"></a>
@@ -209,7 +210,7 @@
 <ol style="list-style-type: decimal">
 <li>Run <code>new_model_butcher(model_class = "your_object", package_name = "your_package")</code>
 </li>
-<li>Use butcher helper functions <code><a href="reference/weigh.html">butcher::weigh()</a></code> and <code><a href="reference/locate.html">butcher::locate()</a></code> to decide what to axe</li>
+<li>Use butcher helper functions <code><a href="reference/weigh.html">weigh()</a></code> and <code><a href="reference/locate.html">locate()</a></code> to decide what to axe</li>
 <li>Finalize edits to <code>R/your_object.R</code> and <code>tests/testthat/test-your_object.R</code>
 </li>
 <li>Make a pull request!</li>

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# butcher <a href="https://butcher.tidymodels.org"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# butcher <a href="https://butcher.tidymodels.org"><img src="man/figures/logo.png" align="right" height="138" alt="butcher website" /></a>
 
 <!-- badges: start -->
 
@@ -133,7 +133,7 @@ weigh(small_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         0.00781 
+#>  1 terms         8.06    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 

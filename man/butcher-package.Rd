@@ -3,7 +3,6 @@
 \docType{package}
 \name{butcher-package}
 \alias{butcher-package}
-\alias{_PACKAGE}
 \title{Reduce the Size of Modeling Objects}
 \description{
 Reduce the size of modeling objects after fitting. These parsed-down

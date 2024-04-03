@@ -46,13 +46,14 @@ test_that("mda + custom parsnip model + predict() works", {
       stop("`mode` should be 'classification'", call. = FALSE)
     }
     args <- list(sub_classes = rlang::enquo(sub_classes))
-    out <- list(args = args,
-                eng_args = NULL,
-                mode = mode,
-                method = NULL,
-                engine = NULL)
-    class(out) <- make_classes("mixture_da")
-    out
+    new_model_spec(
+      "mixture_da",
+      args = args,
+      eng_args = NULL,
+      mode = mode,
+      method = NULL,
+      engine = NULL
+    )
   }
   set_fit(
     model = "mixture_da",

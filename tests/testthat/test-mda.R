@@ -66,6 +66,17 @@ test_that("mda + custom parsnip model + predict() works", {
       defaults = list()
     )
   )
+  set_encoding(
+    model = "mixture_da",
+    eng = "mda",
+    mode = "classification",
+    options = list(
+      predictor_indicators = "traditional",
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
+      allow_sparse_x = FALSE
+    )
+  )
   mda_fit <- mixture_da(sub_classes = 2) %>%
     set_engine("mda") %>%
     fit(Species ~ ., data = iris)

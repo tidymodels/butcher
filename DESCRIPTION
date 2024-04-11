@@ -1,6 +1,6 @@
 Package: butcher
 Title: Model Butcher
-Version: 0.3.3.9000
+Version: 0.3.4
 Authors@R: c(
     person("Joyce", "Cahoon", , "joyceyu48@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-7217-4702")),
@@ -76,9 +76,9 @@ Suggests:
     xrf
 VignetteBuilder: 
     knitr
-Config/Needs/check:bioc::mixOmics
-Config/Needs/website:tidyverse/tidytemplate
+Config/Needs/check: bioc::mixOmics
+Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

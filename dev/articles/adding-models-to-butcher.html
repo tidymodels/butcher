@@ -14,9 +14,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.7/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.7/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.9/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Adding models to butcher">
@@ -32,11 +32,11 @@
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-none"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-none" data-bs-theme="light"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">butcher</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.3.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,18 +108,18 @@ open up RStudio (use
 <code>usethis::create_from_github("tidymodels/butcher")</code> for an
 automated way to do this). After you have opened RStudio and are in the
 butcher RStudio project, run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">new_model_butcher</span>(<span class="at">model_class =</span> <span class="st">"blob"</span>, <span class="at">package_name =</span> <span class="st">"blobber"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">new_model_butcher</span>(<span class="at">model_class =</span> <span class="st">"blob"</span>, <span class="at">package_name =</span> <span class="st">"blobber"</span>)</span></code></pre></div>
 <p>You’ll get the following console messages:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'path_to_butcher_package'</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'blobber'</span> to Suggests field <span class="cf">in</span> DESCRIPTION</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>● Use <span class="st">`</span><span class="at">requireNamespace("blobber", quietly = TRUE)</span><span class="st">`</span> to test <span class="cf">if</span> package is installed</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>● Then directly refer to functons like <span class="st">`</span><span class="at">blobber::fun()</span><span class="st">`</span> (replacing <span class="st">`</span><span class="at">fun()</span><span class="st">`</span>).</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ℹ Writing skeleton files</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'R/blob.R'</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'tests/testthat/test-blob.R'</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">'R/blob.R'</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>● Modify <span class="st">'tests/testthat/test-blob.R'</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>✔ Setting active project to <span class="st">'path_to_butcher_package'</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>✔ Adding <span class="st">'blobber'</span> to Suggests field <span class="cf">in</span> DESCRIPTION</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>● Use <span class="st">`</span><span class="at">requireNamespace("blobber", quietly = TRUE)</span><span class="st">`</span> to test <span class="cf">if</span> package is installed</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>● Then directly refer to functons like <span class="st">`</span><span class="at">blobber::fun()</span><span class="st">`</span> (replacing <span class="st">`</span><span class="at">fun()</span><span class="st">`</span>).</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>ℹ Writing skeleton files</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>✔ Writing <span class="st">'R/blob.R'</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>✔ Writing <span class="st">'tests/testthat/test-blob.R'</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>● Modify <span class="st">'R/blob.R'</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>● Modify <span class="st">'tests/testthat/test-blob.R'</span></span></code></pre></div>
 <p><code><a href="../reference/new_model_butcher.html">new_model_butcher()</a></code> leverages usethis to:</p>
 <ol style="list-style-type: decimal">
 <li>Add the new blobber modeling package under <code>Suggests</code> in
@@ -137,21 +137,21 @@ axing is the <code>call</code>. To help target what is worth removing
 from <code>blob</code>, we recommend first beginning with
 <code><a href="../reference/weigh.html">weigh()</a></code> to identify which parts of the model object take up
 the most memory.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">weigh</span>(fitted_blob_object)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 25 x 2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   object            size</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>            <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> terms         <span class="fl">4.01</span>    </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> qr.qr         <span class="fl">0.00666</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> residuals     <span class="fl">0.00286</span> </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> fitted.values <span class="fl">0.00286</span> </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> effects       <span class="fl">0.0014</span>  </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> coefficients  <span class="fl">0.00109</span> </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> call          <span class="fl">0.000728</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> model.mpg     <span class="fl">0.000304</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> model.cyl     <span class="fl">0.000304</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> model.disp    <span class="fl">0.000304</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 15 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">weigh</span>(fitted_blob_object)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># A tibble: 25 x 2</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>   object            size</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>            <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a> <span class="dv">1</span> terms         <span class="fl">4.01</span>    </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a> <span class="dv">2</span> qr.qr         <span class="fl">0.00666</span> </span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a> <span class="dv">3</span> residuals     <span class="fl">0.00286</span> </span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a> <span class="dv">4</span> fitted.values <span class="fl">0.00286</span> </span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a> <span class="dv">5</span> effects       <span class="fl">0.0014</span>  </span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a> <span class="dv">6</span> coefficients  <span class="fl">0.00109</span> </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a> <span class="dv">7</span> call          <span class="fl">0.000728</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a> <span class="dv">8</span> model.mpg     <span class="fl">0.000304</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a> <span class="dv">9</span> model.cyl     <span class="fl">0.000304</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="dv">10</span> model.disp    <span class="fl">0.000304</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co"># … with 15 more rows</span></span></code></pre></div>
 <p>In this example, the fitted model objected generated from blobber has
 a <code>terms</code> component that is taking 4.01 Mb. From here, you
 can examine the structure of this terms component by leveraging
@@ -241,7 +241,7 @@ axe methods are set, we then have a skeleton file
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
 </div>
 
   </div></footer>

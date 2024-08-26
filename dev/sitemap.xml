@@ -1,192 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/articles/adding-models-to-butcher.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/articles/available-axe-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/articles/butcher.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-C5.0.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-KMeansCluster.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-NaiveBayes.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-bart.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-coxph.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-earth.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-elnet.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-flexsurvreg.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-formula.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-function.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-gam.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-gausspr.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-glm.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-glmnet.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-ipred.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-kknn.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-kproto.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-ksvm.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-lm.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-mass.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-mda.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-model_fit.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-multnet.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-nested_model_fit.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-nnet.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-pls.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-randomForest.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-ranger.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-rda.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-recipe.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-rpart.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-sclass.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-spark.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-survreg.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-terms.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-train.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-train.recipe.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-xgb.Booster.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe-xrf.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe_call.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe_ctrl.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe_data.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe_env.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/axe_fitted.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/butcher-package.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/butcher.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/butcher_example.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/locate.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/new_model_butcher.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/ui.html</loc>
-  </url>
-  <url>
-    <loc>https://butcher.tidymodels.org/dev/reference/weigh.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://butcher.tidymodels.org/dev/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/LICENSE-text.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/LICENSE.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/articles/adding-models-to-butcher.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/articles/available-axe-methods.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/articles/butcher.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/articles/index.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/authors.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/index.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/news/index.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-C5.0.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-KMeansCluster.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-NaiveBayes.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-bart.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-coxph.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-earth.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-elnet.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-flexsurvreg.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-formula.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-function.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-gam.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-gausspr.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-glm.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-glmnet.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-ipred.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-kknn.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-kproto.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-ksvm.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-lm.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-mass.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-mda.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-model_fit.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-multnet.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-nested_model_fit.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-nnet.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-pls.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-randomForest.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-ranger.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-rda.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-recipe.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-rpart.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-sclass.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-spark.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-survreg.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-terms.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-train.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-train.recipe.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-xgb.Booster.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe-xrf.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe_call.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe_ctrl.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe_data.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe_env.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/axe_fitted.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/butcher-package.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/butcher.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/butcher_example.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/index.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/locate.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/new_model_butcher.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/ui.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/dev/reference/weigh.html</loc></url>
 </urlset>
+

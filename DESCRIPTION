@@ -31,7 +31,6 @@ Imports:
 Suggests: 
     C50,
     caret,
-    clisymbols,
     ClusterR,
     clustMixType,
     covr,

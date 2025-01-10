@@ -1,8 +1,8 @@
 
 # check existence
 exchange <- function(x, component, replacement, addition = NULL, old) {
-  out <- purrr::pluck(x, component, .default = NA)
-  if (!rlang::is_na(out)[1]) {
+  out <- purrr::pluck(x, component, .default = NULL)
+  if (!rlang::is_null(out)) {
     x[[component]] <- replacement
     if (!is.null(addition) & !missing(old)) {
       if (!is.null(old[[component]][[addition]])) {

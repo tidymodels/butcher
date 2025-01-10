@@ -25,18 +25,15 @@ jobs:
           - {os: macos-latest,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
-          # Don't use Windows 3.6 build to avoid igraph always being
-          # installed from source and failing
-          # - {os: windows-latest, r: '3.6'}
-          # use 4.1 to check with rtools40's older compiler
-          - {os: windows-latest, r: '4.1'}
+
+          # use older R to check with rtools40's older compiler
+          - {os: windows-latest, r: 'oldrel-3'}
 
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
           - {os: ubuntu-latest,   r: 'oldrel-2'}
           - {os: ubuntu-latest,   r: 'oldrel-3'}
-          - {os: ubuntu-latest,   r: 'oldrel-4'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +53,7 @@ jobs:
       - name: Set bioc env var for R-devel
         if: ${{ matrix.config.r == 'devel'}}
         run: |
-          echo "R_BIOC_VERSION=3.17" >> $GITHUB_ENV    
+          echo "R_BIOC_VERSION=3.17" >> $GITHUB_ENV
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:

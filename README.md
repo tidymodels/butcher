@@ -82,7 +82,7 @@ weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.05    
+#>  1 terms         8.01    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -102,7 +102,7 @@ remove the (mostly) extraneous component, we can use `butcher()`:
 
 ``` r
 cleaned_lm <- butcher(big_lm, verbose = TRUE)
-#> ✔ Memory released: 8.03 MB
+#> ✔ Memory released: 8.00 MB
 #> ✖ Disabled: `print()`, `summary()`, and `fitted()`
 ```
 
@@ -133,7 +133,7 @@ weigh(small_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.06    
+#>  1 terms         0.00763 
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 

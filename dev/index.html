@@ -115,7 +115,7 @@
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 terms         8.05    </span></span>
+<span><span class="co">#&gt;  1 terms         8.01    </span></span>
 <span><span class="co">#&gt;  2 qr.qr         0.00666 </span></span>
 <span><span class="co">#&gt;  3 residuals     0.00286 </span></span>
 <span><span class="co">#&gt;  4 fitted.values 0.00286 </span></span>
@@ -129,7 +129,7 @@
 <p>The problem here is in the <code>terms</code> component of our <code>big_lm</code>. Because of how <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> is implemented in the <code>stats</code> package, the environment in which our model was made is carried along in the fitted output. To remove the (mostly) extraneous component, we can use <code><a href="reference/butcher.html">butcher()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleaned_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/butcher.html">butcher</a></span><span class="op">(</span><span class="va">big_lm</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ Memory released: 8.03 MB</span></span>
+<span><span class="co">#&gt; ✔ Memory released: 8.00 MB</span></span>
 <span><span class="co">#&gt; ✖ Disabled: `print()`, `summary()`, and `fitted()`</span></span></code></pre></div>
 <p>Comparing it against our <code>small_lm</code>, we find:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -154,7 +154,7 @@
 <span><span class="co">#&gt; # A tibble: 25 × 2</span></span>
 <span><span class="co">#&gt;    object            size</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;            &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 terms         8.06    </span></span>
+<span><span class="co">#&gt;  1 terms         0.00763 </span></span>
 <span><span class="co">#&gt;  2 qr.qr         0.00666 </span></span>
 <span><span class="co">#&gt;  3 residuals     0.00286 </span></span>
 <span><span class="co">#&gt;  4 fitted.values 0.00286 </span></span>

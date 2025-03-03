@@ -2,6 +2,8 @@
 
 * Fixed how we check whether a component exists or not (#278).
 
+* Removed methods for `nestedmodels::nested()` (@ashbythorpe, #282).
+
 # butcher 0.3.4
 
 * Submit to CRAN for new HTML reference manuals.

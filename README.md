@@ -53,7 +53,7 @@ unnecessary stuff:
 library(butcher)
 our_model <- function() {
   some_junk_in_the_environment <- runif(1e6) # we didn't know about
-  lm(mpg ~ ., data = mtcars) 
+  lm(mpg ~ ., data = mtcars)
 }
 ```
 
@@ -68,7 +68,7 @@ obj_size(our_model())
 When, in fact, it should only be:
 
 ``` r
-small_lm <- lm(mpg ~ ., data = mtcars) 
+small_lm <- lm(mpg ~ ., data = mtcars)
 obj_size(small_lm)
 #> 22.22 kB
 ```

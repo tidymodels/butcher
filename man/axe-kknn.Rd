@@ -2,13 +2,10 @@
 % Please edit documentation in R/kknn.R
 \name{axe-kknn}
 \alias{axe-kknn}
-\alias{axe_call.kknn}
 \alias{axe_env.kknn}
 \alias{axe_fitted.kknn}
 \title{Axing an kknn.}
 \usage{
-\method{axe_call}{kknn}(x, verbose = FALSE, ...)
-
 \method{axe_env}{kknn}(x, verbose = FALSE, ...)
 
 \method{axe_fitted}{kknn}(x, verbose = FALSE, ...)

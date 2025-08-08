@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Updated methods for `kknn::kknn()` to no longer remove the call (#288).
+
 # butcher 0.3.5
 
 * Fixed how we check whether a component exists or not (#278).

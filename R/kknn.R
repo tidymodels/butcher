@@ -49,22 +49,6 @@
 #' @name axe-kknn
 NULL
 
-#' Remove the call.
-#'
-#' @rdname axe-kknn
-#' @export
-axe_call.kknn <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "call", call("dummy_call"))
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("print()", "summary()"),
-    verbose = verbose
-  )
-}
-
 #' Remove the environment.
 #'
 #' @rdname axe-kknn

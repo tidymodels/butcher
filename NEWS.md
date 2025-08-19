@@ -1,3 +1,5 @@
+# butcher (development version)
+
 # butcher 0.3.6
 
 * Updated methods for `kknn::kknn()` to no longer remove the call (#288).

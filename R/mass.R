@@ -28,6 +28,16 @@
 #' weigh(qda_fit)
 #' weigh(qda_fit_b)
 #'
+#' wrapped_polr <- function(fit_fn) {
+#'   boop <- runif(1e6)
+#'   fit <- fit_fn(Sat ~ Infl + Type + Cont, weights = Freq, data = housing)
+#'   return(fit)
+#' }
+#' polr_fit <- wrapped_polr(polr)
+#' polr_fit_b <- butcher(polr_fit)
+#' weigh(polr_fit)
+#' weigh(polr_fit_b)
+#' 
 #' @name axe-mass
 #' @aliases axe-lda
 #' @aliases axe-qda
@@ -50,3 +60,7 @@ axe_env.lda <- function(x, verbose = FALSE, ...) {
 #' @rdname axe-mass
 #' @export
 axe_env.qda <- axe_env.lda
+
+#' @rdname axe-mass
+#' @export
+axe_env.polr <- axe_env.lda

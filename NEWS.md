@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* * Added methods for `MASS::polr` (@pbulsink, #289).
+
 # butcher 0.3.6
 
 * Updated methods for `kknn::kknn()` to no longer remove the call (#288).

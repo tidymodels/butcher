@@ -18,9 +18,11 @@
 #'
 #' lda_fit <- fit_da(lda)
 #' qda_fit <- fit_da(qda)
+#' polr_fit <- fit_da(polr)
 #'
 #' lda_fit_b <- butcher(lda_fit)
 #' qda_fit_b <- butcher(qda_fit)
+#' polr_fit_b <- butcher(polr_fit)
 #'
 #' weigh(lda_fit)
 #' weigh(lda_fit_b)
@@ -28,6 +30,9 @@
 #' weigh(qda_fit)
 #' weigh(qda_fit_b)
 #'
+#' weigh(polr_fit)
+#' weigh(polr_fit_b)
+#' 
 #' @name axe-mass
 #' @aliases axe-lda
 #' @aliases axe-qda
@@ -50,3 +55,7 @@ axe_env.lda <- function(x, verbose = FALSE, ...) {
 #' @rdname axe-mass
 #' @export
 axe_env.qda <- axe_env.lda
+
+#' @rdname axe-mass
+#' @export
+axe_env.polr <- axe_env.lda

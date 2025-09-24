@@ -5,7 +5,7 @@ articles:
   adding-models-to-butcher: adding-models-to-butcher.html
   available-axe-methods: available-axe-methods.html
   butcher: butcher.html
-last_built: 2025-08-19T03:54Z
+last_built: 2025-09-24T18:53Z
 urls:
   reference: https://butcher.tidymodels.org/reference
   article: https://butcher.tidymodels.org/articles

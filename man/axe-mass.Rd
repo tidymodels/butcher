@@ -6,11 +6,14 @@
 \alias{axe-qda}
 \alias{axe_env.lda}
 \alias{axe_env.qda}
+\alias{axe_env.polr}
 \title{Axing a MASS discriminant analysis object.}
 \usage{
 \method{axe_env}{lda}(x, verbose = FALSE, ...)
 
 \method{axe_env}{qda}(x, verbose = FALSE, ...)
+
+\method{axe_env}{polr}(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{A model object.}
@@ -40,14 +43,19 @@ fit_da <- function(fit_fn) {
 
 lda_fit <- fit_da(lda)
 qda_fit <- fit_da(qda)
+polr_fit <- fit_da(polr)
 
 lda_fit_b <- butcher(lda_fit)
 qda_fit_b <- butcher(qda_fit)
+polr_fit_b <- butcher(polr_fit)
 
 weigh(lda_fit)
 weigh(lda_fit_b)
 
 weigh(qda_fit)
 weigh(qda_fit_b)
+
+weigh(polr_fit)
+weigh(polr_fit_b)
 \dontshow{\}) # examplesIf}
 }

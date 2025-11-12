@@ -1,0 +1,152 @@
+# Adding models to butcher
+
+``` r
+library(butcher)
+```
+
+If you come across any model objects that should be subject to
+butchering but does not exist in our current repository as listed
+[here](https://www.tidymodels.org/find/parsnip/), please consider
+becoming a contributor to this package! For any first time contributors,
+this is a great place to start as we’ve created templates that make this
+process as seamless as possible.
+
+Let’s say our new model object, of class `blob`, was generated from an R
+package called “blobber”. If you want to add axe methods for this class,
+first clone butcher onto your local computer and open up RStudio (use
+`usethis::create_from_github("tidymodels/butcher")` for an automated way
+to do this). After you have opened RStudio and are in the butcher
+RStudio project, run:
+
+``` r
+> new_model_butcher(model_class = "blob", package_name = "blobber")
+```
+
+You’ll get the following console messages:
+
+``` r
+✔ Setting active project to 'path_to_butcher_package'
+✔ Adding 'blobber' to Suggests field in DESCRIPTION
+● Use `requireNamespace("blobber", quietly = TRUE)` to test if package is installed
+● Then directly refer to functons like `blobber::fun()` (replacing `fun()`).
+
+ℹ Writing skeleton files
+✔ Writing 'R/blob.R'
+✔ Writing 'tests/testthat/test-blob.R'
+● Modify 'R/blob.R'
+● Modify 'tests/testthat/test-blob.R'
+```
+
+[`new_model_butcher()`](https://butcher.tidymodels.org/dev/reference/new_model_butcher.md)
+leverages usethis to:
+
+1.  Add the new blobber modeling package under `Suggests` in the butcher
+    package description file.
+2.  Generate a skeleton file under the `/R` directory with all possible
+    axe methods for `blob`.
+3.  Generate an associated test file under `/tests/testthat` to test new
+    `blob` axe methods.
+
+As you can see in the R scripts for other model objects in this package,
+*not all* axe generics are always used. In fact, if you take a look at
+the `elnet.R` script, the only component of the model object fit from
+the package `glmnet` that is worth axing is the `call`. To help target
+what is worth removing from `blob`, we recommend first beginning with
+[`weigh()`](https://butcher.tidymodels.org/dev/reference/weigh.md) to
+identify which parts of the model object take up the most memory.
+
+``` r
+> weigh(fitted_blob_object)
+# A tibble: 25 x 2
+   object            size
+   <chr>            <dbl>
+ 1 terms         4.01    
+ 2 qr.qr         0.00666 
+ 3 residuals     0.00286 
+ 4 fitted.values 0.00286 
+ 5 effects       0.0014  
+ 6 coefficients  0.00109 
+ 7 call          0.000728
+ 8 model.mpg     0.000304
+ 9 model.cyl     0.000304
+10 model.disp    0.000304
+# … with 15 more rows
+```
+
+In this example, the fitted model objected generated from blobber has a
+`terms` component that is taking 4.01 Mb. From here, you can examine the
+structure of this terms component by leveraging
+`lobstr::sxp(fitted_blob_object$terms)` or simply running
+`utils::str(fitted_blob_object$terms)`. If you are looking to hunt for a
+specific component like the environment, fitted values, training data,
+controls, or the call object, take a look at
+[`locate()`](https://butcher.tidymodels.org/dev/reference/locate.md).
+
+Perhaps for our `blob` model object, we find that the `call` is the only
+piece worth axing (replacing/removing). The `R/blob.R` skeleton would be
+completed by adding a placeholder for the original call.
+
+``` r
+#' Axing a blob.
+#'
+#' blob model objects are created from the blobber package. They are
+#' generally leveraged for classification ... insert anything relevant 
+#' ... This is where all the blob specific documentation lies.
+#'
+#' @param x Model object.
+#' @param verbose Print information each time an axe method is executed
+#'  that notes how much memory is released and what functions are
+#'  disabled. Default is \code{TRUE}.
+#' @param ... Any additional arguments related to axing.
+#'
+#' @return Axed model object.
+#'
+#' @name axe-blob
+NULL
+
+#' Remove the call.
+#'
+#' @rdname axe-blob
+#' @export
+axe_call.blob <- function(x, verbose = TRUE, ...) {
+  old <- x
+  x <- exchange(x, "call", call("dummy_call"))
+  if (verbose) {
+    assess_object(
+      old, 
+      x,
+      disabled = c("print", "summary")
+    )
+  }
+  add_butcher_class(x)
+}
+```
+
+Here we assign the current blob object `x` to the variable `old` as a
+means to evaluate the memory released once
+[`axe_call()`](https://butcher.tidymodels.org/dev/reference/axe_call.md)
+is executed on the original model object. Next, we actually `exchange()`
+the current call with a dummy call of a (hopefully) smaller size. We
+also include
+[`assess_object()`](https://butcher.tidymodels.org/dev/reference/ui.md)
+with the additional string parameter of `disabled` so console messages
+will be printed out, alerting users of any downstream functions that
+would be affected by axing the call. Since the original model object has
+different components than the new one, we add an additional
+`butcher_blob` class by calling `add_butcher_class()` at the end of each
+axe method. Once the axe methods are set, we then have a skeleton file
+`tests/testthat/test-blob.R` to aid in any unit testing.
+
+## Recap
+
+Adding a new model object to butcher:
+
+1.  Run
+    `new_model_butcher(model_class = "blob", package_name = "blobber")`
+2.  Use butcher helper functions
+    [`weigh()`](https://butcher.tidymodels.org/dev/reference/weigh.md)
+    and
+    [`locate()`](https://butcher.tidymodels.org/dev/reference/locate.md)
+    to decide what to axe
+3.  Finalize edits to `R/blob.R` and `tests/testthat/test-blob.R`
+4.  Make a pull request!

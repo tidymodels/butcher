@@ -1,0 +1,411 @@
+# butcher
+
+## Overview
+
+Modeling or machine learning in R can result in fitted model objects
+that take up too much memory. There are two main culprits:
+
+1.  Heavy usage of formulas and closures that capture the enclosing
+    environment in model training
+2.  Lack of selectivity in the construction of the model object itself
+
+As a result, fitted model objects contain components that are often
+redundant and not required for post-fit estimation activities. The
+butcher package provides tooling to “axe” parts of the fitted output
+that are no longer needed, without sacrificing prediction functionality
+from the original model object.
+
+## Installation
+
+Install the released version from CRAN:
+
+``` r
+install.packages("butcher")
+```
+
+Or install the development version from [GitHub](https://github.com/):
+
+``` r
+# install.packages("pak")
+pak::pak("tidymodels/butcher")
+```
+
+## Butchering
+
+As an example, let’s wrap an `lm` model so it contains a lot of
+unnecessary stuff:
+
+``` r
+library(butcher)
+our_model <- function() {
+  some_junk_in_the_environment <- runif(1e6) # we didn't know about
+  lm(mpg ~ ., data = mtcars)
+}
+```
+
+This object is unnecessarily large:
+
+``` r
+library(lobstr)
+obj_size(our_model())
+#> 8.02 MB
+```
+
+When, in fact, it should only be:
+
+``` r
+small_lm <- lm(mpg ~ ., data = mtcars)
+obj_size(small_lm)
+#> 22.22 kB
+```
+
+To understand which part of our original model object is taking up the
+most memory, we leverage the
+[`weigh()`](https://butcher.tidymodels.org/dev/reference/weigh.md)
+function:
+
+``` r
+big_lm <- our_model()
+weigh(big_lm)
+#> # A tibble: 25 × 2
+#>    object            size
+#>    <chr>            <dbl>
+#>  1 terms         8.01    
+#>  2 qr.qr         0.00666 
+#>  3 residuals     0.00286 
+#>  4 fitted.values 0.00286 
+#>  5 effects       0.0014  
+#>  6 coefficients  0.00109 
+#>  7 call          0.000728
+#>  8 model.mpg     0.000304
+#>  9 model.cyl     0.000304
+#> 10 model.disp    0.000304
+#> # ℹ 15 more rows
+```
+
+The problem here is in the `terms` component of our `big_lm`. Because of
+how [`lm()`](https://rdrr.io/r/stats/lm.html) is implemented in the
+`stats` package, the environment in which our model was made is carried
+along in the fitted output. To remove the (mostly) extraneous component,
+we can use
+[`butcher()`](https://butcher.tidymodels.org/dev/reference/butcher.md):
+
+``` r
+cleaned_lm <- butcher(big_lm, verbose = TRUE)
+#> ✔ Memory released: 8.00 MB
+#> ✖ Disabled: `print()`, `summary()`, and `fitted()`
+```
+
+Comparing it against our `small_lm`, we find:
+
+``` r
+weigh(cleaned_lm)
+#> # A tibble: 25 × 2
+#>    object           size
+#>    <chr>           <dbl>
+#>  1 terms        0.00771 
+#>  2 qr.qr        0.00666 
+#>  3 residuals    0.00286 
+#>  4 effects      0.0014  
+#>  5 coefficients 0.00109 
+#>  6 model.mpg    0.000304
+#>  7 model.cyl    0.000304
+#>  8 model.disp   0.000304
+#>  9 model.hp     0.000304
+#> 10 model.drat   0.000304
+#> # ℹ 15 more rows
+```
+
+And now it will take up about the same memory on disk as `small_lm`:
+
+``` r
+weigh(small_lm)
+#> # A tibble: 25 × 2
+#>    object            size
+#>    <chr>            <dbl>
+#>  1 terms         0.00763 
+#>  2 qr.qr         0.00666 
+#>  3 residuals     0.00286 
+#>  4 fitted.values 0.00286 
+#>  5 effects       0.0014  
+#>  6 coefficients  0.00109 
+#>  7 call          0.000728
+#>  8 model.mpg     0.000304
+#>  9 model.cyl     0.000304
+#> 10 model.disp    0.000304
+#> # ℹ 15 more rows
+```
+
+To make the most of your memory available, this package provides five S3
+generics for you to remove parts of a model object:
+
+- [`axe_call()`](https://butcher.tidymodels.org/dev/reference/axe_call.md):
+  To remove the call object.
+- [`axe_ctrl()`](https://butcher.tidymodels.org/dev/reference/axe_ctrl.md):
+  To remove controls associated with training.
+- [`axe_data()`](https://butcher.tidymodels.org/dev/reference/axe_data.md):
+  To remove the original training data.
+- [`axe_env()`](https://butcher.tidymodels.org/dev/reference/axe_env.md):
+  To remove environments.
+- [`axe_fitted()`](https://butcher.tidymodels.org/dev/reference/axe_fitted.md):
+  To remove fitted values.
+
+When you run
+[`butcher()`](https://butcher.tidymodels.org/dev/reference/butcher.md),
+you execute all of these axing functions at once. Any kind of axing on
+the object will append a butchered class to the current model object
+class(es) as well as a new attribute named `butcher_disabled` that lists
+any post-fit estimation functions that are disabled as a result.
+
+## Model Object Coverage
+
+Check out the
+[`vignette("available-axe-methods")`](https://butcher.tidymodels.org/dev/articles/available-axe-methods.md)
+to see butcher’s current coverage. If you are working with a new model
+object that could benefit from any kind of axing, we would love for you
+to make a pull request! You can visit the
+[`vignette("adding-models-to-butcher")`](https://butcher.tidymodels.org/dev/articles/adding-models-to-butcher.md)
+for more guidelines, but in short, to contribute a set of axe methods:
+
+1.  Run
+    `new_model_butcher(model_class = "your_object", package_name = "your_package")`
+2.  Use butcher helper functions
+    [`weigh()`](https://butcher.tidymodels.org/dev/reference/weigh.md)
+    and
+    [`locate()`](https://butcher.tidymodels.org/dev/reference/locate.md)
+    to decide what to axe
+3.  Finalize edits to `R/your_object.R` and
+    `tests/testthat/test-your_object.R`
+4.  Make a pull request!
+
+## Contributing
+
+This project is released with a [Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+- For questions and discussions about tidymodels packages, modeling, and
+  machine learning, please [post on RStudio
+  Community](https://forum.posit.co/new-topic?category_id=15&tags=tidymodels,question).
+
+- If you think you have encountered a bug, please [submit an
+  issue](https://github.com/tidymodels/butcher/issues).
+
+- Either way, learn how to create and share a
+  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+  (a minimal, reproducible example), to clearly communicate about your
+  code.
+
+- Check out further details on [contributing guidelines for tidymodels
+  packages](https://www.tidymodels.org/contribute/) and [how to get
+  help](https://www.tidymodels.org/help/).
+
+# Package index
+
+## How to use butcher
+
+- [`butcher()`](https://butcher.tidymodels.org/dev/reference/butcher.md)
+  : Butcher an object.
+- [`axe_call()`](https://butcher.tidymodels.org/dev/reference/axe_call.md)
+  : Axe a call.
+- [`axe_ctrl()`](https://butcher.tidymodels.org/dev/reference/axe_ctrl.md)
+  : Axe controls.
+- [`axe_data()`](https://butcher.tidymodels.org/dev/reference/axe_data.md)
+  : Axe data.
+- [`axe_env()`](https://butcher.tidymodels.org/dev/reference/axe_env.md)
+  : Axe an environment.
+- [`axe_fitted()`](https://butcher.tidymodels.org/dev/reference/axe_fitted.md)
+  : Axe fitted values.
+
+## Specific butchering methods
+
+- [`axe_call(`*`<C5.0>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-C5.0.md)
+  [`axe_ctrl(`*`<C5.0>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-C5.0.md)
+  [`axe_fitted(`*`<C5.0>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-C5.0.md)
+  : Axing a C5.0.
+- [`axe_call(`*`<KMeansCluster>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-KMeansCluster.md)
+  [`axe_fitted(`*`<KMeansCluster>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-KMeansCluster.md)
+  : Axing a KMeansCluster.
+- [`axe_call(`*`<NaiveBayes>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-NaiveBayes.md)
+  [`axe_data(`*`<NaiveBayes>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-NaiveBayes.md)
+  : Axing a NaiveBayes.
+- [`axe_call(`*`<bart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-bart.md)
+  [`axe_fitted(`*`<bart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-bart.md)
+  : Axing a bart model.
+- [`axe_env(`*`<coxph>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-coxph.md)
+  [`axe_data(`*`<coxph>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-coxph.md)
+  : Axing a coxph.
+- [`axe_call(`*`<earth>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-earth.md)
+  [`axe_data(`*`<earth>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-earth.md)
+  [`axe_fitted(`*`<earth>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-earth.md)
+  : Axing an earth object.
+- [`axe_call(`*`<elnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-elnet.md)
+  : Axing an elnet.
+- [`axe_call(`*`<flexsurvreg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-flexsurvreg.md)
+  [`axe_env(`*`<flexsurvreg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-flexsurvreg.md)
+  : Axing an flexsurvreg.
+- [`axe_env(`*`<formula>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-formula.md)
+  : Axing formulas.
+- [`axe_env(`*`<function>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-function.md)
+  : Axing functions.
+- [`axe_call(`*`<gam>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gam.md)
+  [`axe_ctrl(`*`<gam>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gam.md)
+  [`axe_data(`*`<gam>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gam.md)
+  [`axe_env(`*`<gam>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gam.md)
+  [`axe_fitted(`*`<gam>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gam.md)
+  : Axing a gam.
+- [`axe_call(`*`<gausspr>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gausspr.md)
+  [`axe_data(`*`<gausspr>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gausspr.md)
+  [`axe_env(`*`<gausspr>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gausspr.md)
+  [`axe_fitted(`*`<gausspr>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-gausspr.md)
+  : Axing a gausspr.
+- [`axe_call(`*`<glm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-glm.md)
+  [`axe_data(`*`<glm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-glm.md)
+  [`axe_env(`*`<glm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-glm.md)
+  [`axe_fitted(`*`<glm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-glm.md)
+  : Axing a glm.
+- [`axe_call(`*`<glmnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-glmnet.md)
+  : Axing a glmnet.
+- [`axe_call(`*`<regbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_call(`*`<classbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_call(`*`<survbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_ctrl(`*`<regbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_ctrl(`*`<classbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_ctrl(`*`<survbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_data(`*`<regbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_data(`*`<classbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_data(`*`<survbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_env(`*`<regbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_env(`*`<classbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  [`axe_env(`*`<survbagg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ipred.md)
+  : Axing a bagged tree.
+- [`axe_env(`*`<kknn>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-kknn.md)
+  [`axe_fitted(`*`<kknn>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-kknn.md)
+  : Axing an kknn.
+- [`axe_data(`*`<kproto>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-kproto.md)
+  [`axe_fitted(`*`<kproto>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-kproto.md)
+  : Axing a kproto.
+- [`axe_call(`*`<ksvm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ksvm.md)
+  [`axe_data(`*`<ksvm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ksvm.md)
+  [`axe_fitted(`*`<ksvm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ksvm.md)
+  : Axing a ksvm object.
+- [`axe_call(`*`<lm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-lm.md)
+  [`axe_env(`*`<lm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-lm.md)
+  [`axe_fitted(`*`<lm>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-lm.md)
+  : Axing an lm.
+- [`axe_env(`*`<lda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mass.md)
+  [`axe_env(`*`<qda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mass.md)
+  [`axe_env(`*`<polr>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mass.md)
+  : Axing a MASS discriminant analysis object.
+- [`axe_call(`*`<mda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  [`axe_call(`*`<fda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  [`axe_env(`*`<mda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  [`axe_env(`*`<fda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  [`axe_fitted(`*`<mda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  [`axe_fitted(`*`<fda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-mda.md)
+  : Axing a mda.
+- [`axe_call(`*`<model_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-model_fit.md)
+  [`axe_ctrl(`*`<model_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-model_fit.md)
+  [`axe_data(`*`<model_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-model_fit.md)
+  [`axe_env(`*`<model_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-model_fit.md)
+  [`axe_fitted(`*`<model_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-model_fit.md)
+  : Axing an model_fit.
+- [`axe_call(`*`<multnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-multnet.md)
+  : Axing an multnet.
+- [`axe_call(`*`<nnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-nnet.md)
+  [`axe_env(`*`<nnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-nnet.md)
+  [`axe_fitted(`*`<nnet>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-nnet.md)
+  : Axing a nnet.
+- [`axe_call(`*`<mixo_pls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  [`axe_call(`*`<mixo_spls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  [`axe_data(`*`<mixo_pls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  [`axe_data(`*`<mixo_spls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  [`axe_fitted(`*`<mixo_pls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  [`axe_fitted(`*`<mixo_spls>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-pls.md)
+  : Axing mixOmics models
+- [`axe_call(`*`<randomForest>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-randomForest.md)
+  [`axe_ctrl(`*`<randomForest>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-randomForest.md)
+  [`axe_env(`*`<randomForest>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-randomForest.md)
+  : Axing an randomForest.
+- [`axe_call(`*`<ranger>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ranger.md)
+  [`axe_fitted(`*`<ranger>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-ranger.md)
+  : Axing an ranger.
+- [`axe_call(`*`<rda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rda.md)
+  [`axe_env(`*`<rda>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rda.md)
+  : Axing an rda.
+- [`axe_env(`*`<recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_arrange>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_filter>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_mutate>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_slice>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_impute_bag>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_bagimpute>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_impute_knn>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_knnimpute>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_geodist>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_interact>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<step_ratio>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_env(`*`<quosure>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  [`axe_fitted(`*`<recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-recipe.md)
+  : Axing a recipe object.
+- [`axe_call(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
+  [`axe_ctrl(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
+  [`axe_data(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
+  [`axe_env(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
+  : Axing a rpart.
+- [`axe_call(`*`<sclass>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-sclass.md)
+  [`axe_env(`*`<sclass>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-sclass.md)
+  : Axing a sclass object.
+- [`axe_call(`*`<ml_model>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-spark.md)
+  [`axe_ctrl(`*`<ml_model>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-spark.md)
+  [`axe_data(`*`<ml_model>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-spark.md)
+  [`axe_fitted(`*`<ml_model>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-spark.md)
+  : Axing a spark object.
+- [`axe_call(`*`<survreg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.md)
+  [`axe_data(`*`<survreg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.md)
+  [`axe_env(`*`<survreg>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.md)
+  : Axing an survreg.
+- [`axe_call(`*`<survreg.penal>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.md)
+  [`axe_data(`*`<survreg.penal>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.md)
+  [`axe_env(`*`<survreg.penal>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.md)
+  : Axing an survreg.penal
+- [`axe_env(`*`<terms>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-terms.md)
+  : Axing for terms inputs.
+- [`axe_call(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)
+  [`axe_ctrl(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)
+  [`axe_data(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)
+  [`axe_env(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)
+  [`axe_fitted(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)
+  : Axing a train object.
+- [`axe_call(`*`<train.recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md)
+  [`axe_ctrl(`*`<train.recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md)
+  [`axe_data(`*`<train.recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md)
+  [`axe_env(`*`<train.recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md)
+  [`axe_fitted(`*`<train.recipe>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md)
+  : Axing a train.recipe object.
+- [`axe_call(`*`<xgb.Booster>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-xgb.Booster.md)
+  [`axe_env(`*`<xgb.Booster>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-xgb.Booster.md)
+  : Axing a xgb.Booster.
+- [`axe_call(`*`<xrf>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-xrf.md)
+  [`axe_env(`*`<xrf>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-xrf.md)
+  : Axing a xrf.
+
+## Adding new model objects
+
+- [`new_model_butcher()`](https://butcher.tidymodels.org/dev/reference/new_model_butcher.md)
+  : New axe functions for a modeling object.
+- [`weigh()`](https://butcher.tidymodels.org/dev/reference/weigh.md) :
+  Weigh the object.
+- [`locate()`](https://butcher.tidymodels.org/dev/reference/locate.md) :
+  Locate part of an object.
+
+# Articles
+
+### All vignettes
+
+- [Adding models to
+  butcher](https://butcher.tidymodels.org/dev/articles/adding-models-to-butcher.md):
+- [Available axe
+  methods](https://butcher.tidymodels.org/dev/articles/available-axe-methods.md):
+- [butcher](https://butcher.tidymodels.org/dev/articles/butcher.md):

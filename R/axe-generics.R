@@ -22,6 +22,7 @@ butcher <- function(x, verbose = FALSE, ...) {
   x <- axe_data(x, verbose = FALSE, ...)
   x <- axe_env(x, verbose = FALSE, ...)
   x <- axe_fitted(x, verbose = FALSE, ...)
+  x <- axe_rsample_data(x, verbose = FALSE, ...)
 
   add_butcher_attributes(
     x,
@@ -158,4 +159,3 @@ axe_fitted.default <- function(x, verbose = FALSE, ...) {
   }
   x
 }
-

@@ -36,7 +36,7 @@ reduction. Since fitted model objects from \pkg{kernlab} are S4,
 the \code{butcher_gausspr} class is not appended.
 }
 \examples{
-\dontshow{if (rlang::is_installed("kernlab")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("kernlab")) withAutoprint(\{ # examplesIf}
 library(kernlab)
 
 test <- gausspr(Species ~ ., data = iris, var = 2)

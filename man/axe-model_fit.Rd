@@ -35,7 +35,7 @@ Axed model_fit object.
 model_fit objects are created from the \code{parsnip} package.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "rpart"))) withAutoprint(\{ # examplesIf}
 library(parsnip)
 library(rpart)
 

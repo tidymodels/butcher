@@ -31,7 +31,7 @@ are returned from the \code{survreg} function, representing fitted
 parametric survival models.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "survival"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "survival"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 library(survival)

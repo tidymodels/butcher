@@ -26,7 +26,7 @@ on the model object, the \code{butchered_function} class is not
 appended.
 }
 \examples{
-\dontshow{if (rlang::is_installed("caret")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("caret")) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(caret)
 

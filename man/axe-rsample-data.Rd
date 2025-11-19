@@ -9,7 +9,7 @@
 \alias{axe_rsample_data.rset}
 \alias{axe_rsample_data.tune_results}
 \alias{axe_rsample_data.workflow_set}
-\title{Axe rsample objects.}
+\title{Axe data within rsample objects.}
 \usage{
 axe_rsample_data(x, verbose = FALSE, ...)
 

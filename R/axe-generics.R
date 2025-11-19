@@ -22,6 +22,8 @@ butcher <- function(x, verbose = FALSE, ...) {
   x <- axe_data(x, verbose = FALSE, ...)
   x <- axe_env(x, verbose = FALSE, ...)
   x <- axe_fitted(x, verbose = FALSE, ...)
+  x <- axe_rsample_data(x, verbose = FALSE, ...)
+  x <- axe_rsample_indicators(x, verbose = FALSE, ...)
 
   add_butcher_attributes(
     x,
@@ -159,3 +161,47 @@ axe_fitted.default <- function(x, verbose = FALSE, ...) {
   x
 }
 
+
+#' Axe rsample objects.
+#'
+#' Replace the splitting and resampling objects with a placeholder.
+#'
+#' @name axe-rsample
+#' @inheritParams butcher
+#'
+#' @return An update object with no data or integer indicators.
+#'
+#' @section Methods:
+#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_call")}
+#'
+#' @export
+axe_rsample_data <- function(x, verbose = FALSE, ...) {
+  UseMethod("axe_rsample_data")
+}
+
+
+#' @export
+axe_rsample_data.default <- function(x, verbose = FALSE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
+  x
+}
+
+#' @export
+#' @rdname axe-rsample
+axe_rsample_indicators <- function(x, verbose = FALSE, ...) {
+  UseMethod("axe_rsample_indicators")
+}
+
+
+#' @export
+#' @rdname axe-rsample
+axe_rsample_indicators.default <- function(x, verbose = FALSE, ...) {
+  old <- x
+  if (verbose) {
+    assess_object(old, x)
+  }
+  x
+}

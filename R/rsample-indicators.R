@@ -3,7 +3,7 @@
 axe_rsample_indicators.rsplit <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- zero_all_ind(x)
-  butcher:::add_butcher_attributes(
+  add_butcher_attributes(
     x,
     old,
     disabled = c(
@@ -27,7 +27,7 @@ axe_rsample_indicators.rsplit <- function(x, verbose = FALSE, ...) {
 axe_rsample_indicators.three_way_split <- function(x, verbose = FALSE, ...) {
   old <- x
   x <- zero_all_ind(x)
-  butcher:::add_butcher_attributes(
+  add_butcher_attributes(
     x,
     old,
     disabled = c(
@@ -49,7 +49,7 @@ axe_rsample_indicators.rset <- function(x, verbose = FALSE, ...) {
     x$splits <- purrr::map(x$splits, axe_rsample_indicators)
   }
 
-  butcher:::add_butcher_attributes(
+  add_butcher_attributes(
     x,
     old,
     disabled = c("populate()", "reverse_splits()", "tidy()"),
@@ -65,7 +65,7 @@ axe_rsample_indicators.tune_results <- function(x, verbose = FALSE, ...) {
   if (any(names(x) == "splits")) {
     x$splits <- purrr::map(x$splits, axe_rsample_indicators)
   }
-  butcher:::add_butcher_attributes(
+  add_butcher_attributes(
     x,
     old,
     disabled = c("augment()", "fit_best()"),
@@ -88,7 +88,7 @@ axe_rsample_indicators.workflow_set <- function(x, verbose = FALSE, ...) {
     x$result[[i]] <- axe_rsample_indicators(x$result[[i]])
   }
 
-  butcher:::add_butcher_attributes(
+  add_butcher_attributes(
     x,
     old,
     disabled = c("augment()", "fit_best()"),

@@ -1,6 +1,8 @@
 # butcher (development version)
 
-* * Added methods for `MASS::polr` (@pbulsink, #289).
+* Added methods for `MASS::polr` (@pbulsink, #289).
+
+* Added methods for `rset`, `rsplit`, `tune_results`, and `workflow_set` classes (#292).
 
 # butcher 0.3.6
 

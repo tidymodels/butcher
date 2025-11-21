@@ -1,6 +1,8 @@
 # butcher (development version)
 
-* * Added methods for `MASS::polr` (@pbulsink, #289).
+* Added methods for `MASS::polr` (@pbulsink, #289).
+
+* Make to work with new versions of xgboost models (#294).
 
 # butcher 0.3.6
 

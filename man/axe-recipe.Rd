@@ -71,10 +71,9 @@ butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
 }
 \examples{
-suppressPackageStartupMessages(library(recipes))
-library(modeldata)
-
-data(biomass)
+\dontshow{if (rlang::is_installed(c("recipes", "modeldata"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(recipes)
+data(biomass, package = "modeldata")
 
 biomass_tr <- biomass[biomass$dataset == "Training",]
 rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
@@ -104,5 +103,5 @@ cleaned2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 # Check size
 lobstr::obj_size(cleaned1)
 lobstr::obj_size(cleaned2)
-
+\dontshow{\}) # examplesIf}
 }

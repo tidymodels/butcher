@@ -46,13 +46,14 @@ test_that("mda + custom parsnip model + predict() works", {
       stop("`mode` should be 'classification'", call. = FALSE)
     }
     args <- list(sub_classes = rlang::enquo(sub_classes))
-    out <- list(args = args,
-                eng_args = NULL,
-                mode = mode,
-                method = NULL,
-                engine = NULL)
-    class(out) <- make_classes("mixture_da")
-    out
+    new_model_spec(
+      "mixture_da",
+      args = args,
+      eng_args = NULL,
+      mode = mode,
+      method = NULL,
+      engine = NULL
+    )
   }
   set_fit(
     model = "mixture_da",
@@ -63,6 +64,17 @@ test_that("mda + custom parsnip model + predict() works", {
       protect = c("formula", "data"),
       func = c(pkg = "mda", fun = "mda"),
       defaults = list()
+    )
+  )
+  set_encoding(
+    model = "mixture_da",
+    eng = "mda",
+    mode = "classification",
+    options = list(
+      predictor_indicators = "traditional",
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
+      allow_sparse_x = FALSE
     )
   )
   mda_fit <- mixture_da(sub_classes = 2) %>%
@@ -77,4 +89,26 @@ test_that("mda + custom parsnip model + predict() works", {
   expect_identical(attr(x$fit$terms, ".Environment"), rlang::base_env())
   x <- axe_fitted(mda_fit)
   expect_equal(x$fit$fit$fitted.values, matrix(NA))
+})
+
+test_that("fda + predict() works", {
+  skip_on_cran()
+  skip_if_not_installed("mda")
+  suppressPackageStartupMessages(library(mda))
+  mtcars$cyl <- as.factor(mtcars$cyl)
+  fit <- fda(cyl ~ ., data = mtcars)
+  x <- axe_call(fit)
+  expect_equal(x$call, rlang::expr(dummy_call()))
+  expect_error(update(x, subclasses = 4))
+  expect_equal(attr(x, "butcher_disabled"),
+               c("print()", "summary()", "update()"))
+  x <- axe_data(fit)
+  expect_identical(x, fit)
+  x <- axe_env(fit)
+  expect_identical(attr(x$terms, ".Environment"), rlang::base_env())
+  x <- axe_fitted(fit)
+  expect_equal(x$fit$fitted.values, matrix(NA))
+  x <- butcher(fit)
+  expect_equal(predict(x, mtcars[1:3, ]),
+               predict(fit, mtcars[1:3, ]))
 })

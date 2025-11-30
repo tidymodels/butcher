@@ -26,9 +26,9 @@ on the model object, the \code{butchered_function} class is not
 appended.
 }
 \examples{
-\donttest{
+\dontshow{if (rlang::is_installed("caret")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(caret)))
+library(caret)
 
 data(iris)
 train_data <- iris[, 1:4]
@@ -43,5 +43,5 @@ train_fit <- train(train_data, train_classes,
 out <- axe_env(train_fit$modelInfo$prob, verbose = TRUE)
 out <- axe_env(train_fit$modelInfo$levels, verbose = TRUE)
 out <- axe_env(train_fit$modelInfo$predict, verbose = TRUE)
-}
+\dontshow{\}) # examplesIf}
 }

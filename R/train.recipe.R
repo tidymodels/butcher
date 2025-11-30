@@ -10,11 +10,10 @@
 #'
 #' @return Axed train.recipe object.
 #'
-#' @examples
-#' \donttest{
-#' suppressWarnings(suppressMessages(library(recipes)))
-#' suppressWarnings(suppressMessages(library(caret)))
-#' library(modeldata)
+#' @examplesIf interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' library(recipes)
+#' library(caret)
+#' data(biomass, package = "modeldata")
 #'
 #' data(biomass)
 #' recipe <- biomass %>%
@@ -28,7 +27,6 @@
 #'                           metric = "RMSE")
 #'
 #' out <- butcher(train.recipe_fit, verbose = TRUE)
-#' }
 #' @name axe-train.recipe
 NULL
 

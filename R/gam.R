@@ -96,6 +96,8 @@ axe_fitted.gam <- function(x, verbose = FALSE, ...) {
   x <- exchange(x, "fitted.values", numeric(0))
   x <- exchange(x, "residuals", numeric(0))
   x <- exchange(x, "linear.predictors", numeric(0))
+  x <- exchange(x, "hat", numeric(0))
+  x <- exchange(x, "offset", numeric(0))
 
   add_butcher_attributes(
     x,

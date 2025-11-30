@@ -7,10 +7,10 @@
 #'
 #' @return Axed nnet object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "nnet"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(nnet)))
+#' library(parsnip)
+#' library(nnet)
 #'
 #' # Create and fit model
 #' nnet_fit <- mlp("classification", hidden_units = 2) %>%

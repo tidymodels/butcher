@@ -24,11 +24,9 @@ multnet objects are created from carrying out multinomial regression
 in the \pkg{glmnet} package.
 }
 \examples{
-\donttest{
-if (rlang::is_installed("glmnet")) {
-
+\dontshow{if (rlang::is_installed("glmnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
+library(parsnip)
 
 # Load data
 set.seed(1234)
@@ -42,7 +40,5 @@ multnet_fit <- multinom_reg(penalty = 0.1) \%>\%
   fit_xy(x = predictrs, y = response)
 
 out <- butcher(multnet_fit, verbose = TRUE)
-
-}
-}
+\dontshow{\}) # examplesIf}
 }

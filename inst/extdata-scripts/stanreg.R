@@ -3,7 +3,7 @@ suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(tidymodels)))
 
 # Load data
-split <- initial_split(mtcars, props = 9/10)
+split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
 car_test  <- testing(split)
 

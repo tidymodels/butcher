@@ -2,13 +2,10 @@
 % Please edit documentation in R/kknn.R
 \name{axe-kknn}
 \alias{axe-kknn}
-\alias{axe_call.kknn}
 \alias{axe_env.kknn}
 \alias{axe_fitted.kknn}
 \title{Axing an kknn.}
 \usage{
-\method{axe_call}{kknn}(x, verbose = FALSE, ...)
-
 \method{axe_env}{kknn}(x, verbose = FALSE, ...)
 
 \method{axe_fitted}{kknn}(x, verbose = FALSE, ...)
@@ -31,15 +28,16 @@ utilized to do weighted k-Nearest Neighbors for classification,
 regression and clustering.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Load libraries
-suppressWarnings(suppressMessages(library(parsnip)))
-suppressWarnings(suppressMessages(library(rsample)))
-suppressWarnings(suppressMessages(library(rpart)))
-suppressWarnings(suppressMessages(library(kknn)))
+library(parsnip)
+library(rsample)
+library(rpart)
+library(kknn)
 
 # Load data
 set.seed(1234)
-split <- initial_split(kyphosis, props = 9/10)
+split <- initial_split(kyphosis, prop = 9/10)
 spine_train <- training(split)
 
 # Create model and fit
@@ -68,4 +66,5 @@ kknn_fit <- kknn(Species ~ .,
                  kernel = "triangular")
 out <- butcher(kknn_fit, verbose = TRUE)
 }
+\dontshow{\}) # examplesIf}
 }

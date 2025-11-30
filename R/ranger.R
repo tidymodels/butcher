@@ -12,15 +12,15 @@
 #'
 #' @return Axed ranger object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "ranger"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
-#' suppressWarnings(suppressMessages(library(ranger)))
+#' library(parsnip)
+#' library(rsample)
+#' library(ranger)
 #'
 #' # Load data
 #' set.seed(1234)
-#' split <- initial_split(iris, props = 9/10)
+#' split <- initial_split(iris, prop = 9/10)
 #' iris_train <- training(split)
 #'
 #' # Create model and fit

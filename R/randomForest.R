@@ -9,16 +9,16 @@
 #'
 #' @return Axed randomForest object.
 #'
-#' @examplesIf rlang::is_installed("randomForest")
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart", "randomForest"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
-#' suppressWarnings(suppressMessages(library(rpart)))
-#' suppressWarnings(suppressMessages(library(randomForest)))
+#' library(parsnip)
+#' library(rsample)
+#' library(randomForest)
+#' data(kyphosis, package = "rpart")
 #'
 #' # Load data
 #' set.seed(1234)
-#' split <- initial_split(kyphosis, props = 9/10)
+#' split <- initial_split(kyphosis, prop = 9/10)
 #' spine_train <- training(split)
 #'
 #' # Create model and fit

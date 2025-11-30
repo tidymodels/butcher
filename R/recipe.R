@@ -12,11 +12,9 @@
 #'
 #' @return Axed recipe object.
 #'
-#' @examples
-#' suppressPackageStartupMessages(library(recipes))
-#' library(modeldata)
-#'
-#' data(biomass)
+#' @examplesIf rlang::is_installed(c("recipes", "modeldata"))
+#' library(recipes)
+#' data(biomass, package = "modeldata")
 #'
 #' biomass_tr <- biomass[biomass$dataset == "Training",]
 #' rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,

@@ -8,16 +8,16 @@
 #'
 #' @return Axed kknn object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(parsnip)))
-#' suppressWarnings(suppressMessages(library(rsample)))
-#' suppressWarnings(suppressMessages(library(rpart)))
-#' suppressWarnings(suppressMessages(library(kknn)))
+#' library(parsnip)
+#' library(rsample)
+#' library(rpart)
+#' library(kknn)
 #'
 #' # Load data
 #' set.seed(1234)
-#' split <- initial_split(kyphosis, props = 9/10)
+#' split <- initial_split(kyphosis, prop = 9/10)
 #' spine_train <- training(split)
 #'
 #' # Create model and fit
@@ -48,22 +48,6 @@
 #' }
 #' @name axe-kknn
 NULL
-
-#' Remove the call.
-#'
-#' @rdname axe-kknn
-#' @export
-axe_call.kknn <- function(x, verbose = FALSE, ...) {
-  old <- x
-  x <- exchange(x, "call", call("dummy_call"))
-
-  add_butcher_attributes(
-    x,
-    old,
-    disabled = c("print()", "summary()"),
-    verbose = verbose
-  )
-}
 
 #' Remove the environment.
 #'

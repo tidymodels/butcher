@@ -22,28 +22,25 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
+          - {os: macos-latest,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
-          # Don't use Windows 3.6 build to avoid igraph always being
-          # installed from source and failing
-          # Use 3.6 to trigger usage of RTools35
-          # - {os: windows-latest, r: '3.6'}
+
+          # use older R to check with rtools40's older compiler
+          - {os: windows-latest, r: 'oldrel-3'}
 
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
           - {os: ubuntu-latest,   r: 'oldrel-2'}
           - {os: ubuntu-latest,   r: 'oldrel-3'}
-          # Don't use R 3.4 build. survival, mda, TH.data require >=3.5.
-          # - {os: ubuntu-latest,   r: 'oldrel-4'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -53,13 +50,18 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - name: Set bioc env var for R-devel
+        if: ${{ matrix.config.r == 'devel'}}
+        run: |
+          echo "R_BIOC_VERSION=3.17" >> $GITHUB_ENV
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          pak-version: devel
           extra-packages:
             any::rcmdcheck,
             randomForest=?ignore-before-r=4.1.0,
-            flexsurv=?ignore-before-r=4.0.0
+            flexsurv=?ignore-before-r=4.0.0,
+            ranger=?ignore-before-r=4.1.0
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2

@@ -1,15 +1,15 @@
 Package: butcher
 Title: Model Butcher
-Version: 0.3.0.9000
+Version: 0.3.6.9000
 Authors@R: c(
     person("Joyce", "Cahoon", , "joyceyu48@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-7217-4702")),
-    person("Davis", "Vaughan", , "davis@rstudio.com", role = "aut"),
-    person("Max", "Kuhn", , "max@rstudio.com", role = "aut"),
+    person("Davis", "Vaughan", , "davis@posit.co", role = "aut"),
+    person("Max", "Kuhn", , "max@posit.co", role = "aut"),
     person("Alex", "Hayes", , "alexpghayes@gmail.com", role = "aut"),
-    person("Julia", "Silge", , "julia.silge@rstudio.com", role = c("cre", "aut"),
+    person("Julia", "Silge", , "julia.silge@posit.co", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-3671-836X")),
-    person("RStudio", role = c("cph", "fnd"))
+    person("Posit, PBC", role = c("cph", "fnd"))
   )
 Description: Provides a set of S3 generics to axe components of fitted
     model objects and help reduce the size of model objects saved to disk.
@@ -18,7 +18,7 @@ URL: https://butcher.tidymodels.org/,
     https://github.com/tidymodels/butcher
 BugReports: https://github.com/tidymodels/butcher/issues
 Depends: 
-    R (>= 3.4.0)
+    R (>= 3.6.0)
 Imports: 
     cli (>= 3.3.0),
     lobstr (>= 1.1.2),
@@ -31,10 +31,11 @@ Imports:
 Suggests: 
     C50,
     caret,
-    clisymbols,
+    ClusterR,
+    clustMixType,
     covr,
+    dbarts,
     ddalpha,
-    dimRed,
     dplyr,
     e1071,
     earth,
@@ -43,6 +44,7 @@ Suggests:
     ipred,
     kernlab,
     kknn,
+    klaR,
     knitr,
     MASS,
     mda,
@@ -61,16 +63,19 @@ Suggests:
     rpart,
     rsample,
     RSpectra,
+    sparklyr,
     survival (>= 3.2-10),
     tabnet,
     testthat (>= 3.0.0),
     TH.data,
     usethis (>= 1.5.0),
-    xgboost (>= 1.3.2.1)
+    xgboost (>= 1.3.2.1),
+    xrf
 VignetteBuilder: 
     knitr
-Config/Needs/website:
-    tidyverse/tidytemplate
+Config/Needs/check: bioc::mixOmics
+Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/edition: 3
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

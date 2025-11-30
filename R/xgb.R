@@ -11,9 +11,9 @@
 #'
 #' @return Axed xgb.Booster object.
 #'
-#' @examples
-#' suppressWarnings(suppressMessages(library(xgboost)))
-#' suppressWarnings(suppressMessages(library(parsnip)))
+#' @examplesIf rlang::is_installed(c("parsnip", "xgboost"))
+#' library(xgboost)
+#' library(parsnip)
 #'
 #' data(agaricus.train)
 #' bst <- xgboost(data = agaricus.train$data,

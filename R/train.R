@@ -6,9 +6,9 @@
 #'
 #' @return Axed train object.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("caret")
 #' # Load libraries
-#' suppressWarnings(suppressMessages(library(caret)))
+#' library(caret)
 #'
 #' data(iris)
 #' train_data <- iris[, 1:4]

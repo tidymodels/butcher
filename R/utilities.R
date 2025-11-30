@@ -1,8 +1,8 @@
 
 # check existence
 exchange <- function(x, component, replacement, addition = NULL, old) {
-  out <- purrr::pluck(x, component, .default = NA)
-  if (!rlang::is_na(out)[1]) {
+  out <- purrr::pluck(x, component, .default = NULL)
+  if (!rlang::is_null(out)) {
     x[[component]] <- replacement
     if (!is.null(addition) & !missing(old)) {
       if (!is.null(old[[component]][[addition]])) {
@@ -44,3 +44,16 @@ add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, ve
   }
   x
 }
+
+# adapted from ps:::is_cran_check()
+# nocov start
+
+is_cran_check <- function () {
+  if (identical(Sys.getenv("NOT_CRAN"), "true")) {
+    FALSE
+  } else {
+    Sys.getenv("_R_CHECK_PACKAGE_NAME_", "") != ""
+  }
+}
+
+#nocov end

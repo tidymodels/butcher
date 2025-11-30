@@ -36,7 +36,8 @@ reduction. Since fitted model objects from \pkg{kernlab} are S4,
 the \code{butcher_gausspr} class is not appended.
 }
 \examples{
-suppressWarnings(suppressMessages(library(kernlab)))
+\dontshow{if (rlang::is_installed("kernlab")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(kernlab)
 
 test <- gausspr(Species ~ ., data = iris, var = 2)
 
@@ -47,5 +48,5 @@ x <- seq(-20, 20, 0.1)
 y <- sin(x)/x + rnorm(401, sd = 0.03)
 test2 <- gausspr(x, y)
 out <- butcher(test2, verbose = TRUE)
-
+\dontshow{\}) # examplesIf}
 }

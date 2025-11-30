@@ -35,10 +35,10 @@ functions specific to train.recipe are thus included as additional
 steps are required to remove parts of train.recipe objects.
 }
 \examples{
-\donttest{
-suppressWarnings(suppressMessages(library(recipes)))
-suppressWarnings(suppressMessages(library(caret)))
-library(modeldata)
+\dontshow{if (interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(recipes)
+library(caret)
+data(biomass, package = "modeldata")
 
 data(biomass)
 recipe <- biomass \%>\%
@@ -52,5 +52,5 @@ train.recipe_fit <- train(recipe, biomass,
                           metric = "RMSE")
 
 out <- butcher(train.recipe_fit, verbose = TRUE)
-}
+\dontshow{\}) # examplesIf}
 }

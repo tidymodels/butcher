@@ -11,16 +11,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-
-# `devtools::build_readme()` evaluates in `callr:r_safe()` which causes issues
-# with butcher's memory profiling. Neither RStudio's Knit button nor
-# `rmarkdown::render()` have this issue (#280).
-# if (identical(Sys.getenv("CALLR_IS_RUNNING"), "true")) {
-#   rlang::abort(c(
-#     "Build this README with `rmarkdown::render()` rather than `devtools::build_readme()`.",
-#     "See tidymodels/butcher#280 for more info."
-#   ))
-# }
 ```
 
 # butcher <a href="https://butcher.tidymodels.org"><img src="man/figures/logo.png" align="right" height="138" alt="butcher website" /></a>

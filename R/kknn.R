@@ -8,7 +8,7 @@
 #'
 #' @return Axed kknn object.
 #'
-#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))
+#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn")) & !butcher:::is_cran_check()
 #' # Load libraries
 #' library(parsnip)
 #' library(rsample)

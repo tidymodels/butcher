@@ -12,6 +12,8 @@ status](https://www.r-pkg.org/badges/version/butcher)](https://CRAN.R-project.or
 coverage](https://codecov.io/gh/tidymodels/butcher/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher?branch=main)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Codecov test
+coverage](https://codecov.io/gh/tidymodels/butcher/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher)
 <!-- badges: end -->
 
 ## Overview
@@ -82,7 +84,7 @@ weigh(big_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         8.01    
+#>  1 terms         8.04    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 
@@ -102,7 +104,7 @@ remove the (mostly) extraneous component, we can use `butcher()`:
 
 ``` r
 cleaned_lm <- butcher(big_lm, verbose = TRUE)
-#> ✔ Memory released: 8.00 MB
+#> ✔ Memory released: 8.02 MB
 #> ✖ Disabled: `print()`, `summary()`, and `fitted()`
 ```
 
@@ -133,7 +135,7 @@ weigh(small_lm)
 #> # A tibble: 25 × 2
 #>    object            size
 #>    <chr>            <dbl>
-#>  1 terms         0.00763 
+#>  1 terms         8.05    
 #>  2 qr.qr         0.00666 
 #>  3 residuals     0.00286 
 #>  4 fitted.values 0.00286 

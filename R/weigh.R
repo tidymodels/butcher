@@ -33,7 +33,7 @@ weigh.default <- function(x, threshold = 0, units = "MB", ...) {
   } else {
     denom <- 1e+9
   }
-  object_weights <- unlist(rapply(x, safe_weigh))
+  object_weights <- unlist(rapply(x, get_object_size))
   object_weights <- purrr::map(object_weights, as.numeric)
   output_table <- tibble::tibble(
     object = names(object_weights),
@@ -61,7 +61,7 @@ weigh.model_fit <- function(x, threshold = 0, units = "MB", ...) {
 }
 
 
-safe_weigh <- function(x, attempts = 5) {
+get_object_size <- function(x, attempts = 5) {
   for (i in seq_len(attempts)) {
     res <- try(lobstr::obj_size(x), silent = TRUE)
     if (!inherits(res, "try-error")) {
@@ -69,7 +69,8 @@ safe_weigh <- function(x, attempts = 5) {
     }
   }
   if (inherits(res, "try-error")) {
-    cli::cli_abort("{.fn lobstr::obj_size} failed after {attempts} attempts.")
+    cli::cli_inform("{.fn lobstr::obj_size} failed after {attempts} attempts.")
+    retrun(NA)
   }
   res
 }

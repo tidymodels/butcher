@@ -19,3 +19,4 @@ butcher.png
 ^\.github$
 ^revdep$
 ^CRAN-SUBMISSION$
+^.DS_Store$

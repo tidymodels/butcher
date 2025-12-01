@@ -69,8 +69,11 @@ get_object_size <- function(x, attempts = 5) {
     }
   }
   if (inherits(res, "try-error")) {
-    cli::cli_inform("{.fn lobstr::obj_size} failed after {attempts} attempts.")
-    retrun(NA)
+    cli::cli_inform(
+      "{.fn lobstr::obj_size} failed after {attempts} attempts. Falling back on {.fn object.size}."
+    )
+    res <- utils::object.size(x)
   }
+
   res
 }

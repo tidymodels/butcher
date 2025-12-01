@@ -30,7 +30,7 @@ earth objects are created from the \pkg{earth} package, which
 is leveraged to do multivariate adaptive regression splines.
 }
 \examples{
-\dontshow{if (rlang::is_installed("parsnip")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("parsnip")) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 

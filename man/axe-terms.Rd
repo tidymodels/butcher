@@ -23,7 +23,7 @@ Axed terms object.
 Generics related to axing objects of the term class.
 }
 \examples{
-\dontshow{if (rlang::is_installed("rpart")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("rpart")) withAutoprint(\{ # examplesIf}
 # Using lm
 wrapped_lm <- function() {
   some_junk_in_environment <- runif(1e6)

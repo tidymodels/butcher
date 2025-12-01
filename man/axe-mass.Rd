@@ -33,7 +33,7 @@ carry out linear discriminant analysis and quadratic discriminant
 analysis, respectively.
 }
 \examples{
-\dontshow{if (rlang::is_installed("MASS")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("MASS")) withAutoprint(\{ # examplesIf}
 library(MASS)
 
 fit_da <- function(fit_fn) {

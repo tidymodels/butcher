@@ -27,7 +27,7 @@ NaiveBayes objects are created from the \pkg{klaR} package, leveraged to
 fit a Naive Bayes Classifier.
 }
 \examples{
-\dontshow{if (rlang::is_installed("klaR")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("klaR")) withAutoprint(\{ # examplesIf}
 library(klaR)
 
 fit_mod <- function() {

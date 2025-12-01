@@ -71,7 +71,7 @@ butchered class is only added to the recipe as a whole, and not to each
 pre-processing step.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("recipes", "modeldata"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("recipes", "modeldata"))) withAutoprint(\{ # examplesIf}
 library(recipes)
 data(biomass, package = "modeldata")
 

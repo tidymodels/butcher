@@ -43,7 +43,11 @@ NULL
 #' @export
 axe_call.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
-  x <- exchange(x, "call", call("dummy_call"))
+  if (is.null(attr(x, "call"))) {
+    x <- exchange(x, "call", call("dummy_call"))
+  } else {
+    attr(x, "call") <- call("dummy_call")
+  }
 
   add_butcher_attributes(
     x,
@@ -64,11 +68,15 @@ axe_call.xgb.Booster <- function(x, verbose = FALSE, ...) {
 #' @export
 axe_env.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
-  x$callbacks <- purrr::map(x$callbacks,
-    function(x)
-      as.function(c(formals(x), body(x)), env = rlang::base_env())
-    )
-
+  if (!is.null(x$callbacks)) {
+    x$callbacks <-
+      purrr::map(
+        x$callbacks,
+        function(x) {
+          as.function(c(formals(x), body(x)), env = rlang::base_env())
+        }
+      )
+  }
   add_butcher_attributes(
     x,
     old,

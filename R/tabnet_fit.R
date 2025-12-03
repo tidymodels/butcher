@@ -32,8 +32,16 @@ NULL
 axe_fitted._tabnet_fit <- function(x, verbose = FALSE, ...) {
   old <- x
   x$fit$fit <- exchange(x$fit$fit, "checkpoints", list(NULL))
-  x$fit$fit$importances <- exchange(x$fit$fit$importances, "variables", list(NULL))
-  x$fit$fit$importances <- exchange(x$fit$fit$importances, "importance", list(NULL))
+  x$fit$fit$importances <- exchange(
+    x$fit$fit$importances,
+    "variables",
+    list(NULL)
+  )
+  x$fit$fit$importances <- exchange(
+    x$fit$fit$importances,
+    "importance",
+    list(NULL)
+  )
 
   add_butcher_attributes(
     x,

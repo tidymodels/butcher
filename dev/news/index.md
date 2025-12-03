@@ -2,6 +2,14 @@
 
 ## butcher (development version)
 
+- Added methods for
+  [`MASS::polr`](https://rdrr.io/pkg/MASS/man/polr.html)
+  ([@pbulsink](https://github.com/pbulsink),
+  [\#289](https://github.com/tidymodels/butcher/issues/289)).
+
+- Make to work with new versions of xgboost models
+  ([\#294](https://github.com/tidymodels/butcher/issues/294)).
+
 - Added butcher methods for `tabnet()`
   ([@cregouby](https://github.com/cregouby)
   [\#226](https://github.com/tidymodels/butcher/issues/226)).

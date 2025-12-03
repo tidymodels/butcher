@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for `tabnet()` (@cregouby #226).
+
 * * Added methods for `MASS::polr` (@pbulsink, #289).
 
 # butcher 0.3.6

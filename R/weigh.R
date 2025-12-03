@@ -26,18 +26,18 @@ weigh <- function(x, threshold = 0, units = "MB", ...) {
 weigh.default <- function(x, threshold = 0, units = "MB", ...) {
   stopifnot(is.list(x))
   units <- rlang::arg_match(units, c("KB", "MB", "GB"))
-  if(units == "MB") {
+  if (units == "MB") {
     denom <- 1e+6
-  } else if(units == "KB") {
+  } else if (units == "KB") {
     denom <- 1e+3
   } else {
     denom <- 1e+9
   }
-  object_weights <- unlist(rapply(x, lobstr::obj_size))
+  object_weights <- unlist(rapply(x, get_object_size))
   object_weights <- purrr::map(object_weights, as.numeric)
   output_table <- tibble::tibble(
     object = names(object_weights),
-    size = unname(as.numeric(object_weights))/denom
+    size = unname(as.numeric(object_weights)) / denom
   )
   # Sort
   output_table <- output_table[order(output_table$size, decreasing = TRUE), ]
@@ -49,7 +49,7 @@ weigh.default <- function(x, threshold = 0, units = "MB", ...) {
 #' @export
 weigh.ksvm <- function(x, threshold = 0, units = "MB", ...) {
   out <- list()
-  for(i in methods::slotNames(x)) {
+  for (i in methods::slotNames(x)) {
     out[[i]] <- methods::slot(x, i)
   }
   weigh(out, ...)
@@ -58,4 +58,22 @@ weigh.ksvm <- function(x, threshold = 0, units = "MB", ...) {
 #' @export
 weigh.model_fit <- function(x, threshold = 0, units = "MB", ...) {
   weigh(x$fit, ...)
+}
+
+
+get_object_size <- function(x, attempts = 5) {
+  for (i in seq_len(attempts)) {
+    res <- try(lobstr::obj_size(x), silent = TRUE)
+    if (!inherits(res, "try-error")) {
+      break()
+    }
+  }
+  if (inherits(res, "try-error")) {
+    cli::cli_inform(
+      "{.fn lobstr::obj_size} failed after {attempts} attempts. Falling back on {.fn object.size}."
+    )
+    res <- utils::object.size(x)
+  }
+
+  res
 }

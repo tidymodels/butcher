@@ -14,7 +14,7 @@
 #' library(survival)
 #'
 #' # Create model and fit
-#' survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%
+#' survreg_fit <- survival_reg(dist = "weibull") %>%
 #'   set_engine("survival") %>%
 #'   fit(Surv(time, status) ~ rx, data = rats)
 #'

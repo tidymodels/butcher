@@ -45,7 +45,7 @@ The mixOmics package is not available on CRAN, but can be installed
 from the Bioconductor repository via \code{remotes::install_bioc("mixOmics")}.
 }
 \examples{
-\dontshow{if (rlang::is_installed("mixOmics") && !butcher:::is_cran_check()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("mixOmics") && !butcher:::is_cran_check()) withAutoprint(\{ # examplesIf}
 library(butcher)
 do.call(library, list(package = "mixOmics"))
 

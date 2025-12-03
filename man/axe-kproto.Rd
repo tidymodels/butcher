@@ -26,7 +26,7 @@ Axed kproto object.
 Axing a kproto.
 }
 \examples{
-\dontshow{if (rlang::is_installed("clustMixType")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("clustMixType")) withAutoprint(\{ # examplesIf}
 library(clustMixType)
 
 kproto_fit <- kproto(

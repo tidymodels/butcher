@@ -35,7 +35,7 @@ Axed model_fit object.
 model_fit objects are created from the \code{parsnip} package.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "mgcv"))) withAutoprint(\{ # examplesIf}
 library(parsnip)
 library(rpart)
 
@@ -47,10 +47,10 @@ lm_fit <- linear_reg() \%>\%
 out <- butcher(lm_fit, verbose = TRUE)
 
 # Another parsnip model
-rpart_fit <- decision_tree(mode = "regression") \%>\%
-  set_engine("rpart") \%>\%
-  fit(mpg ~ ., data = mtcars, minsplit = 5, cp = 0.1)
+gam_fit <- gen_additive_mod() \%>\%
+  set_mode("regression") \%>\%
+  fit(mpg ~ s(disp) + wt + gear, data = mtcars)
 
-out <- butcher(rpart_fit, verbose = TRUE)
+out <- butcher(gam_fit, verbose = TRUE)
 \dontshow{\}) # examplesIf}
 }

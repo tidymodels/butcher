@@ -28,7 +28,7 @@ utilized to do weighted k-Nearest Neighbors for classification,
 regression and clustering.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart", "kknn"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 library(rsample)

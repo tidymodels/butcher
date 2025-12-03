@@ -38,19 +38,19 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Julia Silge \email{julia.silge@posit.co} (\href{https://orcid.org/0000-0002-3671-836X}{ORCID})
+\strong{Maintainer}: Max Kuhn \email{max@posit.co} (\href{https://orcid.org/0000-0003-2402-136X}{ORCID})
 
 Authors:
 \itemize{
   \item Joyce Cahoon \email{joyceyu48@gmail.com} (\href{https://orcid.org/0000-0001-7217-4702}{ORCID})
   \item Davis Vaughan \email{davis@posit.co}
-  \item Max Kuhn \email{max@posit.co}
   \item Alex Hayes \email{alexpghayes@gmail.com}
+  \item Julia Silge \email{julia.silge@posit.co} (\href{https://orcid.org/0000-0002-3671-836X}{ORCID})
 }
 
 Other contributors:
 \itemize{
-  \item Posit, PBC [copyright holder, funder]
+  \item Posit Software, PBC (\href{https://ror.org/03wc8by49}{ROR}) [copyright holder, funder]
 }
 
 }

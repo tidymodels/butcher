@@ -29,7 +29,7 @@ Axed lm object.
 lm objects are created from the base \pkg{stats} package.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rsample"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 library(rsample)

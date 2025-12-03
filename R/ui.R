@@ -12,8 +12,8 @@
 
 #' @rdname ui
 memory_released <- function(og, butchered) {
-  old <- lobstr::obj_size(og)
-  new <- lobstr::obj_size(butchered)
+  old <- get_object_size(og)
+  new <- get_object_size(butchered)
   rel <- old - new
   if (length(rel) == 1) {
     if (isTRUE(all.equal(old, new))) {
@@ -35,7 +35,9 @@ assess_object <- function(og, butchered) {
   } else {
     abs_mem <- format(abs(mem), big.mark = ",", scientific = FALSE)
     if (mem < 0) {
-      cli::cli_alert_danger("The butchered object is {.field {abs_mem}} larger than the original. Do not butcher.")
+      cli::cli_alert_danger(
+        "The butchered object is {.field {abs_mem}} larger than the original. Do not butcher."
+      )
     } else {
       cli::cli_alert_success("Memory released: {.field {abs_mem}}")
       if (!is.null(disabled)) {

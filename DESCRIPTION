@@ -72,7 +72,9 @@ Suggests:
     testthat (>= 3.0.0),
     torch,
     TH.data,
+    tune,
     usethis (>= 1.5.0),
+    workflowsets,
     xgboost (>= 1.3.2.1),
     xrf
 VignetteBuilder: 

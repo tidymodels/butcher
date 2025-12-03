@@ -11,8 +11,8 @@ test_that("ksvm + axe_() works", {
 
   # Suppress cat() message about "Setting default kernel parameters"
   capture.output({
-    ksvm_class <- svm_poly(mode = "classification") %>%
-      set_engine("kernlab") %>%
+    ksvm_class <- svm_poly(mode = "classification") |>
+      set_engine("kernlab") |>
       fit(type ~ ., data = spam)
   })
 

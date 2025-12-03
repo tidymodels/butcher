@@ -24,8 +24,8 @@
 #' kknn_fit <- nearest_neighbor(mode = "classification",
 #'                              neighbors = 3,
 #'                              weight_func = "gaussian",
-#'                              dist_power = 2) %>%
-#'   set_engine("kknn") %>%
+#'                              dist_power = 2) |>
+#'   set_engine("kknn") |>
 #'   fit(Kyphosis ~ ., data = spine_train)
 #'
 #' out <- butcher(kknn_fit, verbose = TRUE)

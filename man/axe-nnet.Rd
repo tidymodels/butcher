@@ -36,8 +36,8 @@ library(parsnip)
 library(nnet)
 
 # Create and fit model
-nnet_fit <- mlp("classification", hidden_units = 2) \%>\%
-  set_engine("nnet") \%>\%
+nnet_fit <- mlp("classification", hidden_units = 2) |>
+  set_engine("nnet") |>
   fit(Species ~ ., data = iris)
 
 out <- butcher(nnet_fit, verbose = TRUE)

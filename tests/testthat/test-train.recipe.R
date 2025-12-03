@@ -17,10 +17,10 @@ test_that("train + predict() works", {
   data(biomass)
   biomass_tr <- biomass[biomass$dataset == "Training",]
   biomass_te <- biomass[biomass$dataset == "Testing",]
-  recipe <- biomass %>%
-    recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) %>%
-    step_center(all_predictors()) %>%
-    step_scale(all_predictors()) %>%
+  recipe <- biomass |>
+    recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) |>
+    step_center(all_predictors()) |>
+    step_scale(all_predictors()) |>
     step_spatialsign(all_predictors())
   # Model
   train.recipe_fit <- train(recipe, biomass_tr, method = "svmRadial", metric = "RMSE")

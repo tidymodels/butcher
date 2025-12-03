@@ -15,8 +15,8 @@
 #' car_train <- training(split)
 #'
 #' # Create model and fit
-#' mtcar_fit <- tabnet() %>%
-#'   set_mode("regression") %>%
+#' mtcar_fit <- tabnet() |>
+#'   set_mode("regression") |>
 #'   set_engine("torch")
 #'   fit(mpg ~ ., data = car_train)
 #'

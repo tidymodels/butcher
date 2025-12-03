@@ -32,12 +32,12 @@ replace_na <- function(x) {
   x
 }
 
-out <- method_df("axe_call") %>% 
-  full_join(method_df("axe_ctrl")) %>% 
-  full_join(method_df("axe_data")) %>% 
-  full_join(method_df("axe_env")) %>% 
-  full_join(method_df("axe_fitted")) %>%
-  replace_na() %>%
+out <- method_df("axe_call") |> 
+  full_join(method_df("axe_ctrl")) |> 
+  full_join(method_df("axe_data")) |> 
+  full_join(method_df("axe_env")) |> 
+  full_join(method_df("axe_fitted")) |>
+  replace_na() |>
   knitr::kable()
 out
 ```

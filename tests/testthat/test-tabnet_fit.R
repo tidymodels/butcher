@@ -7,9 +7,9 @@ test_that("tabnet_fit + axe_fitted() works", {
   suppressPackageStartupMessages(library(parsnip))
 
   # Create model and fit
-  tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
-    set_mode("regression") %>%
-    set_engine("torch") %>%
+  tabnet_fit <- tabnet::tabnet(epochs = 10) |>
+    set_mode("regression") |>
+    set_engine("torch") |>
     fit(mpg ~ ., data = mtcars)
 
   expect_error(axed_out <- axe_fitted(tabnet_fit, verbose = TRUE), NA)
@@ -25,9 +25,9 @@ test_that("tabnet_fit + butcher() works", {
   suppressPackageStartupMessages(library(parsnip))
 
   # Create model and fit
-  tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
-    set_mode("regression") %>%
-    set_engine("torch") %>%
+  tabnet_fit <- tabnet::tabnet(epochs = 10) |>
+    set_mode("regression") |>
+    set_engine("torch") |>
     fit(mpg ~ ., data = mtcars)
 
   expect_error(tabnet_out <- butcher(tabnet_fit, verbose = TRUE), NA)
@@ -42,9 +42,9 @@ test_that("tabnet_fit + predict() works", {
   suppressPackageStartupMessages(library(parsnip))
 
   # Create model and fit
-  tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
-    set_mode("regression") %>%
-    set_engine("torch") %>%
+  tabnet_fit <- tabnet::tabnet(epochs = 10) |>
+    set_mode("regression") |>
+    set_engine("torch") |>
     fit(mpg ~ ., data = mtcars)
 
   tabnet_out <- butcher(tabnet_fit, verbose = TRUE)

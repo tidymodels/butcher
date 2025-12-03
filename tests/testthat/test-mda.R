@@ -77,8 +77,8 @@ test_that("mda + custom parsnip model + predict() works", {
       allow_sparse_x = FALSE
     )
   )
-  mda_fit <- mixture_da(sub_classes = 2) %>%
-    set_engine("mda") %>%
+  mda_fit <- mixture_da(sub_classes = 2) |>
+    set_engine("mda") |>
     fit(Species ~ ., data = iris)
   x <- axe_call(mda_fit)
   expect_equal(x$fit$call, rlang::expr(dummy_call()))

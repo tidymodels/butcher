@@ -6,8 +6,8 @@ test_that("parsnip + earth + axe_() works", {
   suppressPackageStartupMessages(library(parsnip))
   suppressPackageStartupMessages(library(earth))
   # Fit
-  earth_fit <- mars(mode = "regression") %>%
-    set_engine("earth") %>%
+  earth_fit <- mars(mode = "regression") |>
+    set_engine("earth") |>
     fit(Volume ~ ., data = trees)
   # Butcher
   x <- axe_call(earth_fit)

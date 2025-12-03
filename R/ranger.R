@@ -27,8 +27,8 @@
 #' ranger_fit <- rand_forest(mode = "classification",
 #'                           mtry = 2,
 #'                           trees = 20,
-#'                           min_n = 3) %>%
-#'   set_engine("ranger") %>%
+#'                           min_n = 3) |>
+#'   set_engine("ranger") |>
 #'   fit(Species ~ ., data = iris_train)
 #'
 #' out <- butcher(ranger_fit, verbose = TRUE)

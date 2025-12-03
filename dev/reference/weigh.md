@@ -42,7 +42,7 @@ weigh(lm_out)
 #> # A tibble: 16 × 2
 #>    object                size
 #>    <chr>                <dbl>
-#>  1 terms            53.5     
+#>  1 terms            53.6     
 #>  2 qr.qr            12.0     
 #>  3 effects           8.00    
 #>  4 model.simulate_x  8.00    

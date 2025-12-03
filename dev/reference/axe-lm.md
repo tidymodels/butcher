@@ -52,7 +52,7 @@ lm_fit <- linear_reg() %>%
   fit(mpg ~ ., data = car_train)
 
 out <- butcher(lm_fit, verbose = TRUE)
-#> ✔ Memory released: 1.49 MB
+#> ✔ Memory released: 1.55 MB
 
 # Another lm object
 wrapped_lm <- function() {
@@ -63,7 +63,7 @@ wrapped_lm <- function() {
 
 # Remove junk
 cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
-#> ✔ Memory released: 9.53 MB
+#> ✔ Memory released: 9.60 MB
 
 # Check size
 lobstr::obj_size(cleaned_lm)

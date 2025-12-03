@@ -79,7 +79,7 @@ kknn_fit <- kknn(Species ~ .,
                  distance = 1,
                  kernel = "triangular")
 out <- butcher(kknn_fit, verbose = TRUE)
-#> ✔ Memory released: 1.52 MB
+#> ✔ Memory released: 1.59 MB
 #> ✖ Disabled: `fitted()`
 # }
 ```

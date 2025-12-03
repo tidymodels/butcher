@@ -49,7 +49,7 @@ nnet_fit <- mlp("classification", hidden_units = 2) %>%
   fit(Species ~ ., data = iris)
 
 out <- butcher(nnet_fit, verbose = TRUE)
-#> ✔ Memory released: 1.49 MB
+#> ✔ Memory released: 1.55 MB
 
 # Another nnet object
 targets <- class.ind(c(rep("setosa", 50),

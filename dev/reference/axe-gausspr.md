@@ -56,7 +56,7 @@ test <- gausspr(Species ~ ., data = iris, var = 2)
 #> Using automatic sigma estimation (sigest) for RBF or laplace kernel 
 
 out <- butcher(test, verbose = TRUE)
-#> ✔ Memory released: 1.48 MB
+#> ✔ Memory released: 1.54 MB
 #> ✖ Disabled: `print()`, `summary()`, and `fitted()`
 #> ✖ Could not add <butchered> class
 

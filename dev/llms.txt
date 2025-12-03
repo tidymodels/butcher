@@ -354,6 +354,10 @@ By contributing to this project, you agree to abide by its terms.
   [`axe_data(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
   [`axe_env(`*`<rpart>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-rpart.md)
   : Axing a rpart.
+- [`axe_rsample_data()`](https://butcher.tidymodels.org/dev/reference/axe-rsample-data.md)
+  : Axe data within rsample objects.
+- [`axe_rsample_indicators()`](https://butcher.tidymodels.org/dev/reference/axe-rsample-indicators.md)
+  : Axe indicators within rsample objects.
 - [`axe_call(`*`<sclass>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-sclass.md)
   [`axe_env(`*`<sclass>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-sclass.md)
   : Axing a sclass object.

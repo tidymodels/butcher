@@ -57,7 +57,7 @@ weigh(lda_fit)
 #> # A tibble: 9 × 2
 #>   object       size
 #>   <chr>       <dbl>
-#> 1 terms   17.5     
+#> 1 terms   17.6     
 #> 2 call     0.00202 
 #> 3 means    0.00084 
 #> 4 scaling  0.000624
@@ -84,7 +84,7 @@ weigh(qda_fit)
 #> # A tibble: 9 × 2
 #>   object       size
 #>   <chr>       <dbl>
-#> 1 terms   17.5     
+#> 1 terms   17.6     
 #> 2 call     0.00202 
 #> 3 scaling  0.00162 
 #> 4 means    0.00084 
@@ -118,7 +118,7 @@ weigh(polr_fit)
 #> # A tibble: 26 × 2
 #>    object             size
 #>    <chr>             <dbl>
-#>  1 terms         25.6     
+#>  1 terms         25.7     
 #>  2 fitted.values  0.00369 
 #>  3 lp             0.00177 
 #>  4 call           0.0014  

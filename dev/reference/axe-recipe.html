@@ -164,7 +164,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span>  <span class="fu"><a href="https://recipes.tidymodels.org/reference/step_spatialsign.html" class="external-link">step_spatialsign</a></span><span class="op">(</span><span class="fu"><a href="https://recipes.tidymodels.org/reference/has_role.html" class="external-link">all_predictors</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">rec</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">1.55 MB</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">1.61 MB</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Another recipe object</span></span></span>
 <span class="r-in"><span><span class="va">wrapped_recipes</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -179,7 +179,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Remove junk in environment</span></span></span>
 <span class="r-in"><span><span class="va">cleaned1</span> <span class="op">&lt;-</span> <span class="fu"><a href="axe_env.html">axe_env</a></span><span class="op">(</span><span class="fu">wrapped_recipes</span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">9.56 MB</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">9.63 MB</span></span>
 <span class="r-in"><span><span class="co"># Replace prepared training data with zero-row slice</span></span></span>
 <span class="r-in"><span><span class="va">cleaned2</span> <span class="op">&lt;-</span> <span class="fu"><a href="axe_fitted.html">axe_fitted</a></span><span class="op">(</span><span class="fu">wrapped_recipes</span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">296 B</span></span>

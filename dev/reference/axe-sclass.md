@@ -46,7 +46,7 @@ data("GlaucomaM", package = "TH.data")
 classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, coob = TRUE)
 
 out <- butcher(classbagg_fit$mtrees[[1]], verbose = TRUE)
-#> ✔ Memory released: 5.72 MB
+#> ✔ Memory released: 5.80 MB
 
 # Another classbagg object
 wrapped_classbagg <- function() {
@@ -60,10 +60,10 @@ wrapped_classbagg <- function() {
 
 # Remove junk
 cleaned_classbagg <- butcher(wrapped_classbagg(), verbose = TRUE)
-#> ✔ Memory released: 13.87 MB
+#> ✔ Memory released: 13.95 MB
 #> ✖ Disabled: `print()` and `summary()`
 
 # Check size
 lobstr::obj_size(cleaned_classbagg)
-#> 184.14 kB
+#> 182.84 kB
 ```

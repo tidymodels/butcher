@@ -62,12 +62,12 @@ mtcars$cyl <- as.factor(mtcars$cyl)
 
 fit <- mda(cyl ~ ., data = mtcars)
 out <- butcher(fit, verbose = TRUE)
-#> ✔ Memory released: 1.49 MB
+#> ✔ Memory released: 1.55 MB
 #> ✖ Disabled: `print()`, `summary()`, and `update()`
 
 fit2 <- fda(cyl ~ ., data = mtcars)
 out2 <- butcher(fit2, verbose = TRUE)
-#> ✔ Memory released: 1.50 MB
+#> ✔ Memory released: 1.57 MB
 #> ✖ Disabled: `print()`, `summary()`, and `update()`
 
 # Another mda object

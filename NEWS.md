@@ -1,5 +1,9 @@
 # butcher (development version)
 
+* Added methods for `MASS::polr` (@pbulsink, #289).
+
+* Make to work with new versions of xgboost models (#294).
+
 * Added butcher methods for `tabnet()` (@cregouby #226).
 
 * * Added methods for `MASS::polr` (@pbulsink, #289).

@@ -50,15 +50,15 @@ xrf_big <- function() {
 heavy_m <- xrf_big()
 
 m <- butcher(heavy_m, verbose = TRUE)
-#> ✔ Memory released: 9.51 MB
+#> ✔ Memory released: 9.53 MB
 
 weigh(heavy_m)
 #> # A tibble: 43 × 2
 #>    object                             size
 #>    <chr>                             <dbl>
-#>  1 glm.formula                     9.57   
-#>  2 base_formula                    9.57   
-#>  3 rule_augmented_formula          9.57   
+#>  1 glm.formula                     9.59   
+#>  2 base_formula                    9.59   
+#>  3 rule_augmented_formula          9.59   
 #>  4 xgb.callbacks.cb.evaluation.log 0.0351 
 #>  5 glm.model.glmnet.fit.beta       0.0177 
 #>  6 glm.model.glmnet.fit.call       0.0107 

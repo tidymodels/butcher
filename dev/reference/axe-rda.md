@@ -55,7 +55,7 @@ weigh(mod_fit)
 #> # A tibble: 12 × 2
 #>    object             size
 #>    <chr>             <dbl>
-#>  1 terms          9.47    
+#>  1 terms          9.49    
 #>  2 call           0.00235 
 #>  3 covariances    0.000864
 #>  4 means          0.00084 

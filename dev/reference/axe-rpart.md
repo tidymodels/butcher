@@ -55,7 +55,7 @@ wrapped_rpart <- function() {
 
 # Remove junk
 cleaned_rpart <- axe_env(wrapped_rpart(), verbose = TRUE)
-#> ✔ Memory released: 9.46 MB
+#> ✔ Memory released: 9.48 MB
 
 # Check size
 lobstr::obj_size(cleaned_rpart)

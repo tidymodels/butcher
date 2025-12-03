@@ -62,7 +62,7 @@ wrapped_survreg.penal <- function() {
 
 # Remove junk
 cleaned_sp <- axe_env(wrapped_survreg.penal(), verbose = TRUE)
-#> ✔ Memory released: 9.66 MB
+#> ✔ Memory released: 9.68 MB
 
 # Check size
 lobstr::obj_size(cleaned_sp)

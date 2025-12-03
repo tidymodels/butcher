@@ -116,3 +116,8 @@ methods:`butcher`
 
 - [`axe-xrf`](https://butcher.tidymodels.org/dev/reference/axe-xrf.md):
   `xrf`
+
+`workflows`
+
+- [`workflow-butcher`](https://workflows.tidymodels.org/reference/workflow-butcher.html):
+  `workflow`

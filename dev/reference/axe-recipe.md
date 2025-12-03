@@ -111,7 +111,7 @@ rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
   step_spatialsign(all_predictors())
 
 out <- butcher(rec, verbose = TRUE)
-#> ✔ Memory released: 1.53 MB
+#> ✔ Memory released: 1.55 MB
 
 # Another recipe object
 wrapped_recipes <- function() {
@@ -126,7 +126,7 @@ wrapped_recipes <- function() {
 
 # Remove junk in environment
 cleaned1 <- axe_env(wrapped_recipes(), verbose = TRUE)
-#> ✔ Memory released: 9.54 MB
+#> ✔ Memory released: 9.56 MB
 # Replace prepared training data with zero-row slice
 cleaned2 <- axe_fitted(wrapped_recipes(), verbose = TRUE)
 #> ✔ Memory released: 296 B

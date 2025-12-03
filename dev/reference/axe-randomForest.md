@@ -78,7 +78,7 @@ wrapped_rf <- function() {
 
 # Remove junk
 cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
-#> ✔ Memory released: 9.49 MB
+#> ✔ Memory released: 9.51 MB
 
 # Check size
 lobstr::obj_size(cleaned_rf)

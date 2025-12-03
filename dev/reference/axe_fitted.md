@@ -87,8 +87,16 @@ methods:`butcher`
 - [`axe-spark`](https://butcher.tidymodels.org/dev/reference/axe-spark.md):
   `ml_model`
 
+- [`axe-tabnet_fit`](https://butcher.tidymodels.org/dev/reference/axe-tabnet_fit.md):
+  `_tabnet_fit`
+
 - [`axe-train`](https://butcher.tidymodels.org/dev/reference/axe-train.md):
   `train`
 
 - [`axe-train.recipe`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md):
   `train.recipe`
+
+`workflows`
+
+- [`workflow-butcher`](https://workflows.tidymodels.org/reference/workflow-butcher.html):
+  `workflow`

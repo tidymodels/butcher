@@ -63,3 +63,4 @@ The following axe methods are currently available in butcher:
 | step_ratio      |          |          |          | ✔       |            |
 | step_slice      |          |          |          | ✔       |            |
 | terms           |          |          |          | ✔       |            |
+| \_tabnet_fit    |          |          |          |         | ✔          |

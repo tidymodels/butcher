@@ -59,3 +59,8 @@ methods:`butcher`
 
 - [`axe-train.recipe`](https://butcher.tidymodels.org/dev/reference/axe-train.recipe.md):
   `train.recipe`
+
+`workflows`
+
+- [`workflow-butcher`](https://workflows.tidymodels.org/reference/workflow-butcher.html):
+  `workflow`

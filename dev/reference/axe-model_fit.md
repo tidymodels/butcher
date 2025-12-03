@@ -53,7 +53,7 @@ lm_fit <- linear_reg() %>%
   fit(mpg ~ ., data = mtcars)
 
 out <- butcher(lm_fit, verbose = TRUE)
-#> ✔ Memory released: 1.46 MB
+#> ✔ Memory released: 1.48 MB
 
 # Another parsnip model
 gam_fit <- gen_additive_mod() %>%
@@ -61,5 +61,5 @@ gam_fit <- gen_additive_mod() %>%
   fit(mpg ~ s(disp) + wt + gear, data = mtcars)
 
 out <- butcher(gam_fit, verbose = TRUE)
-#> ✔ Memory released: 1.51 MB
+#> ✔ Memory released: 1.53 MB
 ```

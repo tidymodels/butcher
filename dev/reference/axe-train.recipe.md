@@ -58,5 +58,5 @@ train.recipe_fit <- train(recipe, biomass,
                           metric = "RMSE")
 
 out <- butcher(train.recipe_fit, verbose = TRUE)
-#> ✔ Memory released: 1.64 MB
+#> ✔ Memory released: 1.66 MB
 ```

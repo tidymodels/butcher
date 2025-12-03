@@ -168,6 +168,8 @@
   [`axe_data(`*`<survreg.penal>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.md)
   [`axe_env(`*`<survreg.penal>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-survreg.penal.md)
   : Axing an survreg.penal
+- [`axe_fitted(`*`<_tabnet_fit>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-tabnet_fit.md)
+  : Axing a tabnet_fit.
 - [`axe_env(`*`<terms>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-terms.md)
   : Axing for terms inputs.
 - [`axe_call(`*`<train>`*`)`](https://butcher.tidymodels.org/dev/reference/axe-train.md)

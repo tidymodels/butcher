@@ -2,6 +2,10 @@
 
 ## butcher (development version)
 
+- Added butcher methods for `tabnet()`
+  ([@cregouby](https://github.com/cregouby)
+  [\#226](https://github.com/tidymodels/butcher/issues/226)).
+
 - - Added methods for
     [`MASS::polr`](https://rdrr.io/pkg/MASS/man/polr.html)
     ([@pbulsink](https://github.com/pbulsink),
@@ -59,8 +63,10 @@ CRAN release: 2023-08-23
 
 CRAN release: 2023-03-08
 
-- Added butcher methods for `mixOmics::pls()`, `mixOmics::spls()`, and
-  `mixOmics::plsda()`
+- Added butcher methods for
+  [`mixOmics::pls()`](https://rdrr.io/pkg/mixOmics/man/pls.html),
+  [`mixOmics::spls()`](https://rdrr.io/pkg/mixOmics/man/spls.html), and
+  [`mixOmics::plsda()`](https://rdrr.io/pkg/mixOmics/man/plsda.html)
   ([\#249](https://github.com/tidymodels/butcher/issues/249)).
 
 - Added butcher methods for

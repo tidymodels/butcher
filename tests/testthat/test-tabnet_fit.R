@@ -1,7 +1,11 @@
 test_that("tabnet_fit + axe_fitted() works", {
   skip_on_cran()
   skip_if_not_installed("tabnet")
+  skip_if_not_installed("torch")
+  skip_if(!isTRUE(torch::torch_is_installed()))
+
   suppressPackageStartupMessages(library(parsnip))
+
   # Create model and fit
   tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
     set_mode("regression") %>%
@@ -15,7 +19,11 @@ test_that("tabnet_fit + axe_fitted() works", {
 test_that("tabnet_fit + butcher() works", {
   skip_on_cran()
   skip_if_not_installed("tabnet")
+  skip_if_not_installed("torch")
+  skip_if(!isTRUE(torch::torch_is_installed()))
+
   suppressPackageStartupMessages(library(parsnip))
+
   # Create model and fit
   tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
     set_mode("regression") %>%
@@ -28,7 +36,11 @@ test_that("tabnet_fit + butcher() works", {
 test_that("tabnet_fit + predict() works", {
   skip_on_cran()
   skip_if_not_installed("tabnet")
+  skip_if_not_installed("torch")
+  skip_if(!isTRUE(torch::torch_is_installed()))
+
   suppressPackageStartupMessages(library(parsnip))
+
   # Create model and fit
   tabnet_fit <- tabnet::tabnet(epochs = 10) %>%
     set_mode("regression") %>%

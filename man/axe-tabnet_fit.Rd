@@ -25,7 +25,7 @@ Axing a tabnet_fit.
 Remove fitted values.
 }
 \examples{
-\dontshow{if (rlang::is_installed("tabnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("tabnet")) withAutoprint(\{ # examplesIf}
 
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))

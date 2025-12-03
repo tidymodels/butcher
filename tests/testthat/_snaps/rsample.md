@@ -27,8 +27,8 @@
     Code
       butcher(basic_split, verbose = TRUE)
     Message
-      v Memory released: 4.32 kB
-      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
+      v Memory released: 4.24 kB
+      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `internal_calibration_split()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
     Output
       <Training/Testing/Total>
       <0/0/0>
@@ -38,8 +38,8 @@
     Code
       butcher(time_split, verbose = TRUE)
     Message
-      v Memory released: 5.18 kB
-      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
+      v Memory released: 5.10 kB
+      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `internal_calibration_split()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
     Output
       <Training/Testing/Total>
       <0/0/0>
@@ -49,8 +49,8 @@
     Code
       butcher(grp_split, verbose = TRUE)
     Message
-      v Memory released: 4.32 kB
-      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
+      v Memory released: 4.24 kB
+      x Disabled: `analysis()`, `as.data.frame()`, `as.integer()`, `assessment()`, `complement()`, `internal_calibration_split()`, `populate()`, `reverse_splits()`, `testing()`, `tidy()`, and `training()`
     Output
       <Training/Testing/Total>
       <0/0/0>
@@ -125,7 +125,7 @@
     Code
       butcher(basic_rset, verbose = TRUE)
     Message
-      v Memory released: 2.01 kB
+      v Memory released: 1.93 kB
       x Disabled: `populate()`, `reverse_splits()`, and `tidy()`
     Output
       #  3-fold cross-validation 
@@ -141,7 +141,7 @@
     Code
       butcher(boot_rset, verbose = TRUE)
     Message
-      v Memory released: 3.05 kB
+      v Memory released: 2.97 kB
       x Disabled: `populate()`, `reverse_splits()`, and `tidy()`
     Output
       # Bootstrap sampling 
@@ -156,7 +156,7 @@
     Code
       butcher(time_rset, verbose = TRUE)
     Message
-      v Memory released: 3.06 kB
+      v Memory released: 2.98 kB
       x Disabled: `populate()`, `reverse_splits()`, and `tidy()`
     Output
       # Sliding window resampling 
@@ -185,7 +185,7 @@
     Code
       butcher(tune_obj, verbose = TRUE)
     Message
-      v Memory released: 33.26 kB
+      v Memory released: 33.18 kB
       x Disabled: `augment()` and `fit_best()`
     Output
       # Tuning results
@@ -243,7 +243,7 @@
     Code
       butcher(wflow_res, verbose = TRUE)
     Message
-      v Memory released: 101.45 kB
+      v Memory released: 101.37 kB
       x Disabled: `augment()` and `fit_best()`
     Output
       # A workflow set/tibble: 3 x 4

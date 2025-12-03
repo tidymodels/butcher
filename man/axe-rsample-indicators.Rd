@@ -35,7 +35,7 @@ disabled. Default is \code{FALSE}.}
 \item{...}{Any additional arguments related to axing.}
 }
 \value{
-An update object with no indicators in \code{rsplit} objects.
+An updated object without the indicators in the \code{rsplit} objects.
 }
 \description{
 Replace the splitting and resampling objects with a placeholder.
@@ -56,7 +56,7 @@ objects. This method saves a zero-row integer in their place.
 \dontshow{if (rlang::is_installed("rsample")) withAutoprint(\{ # examplesIf}
 
 large_cars <- mtcars[rep(1:32, 50), ]
-large_car_splt <- rsample::initial_split(large_cars)
-butcher(large_car_splt, verbose = TRUE)
+large_cars_split <- rsample::initial_split(large_cars)
+butcher(large_cars_split, verbose = TRUE)
 \dontshow{\}) # examplesIf}
 }

@@ -45,12 +45,12 @@ library(parsnip)
 library(survival)
 
 # Create model and fit
-survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%
+survreg_fit <- survival_reg(dist = "weibull") %>%
   set_engine("survival") %>%
   fit(Surv(futime, fustat) ~ 1, data = ovarian)
 
 out <- butcher(survreg_fit, verbose = TRUE)
-#> ✔ Memory released: 1.59 MB
+#> ✖ The butchered object is 3.42 kB larger than the original. Do not butcher.
 
 # Another survreg object
 wrapped_survreg <- function() {
@@ -62,7 +62,7 @@ wrapped_survreg <- function() {
 
 # Remove junk
 cleaned_survreg <- butcher(wrapped_survreg(), verbose = TRUE)
-#> ✔ Memory released: 9.66 MB
+#> ✔ Memory released: 9.69 MB
 #> ✖ Disabled: `print()`, `summary()`, and `residuals()`
 
 # Check size

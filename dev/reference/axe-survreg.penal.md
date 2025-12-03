@@ -45,12 +45,12 @@ library(parsnip)
 library(survival)
 
 # Create model and fit
-survreg_fit <- surv_reg(mode = "regression", dist = "weibull") %>%
+survreg_fit <- survival_reg(dist = "weibull") %>%
   set_engine("survival") %>%
   fit(Surv(time, status) ~ rx, data = rats)
 
 out <- butcher(survreg_fit, verbose = TRUE)
-#> ✔ Memory released: 1.60 MB
+#> ✖ The butchered object is 3.49 kB larger than the original. Do not butcher.
 
 # Another survreg.penal object
 wrapped_survreg.penal <- function() {
@@ -62,7 +62,7 @@ wrapped_survreg.penal <- function() {
 
 # Remove junk
 cleaned_sp <- axe_env(wrapped_survreg.penal(), verbose = TRUE)
-#> ✔ Memory released: 9.63 MB
+#> ✔ Memory released: 9.66 MB
 
 # Check size
 lobstr::obj_size(cleaned_sp)

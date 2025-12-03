@@ -43,8 +43,8 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Julia Silge <julia.silge@posit.co>
-([ORCID](https://orcid.org/0000-0002-3671-836X))
+**Maintainer**: Max Kuhn <max@posit.co>
+([ORCID](https://orcid.org/0000-0003-2402-136X))
 
 Authors:
 
@@ -53,10 +53,12 @@ Authors:
 
 - Davis Vaughan <davis@posit.co>
 
-- Max Kuhn <max@posit.co>
-
 - Alex Hayes <alexpghayes@gmail.com>
+
+- Julia Silge <julia.silge@posit.co>
+  ([ORCID](https://orcid.org/0000-0002-3671-836X))
 
 Other contributors:
 
-- Posit, PBC \[copyright holder, funder\]
+- Posit Software, PBC ([ROR](https://ror.org/03wc8by49)) \[copyright
+  holder, funder\]

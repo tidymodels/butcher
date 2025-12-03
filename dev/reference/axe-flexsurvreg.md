@@ -41,14 +41,14 @@ Axed flexsurvreg object.
 ``` r
 # Load libraries
 library(parsnip)
+library(censored)
 library(flexsurv)
 
 # Create model and fit
-flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") %>%
+flexsurvreg_fit <- survival_reg(dist = "gengamma") %>%
   set_engine("flexsurv") %>%
+  set_mode("censored regression") %>%
   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
-#> Warning: `surv_reg()` was deprecated in parsnip 0.1.6.
-#> ℹ Please use `survival_reg()` instead.
 
 out <- butcher(flexsurvreg_fit, verbose = TRUE)
 #> ✖ The butchered object is 3.68 kB larger than the original. Do not butcher.

@@ -80,15 +80,15 @@ weigh(mod_fit)
 #> # A tibble: 705 × 2
 #>    object              size
 #>    <chr>              <dbl>
-#>  1 mtrees.btree.terms  21.9
+#>  1 mtrees.btree.call   21.9
 #>  2 mtrees.btree.terms  21.9
-#>  3 mtrees.btree.terms  21.9
+#>  3 mtrees.btree.call   21.9
 #>  4 mtrees.btree.terms  21.9
-#>  5 mtrees.btree.terms  21.9
+#>  5 mtrees.btree.call   21.9
 #>  6 mtrees.btree.terms  21.9
-#>  7 mtrees.btree.terms  21.9
+#>  7 mtrees.btree.call   21.9
 #>  8 mtrees.btree.terms  21.9
-#>  9 mtrees.btree.terms  21.9
+#>  9 mtrees.btree.call   21.9
 #> 10 mtrees.btree.terms  21.9
 #> # ℹ 695 more rows
 weigh(mod_res)

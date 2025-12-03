@@ -6,15 +6,17 @@
 
 - **[Davis Vaughan](https://github.com/DavisVaughan)**. Author.
 
-- **[Max Kuhn](https://github.com/topepo)**. Author.
+- **[Max Kuhn](https://github.com/topepo)**. Maintainer, author.
+  [](https://orcid.org/0000-0003-2402-136X)
 
 - **Alex Hayes**. Author.
 
-- **[Julia Silge](https://juliasilge.com/)**. Maintainer, author.
+- **[Julia Silge](https://juliasilge.com/)**. Author.
   [](https://orcid.org/0000-0002-3671-836X)
 
 - **[![Posit](https://www.tidyverse.org/posit-logo.svg)](https://www.posit.co)**.
   Copyright holder, funder.
+  [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/03wc8by49)
 
 ## Citation
 

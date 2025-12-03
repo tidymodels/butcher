@@ -56,10 +56,10 @@ out <- butcher(lm_fit, verbose = TRUE)
 #> ✔ Memory released: 1.46 MB
 
 # Another parsnip model
-rpart_fit <- decision_tree(mode = "regression") %>%
-  set_engine("rpart") %>%
-  fit(mpg ~ ., data = mtcars, minsplit = 5, cp = 0.1)
+gam_fit <- gen_additive_mod() %>%
+  set_mode("regression") %>%
+  fit(mpg ~ s(disp) + wt + gear, data = mtcars)
 
-out <- butcher(rpart_fit, verbose = TRUE)
+out <- butcher(gam_fit, verbose = TRUE)
 #> ✔ Memory released: 1.51 MB
 ```

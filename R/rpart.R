@@ -8,26 +8,10 @@
 #'
 #' @return Axed rpart object.
 #'
-#' @examplesIf rlang::is_installed(c("parsnip", "rsample", "rpart"))
-#' # Load libraries
-#' library(parsnip)
-#' library(rsample)
-#' library(rpart)
-#'
-#' # Load data
-#' set.seed(1234)
-#' split <- initial_split(mtcars, prop = 9/10)
-#' car_train <- training(split)
-#'
-#' # Create model and fit
-#' rpart_fit <- decision_tree(mode = "regression") %>%
-#'   set_engine("rpart") %>%
-#'   fit(mpg ~ ., data = car_train, minsplit = 5, cp = 0.1)
-#'
-#' out <- butcher(rpart_fit, verbose = TRUE)
-#'
-#' # Another rpart object
+#' @examplesIf rlang::is_installed(c("rpart"))
+#' # An rpart object
 #' wrapped_rpart <- function() {
+#'   require("rpart")
 #'   some_junk_in_environment <- runif(1e6)
 #'   fit <- rpart(Kyphosis ~ Age + Number + Start,
 #'                data = kyphosis,

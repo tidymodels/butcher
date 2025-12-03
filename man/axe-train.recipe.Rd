@@ -35,7 +35,7 @@ functions specific to train.recipe are thus included as additional
 steps are required to remove parts of train.recipe objects.
 }
 \examples{
-\dontshow{if (interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(caret)
 data(biomass, package = "modeldata")

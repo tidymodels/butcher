@@ -60,7 +60,7 @@ Axed \verb{*_bagg} object.
 is used for bagging classification, regression and survival trees.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("ipred", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("ipred", "rpart"))) withAutoprint(\{ # examplesIf}
 library(ipred)
 
 fit_mod <- function() {

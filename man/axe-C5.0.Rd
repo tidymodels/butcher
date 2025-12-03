@@ -31,7 +31,7 @@ interface to the C5.0 classification model. The models that can be
 generated include basic tree-based models as well as rule-based models.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "rpart"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 library(rsample)

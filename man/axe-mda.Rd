@@ -40,7 +40,7 @@ carry out mixture discriminant analysis and flexible discriminat analysis,
 respectively.
 }
 \examples{
-\dontshow{if (rlang::is_installed("mda")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("mda")) withAutoprint(\{ # examplesIf}
 library(mda)
 
 mtcars$cyl <- as.factor(mtcars$cyl)

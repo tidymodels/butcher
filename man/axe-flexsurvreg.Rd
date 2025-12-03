@@ -30,14 +30,16 @@ leverage distributions like the generalized gamma, generalized F, and
 the Royston-Parmar spline model.
 }
 \examples{
-\dontshow{if (rlang::is_installed("flexsurv")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("flexsurv", "censored"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
+library(censored)
 library(flexsurv)
 
 # Create model and fit
-flexsurvreg_fit <- surv_reg(mode = "regression", dist = "gengamma") \%>\%
+flexsurvreg_fit <- survival_reg(dist = "gengamma") \%>\%
   set_engine("flexsurv") \%>\%
+  set_mode("censored regression") \%>\%
   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
 
 out <- butcher(flexsurvreg_fit, verbose = TRUE)

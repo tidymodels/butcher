@@ -35,7 +35,7 @@ Axed train object.
 train objects are created from the \pkg{caret} package.
 }
 \examples{
-\dontshow{if (rlang::is_installed("caret")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("caret")) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(caret)
 

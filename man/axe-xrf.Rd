@@ -26,7 +26,7 @@ Axed xrf object.
 Axing a xrf.
 }
 \examples{
-\dontshow{if (rlang::is_installed("xrf")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("xrf")) withAutoprint(\{ # examplesIf}
 library(xrf)
 
 xrf_big <- function() {

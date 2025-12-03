@@ -12,6 +12,8 @@ status](https://www.r-pkg.org/badges/version/butcher)](https://CRAN.R-project.or
 coverage](https://codecov.io/gh/tidymodels/butcher/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher?branch=main)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Codecov test
+coverage](https://codecov.io/gh/tidymodels/butcher/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/butcher)
 <!-- badges: end -->
 
 ## Overview

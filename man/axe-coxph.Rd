@@ -55,7 +55,7 @@ my_coxph_func(df)
 }\if{html}{\out{</div>}}
 }
 \examples{
-\dontshow{if (rlang::is_installed("survival")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("survival")) withAutoprint(\{ # examplesIf}
 library(survival)
 
 example_data <-

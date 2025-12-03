@@ -35,7 +35,7 @@ Axed gam object.
 gam objects are created from the \pkg{mgcv} package.
 }
 \examples{
-\dontshow{if (rlang::is_installed("mgcv")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("mgcv")) withAutoprint(\{ # examplesIf}
 
 cars_gam <- mgcv::gam(mpg ~ s(disp, k = 3) + s(wt), data = mtcars)
 cleaned_gam <- butcher(cars_gam, verbose = TRUE)

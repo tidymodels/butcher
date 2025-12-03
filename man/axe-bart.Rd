@@ -26,7 +26,7 @@ Axed bart object.
 Axing a bart model.
 }
 \examples{
-\dontshow{if (rlang::is_installed("dbarts")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("dbarts")) withAutoprint(\{ # examplesIf}
 library(dbarts)
 x <- dbarts::bart(mtcars[,2:5], mtcars[,1], verbose = FALSE, keeptrees = TRUE)
 res <- butcher(x, verbose = TRUE)

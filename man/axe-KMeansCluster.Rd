@@ -26,7 +26,7 @@ Axed KMeansCluster object.
 Axing a KMeansCluster.
 }
 \examples{
-\dontshow{if (rlang::is_installed("ClusterR")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("ClusterR")) withAutoprint(\{ # examplesIf}
 library(ClusterR)
 data(dietary_survey_IBS)
 dat <- scale(dietary_survey_IBS[, -ncol(dietary_survey_IBS)])

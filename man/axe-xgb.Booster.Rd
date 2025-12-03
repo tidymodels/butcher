@@ -31,7 +31,7 @@ on the first class listed, the \code{butcher_xgb.Booster} class is
 not appended.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "xgboost"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "xgboost"))) withAutoprint(\{ # examplesIf}
 library(xgboost)
 library(parsnip)
 

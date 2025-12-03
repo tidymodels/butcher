@@ -32,7 +32,7 @@ on the first class listed, the \code{butcher_ranger} class is not
 appended.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "ranger"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("parsnip", "rsample", "ranger"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(parsnip)
 library(rsample)

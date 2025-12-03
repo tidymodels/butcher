@@ -26,7 +26,7 @@ Axed sclass object.
 sclass objects are byproducts of classbagg objects.
 }
 \examples{
-\dontshow{if (rlang::is_installed(c("ipred", "rpart", "MASS", "TH.data"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("ipred", "rpart", "MASS", "TH.data"))) withAutoprint(\{ # examplesIf}
 # Load libraries
 library(ipred)
 library(rpart)

@@ -174,7 +174,7 @@ axe_fitted.default <- function(x, verbose = FALSE, ...) {
 #' @inheritParams butcher
 #' @param x An object.
 #'
-#' @return An update object with no data in `rsplit` objects.
+#' @return An updated object without data in the `rsplit` objects.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_rsample_data")}
@@ -182,8 +182,8 @@ axe_fitted.default <- function(x, verbose = FALSE, ...) {
 #' @examplesIf rlang::is_installed("rsample")
 #'
 #' large_cars <- mtcars[rep(1:32, 50), ]
-#' large_car_splt <- rsample::initial_split(large_cars)
-#' butcher(large_car_splt, verbose = TRUE)
+#' large_cars_split <- rsample::initial_split(large_cars)
+#' butcher(large_cars_split, verbose = TRUE)
 #'
 #' @export
 axe_rsample_data <- function(x, verbose = FALSE, ...) {
@@ -214,7 +214,7 @@ axe_rsample_data.default <- function(x, verbose = FALSE, ...) {
 #' @inheritParams butcher
 #' @param x An object.
 #'
-#' @return An update object with no indicators in `rsplit` objects.
+#' @return An updated object without the indicators in the `rsplit` objects.
 #'
 #' @section Methods:
 #' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_rsample_indicators")}
@@ -222,8 +222,8 @@ axe_rsample_data.default <- function(x, verbose = FALSE, ...) {
 #' @examplesIf rlang::is_installed("rsample")
 #'
 #' large_cars <- mtcars[rep(1:32, 50), ]
-#' large_car_splt <- rsample::initial_split(large_cars)
-#' butcher(large_car_splt, verbose = TRUE)
+#' large_cars_split <- rsample::initial_split(large_cars)
+#' butcher(large_cars_split, verbose = TRUE)
 #'
 #' @export
 axe_rsample_indicators <- function(x, verbose = FALSE, ...) {

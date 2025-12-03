@@ -12,6 +12,7 @@ axe_rsample_data.rsplit <- function(x, verbose = FALSE, ...) {
       "as.integer()",
       "assessment()",
       "complement()",
+      "internal_calibration_split()",
       "populate()",
       "reverse_splits()",
       "testing()",

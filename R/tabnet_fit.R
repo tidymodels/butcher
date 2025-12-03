@@ -11,13 +11,13 @@
 #' suppressWarnings(suppressMessages(library(rsample)))
 #'
 #' # Load data
-#' split <- initial_split(mtcars, props = 9/10)
+#' split <- initial_split(mtcars, prop = 9/10)
 #' car_train <- training(split)
 #'
 #' # Create model and fit
-#' mtcar_fit <- tabnet() |>
+#' mtcar_fit <- tabnet::tabnet() |>
 #'   set_mode("regression") |>
-#'   set_engine("torch")
+#'   set_engine("torch") |>
 #'   fit(mpg ~ ., data = car_train)
 #'
 #' out <- butcher(mtcar_fit, verbose = TRUE)

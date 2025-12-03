@@ -69,12 +69,14 @@ axe_call.xgb.Booster <- function(x, verbose = FALSE, ...) {
 axe_env.xgb.Booster <- function(x, verbose = FALSE, ...) {
   old <- x
   if (!is.null(x$callbacks)) {
-    x$callbacks <- purrr::map(x$callbacks,
-    function(x)
-      as.function(c(formals(x), body(x)), env = rlang::base_env())
-    )
+    x$callbacks <-
+      purrr::map(
+        x$callbacks,
+        function(x) {
+          as.function(c(formals(x), body(x)), env = rlang::base_env())
+        }
+      )
   }
-
   add_butcher_attributes(
     x,
     old,

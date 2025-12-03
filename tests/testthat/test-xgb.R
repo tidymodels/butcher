@@ -42,13 +42,10 @@ test_that("xgb.Booster + linear solver + predict() works", {
   expect_lte(lobstr::obj_size(x), lobstr::obj_size(bst))
   expect_lte(lobstr::obj_size(attributes(x)), lobstr::obj_size(attributes(bst)))
   x <- butcher(bst)
-  expect_equal(xgb.importance(model = x),
-               xgb.importance(model = bst))
-  expect_equal(predict(x, agaricus.test$data),
-               predict(bst, agaricus.test$data))
-  expect_equal(xgb.dump(x, with_stats = TRUE),
-               xgb.dump(bst, with_stats = TRUE))
-    })
+  expect_equal(xgb.importance(model = x), xgb.importance(model = bst))
+  expect_equal(predict(x, agaricus.test$data), predict(bst, agaricus.test$data))
+  expect_equal(xgb.dump(x, with_stats = TRUE), xgb.dump(bst, with_stats = TRUE))
+})
 
 test_that("xgb.Booster + tree-learning algo + predict() works", {
   skip_on_cran()
@@ -95,10 +92,7 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
   expect_lte(lobstr::obj_size(x), lobstr::obj_size(bst))
   expect_lte(lobstr::obj_size(attributes(x)), lobstr::obj_size(attributes(bst)))
   x <- butcher(bst)
-  expect_equal(xgb.importance(model = x),
-               xgb.importance(model = bst))
-  expect_equal(predict(x, agaricus.test$data),
-               predict(bst, agaricus.test$data))
-  expect_equal(xgb.dump(x, with_stats = TRUE),
-               xgb.dump(bst, with_stats = TRUE))
-    })
+  expect_equal(xgb.importance(model = x), xgb.importance(model = bst))
+  expect_equal(predict(x, agaricus.test$data), predict(bst, agaricus.test$data))
+  expect_equal(xgb.dump(x, with_stats = TRUE), xgb.dump(bst, with_stats = TRUE))
+})

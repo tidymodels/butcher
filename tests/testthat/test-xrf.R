@@ -32,9 +32,11 @@ test_that("xrf + axe_env() works", {
     )
   x <- axe_env(res)
   expect_equal(attr(x$base_formula, ".Environment"), rlang::base_env())
-  expect_equal(attr(x$rule_augmented_formula, ".Environment"), rlang::base_env())
+  expect_equal(
+    attr(x$rule_augmented_formula, ".Environment"),
+    rlang::base_env()
+  )
   expect_equal(attr(x$glm$formula, ".Environment"), rlang::base_env())
-  
   # due to new xgboost version
   # https://github.com/tidymodels/butcher/issues/294
   if (!is.null(x$xgb$callbacks)) {
@@ -51,7 +53,6 @@ test_that("xrf + butcher() works", {
       family = 'gaussian'
     )
   x <- butcher(res)
-  
   # due to new xgboost version
   # https://github.com/tidymodels/butcher/issues/294
   if (is.null(x$xgb$call)) {
@@ -63,9 +64,11 @@ test_that("xrf + butcher() works", {
   expect_equal(x$glm$model$glmnet.fit$call, rlang::expr(dummy_call()))
   expect_equal(x$glm$model$call, rlang::expr(dummy_call()))
   expect_equal(attr(x$base_formula, ".Environment"), rlang::base_env())
-  expect_equal(attr(x$rule_augmented_formula, ".Environment"), rlang::base_env())
+  expect_equal(
+    attr(x$rule_augmented_formula, ".Environment"),
+    rlang::base_env()
+  )
   expect_equal(attr(x$glm$formula, ".Environment"), rlang::base_env())
-  
   # due to new xgboost version
   # https://github.com/tidymodels/butcher/issues/294
   if (!is.null(x$xgb$callbacks)) {

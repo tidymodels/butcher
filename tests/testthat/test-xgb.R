@@ -10,26 +10,30 @@ test_that("xgb.Booster + linear solver + predict() works", {
   data(agaricus.train)
   data(agaricus.test)
   if (utils::packageVersion("xgboost") > "2.0.0.0") {
-    bst <- xgboost(x = agaricus.train$data,
-                   y = agaricus.train$label,
-                   learning_rate = 1,
-                   nthread = 2,
-                   nrounds = 2,
-                   eval_metric = "logloss",
-                   objective = "reg:squarederror")
+    bst <- xgboost(
+      x = agaricus.train$data,
+      y = agaricus.train$label,
+      learning_rate = 1,
+      nthread = 2,
+      nrounds = 2,
+      eval_metric = "logloss",
+      objective = "reg:squarederror"
+    )
   } else {
-    bst <- xgboost(data = agaricus.train$data,
-                   label = agaricus.train$label,
-                   eta = 1,
-                   nthread = 2,
-                   nrounds = 2,
-                   eval_metric = "logloss",
-                   objective = "binary:logistic",
-                   verbose = 0)
+    bst <- xgboost(
+      data = agaricus.train$data,
+      label = agaricus.train$label,
+      eta = 1,
+      nthread = 2,
+      nrounds = 2,
+      eval_metric = "logloss",
+      objective = "binary:logistic",
+      verbose = 0
+    )
   }
   x <- axe_call(bst)
   if (utils::packageVersion("xgboost") > "2.0.0.0") {
-    extracted_call <- attr(x, "call")  
+    extracted_call <- attr(x, "call")
   } else {
     extracted_call <- x$call
   }
@@ -53,8 +57,10 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
   # Load data
   data(agaricus.train)
   data(agaricus.test)
-  dtrain <- xgb.DMatrix(data = agaricus.train$data,
-                        label = agaricus.train$label)
+  dtrain <- xgb.DMatrix(
+    data = agaricus.train$data,
+    label = agaricus.train$label
+  )
   if (utils::packageVersion("xgboost") > "2.0.0.0") {
     bst <- xgb.train(
       params = list(
@@ -68,17 +74,19 @@ test_that("xgb.Booster + tree-learning algo + predict() works", {
       data = dtrain
     )
   } else {
-    bst <- xgb.train(data = dtrain,
-                    booster = "gblinear",
-                    nthread = 2,
-                    nrounds = 2,
-                    eval_metric = "logloss",
-                    objective = "binary:logistic",
-                    print_every_n = 10000L)   
+    bst <- xgb.train(
+      data = dtrain,
+      booster = "gblinear",
+      nthread = 2,
+      nrounds = 2,
+      eval_metric = "logloss",
+      objective = "binary:logistic",
+      print_every_n = 10000L
+    )
   }
   x <- axe_call(bst)
   if (utils::packageVersion("xgboost") > "2.0.0.0") {
-    extracted_call <- attr(x, "call")  
+    extracted_call <- attr(x, "call")
   } else {
     extracted_call <- x$call
   }

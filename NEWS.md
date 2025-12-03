@@ -4,6 +4,10 @@
 
 * Make to work with new versions of xgboost models (#294).
 
+* Added butcher methods for `tabnet()` (@cregouby #226).
+
+* * Added methods for `MASS::polr` (@pbulsink, #289).
+
 # butcher 0.3.6
 
 * Updated methods for `kknn::kknn()` to no longer remove the call (#288).

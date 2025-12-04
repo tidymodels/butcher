@@ -9,6 +9,7 @@
 #' # Load libraries
 #' suppressWarnings(suppressMessages(library(parsnip)))
 #' suppressWarnings(suppressMessages(library(rsample)))
+#' suppressWarnings(suppressMessages(library(tabnet)))
 #'
 #' # Load data
 #' split <- initial_split(mtcars, prop = 9/10)

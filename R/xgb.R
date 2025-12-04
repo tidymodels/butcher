@@ -16,7 +16,7 @@
 #' library(parsnip)
 #'
 #' data(agaricus.train)
-#' 
+#'
 #' if (utils::packageVersion("xgboost") > "2.0.0.0") {
 #'   bst <- xgboost(x = agaricus.train$data,
 #'                  y = as.factor(agaricus.train$label),

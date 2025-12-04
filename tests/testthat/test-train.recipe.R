@@ -15,15 +15,20 @@ test_that("train + predict() works", {
   suppressPackageStartupMessages(library(modeldata))
   # Data
   data(biomass)
-  biomass_tr <- biomass[biomass$dataset == "Training",]
-  biomass_te <- biomass[biomass$dataset == "Testing",]
-  recipe <- biomass %>%
-    recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) %>%
-    step_center(all_predictors()) %>%
-    step_scale(all_predictors()) %>%
+  biomass_tr <- biomass[biomass$dataset == "Training", ]
+  biomass_te <- biomass[biomass$dataset == "Testing", ]
+  recipe <- biomass |>
+    recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur) |>
+    step_center(all_predictors()) |>
+    step_scale(all_predictors()) |>
     step_spatialsign(all_predictors())
   # Model
-  train.recipe_fit <- train(recipe, biomass_tr, method = "svmRadial", metric = "RMSE")
+  train.recipe_fit <- train(
+    recipe,
+    biomass_tr,
+    method = "svmRadial",
+    metric = "RMSE"
+  )
   # Butcher
   x <- butcher(train.recipe_fit)
   # Testing data
@@ -31,7 +36,10 @@ test_that("train + predict() works", {
   expect_equal(x$dots, list(NULL))
   expect_equal(x$control, list(NULL))
   expect_equal(x$trainingData, data.frame(NA))
-  expect_identical(attr(x$recipe$steps[[1]]$terms[[1]], ".Environment"), rlang::base_env())
+  expect_identical(
+    attr(x$recipe$steps[[1]]$terms[[1]], ".Environment"),
+    rlang::base_env()
+  )
   expect_equal(x$pred, list(NULL))
   expected_output <- predict(train.recipe_fit, newdata = biomass_te)
   expect_equal(predict(x, biomass_te), expected_output)

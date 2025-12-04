@@ -53,7 +53,11 @@ test_that("gam + predict() works", {
 })
 
 test_that("gam + predict() works with offset", {
-  gam_fit <- mgcv::gam(mpg ~ s(disp, k = 3) + s(wt), data = mtcars, offset = seq(1, nrow(mtcars)))
+  gam_fit <- mgcv::gam(
+    mpg ~ s(disp, k = 3) + s(wt),
+    data = mtcars,
+    offset = seq(1, nrow(mtcars))
+  )
   x <- butcher(gam_fit)
   expect_equal(
     predict(x, newdata = head(mtcars))[1],

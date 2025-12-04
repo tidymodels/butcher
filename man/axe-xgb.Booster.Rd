@@ -59,8 +59,8 @@ if (utils::packageVersion("xgboost") > "2.0.0.0") {
 out <- butcher(bst, verbose = TRUE)
 
 # Another xgboost model
-fit <- boost_tree(mode = "classification", trees = 20) \%>\%
-  set_engine("xgboost", eval_metric = "mlogloss") \%>\%
+fit <- boost_tree(mode = "classification", trees = 20) |>
+  set_engine("xgboost", eval_metric = "mlogloss") |>
   fit(Species ~ ., data = iris)
 
 out <- butcher(fit, verbose = TRUE)

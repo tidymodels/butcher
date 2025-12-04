@@ -23,14 +23,14 @@ library(parsnip)
 One of the benefits of working in R is the ease with which you can implement complex models and implement challenging data analysis pipelines. Take, for example, the parsnip package; with the installation of a few associated libraries and a few lines of code, you can fit something as sophisticated as a boosted tree:  
 
 ```{r, eval = FALSE}
-fitted_model <- boost_tree(mode = "regression") %>%
+fitted_model <- boost_tree(mode = "regression") |>
   fit(mpg ~ ., data = mtcars)
 ```
 
 Yet, while this code is compact, the underlying fitted result may not be. Since parsnip works as a wrapper for many modeling packages, its fitted model objects inherit the same properties as those that arise from the original modeling package. A straightforward example is the `lm()` function from the base `stats` package. Whether you leverage parsnip or not, you get the same result:
 
 ```{r}
-parsnip_lm <- linear_reg() %>% 
+parsnip_lm <- linear_reg() |> 
   fit(mpg ~ ., data = mtcars) 
 parsnip_lm
 ```
@@ -116,8 +116,8 @@ predict(butchered_lm, mtcars[, 2:11])
 Alternatively, we can pick and choose specific axe functions, removing only those parts of the model object that we are no longer interested in characterizing.
 
 ```{r}
-butchered_lm <- big_lm %>%
-  axe_env() %>% 
+butchered_lm <- big_lm |>
+  axe_env() |> 
   axe_fitted()
 predict(butchered_lm, mtcars[, 2:11])
 ```

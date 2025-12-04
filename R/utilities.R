@@ -1,4 +1,3 @@
-
 # check existence
 exchange <- function(x, component, replacement, addition = NULL, old) {
   out <- purrr::pluck(x, component, .default = NULL)
@@ -16,7 +15,7 @@ exchange <- function(x, component, replacement, addition = NULL, old) {
 # butcher attributes helper
 add_butcher_disabled <- function(x, disabled = NULL) {
   current <- attr(x, "butcher_disabled")
-  if(!is.null(disabled)) {
+  if (!is.null(disabled)) {
     disabled <- union(current, disabled)
     attr(x, "butcher_disabled") <- disabled
   }
@@ -25,14 +24,20 @@ add_butcher_disabled <- function(x, disabled = NULL) {
 
 # class assignment helper
 add_butcher_class <- function(x) {
-  if(!any(grepl("butcher", class(x)))) {
+  if (!any(grepl("butcher", class(x)))) {
     class(x) <- append(paste0("butchered_", class(x)[1]), class(x))
   }
   x
 }
 
 # butcher attributes wrapper
-add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, verbose = FALSE) {
+add_butcher_attributes <- function(
+  x,
+  old,
+  disabled = NULL,
+  add_class = TRUE,
+  verbose = FALSE
+) {
   if (!identical(x, old)) {
     x <- add_butcher_disabled(x, disabled)
     if (add_class) {
@@ -48,7 +53,7 @@ add_butcher_attributes <- function(x, old, disabled = NULL, add_class = TRUE, ve
 # adapted from ps:::is_cran_check()
 # nocov start
 
-is_cran_check <- function () {
+is_cran_check <- function() {
   if (identical(Sys.getenv("NOT_CRAN"), "true")) {
     FALSE
   } else {

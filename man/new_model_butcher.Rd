@@ -4,7 +4,12 @@
 \alias{new_model_butcher}
 \title{New axe functions for a modeling object.}
 \usage{
-new_model_butcher(model_class, package_name, open = interactive())
+new_model_butcher(
+  model_class,
+  package_name,
+  open = interactive(),
+  call = rlang::caller_env()
+)
 }
 \arguments{
 \item{model_class}{A string that captures the class name of
@@ -15,6 +20,10 @@ from which the new model is made.}
 
 \item{open}{Check if user is in interactive mode, and if so,
 opens the new files for editing.}
+
+\item{call}{The execution environment of a currently running function, e.g.
+\code{caller_env()}. The function will be mentioned in error messages as the
+source of the error.}
 }
 \description{
 \code{new_model_butcher()} will instantiate the following to help

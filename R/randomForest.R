@@ -25,8 +25,8 @@
 #' randomForest_fit <- rand_forest(mode = "classification",
 #'                                 mtry = 2,
 #'                                 trees = 2,
-#'                                 min_n = 3) %>%
-#'   set_engine("randomForest") %>%
+#'                                 min_n = 3) |>
+#'   set_engine("randomForest") |>
 #'   fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 #'
 #' out <- butcher(randomForest_fit, verbose = TRUE)

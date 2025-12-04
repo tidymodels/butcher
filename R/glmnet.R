@@ -13,8 +13,8 @@
 #' # Wrap a parsnip glmnet model
 #' wrapped_parsnip_glmnet <- function() {
 #'   some_junk_in_environment <- runif(1e6)
-#'   model <- logistic_reg(penalty = 10, mixture = 0.1) %>%
-#'     set_engine("glmnet") %>%
+#'   model <- logistic_reg(penalty = 10, mixture = 0.1) |>
+#'     set_engine("glmnet") |>
 #'     fit(as.factor(vs) ~ ., data = mtcars)
 #'   return(model$fit)
 #' }
@@ -39,4 +39,3 @@ axe_call.glmnet <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-

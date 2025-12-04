@@ -37,7 +37,7 @@
 #' polr_fit_b <- butcher(polr_fit)
 #' weigh(polr_fit)
 #' weigh(polr_fit_b)
-#' 
+#'
 #' @name axe-mass
 #' @aliases axe-lda
 #' @aliases axe-qda

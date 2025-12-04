@@ -4,8 +4,8 @@ test_that("nnet + predict() works", {
   skip_if_not_installed("parsnip")
   suppressPackageStartupMessages(library(parsnip))
   suppressPackageStartupMessages(library(nnet))
-  nnet_fit <- mlp("classification", hidden_units = 2) %>%
-    set_engine("nnet") %>%
+  nnet_fit <- mlp("classification", hidden_units = 2) |>
+    set_engine("nnet") |>
     fit(Species ~ ., data = iris)
   x <- axe_call(nnet_fit)
   expect_equal(x$fit$call, rlang::expr(dummy_call()))
@@ -15,5 +15,5 @@ test_that("nnet + predict() works", {
   expect_equal(x$fit$fitted.values, numeric(0))
   x <- butcher(nnet_fit)
   expected_output <- predict(nnet_fit, iris[1:3, ])
-  expect_equal(predict(x, iris[1:3,]), expected_output)
+  expect_equal(predict(x, iris[1:3, ]), expected_output)
 })

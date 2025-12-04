@@ -35,8 +35,8 @@ is leveraged to do multivariate adaptive regression splines.
 library(parsnip)
 
 # Create model and fit
-earth_fit <- mars(mode = "regression") \%>\%
-  set_engine("earth") \%>\%
+earth_fit <- mars(mode = "regression") |>
+  set_engine("earth") |>
   fit(Volume ~ ., data = trees)
 
 out <- butcher(earth_fit, verbose = TRUE)

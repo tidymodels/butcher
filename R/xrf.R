@@ -59,7 +59,3 @@ axe_env.xrf <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-
-
-
-

@@ -44,4 +44,3 @@ axe_env.function <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-

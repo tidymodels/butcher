@@ -6,8 +6,10 @@ test_that("mda + predict() works", {
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_error(update(x, subclasses = 4))
-  expect_equal(attr(x, "butcher_disabled"),
-               c("print()", "summary()", "update()"))
+  expect_equal(
+    attr(x, "butcher_disabled"),
+    c("print()", "summary()", "update()")
+  )
   x <- axe_data(fit)
   expect_identical(x, fit)
   x <- axe_env(fit)
@@ -15,8 +17,7 @@ test_that("mda + predict() works", {
   x <- axe_fitted(fit)
   expect_equal(x$fit$fitted.values, matrix(NA))
   x <- butcher(fit)
-  expect_equal(predict(x, iris[1:3, ]),
-               predict(fit, iris[1:3, ]))
+  expect_equal(predict(x, iris[1:3, ]), predict(fit, iris[1:3, ]))
 })
 
 test_that("mda + custom parsnip model + predict() works", {
@@ -41,8 +42,8 @@ test_that("mda + custom parsnip model + predict() works", {
     func = list(pkg = "foo", fun = "bar"),
     has_submodel = FALSE
   )
-  mixture_da <- function(mode = "classification",  sub_classes = NULL) {
-    if (mode  != "classification") {
+  mixture_da <- function(mode = "classification", sub_classes = NULL) {
+    if (mode != "classification") {
       stop("`mode` should be 'classification'", call. = FALSE)
     }
     args <- list(sub_classes = rlang::enquo(sub_classes))
@@ -77,14 +78,16 @@ test_that("mda + custom parsnip model + predict() works", {
       allow_sparse_x = FALSE
     )
   )
-  mda_fit <- mixture_da(sub_classes = 2) %>%
-    set_engine("mda") %>%
+  mda_fit <- mixture_da(sub_classes = 2) |>
+    set_engine("mda") |>
     fit(Species ~ ., data = iris)
   x <- axe_call(mda_fit)
   expect_equal(x$fit$call, rlang::expr(dummy_call()))
   expect_error(update(x$fit, subclasses = 4))
-  expect_equal(attr(x$fit, "butcher_disabled"),
-               c("print()", "summary()", "update()"))
+  expect_equal(
+    attr(x$fit, "butcher_disabled"),
+    c("print()", "summary()", "update()")
+  )
   x <- axe_env(mda_fit)
   expect_identical(attr(x$fit$terms, ".Environment"), rlang::base_env())
   x <- axe_fitted(mda_fit)
@@ -100,8 +103,10 @@ test_that("fda + predict() works", {
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   expect_error(update(x, subclasses = 4))
-  expect_equal(attr(x, "butcher_disabled"),
-               c("print()", "summary()", "update()"))
+  expect_equal(
+    attr(x, "butcher_disabled"),
+    c("print()", "summary()", "update()")
+  )
   x <- axe_data(fit)
   expect_identical(x, fit)
   x <- axe_env(fit)
@@ -109,6 +114,5 @@ test_that("fda + predict() works", {
   x <- axe_fitted(fit)
   expect_equal(x$fit$fitted.values, matrix(NA))
   x <- butcher(fit)
-  expect_equal(predict(x, mtcars[1:3, ]),
-               predict(fit, mtcars[1:3, ]))
+  expect_equal(predict(x, mtcars[1:3, ]), predict(fit, mtcars[1:3, ]))
 })

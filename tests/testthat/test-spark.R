@@ -17,14 +17,14 @@
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
-#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) |>
 #     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 #   train <- iris_tbls$train
 #   validation <- iris_tbls$validation
 #   # Model
 #   spark_fit <- ml_logistic_regression(train, Species ~ .)
-#   expected_output <- ml_predict(spark_fit, validation) %>%
-#     select(predicted_label) %>%
+#   expected_output <- ml_predict(spark_fit, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   # Test sub axe functions
 #   x <- axe_call(spark_fit)
@@ -44,13 +44,13 @@
 #   expect_null(x$summary)
 #   # Butcher
 #   x <- butcher(spark_fit)
-#   version <- x %>%
-#     spark_jobj() %>%
-#     spark_connection() %>%
+#   version <- x |>
+#     spark_jobj() |>
+#     spark_connection() |>
 #     spark_version()
 #   expect_false(version < "2.0.0")
-#   output <- ml_predict(x$pipeline_model, validation) %>%
-#     select(predicted_label) %>%
+#   output <- ml_predict(x$pipeline_model, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   expect_gt(lobstr::obj_size(spark_fit), lobstr::obj_size(x))
 #   expect_equal(output, expected_output)
@@ -63,11 +63,11 @@
 #   path <- tempfile()
 #   ml_save(spark_fit, path, overwrite = TRUE)
 #   spark_fit_loaded <- ml_load(sc, path)
-#   expected_output <- spark_fit_loaded %>%
-#     ml_stages() %>%
+#   expected_output <- spark_fit_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
-#   new_output <- x_loaded %>%
-#     ml_stages() %>%
+#   new_output <- x_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
 #   expect_equal(new_output, expected_output)
 #   expect_equal(x_loaded$uid, spark_fit_loaded$uid)
@@ -98,19 +98,19 @@
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
-#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) |>
 #     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 #   train <- iris_tbls$train
 #   validation <- iris_tbls$validation
 #   spark_fit <- ml_decision_tree_classifier(train, Species ~ .)
-#   expected_output <- ml_predict(spark_fit, validation) %>%
-#     select(predicted_label) %>%
+#   expected_output <- ml_predict(spark_fit, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   # Butcher
 #   x <- butcher(spark_fit)
 #   expect_gt(lobstr::obj_size(spark_fit), lobstr::obj_size(x))
-#   output <- ml_predict(x$pipeline_model, validation) %>%
-#     select(predicted_label) %>%
+#   output <- ml_predict(x$pipeline_model, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   expect_equal(output, expected_output)
 # })
@@ -127,19 +127,19 @@
 #   # Binary classification data
 #   iris_bin <- iris[iris$Species != "setosa", ]
 #   iris_bin$Species <- factor(iris_bin$Species)
-#   iris_bin_tbls <- sdf_copy_to(sc, iris_bin, overwrite = TRUE) %>%
+#   iris_bin_tbls <- sdf_copy_to(sc, iris_bin, overwrite = TRUE) |>
 #     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 #   train <- iris_bin_tbls$train
 #   validation <- iris_bin_tbls$validation
 #   # Model
 #   spark_fit <- ml_gradient_boosted_trees(train, Species ~ .)
-#   expected_output <- ml_predict(spark_fit, validation) %>%
-#     select(predicted_label) %>%
+#   expected_output <- ml_predict(spark_fit, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   x <- butcher(spark_fit)
 #   expect_gt(lobstr::obj_size(spark_fit), lobstr::obj_size(x))
-#   output <- ml_predict(x$pipeline_model, validation) %>%
-#     select(predicted_label) %>%
+#   output <- ml_predict(x$pipeline_model, validation) |>
+#     select(predicted_label) |>
 #     collect()
 #   expect_equal(output, expected_output)
 #   # Save and load
@@ -149,11 +149,11 @@
 #   path <- tempfile()
 #   ml_save(spark_fit, path, overwrite = TRUE)
 #   spark_fit_loaded <- ml_load(sc, path)
-#   expected_output <- spark_fit_loaded %>%
-#     ml_stages() %>%
+#   expected_output <- spark_fit_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
-#   new_output <- x_loaded %>%
-#     ml_stages() %>%
+#   new_output <- x_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
 #   expect_equal(new_output, expected_output)
 #   expect_equal(x_loaded$uid, spark_fit_loaded$uid)
@@ -186,20 +186,20 @@
 #   # Create connection
 #   sc <- testthat_spark_connection()
 #   # Data
-#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+#   iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) |>
 #     sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 #   train <- iris_tbls$train
 #   validation <- iris_tbls$validation
 #   # Model
-#   reg_spark <- linear_reg() %>%
-#     set_engine("spark") %>%
+#   reg_spark <- linear_reg() |>
+#     set_engine("spark") |>
 #     fit(Petal_Width ~ ., data = train)
-#   expected_output <- ml_predict(reg_spark$fit, validation) %>%
-#     select(prediction) %>%
+#   expected_output <- ml_predict(reg_spark$fit, validation) |>
+#     select(prediction) |>
 #     collect()
 #   x <- butcher(reg_spark)
-#   output <- ml_predict(x$fit$pipeline_model, validation) %>%
-#     select(prediction) %>%
+#   output <- ml_predict(x$fit$pipeline_model, validation) |>
+#     select(prediction) |>
 #     collect()
 #   expect_gt(lobstr::obj_size(reg_spark), lobstr::obj_size(x))
 #   expect_equal(output, expected_output)
@@ -210,11 +210,11 @@
 #   path <- tempfile()
 #   ml_save(reg_spark$fit, path, overwrite = TRUE)
 #   spark_fit_loaded <- ml_load(sc, path)
-#   expected_output <- spark_fit_loaded %>%
-#     ml_stages() %>%
+#   expected_output <- spark_fit_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
-#   new_output <- x_loaded %>%
-#     ml_stages() %>%
+#   new_output <- x_loaded |>
+#     ml_stages() |>
 #     lapply(ml_param_map)
 #   expect_equal(new_output, expected_output)
 #   expect_equal(x_loaded$uid, spark_fit_loaded$uid)

@@ -37,8 +37,8 @@ library(parsnip)
 library(survival)
 
 # Create model and fit
-survreg_fit <- survival_reg(dist = "weibull") \%>\%
-  set_engine("survival") \%>\%
+survreg_fit <- survival_reg(dist = "weibull") |>
+  set_engine("survival") |>
   fit(Surv(time, status) ~ rx, data = rats)
 
 out <- butcher(survreg_fit, verbose = TRUE)

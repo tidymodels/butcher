@@ -20,3 +20,5 @@ butcher.png
 ^revdep$
 ^CRAN-SUBMISSION$
 ^.DS_Store$
+^[.]?air[.]toml$
+^\.vscode$

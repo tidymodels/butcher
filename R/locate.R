@@ -16,16 +16,12 @@
 #' locate(lm_fit, name = "call")
 #' @export
 locate <- function(x, name = NULL) {
-  if(is.null(name)) {
+  if (is.null(name)) {
     stop("No specific model component specified!")
   } else {
-    item <- rlang::arg_match(name, c("env",
-                                     "call",
-                                     "data",
-                                     "ctrl",
-                                     "fitted"))
+    item <- rlang::arg_match(name, c("env", "call", "data", "ctrl", "fitted"))
   }
-  if(item == "env") {
+  if (item == "env") {
     loc <- butcher_unlist(butcher_map(x, find_environment), c)
     parsed_loc <- names(loc)[loc]
   } else if (item == "fitted") {
@@ -49,14 +45,14 @@ locate <- function(x, name = NULL) {
     stop("Not valid item requested.")
   }
 
-  if(length(parsed_loc) > 0) {
+  if (length(parsed_loc) > 0) {
     return(paste0("x$", parsed_loc))
   } else {
     stop("Sorry, this part of the model object was not located.")
   }
 }
 
-butcher_map <- function(.x, .f, ...){
+butcher_map <- function(.x, .f, ...) {
   if (rlang::is_list(.x)) {
     purrr::map(.x, butcher_map, .f, ...)
   } else {
@@ -65,7 +61,7 @@ butcher_map <- function(.x, .f, ...){
   }
 }
 
-butcher_unlist <- function(.x, .f, ...){
+butcher_unlist <- function(.x, .f, ...) {
   .f <- purrr::as_mapper(.f)
   is_sublist <- purrr::map_lgl(.x, rlang::is_list)
   .x[is_sublist] <- purrr::map(.x[is_sublist], butcher_unlist, .f, ...)
@@ -74,7 +70,7 @@ butcher_unlist <- function(.x, .f, ...){
 
 find_environment <- function(x) {
   temp <- attributes(x)
-  if(rlang::is_bare_list(temp)) {
+  if (rlang::is_bare_list(temp)) {
     return(any(purrr::map_lgl(temp, rlang::is_environment)))
   }
 }

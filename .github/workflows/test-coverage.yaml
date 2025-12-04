@@ -27,10 +27,10 @@ jobs:
           extra-packages: any::covr, any::xml2
           needs: coverage
 
-     - name: install torch
-        shell: Rscript {0}
+      - name: install torch
         run: |
           torch::install_torch()
+        shell: Rscript {0}
 
       - name: Test coverage
         run: |

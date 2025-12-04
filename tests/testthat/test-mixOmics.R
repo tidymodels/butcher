@@ -10,10 +10,10 @@ test_that("pls + predict() works", {
   x <- axe_fitted(fit)
   expect_equal(x$names$sample, matrix(NA))
   x <- butcher(fit)
-  new_data <- matrix(1:2, ncol = 2) %>% `colnames<-`(c("X1", "X2"))
+  new_data <- matrix(1:2, ncol = 2) |> `colnames<-`(c("X1", "X2"))
   expect_equal(
-    predict(x, new_data) %>% purrr::discard_at("call"),
-    predict(fit, new_data) %>% purrr::discard_at("call")
+    predict(x, new_data) |> purrr::discard_at("call"),
+    predict(fit, new_data) |> purrr::discard_at("call")
   )
 })
 
@@ -29,16 +29,21 @@ test_that("spls + predict() works", {
   x <- axe_fitted(fit)
   expect_equal(x$names$sample, matrix(NA))
   x <- butcher(fit)
-  new_data <- matrix(1:2, ncol = 2) %>% `colnames<-`(c("X1", "X2"))
-  expect_equal(predict(x, new_data) %>% purrr::discard_at("call"),
-               predict(fit, new_data) %>% purrr::discard_at("call"))
+  new_data <- matrix(1:2, ncol = 2) |> `colnames<-`(c("X1", "X2"))
+  expect_equal(
+    predict(x, new_data) |> purrr::discard_at("call"),
+    predict(fit, new_data) |> purrr::discard_at("call")
+  )
 })
 
 test_that("plsda + predict() works", {
   skip_on_cran()
   skip_if_not_installed("mixOmics")
   suppressPackageStartupMessages(do.call(library, list(package = "mixOmics")))
-  fit <- plsda(matrix(rnorm(2e2), ncol = 2), sample(c("a", "b"), 1e2, replace = TRUE))
+  fit <- plsda(
+    matrix(rnorm(2e2), ncol = 2),
+    sample(c("a", "b"), 1e2, replace = TRUE)
+  )
   x <- axe_call(fit)
   expect_equal(x$call, rlang::expr(dummy_call()))
   x <- axe_data(fit)
@@ -46,7 +51,9 @@ test_that("plsda + predict() works", {
   x <- axe_fitted(fit)
   expect_equal(x$names$sample, matrix(NA))
   x <- butcher(fit)
-  new_data <- matrix(1:2, ncol = 2) %>% `colnames<-`(c("X1", "X2"))
-  expect_equal(predict(x, new_data) %>% purrr::discard_at("call"),
-               predict(fit, new_data) %>% purrr::discard_at("call"))
+  new_data <- matrix(1:2, ncol = 2) |> `colnames<-`(c("X1", "X2"))
+  expect_equal(
+    predict(x, new_data) |> purrr::discard_at("call"),
+    predict(fit, new_data) |> purrr::discard_at("call")
+  )
 })

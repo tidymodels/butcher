@@ -52,7 +52,7 @@ lm_fit <- linear_reg() %>%
   fit(mpg ~ ., data = car_train)
 
 out <- butcher(lm_fit, verbose = TRUE)
-#> ✔ Memory released: 1.55 MB
+#> ✔ Memory released: 1.56 MB
 
 # Another lm object
 wrapped_lm <- function() {

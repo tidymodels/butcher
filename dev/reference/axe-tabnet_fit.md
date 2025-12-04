@@ -37,22 +37,18 @@ Axed tabnet_fit object.
 # Load libraries
 suppressWarnings(suppressMessages(library(parsnip)))
 suppressWarnings(suppressMessages(library(rsample)))
+suppressWarnings(suppressMessages(library(tabnet)))
 
 # Load data
-split <- initial_split(mtcars, props = 9/10)
-#> Error in initial_split(mtcars, props = 9/10): `...` must be empty.
-#> ✖ Problematic argument:
-#> • props = 9/10
+split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
-#> Error in training(split): No method for objects of class: function
 
 # Create model and fit
 mtcar_fit <- tabnet() %>%
   set_mode("regression") %>%
-  set_engine("torch")
-#> Error in tabnet(): could not find function "tabnet"
+  set_engine("torch") %>%
   fit(mpg ~ ., data = car_train)
-#> Error in UseMethod("fit"): no applicable method for 'fit' applied to an object of class "formula"
+#> Error in cpp_torch_manual_seed(as.character(seed)): Lantern is not loaded. Please use `install_torch()` to install additional dependencies.
 
 out <- butcher(mtcar_fit, verbose = TRUE)
 #> Error: object 'mtcar_fit' not found

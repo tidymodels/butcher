@@ -13,7 +13,8 @@
 - Make to work with new versions of xgboost models
   ([\#294](https://github.com/tidymodels/butcher/issues/294)).
 
-- Added butcher methods for `tabnet()`
+- Added butcher methods for
+  [`tabnet()`](https://mlverse.github.io/tabnet/reference/tabnet.html)
   ([@cregouby](https://github.com/cregouby)
   [\#226](https://github.com/tidymodels/butcher/issues/226)).
 

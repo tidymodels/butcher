@@ -60,7 +60,7 @@ wrapped_classbagg <- function() {
 
 # Remove junk
 cleaned_classbagg <- butcher(wrapped_classbagg(), verbose = TRUE)
-#> ✔ Memory released: 13.95 MB
+#> ✔ Memory released: 13.96 MB
 #> ✖ Disabled: `print()` and `summary()`
 
 # Check size

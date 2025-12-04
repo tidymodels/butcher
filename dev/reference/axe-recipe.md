@@ -111,7 +111,7 @@ rec <- recipe(HHV ~ carbon + hydrogen + oxygen + nitrogen + sulfur,
   step_spatialsign(all_predictors())
 
 out <- butcher(rec, verbose = TRUE)
-#> ✔ Memory released: 1.61 MB
+#> ✔ Memory released: 1.62 MB
 
 # Another recipe object
 wrapped_recipes <- function() {

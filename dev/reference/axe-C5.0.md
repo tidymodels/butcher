@@ -51,16 +51,16 @@ split <- initial_split(kyphosis, prop = 9/10)
 spine_train <- training(split)
 
 # Create model and fit
-c5_fit <- decision_tree(mode = "classification") %>%
-  set_engine("C5.0") %>%
+c5_fit <- decision_tree(mode = "classification") |>
+  set_engine("C5.0") |>
   fit(Kyphosis ~ ., data = spine_train)
 
 out <- butcher(c5_fit, verbose = TRUE)
 #> ✖ The butchered object is 1.43 kB larger than the original. Do not butcher.
 
 # Try another model from parsnip
-c5_fit2 <- boost_tree(mode = "classification", trees = 100) %>%
-  set_engine("C5.0") %>%
+c5_fit2 <- boost_tree(mode = "classification", trees = 100) |>
+  set_engine("C5.0") |>
   fit(Kyphosis ~ ., data = spine_train)
 out <- butcher(c5_fit2, verbose = TRUE)
 #> ✖ The butchered object is 952 B larger than the original. Do not butcher.

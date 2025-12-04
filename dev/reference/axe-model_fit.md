@@ -48,18 +48,18 @@ library(parsnip)
 library(rpart)
 
 # Create model and fit
-lm_fit <- linear_reg() %>%
-  set_engine("lm") %>%
+lm_fit <- linear_reg() |>
+  set_engine("lm") |>
   fit(mpg ~ ., data = mtcars)
 
 out <- butcher(lm_fit, verbose = TRUE)
 #> ✔ Memory released: 1.55 MB
 
 # Another parsnip model
-gam_fit <- gen_additive_mod() %>%
-  set_mode("regression") %>%
+gam_fit <- gen_additive_mod() |>
+  set_mode("regression") |>
   fit(mpg ~ s(disp) + wt + gear, data = mtcars)
 
 out <- butcher(gam_fit, verbose = TRUE)
-#> ✔ Memory released: 1.60 MB
+#> ✔ Memory released: 1.61 MB
 ```

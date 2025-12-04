@@ -44,9 +44,9 @@ split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
 
 # Create model and fit
-mtcar_fit <- tabnet() %>%
-  set_mode("regression") %>%
-  set_engine("torch") %>%
+mtcar_fit <- tabnet::tabnet() |>
+  set_mode("regression") |>
+  set_engine("torch") |>
   fit(mpg ~ ., data = car_train)
 #> Error in cpp_torch_manual_seed(as.character(seed)): Lantern is not loaded. Please use `install_torch()` to install additional dependencies.
 

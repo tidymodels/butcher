@@ -45,9 +45,9 @@ library(censored)
 library(flexsurv)
 
 # Create model and fit
-flexsurvreg_fit <- survival_reg(dist = "gengamma") %>%
-  set_engine("flexsurv") %>%
-  set_mode("censored regression") %>%
+flexsurvreg_fit <- survival_reg(dist = "gengamma") |>
+  set_engine("flexsurv") |>
+  set_mode("censored regression") |>
   fit(Surv(Tstart, Tstop, status) ~ trans, data = bosms3)
 
 out <- butcher(flexsurvreg_fit, verbose = TRUE)

@@ -62,7 +62,12 @@ modeling object:</p><ul><li><p>Add modeling package to <code>Suggests</code></p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">new_model_butcher</span><span class="op">(</span><span class="va">model_class</span>, <span class="va">package_name</span>, open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">new_model_butcher</span><span class="op">(</span></span>
+<span>  <span class="va">model_class</span>,</span>
+<span>  <span class="va">package_name</span>,</span>
+<span>  open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  call <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">caller_env</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -82,6 +87,12 @@ from which the new model is made.</p></dd>
 <dt id="arg-open">open<a class="anchor" aria-label="anchor" href="#arg-open"></a></dt>
 <dd><p>Check if user is in interactive mode, and if so,
 opens the new files for editing.</p></dd>
+
+
+<dt id="arg-call">call<a class="anchor" aria-label="anchor" href="#arg-call"></a></dt>
+<dd><p>The execution environment of a currently running function, e.g.
+<code>caller_env()</code>. The function will be mentioned in error messages as the
+source of the error.</p></dd>
 
 </dl></div>
 

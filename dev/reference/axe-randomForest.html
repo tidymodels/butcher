@@ -110,8 +110,8 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span><span class="va">randomForest_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/rand_forest.html" class="external-link">rand_forest</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>,</span></span>
 <span class="r-in"><span>                                mtry <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>                                trees <span class="op">=</span> <span class="fl">2</span>,</span></span>
-<span class="r-in"><span>                                min_n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"randomForest"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                                min_n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html" class="external-link">set_engine</a></span><span class="op">(</span><span class="st">"randomForest"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://generics.r-lib.org/reference/fit_xy.html" class="external-link">fit_xy</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">spine_train</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">spine_train</span><span class="op">$</span><span class="va">Kyphosis</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="butcher.html">butcher</a></span><span class="op">(</span><span class="va">randomForest_fit</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
@@ -126,7 +126,7 @@ disabled. Default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Remove junk</span></span></span>
 <span class="r-in"><span><span class="va">cleaned_rf</span> <span class="op">&lt;-</span> <span class="fu"><a href="axe_env.html">axe_env</a></span><span class="op">(</span><span class="fu">wrapped_rf</span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">9.58 MB</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Memory released: <span style="color: #00BB00;">9.59 MB</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Check size</span></span></span>
 <span class="r-in"><span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html" class="external-link">obj_size</a></span><span class="op">(</span><span class="va">cleaned_rf</span><span class="op">)</span></span></span>

@@ -49,8 +49,8 @@ library(kernlab)
 data(spam)
 
 # Create model and fit
-ksvm_class <- svm_poly(mode = "classification") %>%
-  set_engine("kernlab") %>%
+ksvm_class <- svm_poly(mode = "classification") |>
+  set_engine("kernlab") |>
   fit(type ~ ., data = spam)
 #>  Setting default kernel parameters  
 

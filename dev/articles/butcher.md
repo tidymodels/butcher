@@ -15,7 +15,7 @@ of a few associated libraries and a few lines of code, you can fit
 something as sophisticated as a boosted tree:
 
 ``` r
-fitted_model <- boost_tree(mode = "regression") %>%
+fitted_model <- boost_tree(mode = "regression") |>
   fit(mpg ~ ., data = mtcars)
 ```
 
@@ -27,7 +27,7 @@ from the original modeling package. A straightforward example is the
 package. Whether you leverage parsnip or not, you get the same result:
 
 ``` r
-parsnip_lm <- linear_reg() %>% 
+parsnip_lm <- linear_reg() |> 
   fit(mpg ~ ., data = mtcars) 
 parsnip_lm
 #> parsnip model object
@@ -128,7 +128,7 @@ function from the rlang package:
 ``` r
 library(rlang)
 env_print(big_lm$terms)
-#> <environment: 0x56386c455b18>
+#> <environment: 0x564164029500>
 #> Parent: <environment: global>
 #> Bindings:
 #> • some_junk_in_the_environment: <dbl>
@@ -238,8 +238,8 @@ only those parts of the model object that we are no longer interested in
 characterizing.
 
 ``` r
-butchered_lm <- big_lm %>%
-  axe_env() %>% 
+butchered_lm <- big_lm |>
+  axe_env() |> 
   axe_fitted()
 predict(butchered_lm, mtcars[, 2:11])
 #>           Mazda RX4       Mazda RX4 Wag          Datsun 710 

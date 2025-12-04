@@ -47,8 +47,8 @@ split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
 
 # Create model and fit
-lm_fit <- linear_reg() %>%
-  set_engine("lm") %>%
+lm_fit <- linear_reg() |>
+  set_engine("lm") |>
   fit(mpg ~ ., data = car_train)
 
 out <- butcher(lm_fit, verbose = TRUE)

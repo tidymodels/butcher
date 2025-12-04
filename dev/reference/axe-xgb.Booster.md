@@ -74,8 +74,8 @@ out <- butcher(bst, verbose = TRUE)
 #> ✖ Could not add <butchered> class
 
 # Another xgboost model
-fit <- boost_tree(mode = "classification", trees = 20) %>%
-  set_engine("xgboost", eval_metric = "mlogloss") %>%
+fit <- boost_tree(mode = "classification", trees = 20) |>
+  set_engine("xgboost", eval_metric = "mlogloss") |>
   fit(Species ~ ., data = iris)
 
 out <- butcher(fit, verbose = TRUE)

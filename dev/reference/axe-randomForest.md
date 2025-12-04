@@ -62,8 +62,8 @@ spine_train <- training(split)
 randomForest_fit <- rand_forest(mode = "classification",
                                 mtry = 2,
                                 trees = 2,
-                                min_n = 3) %>%
-  set_engine("randomForest") %>%
+                                min_n = 3) |>
+  set_engine("randomForest") |>
   fit_xy(x = spine_train[,2:4], y = spine_train$Kyphosis)
 
 out <- butcher(randomForest_fit, verbose = TRUE)
@@ -78,7 +78,7 @@ wrapped_rf <- function() {
 
 # Remove junk
 cleaned_rf <- axe_env(wrapped_rf(), verbose = TRUE)
-#> ✔ Memory released: 9.58 MB
+#> ✔ Memory released: 9.59 MB
 
 # Check size
 lobstr::obj_size(cleaned_rf)

@@ -61,7 +61,7 @@ library(sparklyr)
 
 sc <- spark_connect(master = "local")
 
-iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) %>%
+iris_tbls <- sdf_copy_to(sc, iris, overwrite = TRUE) |>
   sdf_random_split(train = 2/3, validation = 2/3, seed = 2018)
 
 train <- iris_tbls$train

@@ -12,7 +12,12 @@ new axe functions around removing parts of a new modeling object:
 ## Usage
 
 ``` r
-new_model_butcher(model_class, package_name, open = interactive())
+new_model_butcher(
+  model_class,
+  package_name,
+  open = interactive(),
+  call = rlang::caller_env()
+)
 ```
 
 ## Arguments
@@ -30,3 +35,9 @@ new_model_butcher(model_class, package_name, open = interactive())
 
   Check if user is in interactive mode, and if so, opens the new files
   for editing.
+
+- call:
+
+  The execution environment of a currently running function, e.g.
+  `caller_env()`. The function will be mentioned in error messages as
+  the source of the error.

@@ -36,14 +36,25 @@ library(xgboost)
 library(parsnip)
 
 data(agaricus.train)
-bst <- xgboost(data = agaricus.train$data,
-               label = agaricus.train$label,
-               eta = 1,
-               nthread = 2,
-               nrounds = 2,
-               eval_metric = "logloss",
-               objective = "binary:logistic",
-               verbose = 0)
+
+if (utils::packageVersion("xgboost") > "2.0.0.0") {
+  bst <- xgboost(x = agaricus.train$data,
+                 y = as.factor(agaricus.train$label),
+                 learning_rate = 1,
+                 nthread = 2,
+                 nrounds = 2,
+                 eval_metric = "logloss",
+                 objective = "binary:logistic")
+} else {
+  bst <- xgboost(data = agaricus.train$data,
+                 label = agaricus.train$label,
+                 eta = 1,
+                 nthread = 2,
+                 nrounds = 2,
+                 eval_metric = "logloss",
+                 objective = "binary:logistic",
+                 verbose = 0)
+}
 
 out <- butcher(bst, verbose = TRUE)
 

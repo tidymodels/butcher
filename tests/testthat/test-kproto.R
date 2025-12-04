@@ -29,6 +29,5 @@ test_that("kproto + butcher() works", {
 test_that("kproto + predict() works", {
   kp_fit <- clustMixType::kproto(crickets, k = 3, verbose = FALSE)
   x <- butcher(kp_fit)
-  expect_equal(predict(x, crickets[1:2,]),
-               predict(kp_fit, crickets[1:2,]))
+  expect_equal(predict(x, crickets[1:2, ]), predict(kp_fit, crickets[1:2, ]))
 })

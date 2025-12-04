@@ -54,8 +54,12 @@ methods_rd <- function(x) {
       FUN = function(x) {
         link <- paste0(
           "\\code{",
-          "\\link[", x$package[[1]], "]",
-          "{", x$topic[[1]], "}",
+          "\\link[",
+          x$package[[1]],
+          "]",
+          "{",
+          x$topic[[1]],
+          "}",
           "}"
         )
         classes <- paste0("\\code{", x$class, "}", collapse = ", ")
@@ -80,7 +84,8 @@ methods_rd <- function(x) {
   )
 
   paste0(
-    c(help_msg,
+    c(
+      help_msg,
       paste(
         headers,
         "\\itemize{",
@@ -91,7 +96,6 @@ methods_rd <- function(x) {
     ),
     collapse = "\n"
   )
-
 }
 
 last <- function(x, n = 0) {
@@ -103,12 +107,12 @@ last <- function(x, n = 0) {
 }
 
 help_path <- function(x, package) {
-
   help <- mapply(locate_help_doc, x, package, SIMPLIFY = FALSE)
 
-  vapply(help,
-         function(x) if (length(x) == 0) NA_character_ else as.character(x),
-         FUN.VALUE = character(1)
+  vapply(
+    help,
+    function(x) if (length(x) == 0) NA_character_ else as.character(x),
+    FUN.VALUE = character(1)
   )
 }
 
@@ -139,18 +143,12 @@ as.character.dev_topic <- function(x, ...) {
 }
 
 lookup_package <- function(generic, class, is_s4) {
-
   lookup_single_package <- function(generic, class, is_s4) {
-
     if (is_s4) {
-
       class <- strsplit(class, ",")[[1]]
       fn <- methods::getMethod(generic, class, optional = TRUE)
-
     } else {
-
       fn <- utils::getS3method(generic, class, optional = TRUE)
-
     }
 
     # Not found

@@ -86,4 +86,3 @@ axe_fitted.nnet <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-

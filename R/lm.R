@@ -91,4 +91,3 @@ axe_fitted.lm <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-

@@ -8,10 +8,7 @@ test_that("sclass + axe_() works", {
   # Data
   data("GlaucomaM", package = "TH.data")
   # Fit
-  classbagg_fit <- bagging(Class ~ .,
-                           data = GlaucomaM,
-                           nbagg = 10,
-                           coob = TRUE)
+  classbagg_fit <- bagging(Class ~ ., data = GlaucomaM, nbagg = 10, coob = TRUE)
   # Parse out sclass object
   x <- classbagg_fit$mtrees[[1]]
   x_nocall <- axe_call(x)

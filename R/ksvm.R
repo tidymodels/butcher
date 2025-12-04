@@ -76,4 +76,3 @@ axe_fitted.ksvm <- function(x, verbose = FALSE, ...) {
     verbose = verbose
   )
 }
-

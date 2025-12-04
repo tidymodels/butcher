@@ -22,8 +22,8 @@ test_that("parsnip + earth + axe_() works", {
   x <- butcher(earth_fit)
   expect_equal(format(x$fit), format(earth_fit$fit))
   # Predict
-  expected_output <- predict(earth_fit, trees[1:3,])
-  new_output <- predict(x, trees[1:3,])
+  expected_output <- predict(earth_fit, trees[1:3, ])
+  new_output <- predict(x, trees[1:3, ])
   expect_equal(new_output, expected_output)
 })
 
@@ -47,7 +47,7 @@ test_that("earth + axe_() works", {
   x <- butcher(earth_mod)
   expect_equal(format(x), format(earth_mod))
   # Predict
-  expected_output <- predict(earth_mod, trees[1:3,])
-  new_output <- predict(x, trees[1:3,])
+  expected_output <- predict(earth_mod, trees[1:3, ])
+  new_output <- predict(x, trees[1:3, ])
   expect_equal(new_output, expected_output)
 })

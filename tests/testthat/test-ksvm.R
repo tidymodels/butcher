@@ -24,7 +24,7 @@ test_that("ksvm + axe_() works", {
   expect_equal(x$fit@ymatrix, numeric(0))
   x <- butcher(ksvm_class)
   # Predict
-  expected_output <- predict(ksvm_class, spam[,-58])
-  new_output <- predict(x, spam[,-58])
+  expected_output <- predict(ksvm_class, spam[, -58])
+  new_output <- predict(x, spam[, -58])
   expect_equal(new_output, expected_output)
 })

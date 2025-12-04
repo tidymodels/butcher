@@ -2,7 +2,7 @@ skip_if_not_installed("MASS")
 library(MASS)
 
 test_that("lda + axe_env() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- lda(cyl ~ ., mt)
@@ -11,7 +11,7 @@ test_that("lda + axe_env() works", {
 })
 
 test_that("qda + axe_env() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- qda(cyl ~ ., mt)
@@ -20,7 +20,7 @@ test_that("qda + axe_env() works", {
 })
 
 test_that("lda + butcher() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- lda(cyl ~ ., mt)
@@ -30,7 +30,7 @@ test_that("lda + butcher() works", {
 })
 
 test_that("qda + butcher() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- qda(cyl ~ ., mt)
@@ -40,7 +40,7 @@ test_that("qda + butcher() works", {
 })
 
 test_that("lda + predict() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- lda(cyl ~ ., mt)
@@ -52,7 +52,7 @@ test_that("lda + predict() works", {
 })
 
 test_that("qda + predict() works", {
-  mt <- mtcars[,1:5]
+  mt <- mtcars[, 1:5]
   mt$cyl <- as.factor(mt$cyl)
 
   res <- qda(cyl ~ ., mt)

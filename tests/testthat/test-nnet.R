@@ -15,5 +15,5 @@ test_that("nnet + predict() works", {
   expect_equal(x$fit$fitted.values, numeric(0))
   x <- butcher(nnet_fit)
   expected_output <- predict(nnet_fit, iris[1:3, ])
-  expect_equal(predict(x, iris[1:3,]), expected_output)
+  expect_equal(predict(x, iris[1:3, ]), expected_output)
 })

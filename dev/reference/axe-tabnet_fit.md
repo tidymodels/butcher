@@ -48,8 +48,7 @@ mtcar_fit <- tabnet::tabnet() |>
   set_mode("regression") |>
   set_engine("torch") |>
   fit(mpg ~ ., data = car_train)
-#> Error in cpp_torch_manual_seed(as.character(seed)): Lantern is not loaded. Please use `install_torch()` to install additional dependencies.
 
 out <- butcher(mtcar_fit, verbose = TRUE)
-#> Error: object 'mtcar_fit' not found
+#> ✖ The butchered object is 8 B larger than the original. Do not butcher.
 ```

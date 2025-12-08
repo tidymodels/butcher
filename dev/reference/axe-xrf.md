@@ -50,36 +50,36 @@ xrf_big <- function() {
 heavy_m <- xrf_big()
 
 m <- butcher(heavy_m, verbose = TRUE)
-#> ✔ Memory released: 9.60 MB
+#> ✔ Memory released: 9.57 MB
 
 weigh(heavy_m)
-#> # A tibble: 43 × 2
-#>    object                             size
-#>    <chr>                             <dbl>
-#>  1 glm.formula                     9.66   
-#>  2 base_formula                    9.66   
-#>  3 rule_augmented_formula          9.66   
-#>  4 xgb.callbacks.cb.evaluation.log 0.0351 
-#>  5 glm.model.glmnet.fit.beta       0.0177 
-#>  6 glm.model.glmnet.fit.call       0.0107 
-#>  7 glm.model.glmnet.fit.a0         0.00654
-#>  8 glm.model.nzero                 0.00619
-#>  9 xgb.raw                         0.00578
-#> 10 xgb.call                        0.00168
-#> # ℹ 33 more rows
+#> # A tibble: 32 × 2
+#>    object                        size
+#>    <chr>                        <dbl>
+#>  1 glm.formula               9.62    
+#>  2 base_formula              9.62    
+#>  3 rule_augmented_formula    9.62    
+#>  4 glm.model.glmnet.fit.beta 0.0185  
+#>  5 glm.model.glmnet.fit.call 0.0110  
+#>  6 glm.model.glmnet.fit.a0   0.00654 
+#>  7 glm.model.nzero           0.00619 
+#>  8 glm.model.call            0.00114 
+#>  9 glm.model.lambda          0.000752
+#> 10 glm.model.cvm             0.000752
+#> # ℹ 22 more rows
 weigh(m)
-#> # A tibble: 43 × 2
-#>    object                              size
-#>    <chr>                              <dbl>
-#>  1 glm.model.glmnet.fit.beta       0.0177  
-#>  2 glm.formula                     0.00879 
-#>  3 glm.model.glmnet.fit.a0         0.00654 
-#>  4 glm.model.nzero                 0.00619 
-#>  5 xgb.raw                         0.00578 
-#>  6 xgb.callbacks.cb.evaluation.log 0.00510 
-#>  7 rule_augmented_formula          0.00423 
-#>  8 base_formula                    0.00283 
-#>  9 xgb.feature_names               0.0008  
-#> 10 glm.model.lambda                0.000752
-#> # ℹ 33 more rows
+#> # A tibble: 32 × 2
+#>    object                        size
+#>    <chr>                        <dbl>
+#>  1 glm.model.glmnet.fit.beta 0.0185  
+#>  2 glm.formula               0.0103  
+#>  3 glm.model.glmnet.fit.a0   0.00654 
+#>  4 glm.model.nzero           0.00619 
+#>  5 rule_augmented_formula    0.00490 
+#>  6 base_formula              0.00283 
+#>  7 glm.model.lambda          0.000752
+#>  8 glm.model.cvm             0.000752
+#>  9 glm.model.cvsd            0.000752
+#> 10 glm.model.cvup            0.000752
+#> # ℹ 22 more rows
 ```

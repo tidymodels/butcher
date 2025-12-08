@@ -40,11 +40,6 @@ Axed xgb.Booster object.
 
 ``` r
 library(xgboost)
-#> 
-#> Attaching package: ‘xgboost’
-#> The following object is masked from ‘package:dplyr’:
-#> 
-#>     slice
 library(parsnip)
 
 data(agaricus.train)
@@ -69,9 +64,7 @@ if (utils::packageVersion("xgboost") > "2.0.0.0") {
 }
 
 out <- butcher(bst, verbose = TRUE)
-#> ✔ Memory released: 31.12 kB
-#> ✖ Disabled: `print()`, `summary()`, and `xgb.Booster.complete()`
-#> ✖ Could not add <butchered> class
+#> ✖ No memory released. Do not butcher.
 
 # Another xgboost model
 fit <- boost_tree(mode = "classification", trees = 20) |>
@@ -79,5 +72,5 @@ fit <- boost_tree(mode = "classification", trees = 20) |>
   fit(Species ~ ., data = iris)
 
 out <- butcher(fit, verbose = TRUE)
-#> ✖ The butchered object is 1.14 kB larger than the original. Do not butcher.
+#> ✖ The butchered object is 456 B larger than the original. Do not butcher.
 ```

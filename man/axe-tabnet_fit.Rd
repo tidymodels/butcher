@@ -36,12 +36,17 @@ suppressWarnings(suppressMessages(library(tabnet)))
 split <- initial_split(mtcars, prop = 9/10)
 car_train <- training(split)
 
-# Create model and fit
-mtcar_fit <- tabnet::tabnet() |>
+
+if (interactive() & torch::torch_is_installed()) {
+  torch::torch_manual_seed(1)
+
+  # Create model and fit
+  mtcar_fit <- tabnet::tabnet() |>
   set_mode("regression") |>
   set_engine("torch") |>
   fit(mpg ~ ., data = car_train)
 
-out <- butcher(mtcar_fit, verbose = TRUE)
+  out <- butcher(mtcar_fit, verbose = TRUE)
+}
 \dontshow{\}) # examplesIf}
 }

@@ -49,7 +49,14 @@ objects. This method saves a zero-row integer in their place.
 }
 \section{Methods}{
 
-\Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_rsample_indicators")}
+See the following help topics for more details about individual methods:
+
+\code{butcher}
+\itemize{
+\item \code{\link[butcher]{axe-rsample-indicators}}: \code{default},
+\code{rset}, \code{rsplit}, \code{three_way_split}, \code{tune_results},
+\code{workflow_set}
+}
 }
 
 \examples{

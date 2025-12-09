@@ -177,7 +177,14 @@ axe_fitted.default <- function(x, verbose = FALSE, ...) {
 #' @return An updated object without data in the `rsplit` objects.
 #'
 #' @section Methods:
-#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_rsample_data")}
+#' See the following help topics for more details about individual methods:
+#'
+#' \code{butcher}
+#' \itemize{
+#'   \item \code{\link[butcher]{axe-rsample-data}}: \code{default}, \code{rset},
+#'   \code{rsplit}, \code{three_way_split}, \code{tune_results},
+#'   \code{workflow_set}
+#' }
 #'
 #' @examplesIf rlang::is_installed("rsample")
 #'
@@ -217,7 +224,15 @@ axe_rsample_data.default <- function(x, verbose = FALSE, ...) {
 #' @return An updated object without the indicators in the `rsplit` objects.
 #'
 #' @section Methods:
-#' \Sexpr[stage=render,results=rd]{butcher:::methods_rd("axe_rsample_indicators")}
+#' See the following help topics for more details about individual methods:
+#'
+#' \code{butcher}
+#' \itemize{
+#'   \item \code{\link[butcher]{axe-rsample-indicators}}: \code{default},
+#'   \code{rset}, \code{rsplit}, \code{three_way_split}, \code{tune_results},
+#'   \code{workflow_set}
+#' }
+#'
 #'
 #' @examplesIf rlang::is_installed("rsample")
 #'

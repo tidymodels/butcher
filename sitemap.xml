@@ -40,10 +40,13 @@
 <url><loc>https://butcher.tidymodels.org/reference/axe-rda.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-recipe.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-rpart.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/reference/axe-rsample-data.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/reference/axe-rsample-indicators.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-sclass.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-spark.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-survreg.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-survreg.penal.html</loc></url>
+<url><loc>https://butcher.tidymodels.org/reference/axe-tabnet_fit.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-terms.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-train.html</loc></url>
 <url><loc>https://butcher.tidymodels.org/reference/axe-train.recipe.html</loc></url>

@@ -24,13 +24,13 @@ Source:
 [`DESCRIPTION`](https://github.com/tidymodels/butcher/blob/main/DESCRIPTION)
 
 Cahoon J, Vaughan D, Kuhn M, Hayes A, Silge J (2025). *butcher: Model
-Butcher*. R package version 0.3.6.9000,
+Butcher*. R package version 0.4.0.9000,
 <https://butcher.tidymodels.org/>.
 
     @Manual{,
       title = {butcher: Model Butcher},
       author = {Joyce Cahoon and Davis Vaughan and Max Kuhn and Alex Hayes and Julia Silge},
       year = {2025},
-      note = {R package version 0.3.6.9000},
+      note = {R package version 0.4.0.9000},
       url = {https://butcher.tidymodels.org/},
     }

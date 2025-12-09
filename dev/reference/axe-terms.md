@@ -41,7 +41,7 @@ wrapped_lm <- function() {
 
 # Remove junk
 cleaned_lm <- axe_env(wrapped_lm(), verbose = TRUE)
-#> ✔ Memory released: 9.55 MB
+#> ✔ Memory released: 9.56 MB
 
 # Check size
 lobstr::obj_size(cleaned_lm)

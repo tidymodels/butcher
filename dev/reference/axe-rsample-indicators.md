@@ -56,8 +56,9 @@ objects. This method saves a zero-row integer in their place.
 
 ## Methods
 
-See the following help topics for more details about individual
-methods:`butcher`
+See the following help topics for more details about individual methods:
+
+`butcher`
 
 - `axe-rsample-indicators`: `default`, `rset`, `rsplit`,
   `three_way_split`, `tune_results`, `workflow_set`

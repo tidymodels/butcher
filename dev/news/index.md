@@ -2,6 +2,10 @@
 
 ## butcher (development version)
 
+## butcher 0.4.0
+
+- Max Kuhn is now the maintainer.
+
 - Added methods for
   [`MASS::polr`](https://rdrr.io/pkg/MASS/man/polr.html)
   ([@pbulsink](https://github.com/pbulsink),

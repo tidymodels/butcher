@@ -102,8 +102,8 @@ weigh(res)
 #> # A tibble: 20 × 2
 #>    object                    size
 #>    <chr>                    <dbl>
-#>  1 terms                 9.79    
-#>  2 formula               9.79    
+#>  1 terms                 9.80    
+#>  2 formula               9.80    
 #>  3 y                     0.0177  
 #>  4 residuals             0.00948 
 #>  5 linear.predictors     0.00805 
@@ -126,7 +126,7 @@ weigh(butcher(res))
 #> # A tibble: 20 × 2
 #>    object                    size
 #>    <chr>                    <dbl>
-#>  1 terms                 9.79    
+#>  1 terms                 9.80    
 #>  2 residuals             0.00948 
 #>  3 linear.predictors     0.00805 
 #>  4 formula               0.00149 

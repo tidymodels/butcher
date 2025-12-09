@@ -62,7 +62,7 @@ wrapped_survreg <- function() {
 
 # Remove junk
 cleaned_survreg <- butcher(wrapped_survreg(), verbose = TRUE)
-#> ✔ Memory released: 9.78 MB
+#> ✔ Memory released: 9.79 MB
 #> ✖ Disabled: `print()`, `summary()`, and `residuals()`
 
 # Check size

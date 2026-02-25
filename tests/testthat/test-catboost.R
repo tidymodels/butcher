@@ -1,5 +1,4 @@
 test_that("catboost.Model + axe_call() works", {
-
   skip_on_cran()
   skip_if_not_installed("catboost")
   skip_if_not_installed("bonsai")

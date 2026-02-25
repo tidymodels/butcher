@@ -8,7 +8,6 @@ test_that("catboost.Model + axe_call() works", {
   suppressPackageStartupMessages(library(parsnip))
   suppressPackageStartupMessages(library(bonsai))
 
-
   mod <- boost_tree(trees = 10) %>%
     set_engine("catboost", verbose = 0) %>%
     set_mode("classification") %>%

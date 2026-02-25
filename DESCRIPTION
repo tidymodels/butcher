@@ -30,7 +30,8 @@ Imports:
     tibble (>= 3.1.7),
     utils,
     vctrs (>= 0.4.1)
-Suggests: 
+Suggests:
+    bonsai,
     C50,
     caret,
     censored,

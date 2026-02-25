@@ -1,5 +1,7 @@
 # butcher (development version)
 
+* Added butcher methods for catboost models and, by extension, `parsnip::boost_tree(engine = "catboost")` via bonsai (#301).
+
 # butcher 0.4.0
 
 * Max Kuhn is now the maintainer.

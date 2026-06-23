@@ -70,6 +70,7 @@ test_that("ipred + rpart + axing works (survbagg)", {
         MGEc.10 +
         IPI,
       data = DLBCL,
+      nbagg = 30L,
       coob = TRUE
     )
 
@@ -136,9 +137,10 @@ test_that("ipred + rpart + predict() works (classbagg)", {
     fit$mtrees[[1]]$btree$control$usesurrogate
   )
 
+  # fix seed in case of random tiebreaker in predict.classbagg
   expect_equal(
-    predict(x, data.frame(x = 1)),
-    predict(fit, data.frame(x = 1))
+    withr::with_seed(123, predict(x, data.frame(x = 1))),
+    withr::with_seed(123, predict(fit, data.frame(x = 1)))
   )
 })
 
@@ -157,6 +159,7 @@ test_that("ipred + rpart + predict() works (survbagg)", {
         MGEc.10 +
         IPI,
       data = DLBCL,
+      nbagg = 30L,
       coob = TRUE
     )
 
